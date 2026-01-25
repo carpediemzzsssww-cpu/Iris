@@ -2,9 +2,6 @@
 layout: default
 title: Home
 ---
----
-title: Home
----
 # Iris
 AI Product / Strategy
 
