@@ -2,7 +2,7 @@
 layout: default
 title: Home
 ---
-# Iris
+# Iris Zhou
 AI Product / Strategy
 
 ## Navigation
