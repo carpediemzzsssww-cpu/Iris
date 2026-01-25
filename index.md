@@ -1,4 +1,8 @@
 ---
+layout: default
+title: Home
+---
+---
 title: Home
 ---
 # Iris
