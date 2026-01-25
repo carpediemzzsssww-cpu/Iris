@@ -1,3 +1,6 @@
+---
+title: Home
+---
 # Iris
 AI Product / Strategy
 
