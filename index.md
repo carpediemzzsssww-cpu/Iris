@@ -1,0 +1,28 @@
+# Iris
+AI Product / Strategy
+
+## Profile
+- Background：
+- Focus：
+- Strengths：
+
+## Selected Projects
+### Project 1
+- Context：
+- Problem：
+- My role：
+- Outcome：
+
+### Project 2
+- Context：
+- Problem：
+- My role：
+- Outcome：
+
+## Skills
+- AI / Product / Data
+- Tools: Python, SQL, Figma, Prompt
+
+## Contact
+- Email：
+- LinkedIn：
