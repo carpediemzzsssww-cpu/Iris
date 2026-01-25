@@ -1,2 +1,3 @@
 # Iris
-Personal portfolio &amp; resume
+This repository hosts my personal portfolio website.
+👉 https://carpediemzzsssww-cpu.github.io/iris/
