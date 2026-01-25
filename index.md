@@ -1,6 +1,11 @@
 # Iris
 AI Product / Strategy
 
+## Navigation
+- [Home](./)
+- [Projects](./projects)
+- [About](./about)
+
 ## Profile
 - Background：
 - Focus：
