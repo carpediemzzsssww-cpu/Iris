@@ -48,6 +48,15 @@ p, li { color: #222; }
   border: 1px solid #ddd;
   text-decoration: none;
   color: #111;
+  
+  pre {
+  background: #f6f8fa;
+  border-radius: 12px;
+  padding: 14px;
+  overflow: auto;
+  border: 1px solid #eee;
+}
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 }
 
 .site-footer { border-top: 1px solid #eee; padding: 24px 0; color: #777; }
