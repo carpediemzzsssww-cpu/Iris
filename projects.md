@@ -7,11 +7,14 @@ title: Projects
 
 <div class="card">
 
-## Project 1 · XXX
-- **Context**:  
-- **Problem**:  
-- **My role**:  
-- **Outcome**:  
+Project 1 · XXX
+- Context:
+
+- Problem:
+
+- My role:
+
+- Outcome:  
 
 <a class="btn" href="#">View</a>
 
@@ -19,11 +22,14 @@ title: Projects
 
 <div class="card">
 
-## Project 2 · XXX
-- **Context**:  
-- **Problem**:  
-- **My role**:  
-- **Outcome**:  
+Project 2 · XXX
+- Context:
+  
+- Problem:
+  
+- My role:
+  
+- Outcome:  
 
 <a class="btn" href="#">View</a>
 
