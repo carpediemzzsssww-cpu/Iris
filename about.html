@@ -1,57 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iris Zhou | About</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Iris Zhou</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="menu">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="learning.html">Learning</a>
-          <a href="ai-lab.html">AI Lab</a>
-          <a href="about.html" class="active">About</a>
+    <div class="particle-field"></div>
+
+    <nav class="top-nav">
+        <div class="container">
+            <div class="nav-brand"><span class="brand-mark">IZ</span></div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="learning.html" class="nav-link">Learning</a>
+                <a href="ai-lab.html" class="nav-link">AI Lab</a>
+                <a href="about.html" class="nav-link active">About</a>
+            </div>
+            <div class="nav-actions">
+                <a href="mailto:iris@example.com" class="nav-action" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+                <a href="resume.pdf" class="nav-action" title="Resume">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14,2 14,8 20,8"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/iriszhou" class="nav-action" title="GitHub" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/iriszhou" class="nav-action" title="LinkedIn" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+            </div>
         </div>
-        <div class="actions">
-          <a href="mailto:iris@example.com">Contact</a>
-          <a href="resume.pdf" target="_blank">Resume</a>
-          <a href="https://github.com/iriszhou" target="_blank">GitHub</a>
-          <a href="https://linkedin.com/in/iriszhou" target="_blank">LinkedIn</a>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header reveal">
+            <div class="container">
+                <h1 class="page-title">About</h1>
+            </div>
+        </section>
+
+        <section class="about-content reveal">
+            <div class="container" style="max-width: 800px;">
+                <div class="about-intro">
+                    <p style="font-size: 18px; line-height: 1.7; color: var(--text); margin-bottom: 24px;">
+                        I'm a product designer who bridges the gap between human needs and intelligent systems. 
+                        My work combines deep user research, data-driven insights, and rapid prototyping to create 
+                        experiences that feel both intuitive and transformative. I'm particularly excited about how 
+                        AI can augment human creativity rather than replace it.
+                    </p>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-heading">Key Strengths</h2>
+                    <ul class="insight-list">
+                        <li>User Research & Synthesis: Conducting interviews, usability testing, and translating insights into actionable design decisions</li>
+                        <li>AI/ML Integration: Designing interfaces for LLM-powered tools, understanding prompt engineering and model limitations</li>
+                        <li>Data Visualization: Creating clear, compelling dashboards that surface insights for diverse stakeholders</li>
+                        <li>Rapid Prototyping: Building high-fidelity prototypes in Figma and functional demos in React/JavaScript</li>
+                        <li>Cross-functional Collaboration: Working effectively with engineers, PMs, researchers, and executives</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-heading">Working Style</h2>
+                    <ul class="learning-list">
+                        <li>I start with "why" before jumping to "how" - understanding the problem deeply before proposing solutions</li>
+                        <li>I iterate in public - sharing early, rough work to get feedback faster and build collective ownership</li>
+                        <li>I balance craft and speed - knowing when to polish details and when to move fast and learn</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-heading">Background</h2>
+                    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--border-radius); padding: 24px; margin-bottom: 16px;">
+                        <h3 style="font-family: var(--font-display); font-size: 18px; margin-bottom: 8px;">Education</h3>
+                        <p style="font-size: 15px; color: var(--muted);">
+                            <strong>BA in Cognitive Science & Design</strong><br>
+                            University Name, Class of 2025<br>
+                            Relevant Coursework: HCI, Machine Learning, Data Visualization, Design Thinking
+                        </p>
+                    </div>
+                    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--border-radius); padding: 24px;">
+                        <h3 style="font-family: var(--font-display); font-size: 18px; margin-bottom: 8px;">Experience Highlights</h3>
+                        <p style="font-size: 15px; color: var(--muted); margin-bottom: 12px;">
+                            <strong>Product Design Intern</strong> - TechCorp AI (Summer 2024)<br>
+                            <strong>UX Research Assistant</strong> - University Lab (2023-2024)<br>
+                            <strong>Founder & Designer</strong> - Campus Design Co. (2022-2023)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-section" style="text-align: center; padding: 48px 0;">
+                    <h2 class="section-heading">Let's Connect</h2>
+                    <p style="font-size: 16px; color: var(--muted); margin-bottom: 24px;">
+                        I'm currently seeking summer 2026 internship opportunities
+                    </p>
+                    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                        <a href="mailto:iris@example.com" class="btn btn-primary">Get in Touch</a>
+                        <a href="resume.pdf" class="btn btn-ghost">Download Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">© 2026 Iris Zhou. Designed & built with intention.</p>
+                <div class="footer-links">
+                    <a href="mailto:iris@example.com" class="footer-link">Contact</a>
+                    <a href="resume.pdf" class="footer-link">Resume</a>
+                    <a href="https://github.com/iriszhou" class="footer-link" target="_blank">GitHub</a>
+                </div>
+            </div>
         </div>
-      </nav>
-    </div>
-  </header>
-  <main class="container">
-    <section>
-      <h1>About Me</h1>
-      <p>Iris Zhou is a student passionate about building thoughtful products, exploring AI research, and creating delightful user experiences. With experience in product design, machine learning, and research, Iris combines creativity with analytical thinking to solve complex problems.</p>
-      <h2>Key Strengths</h2>
-      <ul>
-        <li>Multidisciplinary collaboration across design, engineering, and research.</li>
-        <li>Data-driven decision making and experimentation.</li>
-        <li>Clear communication and empathetic leadership.</li>
-      </ul>
-      <h2>Working Style</h2>
-      <ul>
-        <li>User-centered and iterative design process.</li>
-        <li>Curiosity-driven research with a focus on impact.</li>
-        <li>Balance between big-picture thinking and attention to detail.</li>
-      </ul>
-      <h2>Education & Experience</h2>
-      <p>Currently pursuing a degree in Computer Science and Product Design at XYZ University. Past experiences include internships in AI product management and research assistant roles.</p>
-      <div class="hero-actions" style="margin-top:2rem;">
-        <a href="mailto:iris@example.com" class="btn">Contact</a>
-        <a href="resume.pdf" class="btn secondary" target="_blank">Download Resume</a>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>© 2026 Iris Zhou. All rights reserved.</p>
-  </footer>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,191 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iris Zhou | Home</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="scripts.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Zhou - Product Designer & AI Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="menu">
-          <a href="index.html" class="active">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="learning.html">Learning</a>
-          <a href="ai-lab.html">AI Lab</a>
-          <a href="about.html">About</a>
+    <!-- Background Particle Field -->
+    <div class="particle-field" id="particleField"></div>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav" id="topNav">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-mark">IZ</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="learning.html" class="nav-link">Learning</a>
+                <a href="ai-lab.html" class="nav-link">AI Lab</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <a href="mailto:iris@example.com" class="nav-action" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+                <a href="resume.pdf" class="nav-action" title="Resume">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14,2 14,8 20,8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10,9 9,9 8,9"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/iriszhou" class="nav-action" title="GitHub" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/iriszhou" class="nav-action" title="LinkedIn" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <div class="actions">
-          <a href="mailto:iris@example.com">Contact</a>
-          <a href="resume.pdf" target="_blank">Resume</a>
-          <a href="https://github.com/iriszhou" target="_blank">GitHub</a>
-          <a href="https://linkedin.com/in/iriszhou" target="_blank">LinkedIn</a>
+    </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="mobile-drawer-links">
+            <a href="index.html" class="mobile-link active">Home</a>
+            <a href="projects.html" class="mobile-link">Projects</a>
+            <a href="learning.html" class="mobile-link">Learning</a>
+            <a href="ai-lab.html" class="mobile-link">AI Lab</a>
+            <a href="about.html" class="mobile-link">About</a>
         </div>
-      </nav>
     </div>
-  </header>
-  <main class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Hi, I'm Iris Zhou</h1>
-        <p>A product-focused student exploring the intersections of AI, design and research.</p>
-        <div class="hero-actions">
-          <a href="projects.html" class="btn">Projects</a>
-          <a href="mailto:iris@example.com" class="btn secondary">Contact</a>
-          <a href="resume.pdf" class="btn secondary" target="_blank">Resume</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="particle-grid"></div>
-      </div>
-    </section>
 
-    <!-- Navigation Profile -->
-    <section class="profile-section">
-      <h2>Where I Thrive</h2>
-      <div class="profile-grid">
-        <div class="profile-card">
-          <h3>Product</h3>
-          <p>Building experiences that solve real problems.</p>
-        </div>
-        <div class="profile-card">
-          <h3>AI</h3>
-          <p>Leveraging machine learning to create new possibilities.</p>
-        </div>
-        <div class="profile-card">
-          <h3>Research</h3>
-          <p>Curious exploration and evidence-based insights.</p>
-        </div>
-        <div class="profile-card">
-          <h3>Build</h3>
-          <p>Turning ideas into tangible outcomes.</p>
-        </div>
-      </div>
-    </section>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section reveal">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="title-line">Product Designer</span>
+                            <span class="title-line">× AI Explorer</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Designing intelligent systems that emerge from human needs, 
+                            one iteration at a time.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="projects.html" class="btn btn-primary">
+                                View Projects
+                                <span class="btn-line"></span>
+                            </a>
+                            <a href="mailto:iris@example.com" class="btn btn-ghost">
+                                Get in Touch
+                            </a>
+                            <a href="resume.pdf" class="btn btn-ghost">
+                                Resume
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="emergence-block">
+                            <svg class="emergence-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="emergenceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgba(15,118,110,0.3);stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:rgba(30,58,138,0.3);stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="200" cy="200" r="120" fill="url(#emergenceGrad)" opacity="0.4" class="pulse-circle"/>
+                                <circle cx="200" cy="200" r="80" fill="url(#emergenceGrad)" opacity="0.6" class="pulse-circle" style="animation-delay: 0.5s"/>
+                                <circle cx="200" cy="200" r="40" fill="url(#emergenceGrad)" opacity="0.8" class="pulse-circle" style="animation-delay: 1s"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Experience Timeline -->
-    <section class="experience-section">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h4>AI Product Intern <span> @ AwesomeTech (Jun 2024 – Aug 2024)</span></h4>
-          <div class="timeline-details">
-            <ul>
-              <li>Designed a recommendation engine that increased engagement by 20%.</li>
-              <li>Collaborated with designers and engineers to ship new features.</li>
-              <li>Conducted user research to refine product strategy.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <h4>Research Assistant <span> @ University Lab (Sept 2023 – May 2024)</span></h4>
-          <div class="timeline-details">
-            <ul>
-              <li>Investigated human–AI interaction patterns in educational tools.</li>
-              <li>Published findings in a peer-reviewed conference.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <h4>Product Design Lead <span> @ Student Startup (Jan 2023 – Aug 2023)</span></h4>
-          <div class="timeline-details">
-            <ul>
-              <li>Led a team of 5 to build an MVP for a campus delivery app.</li>
-              <li>Achieved 500+ downloads in the first month.</li>
-              <li>Focused on user-centred design and iterative testing.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <p style="font-size:0.8rem; color:var(--muted);">Click on each item to expand details.</p>
-    </section>
+        <!-- Navigation Profile -->
+        <section class="nav-profile reveal">
+            <div class="container">
+                <div class="profile-grid">
+                    <div class="profile-card" data-profile="product">
+                        <div class="profile-icon">📊</div>
+                        <h3 class="profile-title">Product</h3>
+                        <p class="profile-desc">User-centered design with measurable impact</p>
+                    </div>
+                    <div class="profile-card" data-profile="ai">
+                        <div class="profile-icon">🤖</div>
+                        <h3 class="profile-title">AI</h3>
+                        <p class="profile-desc">Exploring LLMs, agents, and generative systems</p>
+                    </div>
+                    <div class="profile-card" data-profile="research">
+                        <div class="profile-icon">🔬</div>
+                        <h3 class="profile-title">Research</h3>
+                        <p class="profile-desc">Data-driven insights and experimentation</p>
+                    </div>
+                    <div class="profile-card" data-profile="build">
+                        <div class="profile-icon">⚡</div>
+                        <h3 class="profile-title">Build</h3>
+                        <p class="profile-desc">Prototyping ideas into working systems</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Presentation / Featured Works -->
-    <section class="presentation-section">
-      <h2>Featured</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Live Demo: Smart Planner</h3>
-          <p>An AI-powered planning assistant that organizes your study schedule.</p>
-          <a href="#" class="btn secondary">Demo</a>
-        </div>
-        <div class="card">
-          <h3>Figma Prototype: Health Tracker</h3>
-          <p>A mobile concept for monitoring health metrics and habits.</p>
-          <a href="#" class="btn secondary">Prototype</a>
-        </div>
-        <div class="card">
-          <h3>Article: Designing for Trust in AI</h3>
-          <p>A deep dive into creating ethical and trustworthy user experiences.</p>
-          <a href="#" class="btn secondary">Read</a>
-        </div>
-      </div>
-    </section>
+        <!-- Experience Timeline -->
+        <section class="experience-section reveal">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item" data-expanded="false">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-meta">
+                                    <h3 class="timeline-role">Product Design Intern</h3>
+                                    <span class="timeline-org">TechCorp AI</span>
+                                    <span class="timeline-date">Summer 2024</span>
+                                </div>
+                                <button class="timeline-toggle">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="timeline-impact">Redesigned onboarding flow, increasing user activation by 34%</p>
+                            <div class="timeline-details">
+                                <ul>
+                                    <li>Led end-to-end redesign of user onboarding using progressive disclosure patterns</li>
+                                    <li>Conducted 12 user interviews and A/B tested 3 variants with 2,000+ users</li>
+                                    <li>Collaborated with engineering to implement adaptive UI based on user behavior</li>
+                                    <li>Created design system components adopted across 4 product teams</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Selected Projects -->
-    <section class="projects-section">
-      <h2>Selected Projects</h2>
-      <div class="card-grid">
-        <!-- Placeholder cards; real cards loaded on Projects page -->
-        <div class="card">
-          <h3>Project One</h3>
-          <p>A brief description of project one.</p>
-          <div class="tags">
-            <span class="tag-pill">AI</span>
-            <span class="tag-pill">Product</span>
-          </div>
-          <a href="projects.html" class="btn secondary" style="margin-top:1rem;">View more</a>
-        </div>
-        <div class="card">
-          <h3>Project Two</h3>
-          <p>A brief description of project two.</p>
-          <div class="tags">
-            <span class="tag-pill">Research</span>
-            <span class="tag-pill">Design</span>
-          </div>
-          <a href="projects.html" class="btn secondary" style="margin-top:1rem;">View more</a>
-        </div>
-        <div class="card">
-          <h3>Project Three</h3>
-          <p>A brief description of project three.</p>
-          <div class="tags">
-            <span class="tag-pill">Data</span>
-            <span class="tag-pill">Build</span>
-          </div>
-          <a href="projects.html" class="btn secondary" style="margin-top:1rem;">View more</a>
-        </div>
-      </div>
-    </section>
+                    <div class="timeline-item" data-expanded="false">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-meta">
+                                    <h3 class="timeline-role">UX Research Assistant</h3>
+                                    <span class="timeline-org">University Lab</span>
+                                    <span class="timeline-date">2023 - 2024</span>
+                                </div>
+                                <button class="timeline-toggle">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="timeline-impact">Published research on AI-assisted design tools in CHI '24</p>
+                            <div class="timeline-details">
+                                <ul>
+                                    <li>Designed and conducted mixed-methods study with 28 professional designers</li>
+                                    <li>Analyzed 200+ hours of interaction data using qualitative coding</li>
+                                    <li>Co-authored paper accepted to CHI with 89% acceptance rate</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Skills -->
-    <section class="skills-section">
-      <h2>Skills</h2>
-      <div class="tags">
-        <span class="tag-pill">AI</span>
-        <span class="tag-pill">Product</span>
-        <span class="tag-pill">Data</span>
-        <span class="tag-pill">Design</span>
-        <span class="tag-pill">Build</span>
-      </div>
-    </section>
+                    <div class="timeline-item" data-expanded="false">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-meta">
+                                    <h3 class="timeline-role">Founder & Designer</h3>
+                                    <span class="timeline-org">Campus Design Co.</span>
+                                    <span class="timeline-date">2022 - 2023</span>
+                                </div>
+                                <button class="timeline-toggle">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="timeline-impact">Delivered 15+ design projects for student orgs, $12k revenue</p>
+                            <div class="timeline-details">
+                                <ul>
+                                    <li>Built client base from 0 to 8 recurring organizations</li>
+                                    <li>Created brand identities, event materials, and digital experiences</li>
+                                    <li>Managed end-to-end project delivery from discovery to handoff</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Contact -->
-    <section class="contact-section">
-      <h2>Get in Touch</h2>
-      <p>I'm currently open to internships and collaborative opportunities.</p>
-      <div class="hero-actions">
-        <a href="mailto:iris@example.com" class="btn">Email Me</a>
-        <a href="https://linkedin.com/in/iriszhou" class="btn secondary" target="_blank">LinkedIn</a>
-        <a href="https://github.com/iriszhou" class="btn secondary" target="_blank">GitHub</a>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>© 2026 Iris Zhou. All rights reserved.</p>
-  </footer>
+        <!-- Presentation -->
+        <section class="presentation-section reveal">
+            <div class="container">
+                <h2 class="section-title">Featured Work</h2>
+                <div class="presentation-grid">
+                    <a href="https://demo.example.com" class="presentation-card" target="_blank">
+                        <div class="presentation-media">
+                            <div class="presentation-placeholder">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="presentation-content">
+                            <h3 class="presentation-title">AI Design Assistant Demo</h3>
+                            <p class="presentation-desc">Interactive prototype exploring AI-powered design suggestions</p>
+                            <span class="presentation-link">
+                                View Demo →
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="https://figma.com/@iriszhou" class="presentation-card" target="_blank">
+                        <div class="presentation-media">
+                            <div class="presentation-placeholder">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                                    <path d="M6 12a3 3 0 0 1 3-3h6a3 3 0 0 1 0 6h-6a3 3 0 0 1-3-3z"/>
+                                    <path d="M12 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="presentation-content">
+                            <h3 class="presentation-title">Design System 2.0</h3>
+                            <p class="presentation-desc">Complete component library with accessibility guidelines</p>
+                            <span class="presentation-link">
+                                Open in Figma →
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="article.html" class="presentation-card">
+                        <div class="presentation-media">
+                            <div class="presentation-placeholder">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                    <line x1="10" y1="9" x2="16" y2="9"/>
+                                    <line x1="10" y1="13" x2="16" y2="13"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="presentation-content">
+                            <h3 class="presentation-title">Designing for Emergence</h3>
+                            <p class="presentation-desc">Essay on creating systems that grow with user behavior</p>
+                            <span class="presentation-link">
+                                Read Article →
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Projects -->
+        <section class="projects-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Selected Projects</h2>
+                    <a href="projects.html" class="section-link">View All →</a>
+                </div>
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Network -->
+        <section class="skills-section reveal">
+            <div class="container">
+                <h2 class="section-title">Skills & Tools</h2>
+                <div class="skills-groups">
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">AI & Data</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">Prompt Engineering</span>
+                            <span class="skill-pill">LLM Integration</span>
+                            <span class="skill-pill">Data Analysis</span>
+                            <span class="skill-pill">A/B Testing</span>
+                            <span class="skill-pill">Python</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">Product & Design</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">User Research</span>
+                            <span class="skill-pill">Interaction Design</span>
+                            <span class="skill-pill">Design Systems</span>
+                            <span class="skill-pill">Figma</span>
+                            <span class="skill-pill">Prototyping</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">Development</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">React</span>
+                            <span class="skill-pill">HTML/CSS</span>
+                            <span class="skill-pill">JavaScript</span>
+                            <span class="skill-pill">Git</span>
+                            <span class="skill-pill">APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section reveal">
+            <div class="container">
+                <div class="contact-card">
+                    <h2 class="contact-title">Let's Create Something</h2>
+                    <p class="contact-subtitle">
+                        I'm currently seeking summer 2026 internship opportunities in 
+                        Product Design, AI/ML, or Research roles.
+                    </p>
+                    <div class="contact-status">
+                        <span class="status-indicator"></span>
+                        Open to opportunities
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:iris@example.com" class="contact-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            iris@example.com
+                        </a>
+                        <a href="https://linkedin.com/in/iriszhou" class="contact-link" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/iriszhou" class="contact-link" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    © 2026 Iris Zhou. Designed & built with intention.
+                </p>
+                <div class="footer-links">
+                    <a href="mailto:iris@example.com" class="footer-link">Contact</a>
+                    <a href="resume.pdf" class="footer-link">Resume</a>
+                    <a href="https://github.com/iriszhou" class="footer-link" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
