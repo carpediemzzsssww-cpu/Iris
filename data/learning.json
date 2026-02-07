@@ -1,0 +1,126 @@
+[
+  {
+    "type": "prompt",
+    "slug": "user-research-synthesis",
+    "title": "User Research Synthesis",
+    "summary": "Structured prompt for synthesizing user research findings into actionable insights.",
+    "tags": ["Research", "AI", "Prompt"],
+    "body": "This prompt helps structure user research synthesis by organizing findings into themes, identifying patterns, and generating actionable recommendations. It's designed to work with interview transcripts, survey responses, or usability test notes.",
+    "meta": {
+      "date": "2024-01-15"
+    },
+    "prompt": {
+      "template": "Analyze the following user research data and provide:\n\n1. Key themes (3-5)\n2. Supporting evidence for each theme\n3. Surprising insights\n4. Actionable recommendations\n5. Questions for further research\n\nData: {{research_data}}",
+      "variables": ["research_data"]
+    }
+  },
+  {
+    "type": "prompt",
+    "slug": "design-critique",
+    "title": "Design Critique Assistant",
+    "summary": "Get structured feedback on design work from an AI perspective.",
+    "tags": ["Design", "AI", "Critique"],
+    "body": "Use this prompt to receive structured design feedback covering usability, visual hierarchy, accessibility, and alignment with design principles.",
+    "meta": {
+      "date": "2024-01-10"
+    },
+    "prompt": {
+      "template": "Review this design and provide feedback on:\n\n1. Visual hierarchy and clarity\n2. Usability concerns\n3. Accessibility considerations\n4. Alignment with {{design_principles}}\n5. Specific improvement suggestions\n\nDesign context: {{context}}",
+      "variables": ["design_principles", "context"]
+    }
+  },
+  {
+    "type": "method",
+    "slug": "jobs-to-be-done",
+    "title": "Jobs-to-be-Done Framework",
+    "summary": "Structured approach for understanding customer motivations and needs.",
+    "tags": ["Research", "JTBD", "Framework"],
+    "body": "The Jobs-to-be-Done framework helps teams understand the underlying motivations that drive customers to 'hire' products or services. It focuses on the progress customers want to make in their lives rather than demographic segments.",
+    "meta": {
+      "source": "Clayton Christensen",
+      "date": "2024-01-08"
+    }
+  },
+  {
+    "type": "method",
+    "slug": "design-sprint",
+    "title": "Design Sprint Methodology",
+    "summary": "Five-day process for answering critical business questions through design.",
+    "tags": ["Design", "Sprint", "Workshop"],
+    "body": "The Design Sprint is a time-constrained, five-phase process that uses design thinking to reduce the risk when bringing a new product, service or feature to market. It helps teams quickly align on goals and validate ideas.",
+    "meta": {
+      "source": "Google Ventures",
+      "date": "2024-01-05"
+    }
+  },
+  {
+    "type": "note",
+    "slug": "ai-ux-patterns",
+    "title": "AI Product UX Patterns",
+    "summary": "Key patterns for designing AI-powered product experiences.",
+    "tags": ["AI", "UX", "Patterns"],
+    "body": "Key takeaways from studying successful AI products:\n\n1. Set clear expectations about AI capabilities\n2. Provide transparency into AI decision-making\n3. Enable user control and feedback\n4. Design for errors and edge cases\n5. Progressive disclosure of AI complexity",
+    "meta": {
+      "source": "Multiple AI Products Analysis",
+      "date": "2024-01-12"
+    }
+  },
+  {
+    "type": "note",
+    "slug": "design-system-tokens",
+    "title": "Design Token Architecture",
+    "summary": "Best practices for structuring and maintaining design tokens.",
+    "tags": ["Design System", "Tokens", "Architecture"],
+    "body": "Design tokens are the single source of truth for design decisions. Key principles:\n\n1. Use semantic naming over literal values\n2. Support multiple themes and modes\n3. Maintain clear hierarchy and relationships\n4. Automate token distribution\n5. Version and document changes",
+    "meta": {
+      "source": "Design Systems Conference",
+      "date": "2024-01-03"
+    }
+  },
+  {
+    "type": "reading",
+    "slug": "thinking-fast-slow",
+    "title": "Thinking, Fast and Slow",
+    "summary": "Daniel Kahneman's exploration of human decision-making and cognitive biases.",
+    "tags": ["Psychology", "Decision Making", "UX"],
+    "body": "A foundational book for understanding how people make decisions. Key insights for designers:\n\n- System 1 (fast) vs System 2 (slow) thinking\n- Cognitive biases affect user behavior\n- Framing and anchoring impact choices\n- Loss aversion is powerful motivator",
+    "meta": {
+      "source": "Daniel Kahneman",
+      "date": "2024-01-01"
+    }
+  },
+  {
+    "type": "reading",
+    "slug": "dont-make-me-think",
+    "title": "Don't Make Me Think",
+    "summary": "Steve Krug's classic guide to web usability.",
+    "tags": ["Usability", "UX", "Classic"],
+    "body": "Essential principles for web usability:\n\n- Users don't read, they scan\n- Create clear visual hierarchy\n- Make clickable elements obvious\n- Omit needless words\n- Test early and often",
+    "meta": {
+      "source": "Steve Krug",
+      "date": "2023-12-28"
+    }
+  },
+  {
+    "type": "tool",
+    "slug": "color-contrast-checker",
+    "title": "Color Contrast Checker",
+    "summary": "Tool for verifying WCAG color contrast compliance.",
+    "tags": ["Accessibility", "Tool", "Color"],
+    "body": "A simple tool to check if color combinations meet WCAG contrast requirements. Supports both AA and AAA levels.",
+    "meta": {
+      "date": "2024-01-14"
+    }
+  },
+  {
+    "type": "tool",
+    "slug": "user-persona-generator",
+    "title": "User Persona Generator",
+    "summary": "AI-powered tool for creating detailed user personas from research data.",
+    "tags": ["Research", "AI", "Persona"],
+    "body": "Generate comprehensive user personas by inputting research findings. Creates personas with goals, frustrations, behaviors, and scenarios.",
+    "meta": {
+      "date": "2024-01-11"
+    }
+  }
+]
