@@ -530,6 +530,36 @@
     font-size: 24px;
 }
 
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--duration-normal) var(--ease-out);
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ideas List */
+.ideas-list {
+    display: grid;
+    gap: 20px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .related-grid {

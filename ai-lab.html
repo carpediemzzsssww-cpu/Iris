@@ -1,79 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iris Zhou | AI Lab</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lab - Iris Zhou</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="menu">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="learning.html">Learning</a>
-          <a href="ai-lab.html" class="active">AI Lab</a>
-          <a href="about.html">About</a>
+    <div class="particle-field"></div>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="container">
+            <div class="nav-brand"><span class="brand-mark">IZ</span></div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="learning.html" class="nav-link">Learning</a>
+                <a href="ai-lab.html" class="nav-link active">AI Lab</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <a href="mailto:iris@example.com" class="nav-action" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+                <a href="resume.pdf" class="nav-action" title="Resume">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14,2 14,8 20,8"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/iriszhou" class="nav-action" title="GitHub" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/iriszhou" class="nav-action" title="LinkedIn" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <div class="actions">
-          <a href="mailto:iris@example.com">Contact</a>
-          <a href="resume.pdf" target="_blank">Resume</a>
-          <a href="https://github.com/iriszhou" target="_blank">GitHub</a>
-          <a href="https://linkedin.com/in/iriszhou" target="_blank">LinkedIn</a>
+    </nav>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <section class="page-header reveal">
+            <div class="container">
+                <h1 class="page-title">AI Lab</h1>
+                <p class="page-subtitle">
+                    Experiments with generative AI, building agents, and exploring the frontier of human-AI interaction.
+                </p>
+            </div>
+        </section>
+
+        <!-- AIGC Gallery -->
+        <section class="gallery-section reveal">
+            <div class="container">
+                <h2 class="section-title">AIGC Gallery</h2>
+                <p style="font-size: 15px; color: var(--muted); margin-bottom: 32px; max-width: 700px;">
+                    Visual experiments exploring AI-generated art, design concepts, and creative workflows.
+                </p>
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </div>
+        </section>
+
+        <!-- Agents & Tools -->
+        <section class="experiments-section reveal">
+            <div class="container">
+                <h2 class="section-title">Agents & Tools</h2>
+                <p style="font-size: 15px; color: var(--muted); margin-bottom: 32px; max-width: 700px;">
+                    Building AI-powered tools and autonomous agents for design, research, and productivity.
+                </p>
+                <div class="learning-cards" id="experimentsList"></div>
+            </div>
+        </section>
+
+        <!-- Ideas & Insights -->
+        <section class="ideas-section reveal">
+            <div class="container">
+                <h2 class="section-title">Ideas & Insights</h2>
+                <p style="font-size: 15px; color: var(--muted); margin-bottom: 32px; max-width: 700px;">
+                    Short-form observations, patterns, and questions from working with AI systems.
+                </p>
+                <div class="ideas-list" id="ideasList"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <div class="lightbox-content">
+            <div class="lightbox-image" id="lightboxImage"></div>
+            <div class="lightbox-info" id="lightboxInfo"></div>
         </div>
-      </nav>
     </div>
-  </header>
-  <main class="container">
-    <section>
-      <h1>AI Lab</h1>
-      <p>Experiments and explorations at the intersection of AI and creativity.</p>
-      <!-- Gallery -->
-      <h2>AIGC Gallery</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Dreamy Landscape</h3>
-          <p>Goal: explore diffusion models. Model: SDXL. Date: Jan 2026.</p>
-          <a href="#" class="btn secondary">View</a>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">© 2026 Iris Zhou. Designed & built with intention.</p>
+                <div class="footer-links">
+                    <a href="mailto:iris@example.com" class="footer-link">Contact</a>
+                    <a href="resume.pdf" class="footer-link">Resume</a>
+                    <a href="https://github.com/iriszhou" class="footer-link" target="_blank">GitHub</a>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <h3>Abstract Butterfly</h3>
-          <p>Goal: emergence pattern. Model: DALL·E. Date: Dec 2025.</p>
-          <a href="#" class="btn secondary">View</a>
-        </div>
-      </div>
-      <!-- Agents & Tools -->
-      <h2 style="margin-top:3rem;">Agents & Tools</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Study Assistant Agent</h3>
-          <p>Goal: help students plan their study sessions. Setup: GPT-4 + calendar integration. Result: improved time management. Next: integrate habit tracking.</p>
-          <a href="#" class="btn secondary">Details</a>
-        </div>
-        <div class="card">
-          <h3>Sentiment Analyzer Tool</h3>
-          <p>Goal: analyze tone in user feedback. Setup: BERT model. Result: 85% accuracy. Next: support multiple languages.</p>
-          <a href="#" class="btn secondary">Details</a>
-        </div>
-      </div>
-      <!-- Ideas & Insights -->
-      <h2 style="margin-top:3rem;">Ideas & Insights</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Adaptive Learning Paths</h3>
-          <p>Exploring systems that adjust difficulty based on student performance. Tags: AI, Education</p>
-        </div>
-        <div class="card">
-          <h3>Conversational UI Patterns</h3>
-          <p>Short exploration of patterns that make chatbots feel natural and helpful. Tags: UX, Conversational Design</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>© 2026 Iris Zhou. All rights reserved.</p>
-  </footer>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="ai-lab.js"></script>
 </body>
 </html>
