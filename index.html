@@ -1,13 +1,191 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iris Zhou Portfolio</title>
-    <script type="module" crossorigin src="./assets/index-Cb7vCQKu.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DdoCb_Ql.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iris Zhou | Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="active">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="learning.html">Learning</a>
+          <a href="ai-lab.html">AI Lab</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="actions">
+          <a href="mailto:iris@example.com">Contact</a>
+          <a href="resume.pdf" target="_blank">Resume</a>
+          <a href="https://github.com/iriszhou" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/iriszhou" target="_blank">LinkedIn</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm Iris Zhou</h1>
+        <p>A product-focused student exploring the intersections of AI, design and research.</p>
+        <div class="hero-actions">
+          <a href="projects.html" class="btn">Projects</a>
+          <a href="mailto:iris@example.com" class="btn secondary">Contact</a>
+          <a href="resume.pdf" class="btn secondary" target="_blank">Resume</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="particle-grid"></div>
+      </div>
+    </section>
+
+    <!-- Navigation Profile -->
+    <section class="profile-section">
+      <h2>Where I Thrive</h2>
+      <div class="profile-grid">
+        <div class="profile-card">
+          <h3>Product</h3>
+          <p>Building experiences that solve real problems.</p>
+        </div>
+        <div class="profile-card">
+          <h3>AI</h3>
+          <p>Leveraging machine learning to create new possibilities.</p>
+        </div>
+        <div class="profile-card">
+          <h3>Research</h3>
+          <p>Curious exploration and evidence-based insights.</p>
+        </div>
+        <div class="profile-card">
+          <h3>Build</h3>
+          <p>Turning ideas into tangible outcomes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="experience-section">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>AI Product Intern <span> @ AwesomeTech (Jun 2024 – Aug 2024)</span></h4>
+          <div class="timeline-details">
+            <ul>
+              <li>Designed a recommendation engine that increased engagement by 20%.</li>
+              <li>Collaborated with designers and engineers to ship new features.</li>
+              <li>Conducted user research to refine product strategy.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h4>Research Assistant <span> @ University Lab (Sept 2023 – May 2024)</span></h4>
+          <div class="timeline-details">
+            <ul>
+              <li>Investigated human–AI interaction patterns in educational tools.</li>
+              <li>Published findings in a peer-reviewed conference.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h4>Product Design Lead <span> @ Student Startup (Jan 2023 – Aug 2023)</span></h4>
+          <div class="timeline-details">
+            <ul>
+              <li>Led a team of 5 to build an MVP for a campus delivery app.</li>
+              <li>Achieved 500+ downloads in the first month.</li>
+              <li>Focused on user-centred design and iterative testing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.8rem; color:var(--muted);">Click on each item to expand details.</p>
+    </section>
+
+    <!-- Presentation / Featured Works -->
+    <section class="presentation-section">
+      <h2>Featured</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Live Demo: Smart Planner</h3>
+          <p>An AI-powered planning assistant that organizes your study schedule.</p>
+          <a href="#" class="btn secondary">Demo</a>
+        </div>
+        <div class="card">
+          <h3>Figma Prototype: Health Tracker</h3>
+          <p>A mobile concept for monitoring health metrics and habits.</p>
+          <a href="#" class="btn secondary">Prototype</a>
+        </div>
+        <div class="card">
+          <h3>Article: Designing for Trust in AI</h3>
+          <p>A deep dive into creating ethical and trustworthy user experiences.</p>
+          <a href="#" class="btn secondary">Read</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Projects -->
+    <section class="projects-section">
+      <h2>Selected Projects</h2>
+      <div class="card-grid">
+        <!-- Placeholder cards; real cards loaded on Projects page -->
+        <div class="card">
+          <h3>Project One</h3>
+          <p>A brief description of project one.</p>
+          <div class="tags">
+            <span class="tag-pill">AI</span>
+            <span class="tag-pill">Product</span>
+          </div>
+          <a href="projects.html" class="btn secondary" style="margin-top:1rem;">View more</a>
+        </div>
+        <div class="card">
+          <h3>Project Two</h3>
+          <p>A brief description of project two.</p>
+          <div class="tags">
+            <span class="tag-pill">Research</span>
+            <span class="tag-pill">Design</span>
+          </div>
+          <a href="projects.html" class="btn secondary" style="margin-top:1rem;">View more</a>
+        </div>
+        <div class="card">
+          <h3>Project Three</h3>
+          <p>A brief description of project three.</p>
+          <div class="tags">
+            <span class="tag-pill">Data</span>
+            <span class="tag-pill">Build</span>
+          </div>
+          <a href="projects.html" class="btn secondary" style="margin-top:1rem;">View more</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section">
+      <h2>Skills</h2>
+      <div class="tags">
+        <span class="tag-pill">AI</span>
+        <span class="tag-pill">Product</span>
+        <span class="tag-pill">Data</span>
+        <span class="tag-pill">Design</span>
+        <span class="tag-pill">Build</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section">
+      <h2>Get in Touch</h2>
+      <p>I'm currently open to internships and collaborative opportunities.</p>
+      <div class="hero-actions">
+        <a href="mailto:iris@example.com" class="btn">Email Me</a>
+        <a href="https://linkedin.com/in/iriszhou" class="btn secondary" target="_blank">LinkedIn</a>
+        <a href="https://github.com/iriszhou" class="btn secondary" target="_blank">GitHub</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2026 Iris Zhou. All rights reserved.</p>
+  </footer>
+</body>
 </html>

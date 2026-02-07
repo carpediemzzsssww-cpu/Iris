@@ -1,100 +1,31 @@
 [
   {
     "type": "gallery",
-    "slug": "generative-landscapes",
-    "title": "Generative Landscapes",
-    "goal": "Explore AI's ability to create surreal, dreamlike landscapes.",
-    "tags": ["AIGC", "Midjourney", "Art"],
-    "media": ["https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800"],
-    "prompt": "Surreal dreamscape with floating islands, bioluminescent flora, ethereal mist, golden hour lighting, highly detailed, 8k --ar 16:9 --v 6",
-    "model": "Midjourney v6",
-    "date": "2024-01-20"
-  },
-  {
-    "type": "gallery",
-    "slug": "abstract-portraits",
-    "title": "Abstract Portraits",
-    "goal": "Experiment with AI-generated abstract human portraits.",
-    "tags": ["AIGC", "DALL-E", "Portrait"],
-    "media": ["https://images.unsplash.com/photo-1549490349-8643362247b5?w=800"],
-    "prompt": "Abstract portrait of a woman, geometric shapes, vibrant colors, Picasso-inspired, cubism, oil painting texture",
-    "model": "DALL-E 3",
-    "date": "2024-01-18"
-  },
-  {
-    "type": "gallery",
-    "slug": "futuristic-architecture",
-    "title": "Futuristic Architecture",
-    "goal": "Visualize future urban environments with AI.",
-    "tags": ["AIGC", "Stable Diffusion", "Architecture"],
-    "media": ["https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800"],
-    "prompt": "Futuristic cityscape, sustainable architecture, vertical gardens, neon lights, cyberpunk aesthetic, cinematic composition",
-    "model": "Stable Diffusion XL",
-    "date": "2024-01-15"
+    "slug": "dreamy-landscape",
+    "title": "Dreamy Landscape",
+    "goal": "Explore diffusion model capabilities.",
+    "model": "SDXL",
+    "prompt": "A dreamy surreal landscape with floating islands.",
+    "date": "2026-01-05",
+    "media": ["images/dreamy-landscape.png"]
   },
   {
     "type": "experiment",
-    "slug": "research-assistant-agent",
-    "title": "Research Assistant Agent",
-    "goal": "Build an AI agent that helps with user research synthesis.",
-    "setup": "Used LangChain with GPT-4, Pinecone for vector storage, and custom prompts for research tasks.",
-    "result": "Successfully synthesized 20+ interview transcripts in minutes with 85% accuracy on theme identification.",
-    "next": "Improve citation accuracy and add multi-language support.",
-    "tags": ["Agent", "LangChain", "Research"],
-    "date": "2024-01-12"
-  },
-  {
-    "type": "experiment",
-    "slug": "design-feedback-bot",
-    "title": "Design Feedback Bot",
-    "goal": "Create a bot that provides instant design critiques.",
-    "setup": "Fine-tuned vision model on design principles dataset with 1000+ annotated designs.",
-    "result": "Bot provides actionable feedback on visual hierarchy, color, and usability with 70% expert agreement.",
-    "next": "Expand to cover accessibility and mobile-specific patterns.",
-    "tags": ["Bot", "Vision", "Design"],
-    "date": "2024-01-08"
-  },
-  {
-    "type": "experiment",
-    "slug": "prompt-optimizer",
-    "title": "Prompt Optimizer Tool",
-    "goal": "Build a tool that improves prompt quality for better AI outputs.",
-    "setup": "Analyzed 5000+ successful prompts to identify patterns for optimization.",
-    "result": "Achieved 40% improvement in output quality across tested use cases.",
-    "next": "Add support for multi-modal prompts and chain-of-thought optimization.",
-    "tags": ["Tool", "Prompt Engineering", "NLP"],
-    "date": "2024-01-05"
+    "slug": "study-assistant-agent",
+    "title": "Study Assistant Agent",
+    "goal": "Help students plan their study sessions.",
+    "setup": "GPT-4 integrated with calendar APIs.",
+    "result": "Improved time management and adherence.",
+    "next": "Integrate habit tracking and social accountability.",
+    "tags": ["AI", "Tool"],
+    "date": "2025-11-20"
   },
   {
     "type": "idea",
-    "slug": "ai-design-collaboration",
-    "title": "The Future of AI-Design Collaboration",
-    "content": "As AI tools become more sophisticated, the role of designers will shift from creators to curators and strategists. The most successful designers will be those who can effectively collaborate with AI, leveraging its capabilities while maintaining human-centered thinking.",
-    "tags": ["AI", "Design", "Future"],
-    "date": "2024-01-19"
-  },
-  {
-    "type": "idea",
-    "slug": "ethical-ai-design",
-    "title": "Ethical Considerations in AI Product Design",
-    "content": "Designing AI products requires careful consideration of bias, transparency, and user autonomy. We must design systems that are not only effective but also fair and respectful of user rights. This includes clear disclosure of AI involvement, explainable decisions, and meaningful user control.",
-    "tags": ["Ethics", "AI", "Design"],
-    "date": "2024-01-16"
-  },
-  {
-    "type": "idea",
-    "slug": "personalization-privacy",
-    "title": "Balancing Personalization and Privacy",
-    "content": "The tension between personalized experiences and privacy protection is a central challenge in modern product design. Users want relevant recommendations but are increasingly concerned about data collection. The solution lies in transparent practices, user control, and privacy-preserving techniques like federated learning.",
-    "tags": ["Privacy", "Personalization", "UX"],
-    "date": "2024-01-13"
-  },
-  {
-    "type": "idea",
-    "slug": "emerging-interaction-patterns",
-    "title": "Emerging Interaction Patterns for AI Products",
-    "content": "New interaction patterns are emerging as AI becomes more prevalent in products: progressive disclosure of AI capabilities, confidence indicators for AI outputs, seamless human handoff, and conversational interfaces that feel natural yet efficient.",
-    "tags": ["Interaction Design", "AI", "Patterns"],
-    "date": "2024-01-10"
+    "slug": "adaptive-learning-paths",
+    "title": "Adaptive Learning Paths",
+    "goal": "Investigate systems that adjust difficulty based on performance.",
+    "tags": ["Education", "AI"],
+    "date": "2025-12-10"
   }
 ]

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iris Zhou | Projects</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="menu">
+          <a href="index.html">Home</a>
+          <a href="projects.html" class="active">Projects</a>
+          <a href="learning.html">Learning</a>
+          <a href="ai-lab.html">AI Lab</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="actions">
+          <a href="mailto:iris@example.com">Contact</a>
+          <a href="resume.pdf" target="_blank">Resume</a>
+          <a href="https://github.com/iriszhou" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/iriszhou" target="_blank">LinkedIn</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section>
+      <h1>Projects</h1>
+      <p>Explorations of AI, product design and research – from concepts to impactful outcomes.</p>
+      <!-- Toolbar -->
+      <div class="toolbar" style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem;">
+        <input type="text" id="project-search" placeholder="Search projects..." style="flex:1;padding:0.5rem;border:1px solid var(--border);border-radius:var(--radius);">
+        <select id="project-tags" multiple size="3" style="padding:0.5rem;border:1px solid var(--border);border-radius:var(--radius);">
+          <option value="AI">AI</option>
+          <option value="Product">Product</option>
+          <option value="Data">Data</option>
+          <option value="Design">Design</option>
+          <option value="Research">Research</option>
+          <option value="Build">Build</option>
+        </select>
+        <select id="project-sort" style="padding:0.5rem;border:1px solid var(--border);border-radius:var(--radius);">
+          <option value="latest">Latest</option>
+          <option value="impact">Most Impact</option>
+          <option value="technical">Most Technical</option>
+        </select>
+      </div>
+      <!-- Projects list -->
+      <div id="projects-list" class="card-grid" style="margin-top:2rem;"></div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2026 Iris Zhou. All rights reserved.</p>
+  </footer>
+</body>
+</html>
