@@ -4,7 +4,7 @@
 
 const allProjects = [
     {
-        slug: "AI PRD Copilot",
+        slug: "ai-prd-copilot",
         title: "AI PRD Copilot",
         oneLiner: "An AI Copilot that helps product managers think, not just write",
         featured: true,
@@ -13,11 +13,11 @@ const allProjects = [
         outcome: "Improved overall quality by 17.5% and content specificity by 41%",
         tags: ["AI/ML", "Product Design", "Prototyping"],
         links: {
-            demo: "https://prd-copilot-av8y8qmsthw7i3cay3efeq.streamlit.app",
+            demo: "https://prd-copilot-av8y8qmsthw7i3cay3efeq.streamlit.app"
         }
     },
     {
-        slug: "Web Design Playground",
+        slug: "web-design-playground",
         title: "Web Design Playground",
         oneLiner: "Where visual ideas become interactive web design experiments",
         featured: true,
@@ -26,11 +26,11 @@ const allProjects = [
         outcome: "Built and curated 50+ UI case studies (ongoing), gradually shaping a distinctive personal design style",
         tags: ["Product Design", "Figma", "Design Systems"],
         links: {
-            figma: "https://web-design-playground-nq4f.vercel.app"
+            demo: "https://web-design-playground-nq4f.vercel.app"
         }
     },
     {
-        slug: "WHUDO System",
+        slug: "whudo-system",
         title: "WHUDO System",
         oneLiner: "AI-Powered Smart Dormitory System",
         featured: true,
