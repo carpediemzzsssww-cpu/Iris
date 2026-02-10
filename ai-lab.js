@@ -11,7 +11,7 @@ const aiLabData = {
             prompt: "Create a surreal dream sequence where butterflies burst outward in a particle dispersion bloom, now infused with dream logic, dopamine color styling, Y2K glitch aesthetics, vaporwave atmosphere, and acid-surreal painterly textures.",
             model: "Midjourney v7",
             date: "2026-02-10",
-            image: "assets/ai-lab/surreal-butterflies.png"
+            image: "./assets/ai-lab/surreal-butterflies.png"
         },
         {
             id: 2,
@@ -20,7 +20,7 @@ const aiLabData = {
             prompt: "An extraordinarily complex multi-level architectural greenhouse, a colossal glass sunroom transformed into a living ecosystem palace. Intricate layered structure with floating walkways, split-level conservatories, spiral ramps, suspended gardens, and vertical water channels. Curved low-iron glass facades interwoven with delicate metal ribs, casting prismatic sunlight patterns across stone floors. A monumental central mother tree rises through multiple stories, fused with steel framework, supporting translucent platforms covered in moss, ferns, orchids, climbing vines, and lush tropical foliage. Indoor microclimates with soft mist, rain chains, cascading water walls, mirror pools, and thin waterfalls connecting different heights. Hyper-detailed interior objects: botanical specimen cabinets, handwritten plant labels, brass mist valves, antique astronomical clocks, ceramic pots, woven lanterns, reclaimed wood benches. Atmosphere of biophilic futurism + Victorian conservatory + subtle steampunk craftsmanship. Golden volumetric daylight, rich green reflections, cinematic depth, ultra-detailed textures, grand scale, elegant spatial hierarchy, immersive composition, architectural visualization, 8k, photoreal, masterpiece. --ar 2:3 --profile o2dyims",
             model: "Midjourney v7",
             date: "2026-02-10",
-            image: "assets/ai-lab/complex-architecture.png"
+            image: "./assets/ai-lab/complex-architecture.png"
         },
         {
             id: 3,
@@ -29,7 +29,7 @@ const aiLabData = {
             prompt: "A young girl with auburn curly hair, soft freckles, and luminous eyes, wearing an enchanted forest-inspired outfit: layered moss-green and earthy brown fabrics, leaf embroidery, delicate lace, tiny floral details, and handmade leather accessories. She has an ethereal, elf-like presence--graceful, playful, and mysterious. Standing in a misty woodland with filtered golden light through tall trees, floating dust particles, wildflowers, mushrooms, and glowing fireflies. Cinematic fantasy style, whimsical mood, ultra-detailed textures, natural skin, soft volumetric lighting, shallow depth of field, magical realism, dreamy color grading. --profile o2dyims",
             model: "Midjourney v7",
             date: "2026-02-01",
-            image: "assets/ai-lab/young-girl-portrait.png"
+            image: "./assets/ai-lab/young-girl-portrait.png"
         },
         {
             id: 4,
@@ -38,7 +38,7 @@ const aiLabData = {
             prompt: "A warm yellow cottage hidden in a dark green forest, dense canopy blocking most of the sky, only scattered light rays filtering through leaves onto moss-covered ground. The cottage has weathered wooden walls, textured details, glowing honey-colored windows, and a cozy golden light spilling from the doorway. Around the stone steps: ferns, tiny white wildflowers, mushrooms, damp soil, thin mist, floating dust particles. A girl is playing with her kitten at the front door, crouching with a gentle smile as the kitten jumps toward a ribbon toy, tail raised. Her dress edge touches grass, slight mud on her shoes, natural candid motion. Strong cool-warm contrast: deep emerald and teal shadows in the forest, soft amber glow around the cottage and characters. Whimsical, fairy-tale, cinematic, atmospheric, ultra-detailed, storybook realism, volumetric light, shallow depth of field. --ar 3:2 --profile pxm2t38",
             model: "Midjourney v7",
             date: "2026-02-10",
-            image: "assets/ai-lab/yellow-cottage-forest.png"
+            image: "./assets/ai-lab/yellow-cottage-forest.png"
         },
         {
             id: 5,
@@ -47,7 +47,7 @@ const aiLabData = {
             prompt: "A tiny cozy house floating above the clouds, suspended by many colorful balloons in different sizes, bright rainbow palette, soft sunlight, dreamy sky, whimsical fairy-tale mood, fluffy clouds, gentle wind, magical atmosphere, cinematic composition, highly detailed, storybook style. --ar 3:4 --profile pxm2t38",
             model: "Midjourney v7",
             date: "2026-02-05",
-            image:"assets/ai-lab/floating-cloud-house.png"
+            image:"./assets/ai-lab/floating-cloud-house.png"
         },
         {
             id: 6,
@@ -56,7 +56,7 @@ const aiLabData = {
             prompt: "A girl walking in a park, whimsical and slightly surreal yet warm, fairy-tale atmosphere. Lush vivid green grass like velvet, subtly distorted storybook trees, soft golden-peach sunset light, tiny floating light particles in the air. A Ferris wheel in the background, slowly turning, with glowing candy-like cabins and a gentle vintage touch. Cozy magical mood, dreamy but comforting, cinematic composition, soft volumetric light, rich details, storybook realism. --ar 16:9 --profile o2hm7ab",
             model: "Midjourney v7",
             date: "2026-02-09",
-            image: "assets/ai-lab/whimsical-park-walk.png"
+            image: "./assets/ai-lab/whimsical-park-walk.png"
         }
     ],
 
