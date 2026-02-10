@@ -617,8 +617,12 @@
     }
 }
 
-/* hide Agents & Tools cards + Ideas & Insights cards */
-.experiments-grid,
-.insights-list {
+/* Agents & Tools: 保留标题区，隐藏后续卡片区 */
+.experiments-section .container > :not(:first-child) {
+  display: none !important;
+}
+
+/* Ideas & Insights: 保留标题区，隐藏后续卡片区 */
+.insights-section .container > :not(:first-child) {
   display: none !important;
 }
