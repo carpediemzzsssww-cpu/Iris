@@ -445,6 +445,7 @@
     justify-content: center;
     color: white;
     font-size: 48px;
+    overflow:hidden;
 }
 
 .gallery-overlay {
@@ -504,10 +505,25 @@
     padding: 32px;
 }
 
+.gallery-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.lightbox-img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
 .lightbox-image {
     aspect-ratio: 1;
     background: var(--grad);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .lightbox-info h3 {
