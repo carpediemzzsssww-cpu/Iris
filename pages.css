@@ -616,3 +616,9 @@
         overflow-y: auto;
     }
 }
+
+/* hide Agents & Tools cards + Ideas & Insights cards */
+.experiments-grid,
+.insights-list {
+  display: none !important;
+}
