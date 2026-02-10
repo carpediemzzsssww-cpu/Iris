@@ -370,3 +370,40 @@ if (document.readyState === 'loading') {
 } else {
     initAILabPage();
 }
+
+// ===== Force remove "Agents & Tools" + "Ideas & Insights" sections =====
+(function forceHideSections() {
+  function removeTargetSections() {
+    const titles = ["Agents & Tools", "Ideas & Insights"];
+
+    // 1) 优先按 section 里标题匹配删除
+    document.querySelectorAll("section").forEach((sec) => {
+      const h = sec.querySelector("h1,h2,h3,h4");
+      if (!h) return;
+      const txt = (h.textContent || "").trim();
+      if (titles.includes(txt)) {
+        sec.remove();
+      }
+    });
+
+    // 2) 兜底：如果标题不在 section 里，向上找最近容器并删除
+    document.querySelectorAll("h1,h2,h3,h4").forEach((h) => {
+      const txt = (h.textContent || "").trim();
+      if (!titles.includes(txt)) return;
+      const block =
+        h.closest("section") ||
+        h.closest(".container") ||
+        h.closest("div");
+      if (block) block.remove();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", removeTargetSections);
+  } else {
+    removeTargetSections();
+  }
+
+  // 防止脚本后续又渲染回来：再补一刀
+  setTimeout(removeTargetSections, 300);
+})();
