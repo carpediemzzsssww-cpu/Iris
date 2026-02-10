@@ -4,107 +4,42 @@
 
 const allProjects = [
     {
-        slug: "ai-design-assistant",
-        title: "AI Design Assistant",
-        oneLiner: "Intelligent tool that suggests design improvements in real-time",
+        slug: "AI PRD Copilot",
+        title: "AI PRD Copilot",
+        oneLiner: "An AI Copilot that helps product managers think, not just write",
         featured: true,
         role: "Product Designer",
-        time: "Fall 2024",
-        outcome: "34% faster design iterations, 5,000+ weekly users",
+        time: "2026",
+        outcome: "Improved overall quality by 17.5% and content specificity by 41%",
         tags: ["AI/ML", "Product Design", "Prototyping"],
         links: {
-            demo: "https://demo.example.com",
-            figma: "https://figma.com/@iris",
-            repo: "https://github.com/iris/ai-assistant"
+            demo: "https://prd-copilot-av8y8qmsthw7i3cay3efeq.streamlit.app",
         }
     },
     {
-        slug: "healthcare-dashboard",
-        title: "Healthcare Analytics Dashboard",
-        oneLiner: "Data visualization system for medical professionals",
+        slug: "Web Design Playground",
+        title: "Web Design Playground",
+        oneLiner: "Where visual ideas become interactive web design experiments",
         featured: true,
-        role: "UX Designer & Researcher",
-        time: "Summer 2024",
-        outcome: "Reduced diagnosis time by 22%, deployed in 3 hospitals",
-        tags: ["Data Viz", "Healthcare", "Research"],
+        role: "UI Designer",
+        time: "2026",
+        outcome: "Built and curated 50+ UI case studies (ongoing), gradually shaping a distinctive personal design style",
+        tags: ["Product Design", "Figma", "Design Systems"],
         links: {
-            figma: "https://figma.com/@iris"
+            figma: "https://web-design-playground-nq4f.vercel.app"
         }
     },
     {
-        slug: "student-scheduling",
-        title: "Smart Course Scheduler",
-        oneLiner: "ML-powered scheduling assistant for college students",
+        slug: "WHUDO System",
+        title: "WHUDO System",
+        oneLiner: "AI-Powered Smart Dormitory System",
         featured: true,
-        role: "Founder & Designer",
-        time: "Spring 2024",
-        outcome: "2,000+ students onboarded, 4.8/5 rating",
-        tags: ["Mobile", "AI/ML", "Startup"],
+        role: "Designer",
+        time: "Spring 2025",
+        outcome: "a scenario-driven smart dormitory product concept focused on campus housing pain points",
+        tags: ["Prototyping", "AI/ML", "Product Design"],
         links: {
-            demo: "https://scheduler.example.com"
-        }
-    },
-    {
-        slug: "design-system",
-        title: "Component Design System",
-        oneLiner: "Scalable design system with accessibility guidelines",
-        featured: false,
-        role: "Design Lead",
-        time: "Winter 2024",
-        outcome: "Adopted by 6 product teams, 50% faster prototyping",
-        tags: ["Design Systems", "Figma", "Documentation"],
-        links: {
-            figma: "https://figma.com/@iris"
-        }
-    },
-    {
-        slug: "voice-interface",
-        title: "Voice Navigation Prototype",
-        oneLiner: "Hands-free interface for accessibility",
-        featured: false,
-        role: "Interaction Designer",
-        time: "Fall 2023",
-        outcome: "Improved accessibility score by 45%",
-        tags: ["Accessibility", "Voice UI", "Prototyping"],
-        links: {
-            demo: "https://voice.example.com"
-        }
-    },
-    {
-        slug: "community-platform",
-        title: "Student Community Hub",
-        oneLiner: "Social platform connecting students across campus",
-        featured: false,
-        role: "Product Designer",
-        time: "Spring 2023",
-        outcome: "800+ active users, 60% monthly retention",
-        tags: ["Social", "Mobile", "Community"],
-        links: {
-            demo: "https://community.example.com"
-        }
-    },
-    {
-        slug: "research-tool",
-        title: "User Research Repository",
-        oneLiner: "Centralized system for storing and analyzing user insights",
-        featured: false,
-        role: "UX Researcher",
-        time: "Winter 2023",
-        outcome: "50+ studies documented, adopted by research team",
-        tags: ["Research", "Data", "Documentation"],
-        links: {}
-    },
-    {
-        slug: "mobile-app",
-        title: "Fitness Tracking App",
-        oneLiner: "Gamified fitness app with social challenges",
-        featured: false,
-        role: "Product Designer",
-        time: "Summer 2023",
-        outcome: "1,200+ downloads, 4.6 App Store rating",
-        tags: ["Mobile", "Health", "Gamification"],
-        links: {
-            demo: "https://fitness.example.com"
+            demo: "https://www.canva.cn/design/DAGmeSztBwA/l51ub7KSROZJwPpLytOTfw/view?utm_content=DAGmeSztBwA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h03dfc7eeff"
         }
     }
 ];
