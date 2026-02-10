@@ -196,17 +196,21 @@ const aiLabData = {
 // ================================================
 
 function renderGalleryItem(item) {
-    return `
-        <div class="gallery-item" onclick="openLightbox(${item.id})">
-            <div class="gallery-placeholder">
-                <span style="font-size: 64px;">${item.emoji}</span>
-            </div>
-            <div class="gallery-overlay">
-                <div class="gallery-overlay-title">${item.title}</div>
-                <div class="gallery-overlay-desc">${item.model} • ${item.date}</div>
-            </div>
-        </div>
-    `;
+  return `
+    <div class="gallery-item" onclick="openLightbox(${item.id})">
+      <div class="gallery-placeholder">
+        ${
+          item.image
+            ? `<img src="${item.image}" alt="${item.title}" class="gallery-image" loading="lazy" />`
+            : `<span style="font-size: 64px;">${item.emoji || "🖼️"}</span>`
+        }
+      </div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-title">${item.title}</div>
+        <div class="gallery-overlay-desc">${item.model} • ${item.date}</div>
+      </div>
+    </div>
+  `;
 }
 
 function renderExperimentCard(exp) {
