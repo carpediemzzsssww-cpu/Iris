@@ -617,12 +617,14 @@
     }
 }
 
-/* Agents & Tools: 保留标题区，隐藏后续卡片区 */
-.experiments-section .container > :not(:first-child) {
+/* Force hide entire sections on AI Lab page */
+section.experiments-section,
+section.insights-section,
+#experimentsSection,
+#insightsSection {
   display: none !important;
-}
-
-/* Ideas & Insights: 保留标题区，隐藏后续卡片区 */
-.insights-section .container > :not(:first-child) {
-  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
