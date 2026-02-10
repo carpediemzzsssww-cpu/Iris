@@ -196,21 +196,17 @@ const aiLabData = {
 // ================================================
 
 function renderGalleryItem(item) {
-  return `
-    <div class="gallery-item" onclick="openLightbox(${item.id})">
-      <div class="gallery-placeholder">
-        ${
-          item.image
-            ? `<img src="${item.image}" alt="${item.title}" class="gallery-image" loading="lazy" />`
-            : `<span style="font-size: 64px;">${item.emoji || "🖼️"}</span>`
-        }
-      </div>
-      <div class="gallery-overlay">
-        <div class="gallery-overlay-title">${item.title}</div>
-        <div class="gallery-overlay-desc">${item.model} • ${item.date}</div>
-      </div>
-    </div>
-  `;
+    return `
+        <div class="gallery-item" onclick="openLightbox(${item.id})">
+            <div class="gallery-placeholder">
+                <img src="${item.image}" alt="${item.title}" class="gallery-img" loading="lazy" />
+            </div>
+            <div class="gallery-overlay">
+                <div class="gallery-overlay-title">${item.title}</div>
+                <div class="gallery-overlay-desc">${item.model} • ${item.date}</div>
+            </div>
+        </div>
+    `;
 }
 
 function renderExperimentCard(exp) {
@@ -272,17 +268,15 @@ function renderIdeaCard(idea) {
 function openLightbox(itemId) {
     const item = aiLabData.gallery.find(g => g.id === itemId);
     if (!item) return;
-    
+
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxInfo = document.getElementById('lightboxInfo');
-    
+
     lightboxImage.innerHTML = `
-        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--grad); border-radius: 8px;">
-            <span style="font-size: 120px;">${item.emoji}</span>
-        </div>
-    `;
-    
+  <img src="${item.image}" alt="${item.title}" class="lightbox-img" />
+`;
+
     lightboxInfo.innerHTML = `
         <h3 style="font-family: var(--font-display); font-size: 24px; margin-bottom: 12px;">${item.title}</h3>
         <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">
@@ -291,19 +285,19 @@ function openLightbox(itemId) {
         </p>
         <div style="margin-bottom: 16px;">
             <p style="font-size: 13px; color: var(--muted); margin-bottom: 8px;"><strong>Goal:</strong></p>
-            <p style="font-size: 14px; line-height: 1.6;">${item.goal}</p>
+            <p style="font-size: 14px; line-height: 1.6;">${item.goal || ''}</p>
         </div>
         <div style="margin-bottom: 16px;">
             <p style="font-size: 13px; color: var(--muted); margin-bottom: 8px;"><strong>Prompt:</strong></p>
             <div style="background: rgba(0,0,0,0.03); padding: 12px; border-radius: 6px; font-size: 13px; line-height: 1.6;">
-                ${item.prompt}
+                ${item.prompt || ''}
             </div>
         </div>
-        <button class="copy-button" onclick="copyPromptFromLightbox(\`${item.prompt.replace(/`/g, '\\`')}\`, this)" style="width: 100%; margin-top: 16px;">
+        <button class="copy-button" onclick="copyPromptFromLightbox(\`${(item.prompt || '').replace(/`/g, '\\`')}\`, this)" style="width: 100%; margin-top: 16px;">
             Copy Prompt
         </button>
     `;
-    
+
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
