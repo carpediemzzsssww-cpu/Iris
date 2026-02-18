@@ -44,6 +44,11 @@ const allProjects = [
     }
 ];
 
+function getPrimaryProjectLink(project) {
+    if (!project || !project.links) return '#';
+    return project.links.demo || project.links.figma || project.links.repo || '#';
+}
+
 // Get all unique tags
 const allTags = [...new Set(allProjects.flatMap(p => p.tags))].sort();
 
@@ -87,8 +92,13 @@ function renderProjects(projects) {
     grid.style.display = 'grid';
     if (noResults) noResults.style.display = 'none';
     
-    grid.innerHTML = projects.map(project => `
-        <a href="project-detail.html?slug=${project.slug}" class="project-card ${project.featured ? 'featured' : ''} reveal">
+    grid.innerHTML = projects.map(project => {
+        const projectLink = getPrimaryProjectLink(project);
+        const isExternal = /^https?:\/\//.test(projectLink);
+        const externalAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+
+        return `
+        <a href="${projectLink}" class="project-card ${project.featured ? 'featured' : ''} reveal" ${externalAttrs}>
             <h3 class="project-title">${project.title}</h3>
             <p class="project-oneliner">${project.oneLiner}</p>
             <div class="project-tags">
@@ -97,7 +107,12 @@ function renderProjects(projects) {
             <p class="project-outcome">${project.outcome}</p>
             <span class="project-view">View →</span>
         </a>
-    `).join('');
+    `;
+    }).join('');
+
+    if (window.portfolioUtils && typeof window.portfolioUtils.setupProjectCardMicroInteractions === 'function') {
+        window.portfolioUtils.setupProjectCardMicroInteractions(grid);
+    }
     
     // Trigger reveal animation
     setTimeout(() => {

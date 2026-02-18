@@ -557,7 +557,7 @@ function renderPromptCard(prompt) {
                 Show Full Prompt
             </button>
             <div class="learning-card-full">
-                <pre style="white-space: pre-wrap; font-size: 13px; line-height: 1.6; background: rgba(0,0,0,0.03); padding: 16px; border-radius: 8px; margin: 16px 0;">${prompt.template}</pre>
+                <pre style="white-space: pre-wrap; font-size: 13px; line-height: 1.6; background: var(--surface-soft); padding: 16px; border-radius: 8px; margin: 16px 0;">${prompt.template}</pre>
                 <p style="font-size: 13px; color: var(--muted); margin-top: 12px;">
                     <strong>Variables:</strong> ${prompt.variables.map(v => `{${v}}`).join(', ')}
                 </p>
@@ -620,7 +620,7 @@ function renderReadingCard(reading) {
         <div class="learning-card">
             <div class="learning-card-header">
                 <h3 class="learning-card-title">${reading.title}</h3>
-                <a href="${reading.link}" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px;" target="_blank">
+                <a href="${reading.link}" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px;" target="_blank" rel="noopener noreferrer">
                     Read →
                 </a>
             </div>
@@ -647,7 +647,7 @@ function renderToolCard(tool) {
         <div class="learning-card">
             <div class="learning-card-header">
                 <h3 class="learning-card-title">${tool.title}</h3>
-                <a href="${tool.link}" class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" target="_blank">
+                <a href="${tool.link}" class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" target="_blank" rel="noopener noreferrer">
                     ${linkIcon} →
                 </a>
             </div>
@@ -736,7 +736,7 @@ function copyToClipboard(text, button) {
         // Update button
         const originalText = button.textContent;
         button.textContent = 'Copied!';
-        button.style.background = '#10b981';
+        button.style.background = 'var(--success)';
         
         setTimeout(() => {
             toast.classList.remove('show');

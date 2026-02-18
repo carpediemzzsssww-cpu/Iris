@@ -197,7 +197,7 @@ const aiLabData = {
 
 function renderGalleryItem(item) {
     return `
-        <div class="gallery-item" onclick="openLightbox(${item.id})">
+        <button class="gallery-item" type="button" data-gallery-id="${item.id}" aria-label="Open ${item.title} in lightbox">
             <div class="gallery-placeholder">
                 <img src="${item.image}" alt="${item.title}" class="gallery-img" loading="lazy" />
             </div>
@@ -205,7 +205,7 @@ function renderGalleryItem(item) {
                 <div class="gallery-overlay-title">${item.title}</div>
                 <div class="gallery-overlay-desc">${item.model} • ${item.date}</div>
             </div>
-        </div>
+        </button>
     `;
 }
 
@@ -215,7 +215,7 @@ function renderExperimentCard(exp) {
             <div class="learning-card-header">
                 <h3 class="learning-card-title">${exp.title}</h3>
                 ${exp.githubLink ? `
-                    <a href="${exp.githubLink}" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px;" target="_blank">
+                    <a href="${exp.githubLink}" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px;" target="_blank" rel="noopener noreferrer">
                         GitHub →
                     </a>
                 ` : ''}
@@ -229,7 +229,7 @@ function renderExperimentCard(exp) {
                 <p style="font-size: 14px; color: var(--text); margin-bottom: 12px;">${exp.setup}</p>
                 
                 <p style="font-size: 13px; color: var(--muted); margin-bottom: 4px;"><strong>Result:</strong></p>
-                <p style="font-size: 14px; color: var(--text); margin-bottom: 12px; padding: 12px; background: rgba(16, 185, 129, 0.08); border-radius: 6px;">${exp.result}</p>
+                <p style="font-size: 14px; color: var(--text); margin-bottom: 12px; padding: 12px; background: var(--accent-soft); border-radius: 6px;">${exp.result}</p>
                 
                 <p style="font-size: 13px; color: var(--muted); margin-bottom: 4px;"><strong>Next Steps:</strong></p>
                 <p style="font-size: 14px; color: var(--muted);">${exp.next}</p>
@@ -289,7 +289,7 @@ function openLightbox(itemId) {
         </div>
         <div style="margin-bottom: 16px;">
             <p style="font-size: 13px; color: var(--muted); margin-bottom: 8px;"><strong>Prompt:</strong></p>
-            <div style="background: rgba(0,0,0,0.03); padding: 12px; border-radius: 6px; font-size: 13px; line-height: 1.6;">
+            <div style="background: var(--surface-soft); padding: 12px; border-radius: 6px; font-size: 13px; line-height: 1.6;">
                 ${item.prompt || ''}
             </div>
         </div>
@@ -312,7 +312,7 @@ function copyPromptFromLightbox(text, button) {
     navigator.clipboard.writeText(text).then(() => {
         const originalText = button.textContent;
         button.textContent = 'Copied!';
-        button.style.background = '#10b981';
+        button.style.background = 'var(--success)';
         
         setTimeout(() => {
             button.textContent = originalText;
@@ -342,7 +342,18 @@ document.addEventListener('keydown', (e) => {
 
 function initAILabPage() {
     // Render gallery
-    document.getElementById('galleryGrid').innerHTML = aiLabData.gallery.map(renderGalleryItem).join('');
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = aiLabData.gallery.map(renderGalleryItem).join('');
+    if (!galleryGrid.dataset.boundEvents) {
+        galleryGrid.addEventListener('click', (event) => {
+            const trigger = event.target.closest('.gallery-item');
+            if (!trigger || !galleryGrid.contains(trigger)) return;
+            const itemId = Number(trigger.dataset.galleryId);
+            if (Number.isNaN(itemId)) return;
+            openLightbox(itemId);
+        });
+        galleryGrid.dataset.boundEvents = 'true';
+    }
     
     // Render experiments
     document.getElementById('experimentsList').innerHTML = aiLabData.experiments.map(renderExperimentCard).join('');
@@ -370,40 +381,3 @@ if (document.readyState === 'loading') {
 } else {
     initAILabPage();
 }
-
-// ===== Force remove "Agents & Tools" + "Ideas & Insights" sections =====
-(function forceHideSections() {
-  function removeTargetSections() {
-    const titles = ["Agents & Tools", "Ideas & Insights"];
-
-    // 1) 优先按 section 里标题匹配删除
-    document.querySelectorAll("section").forEach((sec) => {
-      const h = sec.querySelector("h1,h2,h3,h4");
-      if (!h) return;
-      const txt = (h.textContent || "").trim();
-      if (titles.includes(txt)) {
-        sec.remove();
-      }
-    });
-
-    // 2) 兜底：如果标题不在 section 里，向上找最近容器并删除
-    document.querySelectorAll("h1,h2,h3,h4").forEach((h) => {
-      const txt = (h.textContent || "").trim();
-      if (!titles.includes(txt)) return;
-      const block =
-        h.closest("section") ||
-        h.closest(".container") ||
-        h.closest("div");
-      if (block) block.remove();
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", removeTargetSections);
-  } else {
-    removeTargetSections();
-  }
-
-  // 防止脚本后续又渲染回来：再补一刀
-  setTimeout(removeTargetSections, 300);
-})();

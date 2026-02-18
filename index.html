@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iris Zhou - Product Designer & AI Explorer</title>
+    <script>
+    (function () {
+        try {
+            var stored = localStorage.getItem('themePreference');
+            var preference = stored ? JSON.parse(stored) : null;
+            var isDark = preference ? preference === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        } catch (error) {}
+    })();
+    </script>
+    <meta name="description" content="Iris Zhou's portfolio: product design, AI experimentation, and human-centered systems built through research and iteration.">
+    <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Iris Zhou - Product Designer & AI Explorer">
+    <meta property="og:description" content="Portfolio featuring product projects, AI lab experiments, and practical design thinking.">
+    <meta property="og:url" content="https://carpediemzzsssww-cpu.github.io/Iris/index.html">
+    <meta property="og:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Iris Zhou - Product Designer & AI Explorer">
+    <meta name="twitter:description" content="Portfolio featuring product projects, AI lab experiments, and practical design thinking.">
+    <meta name="twitter:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,13 +48,13 @@
                 <a href="about.html" class="nav-link">About</a>
             </div>
             <div class="nav-actions">
-                <a href="mailto:carpediemzzsssww@gmail.com" class="nav-action" title="Email">
+                <a href="mailto:carpediemzzsssww@gmail.com" class="nav-action" title="Email" aria-label="Send email">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                         <polyline points="22,6 12,13 2,6"/>
                     </svg>
                 </a>
-                <a href="https://www.canva.cn/design/DAG_O22j1qk/HQEUeSe2peX1IEhafLiS-g/edit?utm_content=DAG_O22j1qk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="nav-action" title="Resume">
+                <a href="https://www.canva.cn/design/DAG_O22j1qk/HQEUeSe2peX1IEhafLiS-g/edit?utm_content=DAG_O22j1qk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="nav-action" title="Resume" aria-label="View resume">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                         <polyline points="14,2 14,8 20,8"/>
@@ -42,20 +63,36 @@
                         <polyline points="10,9 9,9 8,9"/>
                     </svg>
                 </a>
-                <a href="https://github.com/carpediemzzsssww-cpu" class="nav-action" title="GitHub" target="_blank">
+                <a href="https://github.com/carpediemzzsssww-cpu" class="nav-action" title="GitHub" aria-label="Open GitHub profile" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="nav-action" title="LinkedIn" target="_blank">
+                <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="nav-action" title="LinkedIn" aria-label="Open LinkedIn profile" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                         <rect x="2" y="9" width="4" height="12"/>
                         <circle cx="4" cy="4" r="2"/>
                     </svg>
                 </a>
+                <button class="nav-action theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+                    </svg>
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"/>
+                        <line x1="12" y1="2" x2="12" y2="5"/>
+                        <line x1="12" y1="19" x2="12" y2="22"/>
+                        <line x1="2" y1="12" x2="5" y2="12"/>
+                        <line x1="19" y1="12" x2="22" y2="12"/>
+                        <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+                        <line x1="17" y1="17" x2="19.1" y2="19.1"/>
+                        <line x1="4.9" y1="19.1" x2="7" y2="17"/>
+                        <line x1="17" y1="7" x2="19.1" y2="4.9"/>
+                    </svg>
+                </button>
             </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open mobile menu" aria-controls="mobileDrawer" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -64,13 +101,16 @@
     </nav>
 
     <!-- Mobile Menu Drawer -->
-    <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
         <div class="mobile-drawer-links">
             <a href="index.html" class="mobile-link active">Home</a>
             <a href="projects.html" class="mobile-link">Projects</a>
             <a href="learning.html" class="mobile-link">Learning</a>
             <a href="ai-lab.html" class="mobile-link">AI Lab</a>
             <a href="about.html" class="mobile-link">About</a>
+            <button class="mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+                <span data-theme-toggle-text>Switch to dark mode</span>
+            </button>
         </div>
     </div>
 
@@ -83,7 +123,7 @@
                     <div class="hero-content">
                         <h1 class="hero-title">
                             <span class="title-line">Iris Zhou</span>
-                            <span class="title-line">AI Product Explorer</span>
+                            <span class="title-line hero-meta">AI Product Explorer</span>
                         </h1>
                         <p class="hero-subtitle">
                             Designing intelligent systems that emerge from human needs, 
@@ -103,19 +143,16 @@
                         </div>
                     </div>
                     <div class="hero-visual">
-                        <div class="emergence-block">
-                            <svg class="emergence-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="emergenceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:rgba(15,118,110,0.3);stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:rgba(30,58,138,0.3);stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
-                                <circle cx="200" cy="200" r="120" fill="url(#emergenceGrad)" opacity="0.4" class="pulse-circle"/>
-                                <circle cx="200" cy="200" r="80" fill="url(#emergenceGrad)" opacity="0.6" class="pulse-circle" style="animation-delay: 0.5s"/>
-                                <circle cx="200" cy="200" r="40" fill="url(#emergenceGrad)" opacity="0.8" class="pulse-circle" style="animation-delay: 1s"/>
-                            </svg>
-                        </div>
+                        <figure class="emergence-block hero-portrait-card" aria-label="Portrait visual">
+                            <img
+                                class="hero-portrait-image"
+                                src="assets/hero/hero-portrait.JPG"
+                                alt="Portrait of Iris Zhou"
+                                loading="eager"
+                                fetchpriority="high"
+                            >
+                            <span class="hero-portrait-overlay" aria-hidden="true"></span>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -163,7 +200,7 @@
                                     <span class="timeline-org">Bachelor of Arts</span>
                                     <span class="timeline-date">2023.9-2027.6</span>
                                 </div>
-                                <button class="timeline-toggle">
+                                <button class="timeline-toggle" type="button" aria-expanded="false">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg>
@@ -188,7 +225,7 @@
                                     <span class="timeline-org">Exchange student</span>
                                     <span class="timeline-date">2025.9-2026.1</span>
                                 </div>
-                                <button class="timeline-toggle">
+                                <button class="timeline-toggle" type="button" aria-expanded="false">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg>
@@ -213,7 +250,7 @@
                                     <span class="timeline-org">Awarded Outstanding Participant</span>
                                     <span class="timeline-date">2025.6-7</span>
                                 </div>
-                                <button class="timeline-toggle">
+                                <button class="timeline-toggle" type="button" aria-expanded="false">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg>
@@ -238,7 +275,7 @@
             <div class="container">
                 <h2 class="section-title">Featured Work</h2>
                 <div class="presentation-grid">
-                    <a href="https://prd-copilot-av8y8qmsthw7i3cay3efeq.streamlit.app" class="presentation-card" target="_blank">
+                    <a href="https://prd-copilot-av8y8qmsthw7i3cay3efeq.streamlit.app" class="presentation-card" target="_blank" rel="noopener noreferrer">
                         <div class="presentation-media">
                             <div class="presentation-placeholder">
                                 <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -257,7 +294,7 @@
                         </div>
                     </a>
 
-                    <a href="https://web-design-playground-nq4f.vercel.app" class="presentation-card" target="_blank">
+                    <a href="https://web-design-playground-nq4f.vercel.app" class="presentation-card" target="_blank" rel="noopener noreferrer">
                         <div class="presentation-media">
                             <div class="presentation-placeholder">
                                 <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -338,7 +375,7 @@
                         </div>
                     </div>
                     <div class="skill-group">
-                        <h3 class="skill-group-title">Languague</h3>
+                        <h3 class="skill-group-title">Language</h3>
                         <div class="skill-pills">
                             <span class="skill-pill">English: Fluent</span>
                             <span class="skill-pill">French: Conversational</span>
@@ -371,7 +408,7 @@
                             </svg>
                             carpediemzzsssww@gmail.com
                         </a>
-                        <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="contact-link" target="_blank">
+                        <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="contact-link" target="_blank" rel="noopener noreferrer">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                                 <rect x="2" y="9" width="4" height="12"/>
@@ -379,7 +416,7 @@
                             </svg>
                             LinkedIn
                         </a>
-                        <a href="https://github.com/carpediemzzsssww-cpu" class="contact-link" target="_blank">
+                        <a href="https://github.com/carpediemzzsssww-cpu" class="contact-link" target="_blank" rel="noopener noreferrer">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                             </svg>
@@ -401,7 +438,7 @@
                 <div class="footer-links">
                     <a href="mailto:carpediemzzsssww@gmail.com" class="footer-link">Contact</a>
                     <a href="https://www.canva.cn/design/DAG_O22j1qk/HQEUeSe2peX1IEhafLiS-g/edit?utm_content=DAG_O22j1qk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="footer-link">Resume</a>
-                    <a href="https://github.com/carpediemzzsssww-cpu" class="footer-link" target="_blank">GitHub</a>
+                    <a href="https://github.com/carpediemzzsssww-cpu" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
             </div>
         </div>
