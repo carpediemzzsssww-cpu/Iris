@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetEase Hi Echo — User Research | Iris Zhou</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1410;
+            --paper: #f5f0e8;
+            --paper-dark: #ede6d8;
+            --accent: #c0392b;
+            --muted: #8a7f72;
+            --rule: rgba(26,20,16,0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif SC', 'Playfair Display', serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
+
+        /* MASTHEAD */
+        .masthead { border-bottom: 3px solid var(--ink); }
+        .masthead-top { display: flex; justify-content: space-between; align-items: center; padding: 16px 60px; border-bottom: 1px solid var(--rule); }
+        .back-link { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-decoration: none; color: var(--muted); text-transform: uppercase; transition: color 0.2s; }
+        .back-link:hover { color: var(--accent); }
+        .top-meta { display: flex; align-items: center; gap: 16px; }
+        .issue-info { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+        .lang-switch { display: inline-flex; border: 1px solid var(--rule); }
+        .lang-btn { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border: none; background: transparent; color: var(--muted); cursor: pointer; }
+        .lang-btn + .lang-btn { border-left: 1px solid var(--rule); }
+        .lang-btn.active { background: var(--ink); color: #fff; }
+        .hero-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+        .hero-left { padding: 60px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
+        .category-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); display: inline-block; padding: 4px 10px; margin-bottom: 32px; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(38px, 5vw, 68px); font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 24px; }
+        .hero-title em { font-style: italic; color: var(--accent); }
+        .hero-subtitle { font-size: 15px; line-height: 1.75; color: var(--muted); max-width: 460px; }
+        .hero-meta-row { display: flex; gap: 32px; padding-top: 40px; border-top: 1px solid var(--rule); }
+        .meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+        .meta-value { font-size: 13px; font-weight: 700; }
+        .hero-right { background: var(--ink); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; position: relative; overflow: hidden; }
+        .hero-right::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px); }
+        .big-stat { text-align: center; position: relative; z-index: 1; }
+        .big-number { font-family: 'Playfair Display', serif; font-size: 120px; font-weight: 900; color: #fff; line-height: 1; display: block; }
+        .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 8px; }
+        .stat-divider { width: 1px; height: 60px; background: rgba(255,255,255,0.15); margin: 24px auto; }
+
+        /* CONTENT */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+        section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+        section:last-child { border-bottom: none; }
+        .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 56px; }
+        .section-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; letter-spacing: -0.01em; }
+
+        /* CHALLENGE */
+        .challenge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+        .challenge-card { background: var(--paper); padding: 40px; }
+        .challenge-card:nth-child(odd) { background: var(--paper-dark); }
+        .challenge-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .challenge-desc { font-size: 14px; line-height: 1.75; color: var(--muted); }
+
+        /* METHOD */
+        .method-flow { display: flex; border: 1px solid var(--rule); margin-bottom: 60px; }
+        .method-step { flex: 1; padding: 36px 28px; border-right: 1px solid var(--rule); position: relative; }
+        .method-step:last-child { border-right: none; }
+        .step-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 12px; }
+        .step-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+        .step-detail { font-size: 12px; line-height: 1.7; color: var(--muted); }
+
+        /* STATS */
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--rule); }
+        .stat-box { padding: 40px 32px; border-right: 1px solid var(--rule); text-align: center; }
+        .stat-box:last-child { border-right: none; }
+        .stat-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; line-height: 1; color: var(--accent); margin-bottom: 8px; }
+        .stat-desc { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+
+        /* FINDINGS */
+        .findings-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .finding-group-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); }
+        .finding-item { padding: 20px 0; border-bottom: 1px solid var(--rule); }
+        .finding-item:last-child { border-bottom: none; }
+        .finding-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+        .finding-text { font-size: 14px; line-height: 1.7; }
+        .finding-highlight { font-weight: 700; color: var(--accent); }
+
+        /* PERSONAS */
+        .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 48px; }
+        .persona-card { background: var(--paper); padding: 36px 32px; }
+        .persona-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .persona-type { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+        .persona-trait { font-size: 13px; line-height: 1.75; color: var(--muted); margin-bottom: 8px; }
+        .persona-pain { margin-top: 20px; padding: 16px; background: var(--paper-dark); border-left: 3px solid var(--accent); font-size: 13px; font-style: italic; line-height: 1.6; }
+
+        /* RECS */
+        .rec-list { border: 1px solid var(--rule); }
+        .rec-item { display: grid; grid-template-columns: 80px 1fr 140px; border-bottom: 1px solid var(--rule); align-items: stretch; }
+        .rec-item:last-child { border-bottom: none; }
+        .rec-index { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; padding: 28px 24px; border-right: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; background: var(--ink); color: rgba(255,255,255,0.1); }
+        .rec-content { padding: 28px 36px; }
+        .rec-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .rec-desc { font-size: 13px; line-height: 1.75; color: var(--muted); }
+        .rec-status { padding: 28px 24px; border-left: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; }
+        .status-badge { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border: 1px solid; }
+        .status-badge.adopted { color: #27ae60; border-color: #27ae60; background: rgba(39,174,96,0.06); }
+        .status-badge.pending { color: var(--muted); border-color: var(--muted); }
+
+        /* OUTCOME */
+        .outcome-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .outcome-quote { font-family: 'Playfair Display', serif; font-size: 26px; font-style: italic; font-weight: 400; line-height: 1.4; position: relative; padding-left: 32px; }
+        .outcome-quote::before { content: '"'; position: absolute; left: 0; top: -8px; font-size: 80px; line-height: 1; color: var(--accent); opacity: 0.3; font-style: normal; }
+        .outcome-list { list-style: none; }
+        .outcome-list li { padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 14px; line-height: 1.65; display: flex; gap: 16px; }
+        .outcome-list li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+        /* FOOTER */
+        .page-footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 48px 60px; display: flex; justify-content: space-between; align-items: center; }
+        .footer-name { font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; margin-bottom: 4px; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .hero-section, .findings-layout, .outcome-split, .challenge-grid { grid-template-columns: 1fr; }
+            .persona-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .method-flow { flex-direction: column; }
+            .rec-item { grid-template-columns: 60px 1fr; }
+            .rec-status { display: none; }
+            .masthead-top, .container, .page-footer { padding-left: 24px; padding-right: 24px; }
+            .masthead-top { gap: 12px; flex-wrap: wrap; }
+            .top-meta { width: 100%; justify-content: space-between; }
+            .hero-left { padding: 40px 24px; }
+            .big-number { font-size: 72px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="masthead">
+    <div class="masthead-top">
+        <a href="projects.html" class="back-link">← Back to Projects</a>
+        <div class="top-meta">
+            <span class="issue-info">Case Study · User Research · 2024.06 – 2025.03</span>
+            <div class="lang-switch" role="group" aria-label="Language switch">
+                <button class="lang-btn active" type="button" data-lang="en">EN</button>
+                <button class="lang-btn" type="button" data-lang="zh">中文</button>
+            </div>
+        </div>
+    </div>
+    <div class="hero-section">
+        <div class="hero-left">
+            <div>
+                <span class="category-tag">User Research · Product Strategy</span>
+                <h1 class="hero-title">NetEase<br>Hi Echo<br><em>Research Report</em></h1>
+                <p class="hero-subtitle">An AI-powered English speaking app. We set out to understand what real users actually need — across all ages, all learning contexts, both individual and institutional.</p>
+            </div>
+            <div class="hero-meta-row">
+                <div class="meta-item"><div class="meta-label">Role</div><div class="meta-value">Project Lead</div></div>
+                <div class="meta-item"><div class="meta-label">Team</div><div class="meta-value">17 members</div></div>
+                <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">9 months</div></div>
+                <div class="meta-item"><div class="meta-label">Award</div><div class="meta-value">University First Prize (2/18)</div></div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="big-stat">
+                <span class="big-number">1287</span>
+                <span class="big-label">Structured Surveys · 85% Response Rate</span>
+                <div class="stat-divider"></div>
+                <span class="big-number" style="font-size:60px">3</span>
+                <span class="big-label">Cities · Shanghai / Guangdong / Shandong</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- 01 CHALLENGE -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal"><span class="section-num">01</span><h2 class="section-title">The Challenge</h2></div>
+            <div class="challenge-grid reveal">
+                <div class="challenge-card"><h3 class="challenge-title">Undefined User Segments</h3><p class="challenge-desc">Hi Echo's user base spans elementary students to adult professionals — each with fundamentally different motivations and pain points. No unified understanding existed.</p></div>
+                <div class="challenge-card"><h3 class="challenge-title">AI Adoption Uncertainty</h3><p class="challenge-desc">The app integrates AI-driven conversation practice, but it was unclear whether users trusted AI feedback, how they used it, and where it fell short of expectations.</p></div>
+                <div class="challenge-card"><h3 class="challenge-title">Retention Without Insight</h3><p class="challenge-desc">Without deep user behavior data, the product team had no reliable signal for why users churned or which features drove long-term engagement.</p></div>
+                <div class="challenge-card"><h3 class="challenge-title">C + B Dual Market</h3><p class="challenge-desc">Individual learners and institutional buyers have distinct needs. The research needed to map both simultaneously and identify where they diverge.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 METHODOLOGY -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal"><span class="section-num">02</span><h2 class="section-title">Research Methodology</h2></div>
+            <div class="method-flow reveal">
+                <div class="method-step"><div class="step-num">Phase 01</div><div class="step-title">Survey Design</div><div class="step-detail">Structured questionnaire covering learning motivation, behavioral habits, AI usage patterns, and product pain points across multiple channels.</div></div>
+                <div class="method-step"><div class="step-num">Phase 02</div><div class="step-title">Field Research</div><div class="step-detail">On-site visits across Shanghai, Guangdong, and Shandong — observing users in real learning environments across all age groups.</div></div>
+                <div class="method-step"><div class="step-num">Phase 03</div><div class="step-title">Deep Interviews</div><div class="step-detail">In-depth qualitative interviews to uncover the "why" behind behavioral patterns — emotional barriers, trust issues, and unmet needs.</div></div>
+                <div class="method-step"><div class="step-num">Phase 04</div><div class="step-title">Synthesis</div><div class="step-detail">Cross-team analysis translating raw data into user personas and product recommendations for both C and B markets.</div></div>
+            </div>
+            <div class="stats-row reveal">
+                <div class="stat-box"><div class="stat-num">1287</div><div class="stat-desc">Surveys<br>Collected</div></div>
+                <div class="stat-box"><div class="stat-num">85%</div><div class="stat-desc">Response<br>Rate</div></div>
+                <div class="stat-box"><div class="stat-num">3</div><div class="stat-desc">Cities<br>Visited</div></div>
+                <div class="stat-box"><div class="stat-num">78</div><div class="stat-desc">Page Final<br>Report</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 FINDINGS -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal"><span class="section-num">03</span><h2 class="section-title">Key Findings</h2></div>
+            <div class="findings-layout reveal">
+                <div>
+                    <div class="finding-group-title">User Behavior Insights</div>
+                    <div class="finding-item"><div class="finding-label">AI Trust Gap</div><div class="finding-text">Users accepted AI pronunciation feedback but <span class="finding-highlight">distrusted AI-generated conversations</span> as "unnatural" — they wanted human-like unpredictability, not scripted exchanges.</div></div>
+                    <div class="finding-item"><div class="finding-label">Session Behavior</div><div class="finding-text">Most sessions lasted under 8 minutes. Users <span class="finding-highlight">practiced in bursts</span> during commutes or breaks — long-form features were consistently underused.</div></div>
+                    <div class="finding-item"><div class="finding-label">Motivation Drivers</div><div class="finding-text">Exam preparation dominated for students; <span class="finding-highlight">career advancement</span> drove adult users. The two groups needed fundamentally different content strategies.</div></div>
+                    <div class="finding-item"><div class="finding-label">Feedback Loops</div><div class="finding-text">Users wanted <span class="finding-highlight">immediate, sentence-level feedback</span> — not aggregate session scores. Delayed reporting felt abstract and disconnected.</div></div>
+                </div>
+                <div>
+                    <div class="finding-group-title">Institutional (B-end) Insights</div>
+                    <div class="finding-item"><div class="finding-label">Purchase Trigger</div><div class="finding-text">Schools bought based on <span class="finding-highlight">curriculum alignment and measurable outcomes</span>, not feature lists. Teacher progress reporting was the critical missing piece.</div></div>
+                    <div class="finding-item"><div class="finding-label">Implementation Barriers</div><div class="finding-text">IT complexity and <span class="finding-highlight">teacher training overhead</span> were the top reasons institutions delayed adoption — onboarding needed a dedicated institutional flow.</div></div>
+                    <div class="finding-item"><div class="finding-label">Competitive Edge</div><div class="finding-text">Hi Echo's AI feedback accuracy rated <span class="finding-highlight">higher than competitor apps</span> in blind testing, but users didn't know this — a significant perception gap to close.</div></div>
+                    <div class="finding-item"><div class="finding-label">Retention Pattern</div><div class="finding-text">Institutional users who completed teacher onboarding had <span class="finding-highlight">significantly longer retention cycles</span> — B-end support investment pays off in C-end stickiness.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 PERSONAS -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal"><span class="section-num">04</span><h2 class="section-title">User Personas</h2></div>
+            <div class="persona-grid reveal">
+                <div class="persona-card">
+                    <div class="persona-name">K-12 Learners</div>
+                    <div class="persona-type">Elementary · Middle School</div>
+                    <div class="persona-trait">Driven by exam scores and parental pressure. Learning is structured around curriculum, with parents often making the purchase decision.</div>
+                    <div class="persona-trait">Uses the app for homework and test prep. Sessions are short and goal-directed.</div>
+                    <div class="persona-pain">"I need to pass my oral exam next month — I don't have time for casual practice."</div>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-name">Study-Abroad Test Takers</div>
+                    <div class="persona-type">College Students · Study Abroad Prep</div>
+                    <div class="persona-trait">Preparing for IELTS/TOEFL speaking. Higher self-motivation, more willing to explore features deeply.</div>
+                    <div class="persona-trait">Values authentic conversation practice over structured drills. Frustrated when AI responses feel formulaic.</div>
+                    <div class="persona-pain">"AI feedback is great for pronunciation, but the conversations feel too scripted to be useful."</div>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-name">Career Professionals</div>
+                    <div class="persona-type">Working Professionals</div>
+                    <div class="persona-trait">Needs English for meetings, presentations, or international work. Squeezed for time — values high efficiency per minute of practice.</div>
+                    <div class="persona-trait">Willing to pay for premium features if ROI is clear and immediate.</div>
+                    <div class="persona-pain">"I need to lead a meeting in English next month. I don't need grammar — I need confidence."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 RECOMMENDATIONS -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal"><span class="section-num">05</span><h2 class="section-title">Product Recommendations</h2></div>
+            <div class="rec-list reveal">
+                <div class="rec-item">
+                    <div class="rec-index">01</div>
+                    <div class="rec-content"><div class="rec-title">Make Speaking Training the Core Product Function</div><div class="rec-desc">Converge the core loop to: <strong>speak -> recognize -> correct -> repeat -> pass</strong>. Prioritize ASR accuracy plus pronunciation and fluency feedback, and deliver practice through scenario-based dialogues. <strong>Evidence (quant):</strong> Among additional learning goals, 88.90% selected improving speaking and 84.19% selected improving listening, making speaking/listening the top priorities. <strong>Evidence (qual):</strong> Interviewees explicitly said speech recognition accuracy needs improvement.</div></div>
+                    <div class="rec-status"><span class="status-badge pending">Priority</span></div>
+                </div>
+                <div class="rec-item">
+                    <div class="rec-index">02</div>
+                    <div class="rec-content"><div class="rec-title">Launch a Classroom + Teacher Collaboration Mode</div><div class="rec-desc">Make AI part of the teaching system with a hybrid model: classroom assignments, teacher dashboard, and student practice playback. Teachers assign tasks, students complete practice, and teachers review and comment to close the loop. <strong>Evidence (quant):</strong> Support for the blended approach scored highest at 4.173/5, above traditional classroom (3.829) and AI-only teaching (3.659), with strongest overall support for traditional + AI together.</div></div>
+                    <div class="rec-status"><span class="status-badge pending">Priority</span></div>
+                </div>
+                <div class="rec-item">
+                    <div class="rec-index">03</div>
+                    <div class="rec-content"><div class="rec-title">Convert Writing-Tool Users into Speaking Users</div><div class="rec-desc">Build one-click text-to-speaking migration: users paste essays, notes, or key points, and the product generates a spoken script plus shadowing/retelling drills and speaking scores. This lowers speaking activation cost. <strong>Evidence (quant):</strong> In 1,022 valid surveys, 804 users had heard of non-speaking AI English tools (writing correction/polish), and 641 had used them, showing a large existing base for conversion.</div></div>
+                    <div class="rec-status"><span class="status-badge pending">Priority</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 OUTCOME -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal"><span class="section-num">06</span><h2 class="section-title">Outcome & Reflection</h2></div>
+            <div class="outcome-split reveal">
+                <blockquote class="outcome-quote">Research without execution is just observation. We made sure ours didn't stop at the report.</blockquote>
+                <ul class="outcome-list">
+                    <li>78-page, 42,000-word report covering C-end (individual learners) and B-end (institutions) — adopted by the NetEase Hi Echo product team with parts landing in product iteration</li>
+                    <li>1,287 surveys across 3 provinces with 85% response rate — covering elementary students to working adults</li>
+                    <li>Awarded University First Prize in the "Digital Intelligence Empowerment" track, ranking 2nd out of 18 projects</li>
+                    <li>Led a 17-person cross-functional team (writing, technical, design) from research design through final delivery over 9 months</li>
+                    <li>Original plan included software development support; pivoted to demo output when technical constraints emerged — maintaining core value while adapting scope pragmatically</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="page-footer">
+    <div>
+        <div class="footer-name">Iris Zhou</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;">carpediem_zsw@163.com · Wuhan University · Class of 2027</div>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:right;">
+        <div style="color:rgba(255,255,255,0.3);margin-bottom:4px;">Full report available upon request</div>
+        <div>NetEase Hi Echo Research · 2024–2025</div>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const i18n = {
+        en: {
+            documentTitle: "NetEase Hi Echo — User Research | Iris Zhou",
+            backLink: "← Back to Projects",
+            issueInfo: "Case Study · User Research · 2024.06 – 2025.03",
+            categoryTag: "User Research · Product Strategy",
+            heroTitle: "NetEase<br>Hi Echo<br><em>Research Report</em>",
+            heroSubtitle: "An AI-powered English speaking app. We set out to understand what real users actually need — across all ages, all learning contexts, both individual and institutional.",
+            metaLabels: ["Role", "Team", "Duration", "Award"],
+            metaValues: ["Project Lead", "17 members", "9 months", "University First Prize (2/18)"],
+            bigLabels: ["Structured Surveys · 85% Response Rate", "Cities · Shanghai / Guangdong / Shandong"],
+            sectionTitles: ["The Challenge", "Research Methodology", "Key Findings", "User Personas", "Product Recommendations", "Outcome & Reflection"],
+            challengeTitles: ["Undefined User Segments", "AI Adoption Uncertainty", "Retention Without Insight", "C + B Dual Market"],
+            challengeDescs: [
+                "Hi Echo's user base spans elementary students to adult professionals — each with fundamentally different motivations and pain points. No unified understanding existed.",
+                "The app integrates AI-driven conversation practice, but it was unclear whether users trusted AI feedback, how they used it, and where it fell short of expectations.",
+                "Without deep user behavior data, the product team had no reliable signal for why users churned or which features drove long-term engagement.",
+                "Individual learners and institutional buyers have distinct needs. The research needed to map both simultaneously and identify where they diverge."
+            ],
+            stepNums: ["Phase 01", "Phase 02", "Phase 03", "Phase 04"],
+            stepTitles: ["Survey Design", "Field Research", "Deep Interviews", "Synthesis"],
+            stepDetails: [
+                "Structured questionnaire covering learning motivation, behavioral habits, AI usage patterns, and product pain points across multiple channels.",
+                "On-site visits across Shanghai, Guangdong, and Shandong — observing users in real learning environments across all age groups.",
+                "In-depth qualitative interviews to uncover the \"why\" behind behavioral patterns — emotional barriers, trust issues, and unmet needs.",
+                "Cross-team analysis translating raw data into user personas and product recommendations for both C and B markets."
+            ],
+            statDescs: ["Surveys<br>Collected", "Response<br>Rate", "Cities<br>Visited", "Page Final<br>Report"],
+            findingGroupTitles: ["User Behavior Insights", "Institutional (B-end) Insights"],
+            findingLabels: ["AI Trust Gap", "Session Behavior", "Motivation Drivers", "Feedback Loops", "Purchase Trigger", "Implementation Barriers", "Competitive Edge", "Retention Pattern"],
+            findingTexts: [
+                "Users accepted AI pronunciation feedback but <span class=\"finding-highlight\">distrusted AI-generated conversations</span> as \"unnatural\" — they wanted human-like unpredictability, not scripted exchanges.",
+                "Most sessions lasted under 8 minutes. Users <span class=\"finding-highlight\">practiced in bursts</span> during commutes or breaks — long-form features were consistently underused.",
+                "Exam preparation dominated for students; <span class=\"finding-highlight\">career advancement</span> drove adult users. The two groups needed fundamentally different content strategies.",
+                "Users wanted <span class=\"finding-highlight\">immediate, sentence-level feedback</span> — not aggregate session scores. Delayed reporting felt abstract and disconnected.",
+                "Schools bought based on <span class=\"finding-highlight\">curriculum alignment and measurable outcomes</span>, not feature lists. Teacher progress reporting was the critical missing piece.",
+                "IT complexity and <span class=\"finding-highlight\">teacher training overhead</span> were the top reasons institutions delayed adoption — onboarding needed a dedicated institutional flow.",
+                "Hi Echo's AI feedback accuracy rated <span class=\"finding-highlight\">higher than competitor apps</span> in blind testing, but users didn't know this — a significant perception gap to close.",
+                "Institutional users who completed teacher onboarding had <span class=\"finding-highlight\">significantly longer retention cycles</span> — B-end support investment pays off in C-end stickiness."
+            ],
+            personaNames: ["K-12 Learners", "Study-Abroad Test Takers", "Career Professionals"],
+            personaTypes: ["Elementary · Middle School", "College Students · Study Abroad Prep", "Working Professionals"],
+            personaTraits: [
+                "Driven by exam scores and parental pressure. Learning is structured around curriculum, with parents often making the purchase decision.",
+                "Uses the app for homework and test prep. Sessions are short and goal-directed.",
+                "Preparing for IELTS/TOEFL speaking. Higher self-motivation, more willing to explore features deeply.",
+                "Values authentic conversation practice over structured drills. Frustrated when AI responses feel formulaic.",
+                "Needs English for meetings, presentations, or international work. Squeezed for time — values high efficiency per minute of practice.",
+                "Willing to pay for premium features if ROI is clear and immediate."
+            ],
+            personaPains: [
+                "\"I need to pass my oral exam next month — I don't have time for casual practice.\"",
+                "\"AI feedback is great for pronunciation, but the conversations feel too scripted to be useful.\"",
+                "\"I need to lead a meeting in English next month. I don't need grammar — I need confidence.\""
+            ],
+            recTitles: [
+                "Make Speaking Training the Core Product Function",
+                "Launch a Classroom + Teacher Collaboration Mode",
+                "Convert Writing-Tool Users into Speaking Users"
+            ],
+            recDescs: [
+                "Converge the core loop to: <strong>speak -> recognize -> correct -> repeat -> pass</strong>. Prioritize ASR accuracy plus pronunciation and fluency feedback, and deliver practice through scenario-based dialogues. <strong>Evidence (quant):</strong> Among additional learning goals, 88.90% selected improving speaking and 84.19% selected improving listening, making speaking/listening the top priorities. <strong>Evidence (qual):</strong> Interviewees explicitly said speech recognition accuracy needs improvement.",
+                "Make AI part of the teaching system with a hybrid model: classroom assignments, teacher dashboard, and student practice playback. Teachers assign tasks, students complete practice, and teachers review and comment to close the loop. <strong>Evidence (quant):</strong> Support for the blended approach scored highest at 4.173/5, above traditional classroom (3.829) and AI-only teaching (3.659), with strongest overall support for traditional + AI together.",
+                "Build one-click text-to-speaking migration: users paste essays, notes, or key points, and the product generates a spoken script plus shadowing/retelling drills and speaking scores. This lowers speaking activation cost. <strong>Evidence (quant):</strong> In 1,022 valid surveys, 804 users had heard of non-speaking AI English tools (writing correction/polish), and 641 had used them, showing a large existing base for conversion."
+            ],
+            statusText: "Priority",
+            outcomeQuote: "Research without execution is just observation. We made sure ours didn't stop at the report.",
+            outcomeItems: [
+                "78-page, 42,000-word report covering C-end (individual learners) and B-end (institutions) — adopted by the NetEase Hi Echo product team with parts landing in product iteration",
+                "1,287 surveys across 3 provinces with 85% response rate — covering elementary students to working adults",
+                "Awarded University First Prize in the \"Digital Intelligence Empowerment\" track, ranking 2nd out of 18 projects",
+                "Led a 17-person cross-functional team (writing, technical, design) from research design through final delivery over 9 months",
+                "Original plan included software development support; pivoted to demo output when technical constraints emerged — maintaining core value while adapting scope pragmatically"
+            ],
+            footerName: "Iris Zhou",
+            footerInfo: "carpediem_zsw@163.com · Wuhan University · Class of 2027",
+            footerNote: "Full report available upon request",
+            footerProject: "NetEase Hi Echo Research · 2024–2025"
+        },
+        zh: {
+            documentTitle: "网易有道Hi Echo 用户研究｜Iris Zhou",
+            backLink: "← 返回项目页",
+            issueInfo: "案例研究 · 用户研究 · 2024.06 – 2025.03",
+            categoryTag: "用户研究 · 产品策略",
+            heroTitle: "网易有道<br>Hi Echo<br><em>调研报告</em>",
+            heroSubtitle: "这是一款 AI 英语口语产品。我们的目标是理解真实用户在不同年龄、不同学习场景下，个人端与机构端各自最核心的需求。",
+            metaLabels: ["角色", "团队", "周期", "奖项"],
+            metaValues: ["项目负责人", "17人团队", "9个月", "校级一等奖（2/18）"],
+            bigLabels: ["结构化问卷 · 回收率85%", "城市调研 · 上海 / 广东 / 山东"],
+            sectionTitles: ["挑战", "研究方法", "核心发现", "用户画像", "产品建议", "成果与反思"],
+            challengeTitles: ["用户分层不清晰", "AI 采用不确定", "留存缺少洞察", "C端+B端双市场"],
+            challengeDescs: [
+                "Hi Echo 用户覆盖从小学生到职场人，不同人群的动机和痛点差异很大，当时缺乏统一的用户认知框架。",
+                "产品已有 AI 对话练习能力，但用户是否信任 AI 反馈、如何使用、在哪些环节不满意，并不清楚。",
+                "在缺少深度行为数据的情况下，团队无法准确判断用户流失原因，也难以识别真正驱动长期留存的功能。",
+                "个人学习者和机构采购方的需求并不一致，研究需要同时覆盖两端并找出分歧点。"
+            ],
+            stepNums: ["阶段 01", "阶段 02", "阶段 03", "阶段 04"],
+            stepTitles: ["问卷设计", "实地调研", "深度访谈", "综合分析"],
+            stepDetails: [
+                "设计结构化问卷，覆盖学习动机、行为习惯、AI 使用方式与产品痛点，并通过多渠道发放。",
+                "在上海、广东、山东开展实地走访，观察不同年龄用户在真实学习场景中的行为。",
+                "通过深度访谈追问行为背后的原因，识别情绪阻力、信任问题与未被满足的需求。",
+                "跨角色协同分析，将原始数据沉淀为用户画像与 C 端/B 端产品建议。"
+            ],
+            statDescs: ["问卷<br>样本量", "有效回收<br>比例", "实地调研<br>城市", "最终报告<br>页数"],
+            findingGroupTitles: ["用户行为洞察", "机构端（B端）洞察"],
+            findingLabels: ["AI 信任差距", "会话行为", "动机来源", "反馈链路", "采购触发点", "落地障碍", "竞争优势", "留存规律"],
+            findingTexts: [
+                "用户认可 AI 发音反馈，但对 <span class=\"finding-highlight\">AI 生成对话的自然度</span> 不信任，认为对话过于脚本化，缺少真实交流的不确定性。",
+                "多数会话时长低于 8 分钟。用户更常在通勤或碎片时间 <span class=\"finding-highlight\">短时高频练习</span>，长链路功能使用率偏低。",
+                "学生群体以考试为主，成人群体以 <span class=\"finding-highlight\">职业提升</span> 为主，两类用户需要不同的内容与目标路径。",
+                "用户更希望得到 <span class=\"finding-highlight\">逐句即时反馈</span>，而非会话结束后的汇总分数，后者感知较弱且不利于当场纠错。",
+                "学校采购主要看 <span class=\"finding-highlight\">课程适配和可量化结果</span>，而不是功能数量。教师进度管理能力是关键短板。",
+                "IT 接入复杂度与 <span class=\"finding-highlight\">教师培训成本</span> 是机构延迟采用的主要原因，需要单独的机构上手流程。",
+                "盲测中 Hi Echo 的 AI 反馈准确度 <span class=\"finding-highlight\">高于竞品</span>，但用户感知不足，存在明显认知差。",
+                "完成教师侧上手的机构用户，<span class=\"finding-highlight\">留存周期显著更长</span>，说明 B 端投入会反哺 C 端黏性。"
+            ],
+            personaNames: ["基础教育用户", "留学备考用户", "职场进阶用户"],
+            personaTypes: ["小学 · 初中", "大学生 · 留学备考", "职场人士"],
+            personaTraits: [
+                "以考试成绩和家长期望驱动，学习路径高度依赖课程体系，购买决策通常由家长主导。",
+                "主要用于作业和应试训练，会话短、目标明确。",
+                "聚焦 IELTS/TOEFL 口语备考，学习主动性更强，愿意深度尝试功能。",
+                "更看重真实对话训练，不喜欢模板化对话，对“像考试题库”的交互较敏感。",
+                "英语用于会议、汇报或国际协作，时间紧张，关注单位时间内的练习效率。",
+                "若产品能带来直接收益，愿意为高价值能力付费。"
+            ],
+            personaPains: [
+                "“我下个月要过口语考试，没有时间做太泛的练习。”",
+                "“发音反馈很好，但对话太脚本化，实用性不够。”",
+                "“我下个月要做英文会议主持，我需要的是表达自信，不是语法讲解。”"
+            ],
+            recTitles: [
+                "把口语训练做成核心功能",
+                "上线“课堂 + 教师协同”模式",
+                "把写作类 AI 用户迁移到口语场景"
+            ],
+            recDescs: [
+                "将产品主闭环收敛为：<strong>开口 -> 识别 -> 纠错 -> 复练 -> 达标</strong>。优先投入语音识别准确率与发音/流利度反馈，并用场景化对话承载训练。<strong>依据（量化）：</strong> 额外学习目标中，88.90% 选择提升口语、84.19% 选择提升听力，口语与听力是最主要需求。<strong>依据（质性）：</strong> 访谈中用户明确提出语音识别准确度需要提升。",
+                "把 AI 纳入教学体系，形成“课堂任务 + 教师看板 + 学生练习回放”的混合教学形态。教师布置任务、学生完成训练、教师复盘点评，形成可执行闭环。<strong>依据（量化）：</strong> 三种教学方式中，“传统+AI结合”支持度最高，均值 4.173/5，高于传统课堂 3.829 与 AI 新型教学 3.659。",
+                "提供文本到口语的一键迁移：用户粘贴作文、笔记或答题要点，自动生成口语化脚本，并配套跟读/复述训练和口语评分，降低开口成本。<strong>依据（量化）：</strong> 1,022 份有效问卷中，804 人了解过非口语类 AI 英语工具，641 人实际使用过，迁移基础明确。"
+            ],
+            statusText: "重点",
+            outcomeQuote: "研究如果不进入执行，只是观察。我们确保这份研究真正推动了产品变化。",
+            outcomeItems: [
+                "形成 78 页、4.2 万字报告，覆盖 C 端与 B 端洞察，已被网易有道 Hi Echo 团队采用并进入迭代。",
+                "完成 1,287 份问卷，覆盖 3 省用户群体，回收率 85%，样本从小学生到职场人。",
+                "获校级“数智赋能”专题一等奖，在 18 个项目中排名第 2。",
+                "带领 17 人跨职能团队，完成从研究设计到最终交付的 9 个月全流程协作。",
+                "原方案包含软件开发，后因技术条件限制转向 Demo 产出，在约束下保持核心价值交付。"
+            ],
+            footerName: "周思雯 Iris Zhou",
+            footerInfo: "carpediem_zsw@163.com · 武汉大学 · 2027届",
+            footerNote: "完整报告可按需提供",
+            footerProject: "NetEase Hi Echo 用户研究 · 2024–2025"
+        }
+    };
+
+    const setText = (selector, value) => {
+        const node = document.querySelector(selector);
+        if (node) node.textContent = value;
+    };
+
+    const setHTML = (selector, value) => {
+        const node = document.querySelector(selector);
+        if (node) node.innerHTML = value;
+    };
+
+    const setList = (selector, values, asHTML = false) => {
+        const nodes = document.querySelectorAll(selector);
+        nodes.forEach((node, index) => {
+            const value = values[index];
+            if (value === undefined) return;
+            if (asHTML) {
+                node.innerHTML = value;
+            } else {
+                node.textContent = value;
+            }
+        });
+    };
+
+    function applyLanguage(lang) {
+        const dict = i18n[lang] || i18n.en;
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        document.title = dict.documentTitle;
+
+        setText(".back-link", dict.backLink);
+        setText(".issue-info", dict.issueInfo);
+        setText(".category-tag", dict.categoryTag);
+        setHTML(".hero-title", dict.heroTitle);
+        setText(".hero-subtitle", dict.heroSubtitle);
+        setList(".meta-label", dict.metaLabels);
+        setList(".meta-value", dict.metaValues);
+        setList(".big-label", dict.bigLabels);
+
+        setList(".section-title", dict.sectionTitles);
+        setList(".challenge-title", dict.challengeTitles);
+        setList(".challenge-desc", dict.challengeDescs);
+        setList(".step-num", dict.stepNums);
+        setList(".step-title", dict.stepTitles);
+        setList(".step-detail", dict.stepDetails);
+        setList(".stat-desc", dict.statDescs, true);
+
+        setList(".finding-group-title", dict.findingGroupTitles);
+        setList(".finding-label", dict.findingLabels);
+        setList(".finding-text", dict.findingTexts, true);
+
+        setList(".persona-name", dict.personaNames);
+        setList(".persona-type", dict.personaTypes);
+        setList(".persona-trait", dict.personaTraits);
+        setList(".persona-pain", dict.personaPains);
+
+        setList(".rec-title", dict.recTitles);
+        setList(".rec-desc", dict.recDescs, true);
+        setList(".status-badge", Array.from({ length: document.querySelectorAll(".status-badge").length }, () => dict.statusText));
+
+        setText(".outcome-quote", dict.outcomeQuote);
+        setList(".outcome-list li", dict.outcomeItems);
+
+        setText(".footer-name", dict.footerName);
+        setText(".page-footer > div:first-child > div:last-child", dict.footerInfo);
+        setText(".page-footer > div:last-child > div:first-child", dict.footerNote);
+        setText(".page-footer > div:last-child > div:last-child", dict.footerProject);
+
+        document.querySelectorAll(".lang-btn").forEach((button) => {
+            button.classList.toggle("active", button.dataset.lang === lang);
+        });
+        localStorage.setItem("hiEchoLang", lang);
+    }
+
+    const savedLang = localStorage.getItem("hiEchoLang");
+    const initialLang = savedLang === "zh" ? "zh" : "en";
+    applyLanguage(initialLang);
+
+    document.querySelectorAll(".lang-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+            applyLanguage(button.dataset.lang);
+        });
+    });
+</script>
+</body>
+</html>

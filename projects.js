@@ -17,10 +17,36 @@ const allProjects = [
         }
     },
     {
+        slug: "netease-hi-echo-research",
+        title: "NetEase Hi Echo — User Research",
+        oneLiner: "Led a 17-person team to understand what AI English learners actually need",
+        featured: true,
+        role: "Project Lead",
+        time: "2024.06 – 2025.03",
+        outcome: "1,287 surveys · 3-city field research · 78-page report adopted by NetEase Hi Echo · University First Prize (2/18)",
+        tags: ["User Research", "Product Strategy", "AI/ML"],
+        links: {
+            demo: "case-studies/netease-hi-echo/index.html"
+        }
+    },
+    {
+        slug: "bionic-reading",
+        title: "Bionic Reading - Interaction Concept",
+        oneLiner: "A 151-response survey uncovered e-book UX pain points, then reimagined the future of reading.",
+        featured: false,
+        role: "Research + Concept Design",
+        time: "2025",
+        outcome: "User research (SPSS factor analysis) -> concept proposal combining bio-typography, BCI feedback, and immersive co-reading.",
+        tags: ["User Research", "Product Design", "Interaction Design"],
+        links: {
+            demo: "case-studies/bionic-reading/index.html"
+        }
+    },
+    {
         slug: "web-design-playground",
         title: "Web Design Playground",
         oneLiner: "50+ UI case studies — exploring how visual language shapes product experience",
-        featured: true,
+        featured: false,
         role: "UI Designer",
         time: "2026",
         outcome: "Built and curated 50+ UI case studies (ongoing), gradually shaping a distinctive personal design style",
@@ -53,6 +79,19 @@ const allProjects = [
         tags: ["AI/ML", "Product Thinking", "Reflection"],
         links: {
             demo: "https://photo-organizer-eta.vercel.app"
+        }
+    },
+    {
+        slug: "ai-agent-industry-report",
+        title: "AI Agent Industry Report",
+        oneLiner: "2025–2026 AI Agent industry landscape: players, use cases, and where it's heading",
+        featured: false,
+        role: "Research & Analysis",
+        time: "2026.02",
+        outcome: "Covers agent architecture, key players (domestic + overseas), enterprise adoption patterns, and investment trends across 2025–2026",
+        tags: ["Research", "AI/ML", "Industry Analysis"],
+        links: {
+            demo: "assets/reports/AI_Agent_Industry_Report_2025_2026.pdf"
         }
     }
 ];
@@ -104,10 +143,16 @@ function renderProjects(projects) {
     
     grid.style.display = 'grid';
     if (noResults) noResults.style.display = 'none';
-    
-    grid.innerHTML = projects.map(project => {
+
+    // Always show featured projects first, then non-featured.
+    const orderedProjects = [
+        ...projects.filter(project => project.featured),
+        ...projects.filter(project => !project.featured)
+    ];
+
+    grid.innerHTML = orderedProjects.map(project => {
         const projectLink = getPrimaryProjectLink(project);
-        const isExternal = /^https?:\/\//.test(projectLink);
+        const isExternal = /^https?:\/\//.test(projectLink) || projectLink.endsWith('.pdf');
         const externalAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
 
         return `
@@ -137,7 +182,7 @@ function renderProjects(projects) {
 
 // Filter and sort projects
 function updateProjects() {
-    let filtered = allProjects;
+    let filtered = [...allProjects];
     
     // Apply search filter
     if (currentFilters.search) {
