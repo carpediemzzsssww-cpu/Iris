@@ -19,7 +19,7 @@ const allProjects = [
     {
         slug: "web-design-playground",
         title: "Web Design Playground",
-        oneLiner: "Where visual ideas become interactive web design experiments",
+        oneLiner: "50+ UI case studies — exploring how visual language shapes product experience",
         featured: true,
         role: "UI Designer",
         time: "2026",
@@ -32,14 +32,27 @@ const allProjects = [
     {
         slug: "whudo-system",
         title: "WHUDO System",
-        oneLiner: "AI-Powered Smart Dormitory System",
+        oneLiner: "A smart dormitory OS designed for four people sharing one space",
         featured: true,
-        role: "Designer",
+        role: "UI Designer",
         time: "Spring 2025",
-        outcome: "a scenario-driven smart dormitory product concept focused on campus housing pain points",
-        tags: ["Prototyping", "AI/ML", "Product Design"],
+        outcome: "6-module AI-powered concept: face recognition, voice assistant, multi-user device control, behavior analytics, and a graduation memoir easter egg",
+        tags: ["Product Design", "AI/ML", "Prototyping"],
         links: {
-            demo: "https://www.canva.cn/design/DAGmeSztBwA/l51ub7KSROZJwPpLytOTfw/view?utm_content=DAGmeSztBwA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h03dfc7eeff"
+            demo: "https://whudo-casestudy.vercel.app"
+        }
+    },
+    {
+        slug: "smart-photo-organizer",
+        title: "Smart Photo Organizer — A Failure",
+        oneLiner: "Built an AI photo tool in 2 hours. A user's one question broke it.",
+        featured: false,
+        role: "Solo Developer",
+        time: "2026.01",
+        outcome: "Python + Qwen 2.5 7B local model · perceptual hashing · full product reflection on over-engineering without user validation",
+        tags: ["AI/ML", "Product Thinking", "Reflection"],
+        links: {
+            demo: "https://photo-organizer-eta.vercel.app"
         }
     }
 ];
