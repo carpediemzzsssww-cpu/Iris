@@ -3,9 +3,9 @@
    ================================================ */
 
 :root {
-    --page-header-top: clamp(var(--space-8), 7vw, var(--space-10));
-    --page-header-bottom: clamp(var(--space-5), 4vw, var(--space-8));
-    --page-section-gap: clamp(var(--space-6), 6vw, var(--space-10));
+    --page-header-top: clamp(var(--space-6), 6vw, var(--space-8));
+    --page-header-bottom: clamp(var(--space-4), 3.6vw, var(--space-6));
+    --page-section-gap: clamp(var(--space-5), 4.6vw, var(--space-8));
     --panel-padding: clamp(var(--space-4), 2.8vw, var(--space-5));
 }
 
@@ -353,7 +353,7 @@ html[data-theme='dark'] .toolbar-search:focus-within {
 }
 
 .related-section {
-    padding: clamp(var(--space-8), 7vw, var(--space-10)) 0;
+    padding: clamp(var(--space-6), 5.4vw, var(--space-8)) 0;
     background: var(--grad);
     border-radius: var(--border-radius);
     margin-top: clamp(var(--space-6), 5vw, var(--space-8));
@@ -373,7 +373,7 @@ html[data-theme='dark'] .toolbar-search:focus-within {
 
 /* Tabs Component */
 .tabs-container {
-    margin-bottom: clamp(var(--space-6), 5vw, var(--space-8));
+    margin-bottom: clamp(var(--space-5), 4vw, var(--space-6));
 }
 
 .tabs-nav {
@@ -909,6 +909,12 @@ html[data-theme='dark'] .toolbar-search:focus-within {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --page-header-top: clamp(var(--space-5), 8vw, var(--space-6));
+        --page-header-bottom: clamp(var(--space-4), 5vw, var(--space-5));
+        --page-section-gap: clamp(var(--space-4), 5vw, var(--space-6));
+    }
+
     .featured-experiment-title {
         font-size: 28px;
     }

@@ -42,7 +42,12 @@
     --space-16: 128px;
 
     /* Spacing Tokens */
-    --section-spacing: clamp(var(--space-10), 8vw, var(--space-16));
+    --section-spacing: clamp(var(--space-5), 4.5vw, var(--space-8));
+    --section-spacing-tight: clamp(var(--space-4), 3.2vw, var(--space-6));
+    --section-padding: clamp(var(--space-5), 4vw, var(--space-8));
+    --section-padding-compact: clamp(var(--space-4), 3vw, var(--space-6));
+    --section-padding-emphasis: clamp(var(--space-6), 6vw, var(--space-10));
+    --section-title-gap: clamp(var(--space-4), 2.6vw, var(--space-5));
     --card-padding: clamp(var(--space-5), 3.5vw, var(--space-6));
     --border-radius: 12px;
     
@@ -444,7 +449,7 @@ section + section {
     font-family: var(--font-display);
     font-size: 32px;
     font-weight: 600;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--section-title-gap);
     color: var(--text);
 }
 
@@ -452,7 +457,7 @@ section + section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--section-title-gap);
 }
 
 .section-link {
@@ -648,7 +653,7 @@ html[data-theme='light'] .hero-portrait-overlay {
    Navigation Profile
    ================================================ */
 .nav-profile {
-    padding: clamp(var(--space-6), 5vw, var(--space-8)) 0;
+    padding: var(--section-padding) 0;
 }
 
 .profile-grid {
@@ -715,7 +720,7 @@ html[data-theme='light'] .hero-portrait-overlay {
    Experience Timeline
    ================================================ */
 .experience-section {
-    padding: clamp(var(--space-6), 5vw, var(--space-8)) 0;
+    padding: var(--section-padding) 0;
 }
 
 .timeline {
@@ -855,7 +860,7 @@ html[data-theme='light'] .hero-portrait-overlay {
    Presentation Section
    ================================================ */
 .presentation-section {
-    padding: clamp(var(--space-6), 5vw, var(--space-8)) 0;
+    padding: var(--section-padding) 0;
 }
 
 .presentation-grid {
@@ -935,7 +940,7 @@ html[data-theme='light'] .hero-portrait-overlay {
    Projects Grid
    ================================================ */
 .projects-section {
-    padding: clamp(var(--space-6), 5vw, var(--space-8)) 0;
+    padding: var(--section-padding) 0;
 }
 
 .projects-grid {
@@ -1312,7 +1317,7 @@ html[data-theme='dark'] .project-transition-overlay {
    Skills Section
    ================================================ */
 .skills-section {
-    padding: clamp(var(--space-6), 5vw, var(--space-8)) 0;
+    padding: var(--section-padding-compact) 0;
 }
 
 .skills-groups {
@@ -1357,7 +1362,7 @@ html[data-theme='dark'] .project-transition-overlay {
    Contact Section
    ================================================ */
 .contact-section {
-    padding: clamp(var(--space-8), 8vw, var(--space-12)) 0;
+    padding: var(--section-padding-emphasis) 0;
 }
 
 .contact-card {
@@ -1443,7 +1448,7 @@ html[data-theme='dark'] .project-transition-overlay {
 .footer {
     border-top: 1px solid var(--border);
     padding: var(--space-6) 0;
-    margin-top: var(--space-8);
+    margin-top: var(--section-spacing-tight);
 }
 
 .footer-content {
@@ -1515,6 +1520,10 @@ html[data-theme='dark'] .project-transition-overlay {
         display: flex;
     }
     
+    section + section {
+        margin-top: var(--section-spacing-tight);
+    }
+
     .hero-section {
         padding: var(--space-8) 0 var(--space-6);
     }
@@ -1551,6 +1560,19 @@ html[data-theme='dark'] .project-transition-overlay {
     
     .section-title {
         font-size: 28px;
+        margin-bottom: var(--space-4);
+    }
+
+    .nav-profile,
+    .experience-section,
+    .presentation-section,
+    .projects-section,
+    .skills-section {
+        padding: clamp(var(--space-4), 5vw, var(--space-5)) 0;
+    }
+
+    .contact-section {
+        padding: clamp(var(--space-5), 6vw, var(--space-6)) 0;
     }
     
     .profile-grid,
