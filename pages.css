@@ -698,6 +698,42 @@ html[data-theme='dark'] .toolbar-search:focus-within {
     margin-bottom: clamp(var(--space-4), 2.6vw, var(--space-5));
 }
 
+/* Resume Hub */
+.resume-hub-section {
+    padding-bottom: clamp(var(--space-8), 7vw, var(--space-10));
+}
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(var(--space-4), 3vw, var(--space-6));
+}
+
+.resume-card {
+    margin-bottom: 0;
+}
+
+.resume-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: var(--space-4);
+}
+
+.resume-preview-wrap {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.resume-preview {
+    display: block;
+    width: 100%;
+    height: clamp(480px, 58vw, 700px);
+    border: 0;
+}
+
 .featured-experiment-card {
     position: relative;
     margin-bottom: 0;
@@ -989,6 +1025,14 @@ html[data-theme='dark'] .toolbar-search:focus-within {
     
     .related-grid {
         grid-template-columns: 1fr;
+    }
+
+    .resume-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-preview {
+        height: clamp(420px, 88vw, 560px);
     }
     
     .lightbox-content {
