@@ -693,6 +693,208 @@ html[data-theme='dark'] .toolbar-search:focus-within {
     gap: clamp(var(--space-4), 2.6vw, var(--space-5));
 }
 
+/* AI Lab: featured experiment card (visible) */
+.featured-experiment-wrap {
+    margin-bottom: clamp(var(--space-4), 2.6vw, var(--space-5));
+}
+
+.featured-experiment-card {
+    position: relative;
+    margin-bottom: 0;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.featured-experiment-media,
+.featured-experiment-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-normal) var(--ease-out),
+                transform var(--duration-slow) var(--ease-out);
+}
+
+.featured-experiment-media {
+    z-index: 0;
+    background-image: var(--featured-cover-image);
+    background-size: cover;
+    background-position: center top;
+    filter: blur(1.6px) saturate(0.96);
+    transform: scale(1.02);
+}
+
+.featured-experiment-overlay {
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(22, 28, 38, 0.06) 0%, rgba(22, 28, 38, 0.22) 56%, rgba(22, 28, 38, 0.42) 100%);
+}
+
+.featured-experiment-card.has-cover {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+.featured-experiment-card.has-cover .featured-experiment-media,
+.featured-experiment-card.has-cover .featured-experiment-overlay {
+    opacity: 1;
+}
+
+.featured-experiment-card.has-cover:hover .featured-experiment-media {
+    transform: scale(1.04);
+}
+
+.featured-experiment-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 45%, var(--text) 55%));
+    z-index: 3;
+}
+
+.featured-experiment-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border) 65%);
+    border-radius: 999px;
+    padding: 6px 12px;
+    margin-bottom: clamp(var(--space-3), 2.2vw, var(--space-4));
+    position: relative;
+    z-index: 2;
+}
+
+.featured-experiment-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 3.4vw, 40px);
+    font-weight: 600;
+    line-height: 1.08;
+    margin-bottom: 6px;
+    color: var(--text);
+    position: relative;
+    z-index: 2;
+}
+
+.featured-experiment-subtitle {
+    font-size: clamp(17px, 1.8vw, 20px);
+    color: var(--text);
+    margin-bottom: var(--space-4);
+    position: relative;
+    z-index: 2;
+}
+
+.featured-experiment-stats {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-4);
+    position: relative;
+    z-index: 2;
+}
+
+.featured-experiment-quote {
+    margin: 0 0 var(--space-5);
+    padding-left: 14px;
+    border-left: 3px solid color-mix(in srgb, var(--accent) 50%, var(--border) 50%);
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--text);
+    position: relative;
+    z-index: 2;
+}
+
+.featured-experiment-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: var(--space-5);
+    position: relative;
+    z-index: 2;
+}
+
+.featured-experiment-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border) 60%);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent-soft) 55%, transparent 45%);
+    transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.featured-experiment-action:hover,
+.featured-experiment-action:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    color: var(--accent-dark);
+}
+
+.featured-experiment-tag-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.featured-experiment-tag-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.featured-experiment-card.has-cover .featured-experiment-label {
+    color: #b8efe9;
+    background: rgba(10, 14, 22, 0.28);
+    border-color: rgba(184, 239, 233, 0.3);
+}
+
+.featured-experiment-card.has-cover .featured-experiment-title,
+.featured-experiment-card.has-cover .featured-experiment-subtitle,
+.featured-experiment-card.has-cover .featured-experiment-quote {
+    color: #f3f7ff;
+}
+
+.featured-experiment-card.has-cover .featured-experiment-stats,
+.featured-experiment-card.has-cover .featured-experiment-tag-label {
+    color: rgba(243, 247, 255, 0.78);
+}
+
+.featured-experiment-card.has-cover .featured-experiment-action {
+    color: #d4fff9;
+    border-color: rgba(212, 255, 249, 0.28);
+    background: rgba(10, 14, 22, 0.32);
+}
+
+.featured-experiment-card.has-cover .featured-experiment-action:hover,
+.featured-experiment-card.has-cover .featured-experiment-action:focus-visible {
+    color: #ecfffd;
+}
+
+.featured-experiment-card.has-cover .project-tags .tag-pill {
+    color: #f3f7ff;
+    border: 1px solid rgba(243, 247, 255, 0.2);
+    background: rgba(243, 247, 255, 0.1);
+}
+
 /* AI Lab: keep section structure, hide project cards visually */
 #experimentsList > .learning-card,
 #ideasList > .learning-card {
@@ -707,6 +909,26 @@ html[data-theme='dark'] .toolbar-search:focus-within {
 }
 
 @media (max-width: 768px) {
+    .featured-experiment-title {
+        font-size: 28px;
+    }
+
+    .featured-experiment-subtitle {
+        font-size: 16px;
+    }
+
+    .featured-experiment-stats {
+        font-size: 13px;
+    }
+
+    .featured-experiment-quote {
+        font-size: 20px;
+    }
+
+    .featured-experiment-actions {
+        gap: 8px;
+    }
+
     .tabs-nav {
         margin-left: calc(var(--container-padding) * -1);
         margin-right: calc(var(--container-padding) * -1);

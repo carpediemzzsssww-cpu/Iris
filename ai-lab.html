@@ -135,6 +135,7 @@
                 <p style="font-size: 15px; color: var(--muted); margin-bottom: 32px; max-width: 700px;">
                     Building AI-powered tools and autonomous agents for design, research, and productivity.
                 </p>
+                <div class="featured-experiment-wrap" id="featuredExperiment"></div>
                 <div class="learning-cards" id="experimentsList"></div>
             </div>
         </section>
@@ -152,8 +153,8 @@
     </main>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" type="button" aria-label="Close lightbox" onclick="closeLightbox()">×</button>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightboxTitle" tabindex="-1">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close lightbox" onclick="closeLightbox()">×</button>
         <div class="lightbox-content">
             <div class="lightbox-image" id="lightboxImage"></div>
             <div class="lightbox-info" id="lightboxInfo"></div>

@@ -3,97 +3,6 @@
 // ================================================
 document.documentElement.classList.add('js');
 
-// ================================================
-// Sample Data (In production, load from JSON files)
-// ================================================
-const projectsData = [
-    {
-        slug: "ai-design-assistant",
-        title: "AI Design Assistant",
-        oneLiner: "Intelligent tool that suggests design improvements in real-time",
-        featured: true,
-        role: "Product Designer",
-        time: "Fall 2024",
-        outcome: "34% faster design iterations, 5,000+ weekly users",
-        tags: ["AI/ML", "Product Design", "Prototyping"],
-        links: {
-            demo: "https://demo.example.com",
-            figma: "https://figma.com/@iris",
-            repo: "https://github.com/iris/ai-assistant"
-        }
-    },
-    {
-        slug: "healthcare-dashboard",
-        title: "Healthcare Analytics Dashboard",
-        oneLiner: "Data visualization system for medical professionals",
-        featured: true,
-        role: "UX Designer & Researcher",
-        time: "Summer 2024",
-        outcome: "Reduced diagnosis time by 22%, deployed in 3 hospitals",
-        tags: ["Data Viz", "Healthcare", "Research"],
-        links: {
-            figma: "https://figma.com/@iris"
-        }
-    },
-    {
-        slug: "student-scheduling",
-        title: "Smart Course Scheduler",
-        oneLiner: "ML-powered scheduling assistant for college students",
-        featured: true,
-        role: "Founder & Designer",
-        time: "Spring 2024",
-        outcome: "2,000+ students onboarded, 4.8/5 rating",
-        tags: ["Mobile", "AI/ML", "Startup"],
-        links: {
-            demo: "https://scheduler.example.com"
-        }
-    },
-    {
-        slug: "design-system",
-        title: "Component Design System",
-        oneLiner: "Scalable design system with accessibility guidelines",
-        featured: false,
-        role: "Design Lead",
-        time: "Winter 2024",
-        outcome: "Adopted by 6 product teams, 50% faster prototyping",
-        tags: ["Design Systems", "Figma", "Documentation"],
-        links: {
-            figma: "https://figma.com/@iris"
-        }
-    },
-    {
-        slug: "voice-interface",
-        title: "Voice Navigation Prototype",
-        oneLiner: "Hands-free interface for accessibility",
-        featured: false,
-        role: "Interaction Designer",
-        time: "Fall 2023",
-        outcome: "Improved accessibility score by 45%",
-        tags: ["Accessibility", "Voice UI", "Prototyping"],
-        links: {
-            demo: "https://voice.example.com"
-        }
-    },
-    {
-        slug: "community-platform",
-        title: "Student Community Hub",
-        oneLiner: "Social platform connecting students across campus",
-        featured: false,
-        role: "Product Designer",
-        time: "Spring 2023",
-        outcome: "800+ active users, 60% monthly retention",
-        tags: ["Social", "Mobile", "Community"],
-        links: {
-            demo: "https://community.example.com"
-        }
-    }
-];
-
-function getPrimaryProjectLink(project) {
-    if (!project || !project.links) return '#';
-    return project.links.demo || project.links.figma || project.links.repo || '#';
-}
-
 const themePreferenceKey = 'themePreference';
 const themeMediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 let manualThemePreference = getPreference(themePreferenceKey, null);
@@ -546,33 +455,6 @@ timelineItems.forEach((item, index) => {
 });
 
 // ================================================
-// Load Projects Grid
-// ================================================
-const projectsGrid = document.getElementById('projectsGrid');
-
-if (projectsGrid) {
-    const projectsToShow = projectsData.slice(0, 6);
-    
-    projectsGrid.innerHTML = projectsToShow.map(project => {
-        const projectLink = getPrimaryProjectLink(project);
-        const isExternal = /^https?:\/\//.test(projectLink);
-        const externalAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
-
-        return `
-        <a href="${projectLink}" class="project-card ${project.featured ? 'featured' : ''}" ${externalAttrs}>
-            <h3 class="project-title">${project.title}</h3>
-            <p class="project-oneliner">${project.oneLiner}</p>
-            <div class="project-tags">
-                ${project.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
-            </div>
-            <p class="project-outcome">${project.outcome}</p>
-            <span class="project-view">View →</span>
-        </a>
-    `;
-    }).join('');
-}
-
-// ================================================
 // Profile Card Hover Effects
 // ================================================
 const profileCards = document.querySelectorAll('.profile-card');
@@ -960,11 +842,17 @@ document.querySelectorAll('img[data-src]').forEach(img => {
 });
 
 // ================================================
-// Analytics Helper (placeholder for future integration)
+// Analytics Helper
 // ================================================
 function trackEvent(eventName, properties = {}) {
-    // Integration with analytics service
-    console.log('Event tracked:', eventName, properties);
+    if (!eventName) return;
+
+    window.dispatchEvent(new CustomEvent('portfolio:track', {
+        detail: {
+            eventName,
+            properties
+        }
+    }));
 }
 
 // Track page view
@@ -987,10 +875,3 @@ window.portfolioUtils = {
     getPreference,
     setupProjectCardMicroInteractions
 };
-
-// ================================================
-// Console Easter Egg
-// ================================================
-console.log('%c👋 Hi there!', 'font-size: 20px; font-weight: bold; color: #0F766E;');
-console.log('%cInterested in how this site was built?', 'font-size: 14px; color: #666;');
-console.log('%cCheck out the code: https://github.com/iriszhou/portfolio', 'font-size: 14px; color: #0F766E;');

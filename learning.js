@@ -495,44 +495,18 @@ Appetite-based planning forces hard tradeoffs upfront.`,
         }
     ],
 
-    tools: [
-        {
-            slug: "figma-to-code",
-            title: "Figma to React Component",
-            description: "Chrome extension that converts Figma designs to React code with Tailwind CSS",
-            whatItDoes: "Automatically generates production-ready React components from Figma frames, including responsive breakpoints and component variants.",
-            link: "https://github.com/iriszhou/figma-to-code",
-            type: "repo",
-            tags: ["Design", "Code", "Tools"]
-        },
-        {
-            slug: "user-flow-mapper",
-            title: "User Flow Mapper",
-            description: "Interactive tool to visualize and share user journeys",
-            whatItDoes: "Upload screenshots, connect them with decision points, and export as SVG or share via link. Built for design critiques and stakeholder presentations.",
-            link: "https://flowmapper.iriszhou.com",
-            type: "online",
-            tags: ["UX", "Visualization", "Tools"]
-        },
-        {
-            slug: "design-critique-checklist",
-            title: "Design Critique Checklist",
-            description: "Structured framework for giving better design feedback",
-            whatItDoes: "Step-by-step guide covering visual hierarchy, usability, accessibility, and emotional impact. Generates a shareable critique report.",
-            link: "https://critique.iriszhou.com",
-            type: "online",
-            tags: ["Design", "Feedback", "Tools"]
-        },
-        {
-            slug: "interview-prep-ai",
-            title: "PM Interview Prep AI",
-            description: "Practice product management interviews with AI feedback",
-            whatItDoes: "Simulates PM interviews with common questions, provides STAR-method feedback, and suggests improvements. Tracks your progress over time.",
-            link: "https://github.com/iriszhou/pm-interview-ai",
-            type: "repo",
-            tags: ["Career", "AI", "Tools"]
-        }
-    ]
+    tools: [],
+
+    // Empty template retained so future Mini Tools can reuse the same card style.
+    toolCardTemplate: {
+        slug: "template-tool",
+        title: "",
+        description: "",
+        whatItDoes: "",
+        link: "#",
+        type: "online",
+        tags: ["Tools"]
+    }
 };
 
 // ================================================

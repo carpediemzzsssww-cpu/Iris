@@ -47,7 +47,7 @@ const aiLabData = {
             prompt: "A tiny cozy house floating above the clouds, suspended by many colorful balloons in different sizes, bright rainbow palette, soft sunlight, dreamy sky, whimsical fairy-tale mood, fluffy clouds, gentle wind, magical atmosphere, cinematic composition, highly detailed, storybook style. --ar 3:4 --profile pxm2t38",
             model: "Midjourney v7",
             date: "2026-02-05",
-            image:"./assets/ai-lab/floating-cloud-house.png"
+            image: "./assets/ai-lab/floating-cloud-house.png"
         },
         {
             id: 6,
@@ -57,8 +57,31 @@ const aiLabData = {
             model: "Midjourney v7",
             date: "2026-02-09",
             image: "./assets/ai-lab/whimsical-park-walk.png"
+        },
+        {
+            id: 7,
+            title: "Love",
+            goal: "In a fixed stylistic framework, the interpretation and visualization of abstract concepts",
+            prompt: "love --chaos 5 --ar 2:3 --profile kktzzkb",
+            model: "Midjourney v7",
+            date: "2026-02-09",
+            image: "./assets/ai-lab/love.png"
         }
     ],
+
+    featuredExperiment: {
+        label: "Featured Project",
+        title: "DELAY THE END",
+        subtitle: "A Fan-made Narrative Strategy Web Game",
+        stats: "7 rounds · 5 endings · 18 playtesters · Bilingual",
+        quote: "\"You cannot stop what is written. You can only delay it.\"",
+        coverImage: "assets/project-covers/ai-lab/delay-the-end-cover.webp",
+        tags: ["Narrative Design", "Systems Design", "Monte Carlo", "Vanilla JS", "Bilingual"],
+        links: {
+            game: "https://carpediemzzsssww-cpu.github.io/delay-the-end/",
+            caseStudy: "https://delay-the-end-website.vercel.app"
+        }
+    },
 
     experiments: [
         {
@@ -196,10 +219,11 @@ const aiLabData = {
 // ================================================
 
 function renderGalleryItem(item) {
+    const thumbImage = item.thumbnail || item.image;
     return `
         <button class="gallery-item" type="button" data-gallery-id="${item.id}" aria-label="Open ${item.title} in lightbox">
             <div class="gallery-placeholder">
-                <img src="${item.image}" alt="${item.title}" class="gallery-img" loading="lazy" />
+                <img src="${thumbImage}" alt="${item.title}" class="gallery-img" loading="lazy" decoding="async" />
             </div>
             <div class="gallery-overlay">
                 <div class="gallery-overlay-title">${item.title}</div>
@@ -242,6 +266,34 @@ function renderExperimentCard(exp) {
     `;
 }
 
+function renderFeaturedExperimentCard(item) {
+    const hasCoverImage = Boolean(item.coverImage);
+    const safeCoverImage = hasCoverImage ? item.coverImage.replace(/'/g, '%27') : '';
+    const cardStyle = hasCoverImage ? `style="--featured-cover-image: url('${safeCoverImage}');"` : '';
+
+    return `
+        <article class="learning-card featured-experiment-card ${hasCoverImage ? 'has-cover' : ''}" ${cardStyle}>
+            <span class="featured-experiment-media" aria-hidden="true"></span>
+            <span class="featured-experiment-overlay" aria-hidden="true"></span>
+            <div class="featured-experiment-label">★ ${item.label}</div>
+            <h3 class="featured-experiment-title">${item.title}</h3>
+            <p class="featured-experiment-subtitle">${item.subtitle}</p>
+            <p class="featured-experiment-stats">${item.stats}</p>
+            <blockquote class="featured-experiment-quote">${item.quote}</blockquote>
+            <div class="featured-experiment-actions">
+                <a href="${item.links.game}" class="featured-experiment-action" target="_blank" rel="noopener noreferrer">Play the Game →</a>
+                <a href="${item.links.caseStudy}" class="featured-experiment-action" target="_blank" rel="noopener noreferrer">View Case Study →</a>
+            </div>
+            <div class="featured-experiment-tag-row">
+                <span class="featured-experiment-tag-label">Tags:</span>
+                <div class="project-tags">
+                    ${item.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
+                </div>
+            </div>
+        </article>
+    `;
+}
+
 function renderIdeaCard(idea) {
     return `
         <div class="learning-card" style="${idea.pinned ? 'border: 2px solid var(--accent);' : ''}">
@@ -265,20 +317,69 @@ function renderIdeaCard(idea) {
 // Lightbox Functions
 // ================================================
 
+let lastFocusedElement = null;
+
+function getLightboxFocusableElements(lightbox) {
+    if (!lightbox) return [];
+    const selectors = [
+        'a[href]',
+        'button:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])'
+    ].join(', ');
+
+    return Array.from(lightbox.querySelectorAll(selectors)).filter(element => {
+        if (element.getAttribute('aria-hidden') === 'true') return false;
+        return element.getClientRects().length > 0;
+    });
+}
+
+function handleLightboxTabKey(event) {
+    if (event.key !== 'Tab') return;
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox || !lightbox.classList.contains('active')) return;
+
+    const focusable = getLightboxFocusableElements(lightbox);
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const activeElement = document.activeElement;
+
+    if (event.shiftKey) {
+        if (activeElement === first || !lightbox.contains(activeElement)) {
+            event.preventDefault();
+            last.focus();
+        }
+        return;
+    }
+
+    if (activeElement === last) {
+        event.preventDefault();
+        first.focus();
+    }
+}
+
 function openLightbox(itemId) {
     const item = aiLabData.gallery.find(g => g.id === itemId);
     if (!item) return;
+    const fullImage = item.fullImage || item.image || item.thumbnail;
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxInfo = document.getElementById('lightboxInfo');
+    if (!lightbox || !lightboxImage || !lightboxInfo) return;
+
+    lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
     lightboxImage.innerHTML = `
-  <img src="${item.image}" alt="${item.title}" class="lightbox-img" />
+  <img src="${fullImage}" alt="${item.title}" class="lightbox-img" />
 `;
 
     lightboxInfo.innerHTML = `
-        <h3 style="font-family: var(--font-display); font-size: 24px; margin-bottom: 12px;">${item.title}</h3>
+        <h3 id="lightboxTitle" style="font-family: var(--font-display); font-size: 24px; margin-bottom: 12px;">${item.title}</h3>
         <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">
             <strong>Model:</strong> ${item.model}<br>
             <strong>Date:</strong> ${item.date}
@@ -299,13 +400,30 @@ function openLightbox(itemId) {
     `;
 
     lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.removeEventListener('keydown', handleLightboxTabKey);
+    document.addEventListener('keydown', handleLightboxTabKey);
+
+    const closeButton = document.getElementById('lightboxClose');
+    if (closeButton) {
+        closeButton.focus();
+    }
 }
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
+    if (!lightbox || !lightbox.classList.contains('active')) return;
+
     lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.removeEventListener('keydown', handleLightboxTabKey);
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+    }
+    lastFocusedElement = null;
 }
 
 function copyPromptFromLightbox(text, button) {
@@ -324,14 +442,15 @@ function copyPromptFromLightbox(text, button) {
 // Close lightbox on background click
 document.addEventListener('click', (e) => {
     const lightbox = document.getElementById('lightbox');
-    if (e.target === lightbox) {
+    if (lightbox && lightbox.classList.contains('active') && e.target === lightbox) {
         closeLightbox();
     }
 });
 
 // Close lightbox on Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+    const lightbox = document.getElementById('lightbox');
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
         closeLightbox();
     }
 });
@@ -356,6 +475,11 @@ function initAILabPage() {
     }
     
     // Render experiments
+    const featuredExperiment = document.getElementById('featuredExperiment');
+    if (featuredExperiment) {
+        featuredExperiment.innerHTML = renderFeaturedExperimentCard(aiLabData.featuredExperiment);
+    }
+
     document.getElementById('experimentsList').innerHTML = aiLabData.experiments.map(renderExperimentCard).join('');
     
     // Render ideas (pinned first, then by date)
