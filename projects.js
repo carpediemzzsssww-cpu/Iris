@@ -88,6 +88,21 @@ const allProjects = [
         }
     },
     {
+        slug: "chrysalis",
+        title: "Chrysalis",
+        oneLiner: "A butterfly-themed mobile journaling PWA built for daily reflection — private, local-first, and AI-powered",
+        featured: false,
+        coverImage: "assets/project-covers/projects/chrysalis-cover.webp",
+        role: "Solo Developer",
+        time: "2026",
+        outcome: "Next.js 14 + TypeScript · local-first storage · AI summaries (DeepSeek / OpenAI / Anthropic) · PWA installable on iPhone",
+        tags: ["AI/ML", "Prototyping", "Product Design"],
+        links: {
+            demo: "https://chrysalis-pink.vercel.app",
+            repo: "https://github.com/carpediemzzsssww-cpu/chrysalis"
+        }
+    },
+    {
         slug: "ai-agent-industry-report",
         title: "AI Agent Industry Report",
         oneLiner: "2025–2026 AI Agent industry landscape: players, use cases, and where it's heading",
