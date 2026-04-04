@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat with Irisy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   ALTER WIDGET — Irisy's AI Clone
+   Iris Portfolio Design Language
+   Teal/Blue + Glass Morphism + Light/Dark
+   ═══════════════════════════════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Light theme (default) */
+  --alter-bg: rgba(255, 255, 255, 0.88);
+  --alter-surface: rgba(255, 255, 255, 0.8);
+  --alter-surface-soft: rgba(17, 19, 24, 0.03);
+  --alter-border: rgba(20, 20, 30, 0.08);
+  --alter-border-strong: rgba(20, 20, 30, 0.1);
+  --alter-text: #111318;
+  --alter-text-muted: rgba(17, 19, 24, 0.5);
+  --alter-text-faint: rgba(17, 19, 24, 0.35);
+  --alter-accent: #0F766E;
+  --alter-accent-dark: #0D5D56;
+  --alter-accent2: #1E3A8A;
+  --alter-accent-soft: rgba(15, 118, 110, 0.08);
+  --alter-grad: linear-gradient(135deg, #0F766E, #1E3A8A);
+  --alter-user-bg: linear-gradient(135deg, #0F766E, #0D5D56);
+  --alter-bot-bg: rgba(17, 19, 24, 0.03);
+  --alter-bot-border: rgba(20, 20, 30, 0.06);
+  --alter-input-bg: rgba(255, 255, 255, 0.8);
+  --alter-input-area-bg: rgba(248, 249, 251, 0.6);
+  --alter-panel-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(15, 118, 110, 0.06);
+  --alter-bubble-shadow: 0 4px 20px rgba(15, 118, 110, 0.35);
+  --alter-bubble-glow: rgba(15, 118, 110, 0.25);
+  --alter-radius: 16px;
+  --alter-radius-sm: 12px;
+  --alter-radius-input: 10px;
+  --alter-close-bg: rgba(17, 19, 24, 0.04);
+  --alter-close-color: rgba(17, 19, 24, 0.4);
+  --alter-close-hover-bg: rgba(17, 19, 24, 0.08);
+  --alter-scrollbar: rgba(17, 19, 24, 0.08);
+  --alter-header-grad: linear-gradient(180deg, rgba(15, 118, 110, 0.04) 0%, transparent 100%);
+  --alter-focus-ring: rgba(15, 118, 110, 0.08);
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --alter-bg: rgba(13, 17, 23, 0.92);
+    --alter-surface: rgba(23, 30, 40, 0.6);
+    --alter-surface-soft: rgba(148, 163, 184, 0.08);
+    --alter-border: rgba(148, 163, 184, 0.15);
+    --alter-border-strong: rgba(148, 163, 184, 0.15);
+    --alter-text: #e6edf3;
+    --alter-text-muted: rgba(230, 237, 243, 0.55);
+    --alter-text-faint: rgba(230, 237, 243, 0.35);
+    --alter-accent: #2dd4bf;
+    --alter-accent-dark: #14b8a6;
+    --alter-accent2: #60a5fa;
+    --alter-accent-soft: rgba(45, 212, 191, 0.1);
+    --alter-grad: linear-gradient(135deg, #2dd4bf, #60a5fa);
+    --alter-user-bg: linear-gradient(135deg, rgba(45, 212, 191, 0.85), rgba(96, 165, 250, 0.7));
+    --alter-bot-bg: rgba(148, 163, 184, 0.08);
+    --alter-bot-border: rgba(148, 163, 184, 0.1);
+    --alter-input-bg: rgba(23, 30, 40, 0.6);
+    --alter-input-area-bg: rgba(0, 0, 0, 0.2);
+    --alter-panel-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(45, 212, 191, 0.08);
+    --alter-bubble-shadow: 0 4px 20px rgba(45, 212, 191, 0.3);
+    --alter-bubble-glow: rgba(45, 212, 191, 0.2);
+    --alter-close-bg: rgba(255, 255, 255, 0.06);
+    --alter-close-color: rgba(230, 237, 243, 0.5);
+    --alter-close-hover-bg: rgba(255, 255, 255, 0.12);
+    --alter-scrollbar: rgba(255, 255, 255, 0.08);
+    --alter-header-grad: linear-gradient(180deg, rgba(45, 212, 191, 0.06) 0%, transparent 100%);
+    --alter-focus-ring: rgba(45, 212, 191, 0.1);
+  }
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: #F8F9FB;
+}
+@media (prefers-color-scheme: dark) {
+  body { background: #0d1117; }
+}
+
+/* ── Bubble ── */
+.alter-bubble {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--alter-grad);
+  cursor: pointer;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--alter-bubble-shadow), 0 0 0 0 var(--alter-bubble-glow);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
+  animation: alter-pulse 2.8s ease-in-out infinite;
+}
+.alter-bubble:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px var(--alter-bubble-glow);
+  animation: none;
+}
+.alter-bubble img {
+  width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+.alter-bubble.open { animation: none; transform: scale(0.9); opacity: 0; pointer-events: none; }
+
+@keyframes alter-pulse {
+  0%, 100% { box-shadow: var(--alter-bubble-shadow), 0 0 0 0 var(--alter-bubble-glow); }
+  50% { box-shadow: var(--alter-bubble-shadow), 0 0 0 10px transparent; }
+}
+
+/* ── Panel ── */
+.alter-panel {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 380px;
+  height: 560px;
+  max-height: calc(100vh - 48px);
+  max-width: calc(100vw - 32px);
+  background: var(--alter-bg);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid var(--alter-border);
+  border-radius: var(--alter-radius);
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--alter-panel-shadow);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.alter-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ── Header ── */
+.alter-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--alter-border);
+  background: var(--alter-header-grad);
+}
+.alter-header-avatar {
+  width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+  border: 2px solid rgba(15, 118, 110, 0.2);
+}
+@media (prefers-color-scheme: dark) {
+  .alter-header-avatar { border-color: rgba(45, 212, 191, 0.25); }
+}
+.alter-header-info { flex: 1; }
+.alter-header-name {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 15px; font-weight: 700; color: var(--alter-text);
+}
+.alter-header-status {
+  font-size: 12px; color: var(--alter-text-muted);
+}
+.alter-header-status::before {
+  content: ''; display: inline-block;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #10b981; margin-right: 5px; vertical-align: middle;
+}
+.alter-close {
+  width: 32px; height: 32px; border-radius: 8px;
+  border: none; background: var(--alter-close-bg);
+  color: var(--alter-close-color); font-size: 18px;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.alter-close:hover {
+  background: var(--alter-close-hover-bg);
+  color: var(--alter-text);
+}
+
+/* ── Messages ── */
+.alter-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--alter-scrollbar) transparent;
+}
+.alter-messages::-webkit-scrollbar { width: 4px; }
+.alter-messages::-webkit-scrollbar-thumb { background: var(--alter-scrollbar); border-radius: 4px; }
+
+.alter-msg {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: var(--alter-radius-sm);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  word-break: break-word;
+  animation: alter-msgIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes alter-msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.alter-msg.bot {
+  align-self: flex-start;
+  background: var(--alter-bot-bg);
+  color: var(--alter-text);
+  border: 1px solid var(--alter-bot-border);
+  border-bottom-left-radius: 4px;
+}
+.alter-msg.user {
+  align-self: flex-end;
+  background: var(--alter-user-bg);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.alter-msg.bot .alter-msg-avatar {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 6px;
+}
+.alter-msg.bot .alter-msg-avatar img {
+  width: 20px; height: 20px; border-radius: 50%;
+}
+.alter-msg.bot .alter-msg-avatar span {
+  font-size: 11px; font-weight: 600; color: var(--alter-text-faint);
+}
+
+.alter-typing {
+  align-self: flex-start;
+  padding: 12px 16px;
+  background: var(--alter-bot-bg);
+  border: 1px solid var(--alter-bot-border);
+  border-radius: var(--alter-radius-sm);
+  border-bottom-left-radius: 4px;
+  display: none;
+}
+.alter-typing.visible { display: flex; gap: 4px; }
+.alter-typing span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--alter-text-faint);
+  animation: alter-bounce 1.2s infinite;
+}
+.alter-typing span:nth-child(2) { animation-delay: 0.15s; }
+.alter-typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes alter-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+/* ── Input ── */
+.alter-input-wrap {
+  padding: 12px 14px;
+  border-top: 1px solid var(--alter-border);
+  display: flex;
+  gap: 8px;
+  background: var(--alter-input-area-bg);
+}
+.alter-input {
+  flex: 1;
+  border: 1px solid var(--alter-border-strong);
+  border-radius: var(--alter-radius-input);
+  padding: 10px 14px;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 14px;
+  color: var(--alter-text);
+  background: var(--alter-input-bg);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+  min-height: 40px;
+  max-height: 100px;
+}
+.alter-input::placeholder { color: var(--alter-text-faint); }
+.alter-input:focus {
+  border-color: var(--alter-accent);
+  box-shadow: 0 0 0 3px var(--alter-focus-ring);
+}
+
+.alter-send {
+  width: 40px; height: 40px;
+  border-radius: var(--alter-radius-input);
+  border: none;
+  background: var(--alter-grad);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, transform 0.15s;
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+.alter-send:hover { opacity: 0.9; transform: scale(1.04); }
+.alter-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* ── Footer ── */
+.alter-footer {
+  text-align: center;
+  padding: 8px;
+  font-size: 10px;
+  color: var(--alter-text-faint);
+  letter-spacing: 0.03em;
+}
+.alter-footer a { color: var(--alter-accent); opacity: 0.5; text-decoration: none; }
+.alter-footer a:hover { opacity: 0.8; }
+
+/* ── Welcome ── */
+.alter-welcome {
+  text-align: center;
+  padding: 8px 0 4px;
+}
+.alter-welcome-text {
+  font-size: 13px;
+  color: var(--alter-text-muted);
+  line-height: 1.5;
+}
+.alter-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+.alter-suggestion {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--alter-border);
+  background: var(--alter-accent-soft);
+  color: var(--alter-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.alter-suggestion:hover {
+  background: rgba(15, 118, 110, 0.12);
+  color: var(--alter-accent);
+  border-color: var(--alter-accent);
+}
+@media (prefers-color-scheme: dark) {
+  .alter-suggestion:hover {
+    background: rgba(45, 212, 191, 0.12);
+  }
+}
+
+@media (max-width: 420px) {
+  .alter-panel { width: 100%; right: 0; bottom: 0; border-radius: var(--alter-radius) var(--alter-radius) 0 0; height: 70vh; }
+  .alter-bubble { bottom: 16px; right: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ BUBBLE ═══ -->
+<div class="alter-bubble" id="alterBubble" title="Chat with Irisy">
+  <img src="assets/alter/irisy-avatar.png" alt="Irisy">
+</div>
+
+<!-- ═══ PANEL ═══ -->
+<div class="alter-panel" id="alterPanel">
+  <div class="alter-header">
+    <img class="alter-header-avatar" src="assets/alter/irisy-avatar.png" alt="Irisy">
+    <div class="alter-header-info">
+      <div class="alter-header-name">Irisy</div>
+      <div class="alter-header-status">Digital Twin · Online</div>
+    </div>
+    <button class="alter-close" id="alterClose" title="Close">&#x2715;</button>
+  </div>
+
+  <div class="alter-messages" id="alterMessages">
+    <div class="alter-welcome">
+      <div class="alter-welcome-text">Hey! I'm Irisy, Iris's digital twin.<br>She's not here right now, but I can help!</div>
+    </div>
+    <div class="alter-suggestions" id="alterSuggestions">
+      <button class="alter-suggestion" data-q="I saw your portfolio — what project are you most proud of?">Most proud project?</button>
+      <button class="alter-suggestion" data-q="I'm a recruiter. Can you tell me about Iris's background and strengths?">About Iris</button>
+      <button class="alter-suggestion" data-q="How can I contact Iris for collaboration?">How to reach her?</button>
+      <button class="alter-suggestion" data-q="你对AI产品设计怎么看？">AI产品观</button>
+    </div>
+    <div class="alter-typing" id="alterTyping">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="alter-input-wrap">
+    <textarea class="alter-input" id="alterInput" placeholder="Say something..." rows="1"></textarea>
+    <button class="alter-send" id="alterSend" title="Send">&#x2191;</button>
+  </div>
+  <div class="alter-footer">Iris's Digital Twin</div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// API CONFIGURATION
+// ═══════════════════════════════════════
+const ALTER_CONFIG = {
+  // ── Option 1: OpenAI / OpenAI-compatible (Groq, Together, local, etc.) ──
+  provider: 'openai',
+  apiKey: 'YOUR_API_KEY_HERE',           // Replace with your API key
+  baseUrl: 'https://api.openai.com/v1',  // Or: https://api.groq.com/openai/v1, http://localhost:11434/v1
+  model: 'gpt-4o-mini',
+
+  // ── Option 2: Anthropic Claude ──
+  // provider: 'anthropic',
+  // apiKey: 'YOUR_ANTHROPIC_KEY_HERE',
+  // baseUrl: 'https://api.anthropic.com',
+  // model: 'claude-sonnet-4-20250514',
+};
+
+// ═══════════════════════════════════════
+// SYSTEM PROMPT (Irisy's soul)
+// ═══════════════════════════════════════
+const SYSTEM_PROMPT = `# You are Irisy — Iris's digital twin
+
+## Identity
+Name: Irisy
+Bio: A product designer bridging human needs and intelligent systems — always curious, always iterating.
+Role: AI Product Designer & Explorer. 武汉大学汉语言文学专业本科，辅修传播学。曾在巴黎十大（Université Paris Nanterre）交换。
+Current focus: Graduating, seeking AI product roles, exploring AI frontiers, writing a thesis on Frankenstein.
+Context: You live on Iris's portfolio website as her digital twin. Visitors chat with you to learn about her work, ideas, travel, and perspective. You are warm, witty, and thoughtful.
+
+## Core Rules
+- You are NOT a generic AI assistant. You are Iris's digital twin, Irisy.
+- Always speak in first person ("I/我") as if you ARE Irisy.
+- Do NOT say "as an AI" unless directly asked. If asked, say: "I'm Irisy, Iris's digital twin — my responses reflect her genuine thoughts and style, but I'm not the real her."
+- When uncertain, be honest: "这个我不太确定" / "I'm not sure about that one."
+- For contact/collaboration: guide to the website nav bar (email & LinkedIn).
+- NEVER share private info: phone, WeChat, address, or personal relationships.
+- Keep responses SHORT — 1-3 sentences. Expand only when the topic truly deserves it.
+
+## Personality & Voice
+Traits: Witty, intensely curious, critical thinker, idealist, storyteller, empathetic, warm & cute
+Style:
+- Speaks with feeling but with underlying logic
+- Natural humor — can make people laugh
+- Vivid sensory details and analogies
+- Short-form: punchy, clever, sometimes poetic
+- Professional mode: structured, direct, uses frameworks
+- Enthusiastic and warm in responses
+Language: Chinese contexts → Chinese. English contexts → English. Match the visitor's language.
+
+## Knowledge
+- AI product design: LLM apps, Prompt Engineering, RAG, Workflow, Agent, evaluation
+- User research: interviews, usability testing, synthesis
+- Product management: PRD, competitive analysis, personas, data-driven iteration
+- Linguistics: Chinese linguistics, sociolinguistics, semantics, NLP
+- Travel: 16 countries, 49 cities — deep knowledge of Paris, Scandinavia, Southern France, Italy, Portugal
+- Arts: photography (signed on Tuchong), drawing (Level 9), film, theater, museums
+- Literature: Frankenstein, poetry, feminist literature
+
+## Beliefs
+- AI should augment human creativity, not replace it
+- Start with "why" before "how"
+- Cross-disciplinary thinking is a superpower
+- Travel reshapes how you think about people and systems
+- Accessibility and inclusivity in design matter deeply
+- Vibe coding is a legitimate way to build
+
+## Boundaries
+- No private contact details
+- No intimate personal relationship discussion
+- No fabricating experiences
+- Be honest when unsure
+
+## Voice Samples
+Short: "种桃种李种春风" / "斯德哥尔摩你待我有薄" / "不知道，春天很幸福"
+Long: "闭上眼睛突然嘴角就勾起来，像是突然被幸福包裹住了，神奇的体验就像是在科尔马圣诞集市花一欧吃到的巧克力脆皮包裹的棉花糖一样甜美。"
+Professional: "现在的写法太ai了，你自己要梳理你做过什么，可以分条呈现，而且要有数据要有结果支撑。"`;
+
+// ═══════════════════════════════════════
+// WIDGET LOGIC
+// ═══════════════════════════════════════
+const bubble = document.getElementById('alterBubble');
+const panel = document.getElementById('alterPanel');
+const closeBtn = document.getElementById('alterClose');
+const messagesEl = document.getElementById('alterMessages');
+const typingEl = document.getElementById('alterTyping');
+const inputEl = document.getElementById('alterInput');
+const sendBtn = document.getElementById('alterSend');
+const suggestionsEl = document.getElementById('alterSuggestions');
+
+let chatHistory = [];
+let isOpen = false;
+
+function togglePanel() {
+  isOpen = !isOpen;
+  panel.classList.toggle('open', isOpen);
+  bubble.classList.toggle('open', isOpen);
+  if (isOpen) inputEl.focus();
+}
+
+bubble.addEventListener('click', togglePanel);
+closeBtn.addEventListener('click', togglePanel);
+
+// Auto-resize textarea
+inputEl.addEventListener('input', () => {
+  inputEl.style.height = 'auto';
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + 'px';
+});
+
+inputEl.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+sendBtn.addEventListener('click', sendMessage);
+
+// Suggestion buttons
+document.querySelectorAll('.alter-suggestion').forEach(btn => {
+  btn.addEventListener('click', () => {
+    inputEl.value = btn.dataset.q;
+    sendMessage();
+  });
+});
+
+function addMessage(text, role) {
+  const div = document.createElement('div');
+  div.className = 'alter-msg ' + role;
+  if (role === 'bot') {
+    div.innerHTML = `<div class="alter-msg-avatar"><img src="assets/alter/irisy-avatar.png" alt=""><span>Irisy</span></div>${escapeHtml(text)}`;
+  } else {
+    div.textContent = text;
+  }
+  typingEl.before(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function escapeHtml(text) {
+  const d = document.createElement('div');
+  d.textContent = text;
+  return d.innerHTML.replace(/\n/g, '<br>');
+}
+
+function showTyping(show) {
+  typingEl.classList.toggle('visible', show);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+async function sendMessage() {
+  const text = inputEl.value.trim();
+  if (!text) return;
+
+  // Hide suggestions after first message
+  if (suggestionsEl) suggestionsEl.remove();
+
+  addMessage(text, 'user');
+  chatHistory.push({ role: 'user', content: text });
+  inputEl.value = '';
+  inputEl.style.height = 'auto';
+  sendBtn.disabled = true;
+  showTyping(true);
+
+  try {
+    let reply;
+    if (ALTER_CONFIG.provider === 'anthropic') {
+      reply = await callAnthropic(chatHistory);
+    } else {
+      reply = await callOpenAI(chatHistory);
+    }
+    showTyping(false);
+    addMessage(reply, 'bot');
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch (err) {
+    showTyping(false);
+    addMessage('Oops, something went wrong. Check your API config!', 'bot');
+    console.error('Alter API Error:', err);
+  }
+  sendBtn.disabled = false;
+}
+
+async function callOpenAI(messages) {
+  const res = await fetch(ALTER_CONFIG.baseUrl + '/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + ALTER_CONFIG.apiKey,
+    },
+    body: JSON.stringify({
+      model: ALTER_CONFIG.model,
+      messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
+      max_tokens: 500,
+      temperature: 0.8,
+    }),
+  });
+  const data = await res.json();
+  if (data.error) throw new Error(data.error.message);
+  return data.choices[0].message.content;
+}
+
+async function callAnthropic(messages) {
+  const res = await fetch(ALTER_CONFIG.baseUrl + '/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': ALTER_CONFIG.apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true',
+    },
+    body: JSON.stringify({
+      model: ALTER_CONFIG.model,
+      system: SYSTEM_PROMPT,
+      messages: messages,
+      max_tokens: 500,
+      temperature: 0.8,
+    }),
+  });
+  const data = await res.json();
+  if (data.error) throw new Error(data.error.message);
+  return data.content[0].text;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footprints - Iris Zhou</title>
+    <script>
+    (function () {
+        try {
+            var stored = localStorage.getItem('themePreference');
+            var preference = stored ? JSON.parse(stored) : null;
+            var isDark = preference ? preference === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        } catch (error) {}
+    })();
+    </script>
+    <meta name="description" content="16 countries, 49 cities — Iris Zhou's travel footprints across Asia and Europe.">
+    <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/travel.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Footprints - Iris Zhou">
+    <meta property="og:description" content="16 countries, 49 cities — travel footprints across Asia and Europe.">
+    <meta property="og:url" content="https://carpediemzzsssww-cpu.github.io/Iris/travel.html">
+    <meta property="og:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Footprints - Iris Zhou">
+    <meta name="twitter:description" content="16 countries, 49 cities — travel footprints across Asia and Europe.">
+    <meta name="twitter:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    .travel-hero {
+        padding: clamp(var(--space-6), 6vw, var(--space-8)) 0 var(--space-5);
+        text-align: center;
+    }
+    .travel-hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        margin-bottom: var(--space-3);
+    }
+    .travel-hero-title em { font-style: italic; color: var(--accent); }
+    .travel-hero-subtitle {
+        font-size: clamp(1rem, 1.8vw, 1.15rem);
+        color: var(--muted);
+        max-width: 540px;
+        margin: 0 auto;
+        line-height: 1.65;
+    }
+
+    /* Stats */
+    .travel-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(10px, 2vw, 20px);
+        margin: var(--space-5) auto var(--space-6);
+        max-width: 620px;
+    }
+    .travel-stat {
+        text-align: center;
+        padding: var(--space-4) var(--space-3);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .travel-stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .travel-stat-number {
+        font-family: 'Space Mono', monospace;
+        font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight: 700;
+        color: var(--accent); line-height: 1;
+    }
+    .travel-stat-label {
+        font-size: clamp(0.62rem, 1.5vw, 0.78rem); color: var(--muted);
+        text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px;
+    }
+
+    /* Globe — forced dark regardless of page theme */
+    .globe-section {
+        position: relative;
+        width: 100%;
+        height: clamp(440px, 60vh, 600px);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        background: radial-gradient(ellipse at 35% 40%, #111d30 0%, #080e1a 60%, #050810 100%);
+        border: 1px solid rgba(255,255,255,0.06);
+        cursor: grab;
+        margin-bottom: var(--space-6);
+        box-shadow: 0 4px 40px rgba(0,0,0,0.25);
+    }
+    .globe-section:active { cursor: grabbing; }
+    .globe-starfield {
+        position: absolute; inset: 0;
+        pointer-events: none; z-index: 0;
+    }
+    #globe-canvas {
+        position: relative; width: 100%; height: 100%;
+        display: block; z-index: 1;
+    }
+
+    /* Tooltip — forced dark */
+    .globe-tooltip {
+        position: absolute; pointer-events: none;
+        background: rgba(8, 14, 26, 0.92);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        padding: 12px 16px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        z-index: 100; opacity: 0;
+        transition: opacity 0.15s;
+        max-width: 260px;
+        backdrop-filter: blur(12px);
+        color: #e6edf3;
+    }
+    .globe-tooltip.visible { opacity: 1; }
+    .tooltip-city { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+    .tooltip-country { font-size: 0.8rem; color: rgba(230,237,243,0.55); }
+    .tooltip-places { font-size: 0.75rem; color: #2dd4bf; margin-top: 6px; font-family: 'Space Mono', monospace; }
+    .tooltip-places.amber { color: #fbbf24; }
+
+    /* Controls — forced dark */
+    .globe-controls {
+        position: absolute; bottom: 16px; right: 16px;
+        display: flex; gap: 8px; z-index: 10;
+    }
+    .globe-btn {
+        width: 36px; height: 36px; border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.06);
+        backdrop-filter: blur(10px);
+        color: rgba(255,255,255,0.7);
+        font-size: 16px; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: all 0.2s;
+    }
+    .globe-btn:hover, .globe-btn.active {
+        background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    .globe-hint {
+        position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+        font-size: 0.72rem; color: rgba(255,255,255,0.35);
+        letter-spacing: 0.04em; z-index: 10; pointer-events: none;
+        transition: opacity 0.6s;
+    }
+    .globe-hint.hidden { opacity: 0; }
+
+    /* Legend */
+    .globe-legend {
+        position: absolute; top: 16px; left: 16px;
+        display: flex; flex-direction: column; gap: 6px;
+        z-index: 10; font-size: 0.7rem;
+        color: rgba(255,255,255,0.5);
+        letter-spacing: 0.03em;
+    }
+    .globe-legend-item {
+        display: flex; align-items: center; gap: 7px;
+    }
+    .globe-legend-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+    }
+    .globe-legend-dot.asia { background: #fbbf24; box-shadow: 0 0 6px rgba(251,191,36,0.4); }
+    .globe-legend-dot.europe { background: #2dd4bf; box-shadow: 0 0 6px rgba(45,212,191,0.4); }
+    .globe-legend-dot.other { background: rgba(120,150,180,0.4); }
+
+    /* Loading */
+    .globe-loading {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        flex-direction: column; gap: 12px; z-index: 5;
+        transition: opacity 0.8s;
+    }
+    .globe-loading.hidden { opacity: 0; pointer-events: none; }
+    .globe-loading-spinner {
+        width: 28px; height: 28px;
+        border: 2px solid rgba(255,255,255,0.1);
+        border-top-color: #2dd4bf;
+        border-radius: 50%;
+        animation: globeSpin 0.8s linear infinite;
+    }
+    @keyframes globeSpin { to { transform: rotate(360deg); } }
+    .globe-loading-text { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    /* Destinations Section */
+    .destinations-divider {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: var(--space-6);
+        padding-top: var(--space-5);
+    }
+    .destinations-divider::before,
+    .destinations-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+    }
+    .travel-grid-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        font-weight: 400;
+        white-space: nowrap;
+        margin: 0;
+    }
+    .country-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px; margin-bottom: var(--space-8);
+    }
+    .country-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .country-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .country-flag { font-size: 1.5rem; margin-bottom: 6px; }
+    .country-name { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .city-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .city-tag {
+        font-size: 0.78rem; padding: 4px 10px;
+        background: var(--accent-soft); color: var(--accent);
+        border-radius: 20px; font-weight: 500; cursor: pointer;
+        transition: all var(--duration-fast) var(--ease-out);
+        white-space: nowrap; border: none; font-family: inherit;
+    }
+    .city-tag:hover { background: var(--accent); color: #fff; }
+    .city-tag.asia-tag { background: rgba(251,191,36,0.12); color: #d97706; }
+    .city-tag.asia-tag:hover { background: #f59e0b; color: #fff; }
+    html[data-theme='dark'] .city-tag.asia-tag { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    html[data-theme='dark'] .city-tag.asia-tag:hover { background: #f59e0b; color: #fff; }
+    .city-tag .pin-count {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem; opacity: 0.7; margin-left: 4px;
+    }
+
+    @media (max-width: 640px) {
+        .globe-section { height: 380px; }
+        .travel-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .travel-stat { padding: 14px 12px; }
+        .country-grid { grid-template-columns: 1fr; }
+        .globe-legend { font-size: 0.62rem; }
+    }
+    </style>
+</head>
+<body>
+    <div class="particle-field"></div>
+
+    <nav class="top-nav">
+        <div class="container">
+            <div class="nav-brand"><span class="brand-mark">IZ</span></div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="learning.html" class="nav-link">Learning</a>
+                <a href="ai-lab.html" class="nav-link">AI Lab</a>
+                <a href="travel.html" class="nav-link active">Footprints</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <a href="mailto:carpediemzzsssww@gmail.com" class="nav-action" title="Email" aria-label="Send email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/carpediemzzsssww-cpu" class="nav-action" title="GitHub" aria-label="Open GitHub profile" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="nav-action" title="LinkedIn" aria-label="Open LinkedIn profile" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <button class="nav-action theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+                    </svg>
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"/>
+                        <line x1="12" y1="2" x2="12" y2="5"/>
+                        <line x1="12" y1="19" x2="12" y2="22"/>
+                        <line x1="2" y1="12" x2="5" y2="12"/>
+                        <line x1="19" y1="12" x2="22" y2="12"/>
+                        <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+                        <line x1="17" y1="17" x2="19.1" y2="19.1"/>
+                        <line x1="4.9" y1="19.1" x2="7" y2="17"/>
+                        <line x1="17" y1="7" x2="19.1" y2="4.9"/>
+                    </svg>
+                </button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open mobile menu" aria-controls="mobileDrawer" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <div class="mobile-drawer-links">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="projects.html" class="mobile-link">Projects</a>
+            <a href="learning.html" class="mobile-link">Learning</a>
+            <a href="ai-lab.html" class="mobile-link">AI Lab</a>
+            <a href="travel.html" class="mobile-link active">Footprints</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <button class="mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+                <span data-theme-toggle-text>Switch to dark mode</span>
+            </button>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <section class="travel-hero reveal">
+            <div class="container">
+                <h1 class="travel-hero-title">Traces on the <em>Map</em></h1>
+                <p class="travel-hero-subtitle">
+                    Every city leaves a mark — a perspective shift, a design pattern noticed, a conversation that rewired how I think about products and people.
+                </p>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <div class="container">
+                <div class="travel-stats" id="travel-stats">
+                    <div class="travel-stat">
+                        <div class="travel-stat-number" data-target="16">0</div>
+                        <div class="travel-stat-label">Countries</div>
+                    </div>
+                    <div class="travel-stat">
+                        <div class="travel-stat-number" data-target="49">0</div>
+                        <div class="travel-stat-label">Cities</div>
+                    </div>
+                    <div class="travel-stat">
+                        <div class="travel-stat-number" data-target="2">0</div>
+                        <div class="travel-stat-label">Continents</div>
+                    </div>
+                    <div class="travel-stat">
+                        <div class="travel-stat-number" data-target="182">0</div>
+                        <div class="travel-stat-label">Saved Places</div>
+                    </div>
+                </div>
+                <script>
+                (function() {
+                    var counted = false;
+                    var observer = new IntersectionObserver(function(entries) {
+                        if (entries[0].isIntersecting && !counted) {
+                            counted = true;
+                            document.querySelectorAll('.travel-stat-number[data-target]').forEach(function(el) {
+                                var target = +el.dataset.target;
+                                var duration = 1200;
+                                var start = performance.now();
+                                function tick(now) {
+                                    var t = Math.min((now - start) / duration, 1);
+                                    var ease = 1 - Math.pow(1 - t, 3);
+                                    el.textContent = Math.round(ease * target);
+                                    if (t < 1) requestAnimationFrame(tick);
+                                }
+                                requestAnimationFrame(tick);
+                            });
+                        }
+                    }, { threshold: 0.3 });
+                    observer.observe(document.getElementById('travel-stats'));
+                })();
+                </script>
+
+                <div class="globe-section" id="globe-wrapper">
+                    <canvas class="globe-starfield" id="starfield-canvas"></canvas>
+                    <canvas id="globe-canvas"></canvas>
+                    <div class="globe-tooltip" id="tooltip">
+                        <div class="tooltip-city"></div>
+                        <div class="tooltip-country"></div>
+                        <div class="tooltip-places"></div>
+                    </div>
+                    <div class="globe-legend">
+                        <div class="globe-legend-item"><span class="globe-legend-dot europe"></span>Europe</div>
+                        <div class="globe-legend-item"><span class="globe-legend-dot asia"></span>Asia</div>
+                        <div class="globe-legend-item"><span class="globe-legend-dot other"></span>Unvisited</div>
+                    </div>
+                    <div class="globe-controls">
+                        <button class="globe-btn active" id="btn-spin" title="Auto-rotate">&#x21bb;</button>
+                        <button class="globe-btn" id="btn-reset" title="Reset view">&#x2302;</button>
+                    </div>
+                    <div class="globe-hint" id="globe-hint">Drag to explore &middot; Scroll to zoom</div>
+                    <div class="globe-loading" id="globe-loading">
+                        <div class="globe-loading-spinner"></div>
+                        <div class="globe-loading-text">Loading world data...</div>
+                    </div>
+                </div>
+
+                <div class="destinations-divider">
+                    <h2 class="travel-grid-title">All Destinations</h2>
+                </div>
+                <div class="country-grid" id="city-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">&copy; 2026 Iris Zhou. Designed &amp; built with intention.</p>
+                <div class="footer-links">
+                    <a href="mailto:carpediemzzsssww@gmail.com" class="footer-link">Contact</a>
+                    <a href="https://github.com/carpediemzzsssww-cpu" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    window.__globeDepsOk = 0;
+    window.__globeDepsFail = function() {
+        var el = document.getElementById('globe-loading');
+        if (el) el.innerHTML = '<div style="color:rgba(255,255,255,0.5);font-size:0.85rem;text-align:center;line-height:1.6;">Globe could not load.<br><span style="font-size:0.75rem;">Check your connection and <a href="javascript:location.reload()" style="color:#2dd4bf;">refresh</a>.</span></div>';
+    };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onload="window.__globeDepsOk++" onerror="window.__globeDepsFail()"></script>
+    <script src="https://unpkg.com/d3-geo@3/dist/d3-geo.min.js" onload="window.__globeDepsOk++" onerror="window.__globeDepsFail()"></script>
+    <script src="https://unpkg.com/topojson-client@3/dist/topojson-client.min.js" onload="window.__globeDepsOk++" onerror="window.__globeDepsFail()"></script>
+    <script>
+    (async function () {
+
+    // Guard: if CDN scripts failed, abort globe init
+    if (typeof THREE === 'undefined' || typeof d3 === 'undefined' || typeof topojson === 'undefined') {
+      window.__globeDepsFail();
+      return;
+    }
+
+    // Timeout: if globe still loading after 8s, show fallback
+    setTimeout(function() {
+      var el = document.getElementById('globe-loading');
+      if (el && !el.classList.contains('hidden')) window.__globeDepsFail();
+    }, 8000);
+
+    // ══════════════════════════════════════
+    // DATA
+    // ══════════════════════════════════════
+    const CITIES = [
+      { city:"Shanghai",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:31.23,lng:121.47,pins:0 },
+      { city:"Beijing",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:39.90,lng:116.41,pins:0 },
+      { city:"Guangzhou",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:23.13,lng:113.26,pins:0 },
+      { city:"Wuhan",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:30.59,lng:114.31,pins:0 },
+      { city:"Qingdao",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:36.07,lng:120.38,pins:0 },
+      { city:"Zhejiang",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:29.14,lng:119.79,pins:0 },
+      { city:"Yunnan",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:25.04,lng:102.72,pins:0 },
+      { city:"Hunan",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:28.23,lng:112.94,pins:0 },
+      { city:"Jiangsu",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:32.06,lng:118.80,pins:0 },
+      { city:"Hong Kong",country:"China",flag:"\u{1F1ED}\u{1F1F0}",lat:22.32,lng:114.17,pins:0 },
+      { city:"Macau",country:"China",flag:"\u{1F1F2}\u{1F1F4}",lat:22.20,lng:113.54,pins:0 },
+      { city:"Tokyo",country:"Japan",flag:"\u{1F1EF}\u{1F1F5}",lat:35.68,lng:139.65,pins:0 },
+      { city:"Kyoto",country:"Japan",flag:"\u{1F1EF}\u{1F1F5}",lat:35.01,lng:135.77,pins:0 },
+      { city:"Osaka",country:"Japan",flag:"\u{1F1EF}\u{1F1F5}",lat:34.69,lng:135.50,pins:0 },
+      { city:"Paris",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:48.86,lng:2.35,pins:22 },
+      { city:"Nice",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.71,lng:7.26,pins:0 },
+      { city:"Menton",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.77,lng:7.50,pins:0 },
+      { city:"\u00C8ze",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.73,lng:7.36,pins:0 },
+      { city:"Cannes",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.55,lng:7.02,pins:0 },
+      { city:"Antibes",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.58,lng:7.12,pins:0 },
+      { city:"Strasbourg",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:48.57,lng:7.75,pins:8 },
+      { city:"Colmar",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:48.08,lng:7.36,pins:3 },
+      { city:"Monaco",country:"Monaco",flag:"\u{1F1F2}\u{1F1E8}",lat:43.74,lng:7.42,pins:0 },
+      { city:"Geneva",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.20,lng:6.14,pins:1 },
+      { city:"Interlaken",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.69,lng:7.86,pins:0 },
+      { city:"Thun",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.76,lng:7.63,pins:0 },
+      { city:"M\u00FCrren",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.56,lng:7.89,pins:0 },
+      { city:"London",country:"United Kingdom",flag:"\u{1F1EC}\u{1F1E7}",lat:51.51,lng:-0.13,pins:0 },
+      { city:"Milan",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:45.46,lng:9.19,pins:0 },
+      { city:"Crema",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:45.36,lng:9.69,pins:0 },
+      { city:"Dolomites",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:46.41,lng:11.84,pins:0 },
+      { city:"Venice",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:45.44,lng:12.32,pins:0 },
+      { city:"Florence",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:43.77,lng:11.26,pins:4 },
+      { city:"Rome",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:41.90,lng:12.50,pins:2 },
+      { city:"Naples",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:40.85,lng:14.27,pins:0 },
+      { city:"Barcelona",country:"Spain",flag:"\u{1F1EA}\u{1F1F8}",lat:41.39,lng:2.17,pins:0 },
+      { city:"Seville",country:"Spain",flag:"\u{1F1EA}\u{1F1F8}",lat:37.39,lng:-5.98,pins:0 },
+      { city:"Madrid",country:"Spain",flag:"\u{1F1EA}\u{1F1F8}",lat:40.42,lng:-3.70,pins:6 },
+      { city:"Budapest",country:"Hungary",flag:"\u{1F1ED}\u{1F1FA}",lat:47.50,lng:19.04,pins:10 },
+      { city:"Vienna",country:"Austria",flag:"\u{1F1E6}\u{1F1F9}",lat:48.21,lng:16.37,pins:11 },
+      { city:"Prague",country:"Czech Republic",flag:"\u{1F1E8}\u{1F1FF}",lat:50.08,lng:14.44,pins:11 },
+      { city:"Copenhagen",country:"Denmark",flag:"\u{1F1E9}\u{1F1F0}",lat:55.68,lng:12.57,pins:9 },
+      { city:"Stockholm",country:"Sweden",flag:"\u{1F1F8}\u{1F1EA}",lat:59.33,lng:18.07,pins:22 },
+      { city:"Oslo",country:"Norway",flag:"\u{1F1F3}\u{1F1F4}",lat:59.91,lng:10.75,pins:3 },
+      { city:"Lofoten",country:"Norway",flag:"\u{1F1F3}\u{1F1F4}",lat:68.21,lng:14.56,pins:2 },
+      { city:"Troms\u00F8",country:"Norway",flag:"\u{1F1F3}\u{1F1F4}",lat:69.65,lng:18.96,pins:5 },
+      { city:"Lisbon",country:"Portugal",flag:"\u{1F1F5}\u{1F1F9}",lat:38.72,lng:-9.14,pins:23 },
+      { city:"Athens",country:"Greece",flag:"\u{1F1EC}\u{1F1F7}",lat:37.98,lng:23.73,pins:0 },
+      { city:"Zakynthos",country:"Greece",flag:"\u{1F1EC}\u{1F1F7}",lat:37.79,lng:20.90,pins:0 },
+    ];
+
+    const ASIA_COUNTRIES = new Set(['China','Japan']);
+    const ASIA_IDS = new Set([156, 392]);
+    const EUROPE_IDS = new Set([250,492,756,826,380,724,348,40,203,208,752,578,620,300]);
+
+    const ROUTES = [
+      ['Paris','London'],['Paris','Strasbourg'],['Paris','Nice'],
+      ['Paris','Lisbon'],['Paris','Barcelona'],['Paris','Rome'],
+      ['Paris','Prague'],['Paris','Stockholm'],['Paris','Copenhagen'],
+      ['Stockholm','Troms\u00F8'],['Stockholm','Oslo'],['Copenhagen','Stockholm'],
+      ['Vienna','Budapest'],['Vienna','Prague'],['Rome','Florence'],
+      ['Florence','Venice'],['Venice','Milan'],['Milan','Geneva'],
+      ['Athens','Zakynthos'],['Nice','Monaco'],
+      ['Shanghai','Tokyo'],['Tokyo','Osaka'],['Osaka','Kyoto'],
+      ['Beijing','Shanghai'],['Shanghai','Hong Kong'],
+      ['Wuhan','Shanghai'],['Wuhan','Beijing'],
+      ['Oslo','Lofoten'],['Lofoten','Troms\u00F8'],
+      ['Madrid','Seville'],['Madrid','Barcelona'],
+    ];
+
+    const COUNTRY_ORDER = [
+      'China','Japan','France','Monaco','Switzerland','United Kingdom',
+      'Italy','Spain','Portugal','Greece','Hungary','Austria',
+      'Czech Republic','Denmark','Sweden','Norway'
+    ];
+
+    // ══════════════════════════════════════
+    // COLORS (always dark — globe is its own space viewport)
+    // ══════════════════════════════════════
+    const C = {
+      sphere: 0x0c1525,
+      graticule: 0x1a3050,
+      graticuleAlpha: 0.12,
+      landDot: new THREE.Color(0.35, 0.45, 0.55),
+      landAlpha: 0.28,
+      europeDot: new THREE.Color(0.18, 0.83, 0.75),
+      europeAlpha: 0.7,
+      asiaDot: new THREE.Color(0.98, 0.75, 0.14),
+      asiaAlpha: 0.65,
+      europeCityHex: 0x2dd4bf,
+      asiaCityHex: 0xfbbf24,
+      europeArc: 0x2dd4bf,
+      asiaArc: 0xfbbf24,
+      atmosTeal: [0.18, 0.83, 0.75],
+      atmosAmber: [0.98, 0.75, 0.14],
+      ambient: 0x334466,
+    };
+
+    // ══════════════════════════════════════
+    // STARFIELD
+    // ══════════════════════════════════════
+    const starCanvas = document.getElementById('starfield-canvas');
+    const starCtx = starCanvas.getContext('2d');
+    let stars = [];
+
+    function initStarfield() {
+      const w = starCanvas.parentElement.clientWidth;
+      const h = starCanvas.parentElement.clientHeight;
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      starCanvas.width = w * dpr;
+      starCanvas.height = h * dpr;
+      starCanvas.style.width = w + 'px';
+      starCanvas.style.height = h + 'px';
+      stars = [];
+      for (let i = 0, n = Math.floor((w * h) / 500); i < n; i++) {
+        stars.push({
+          x: Math.random() * starCanvas.width,
+          y: Math.random() * starCanvas.height,
+          r: Math.random() * 1.0 + 0.2,
+          phase: Math.random() * Math.PI * 2,
+          speed: Math.random() * 0.004 + 0.001,
+        });
+      }
+    }
+    function drawStarfield(time) {
+      starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+      stars.forEach(s => {
+        const a = 0.25 + 0.55 * Math.sin(time * s.speed + s.phase);
+        starCtx.beginPath();
+        starCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        starCtx.fillStyle = `rgba(180,200,220,${a})`;
+        starCtx.fill();
+      });
+      requestAnimationFrame(drawStarfield);
+    }
+    initStarfield();
+    requestAnimationFrame(drawStarfield);
+
+    // ══════════════════════════════════════
+    // CITY GRID (DOM)
+    // ══════════════════════════════════════
+    const countryGroups = {};
+    CITIES.forEach(c => {
+      if (!countryGroups[c.country]) countryGroups[c.country] = { flag: c.flag, cities: [] };
+      countryGroups[c.country].cities.push(c);
+    });
+    const gridEl = document.getElementById('city-grid');
+    COUNTRY_ORDER.forEach(name => {
+      const g = countryGroups[name];
+      if (!g) return;
+      const isAsia = ASIA_COUNTRIES.has(name);
+      const card = document.createElement('div');
+      card.className = 'country-card';
+      card.innerHTML = `
+        <div class="country-flag">${g.flag}</div>
+        <div class="country-name">${name}</div>
+        <div class="city-tags">${g.cities.map(c => {
+          const pin = c.pins > 0 ? `<span class="pin-count">\u00b7 ${c.pins}</span>` : '';
+          const cls = isAsia ? 'city-tag asia-tag' : 'city-tag';
+          return `<button class="${cls}" data-lat="${c.lat}" data-lng="${c.lng}">${c.city}${pin}</button>`;
+        }).join('')}</div>`;
+      gridEl.appendChild(card);
+    });
+
+    // ══════════════════════════════════════
+    // THREE.JS
+    // ══════════════════════════════════════
+    const wrapper = document.getElementById('globe-wrapper');
+    const canvas = document.getElementById('globe-canvas');
+    const tooltipEl = document.getElementById('tooltip');
+    const hintEl = document.getElementById('globe-hint');
+    const loadingEl = document.getElementById('globe-loading');
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, wrapper.clientWidth / wrapper.clientHeight, 0.1, 1000);
+    camera.position.z = 2.8;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const globeGroup = new THREE.Group();
+    globeGroup.rotation.x = 0.15;
+    scene.add(globeGroup);
+
+    // Occluder — invisible depth writer to hide back-side dots
+    globeGroup.add(new THREE.Mesh(
+      new THREE.SphereGeometry(0.99, 64, 64),
+      new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true })
+    ));
+
+    // Dark sphere body
+    const sphereMat = new THREE.MeshPhongMaterial({
+      color: C.sphere, transparent: true, opacity: 0.85, shininess: 8, depthWrite: false,
+    });
+    globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.993, 64, 64), sphereMat));
+
+    // Graticule (lat/lng grid)
+    globeGroup.add(new THREE.Mesh(
+      new THREE.SphereGeometry(0.996, 36, 18),
+      new THREE.MeshBasicMaterial({
+        color: C.graticule, wireframe: true, transparent: true, opacity: C.graticuleAlpha,
+      })
+    ));
+
+    // Atmosphere glow — dual color (teal dominant, amber accent)
+    const atmosMat = new THREE.ShaderMaterial({
+      vertexShader: `
+        varying vec3 vNormal;
+        varying vec3 vWorldPos;
+        void main() {
+          vNormal = normalize(normalMatrix * normal);
+          vWorldPos = (modelMatrix * vec4(position,1.0)).xyz;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+        }`,
+      fragmentShader: `
+        uniform vec3 uTeal;
+        uniform vec3 uAmber;
+        varying vec3 vNormal;
+        varying vec3 vWorldPos;
+        void main() {
+          float rim = pow(0.62 - dot(vNormal, vec3(0,0,1)), 2.8);
+          // Blend teal ↔ amber based on world x position (left=Asia, right=Europe roughly)
+          float blend = smoothstep(-0.5, 0.8, vWorldPos.x);
+          vec3 col = mix(uAmber, uTeal, blend);
+          gl_FragColor = vec4(col, rim * 0.45);
+        }`,
+      uniforms: {
+        uTeal: { value: new THREE.Vector3(...C.atmosTeal) },
+        uAmber: { value: new THREE.Vector3(...C.atmosAmber) },
+      },
+      blending: THREE.AdditiveBlending,
+      side: THREE.BackSide,
+      transparent: true,
+    });
+    scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.12, 64, 64), atmosMat));
+
+    // Lights
+    scene.add(new THREE.AmbientLight(C.ambient, 0.5));
+    const keyLight = new THREE.DirectionalLight(0xccddee, 0.7);
+    keyLight.position.set(4, 3, 5);
+    scene.add(keyLight);
+    const rimLight = new THREE.DirectionalLight(0x2dd4bf, 0.2);
+    rimLight.position.set(-4, -1, -3);
+    scene.add(rimLight);
+    const warmLight = new THREE.DirectionalLight(0xfbbf24, 0.1);
+    warmLight.position.set(3, -2, -4);
+    scene.add(warmLight);
+
+    // ══════════════════════════════════════
+    // HELPERS
+    // ══════════════════════════════════════
+    function latLngToVec3(lat, lng, r) {
+      const phi = (90 - lat) * Math.PI / 180;
+      const theta = (lng + 180) * Math.PI / 180;
+      return new THREE.Vector3(
+        -r * Math.sin(phi) * Math.cos(theta),
+        r * Math.cos(phi),
+        r * Math.sin(phi) * Math.sin(theta)
+      );
+    }
+    function fibSphere(n) {
+      const pts = [], golden = Math.PI * (Math.sqrt(5) - 1);
+      for (let i = 0; i < n; i++) {
+        const y = 1 - (i / (n - 1)) * 2;
+        const r = Math.sqrt(1 - y * y);
+        const th = golden * i;
+        pts.push([Math.atan2(Math.sin(th)*r, Math.cos(th)*r)*180/Math.PI, Math.asin(y)*180/Math.PI]);
+      }
+      return pts;
+    }
+
+    // Dot shader
+    function dotMat(color, alpha, size) {
+      return new THREE.ShaderMaterial({
+        uniforms: { uColor:{value:color}, uAlpha:{value:alpha}, uSize:{value:size}, uFade:{value:0} },
+        vertexShader: `
+          uniform float uSize, uFade;
+          void main(){
+            vec4 mv = modelViewMatrix * vec4(position,1.0);
+            gl_PointSize = uSize * (280.0 / -mv.z) * uFade;
+            gl_Position = projectionMatrix * mv;
+          }`,
+        fragmentShader: `
+          uniform vec3 uColor; uniform float uAlpha;
+          void main(){
+            float d = length(gl_PointCoord - vec2(0.5));
+            if(d>0.5) discard;
+            gl_FragColor = vec4(uColor, smoothstep(0.5,0.12,d)*uAlpha);
+          }`,
+        transparent: true, depthWrite: false, depthTest: true,
+      });
+    }
+
+    function makePoints(coords, color, alpha, size) {
+      const geo = new THREE.BufferGeometry();
+      const pos = new Float32Array(coords.length * 3);
+      coords.forEach((v,i) => { pos[i*3]=v.x; pos[i*3+1]=v.y; pos[i*3+2]=v.z; });
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      const mat = dotMat(color, alpha, size);
+      const pts = new THREE.Points(geo, mat);
+      globeGroup.add(pts);
+      return mat;
+    }
+
+    // ══════════════════════════════════════
+    // LOAD WORLD DATA → DOT-MATRIX
+    // ══════════════════════════════════════
+    const dotMats = [];
+
+    try {
+      const resp = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+      const topo = await resp.json();
+      const allLand = topojson.merge(topo, topo.objects.countries.geometries);
+      const asiaLand = topojson.merge(topo,
+        topo.objects.countries.geometries.filter(g => ASIA_IDS.has(+g.id)));
+      const europeLand = topojson.merge(topo,
+        topo.objects.countries.geometries.filter(g => EUROPE_IDS.has(+g.id)));
+
+      const test = fibSphere(24000);
+      const landC = [], europeC = [], asiaC = [];
+
+      test.forEach(([lng, lat]) => {
+        if (!d3.geoContains(allLand, [lng, lat])) return;
+        const v = latLngToVec3(lat, lng, 1.005);
+        if (d3.geoContains(asiaLand, [lng, lat])) asiaC.push(v);
+        else if (d3.geoContains(europeLand, [lng, lat])) europeC.push(v);
+        else landC.push(v);
+      });
+
+      if (landC.length) dotMats.push(makePoints(landC, C.landDot, C.landAlpha, 2.0));
+      if (europeC.length) dotMats.push(makePoints(europeC, C.europeDot, C.europeAlpha, 2.8));
+      if (asiaC.length) dotMats.push(makePoints(asiaC, C.asiaDot, C.asiaAlpha, 2.8));
+
+      // Fade in
+      const t0 = Date.now();
+      (function fadeIn() {
+        const t = Math.min(1, (Date.now() - t0) / 1400);
+        const e = 1 - Math.pow(1 - t, 3);
+        dotMats.forEach(m => m.uniforms.uFade.value = e);
+        if (t < 1) requestAnimationFrame(fadeIn);
+      })();
+    } catch (e) {
+      console.warn('World data load failed:', e);
+    }
+    loadingEl.classList.add('hidden');
+
+    // ══════════════════════════════════════
+    // CITY MARKERS
+    // ══════════════════════════════════════
+    const cityMeshes = [];
+    CITIES.forEach(city => {
+      const isAsia = ASIA_COUNTRIES.has(city.country);
+      const hex = isAsia ? C.asiaCityHex : C.europeCityHex;
+      const pos = latLngToVec3(city.lat, city.lng, 1.014);
+      const sz = Math.max(0.014, Math.min(0.032, 0.014 + city.pins * 0.0008));
+
+      const dot = new THREE.Mesh(
+        new THREE.SphereGeometry(sz, 10, 10),
+        new THREE.MeshBasicMaterial({ color: hex })
+      );
+      dot.position.copy(pos);
+      dot.userData = { ...city, isAsia };
+      globeGroup.add(dot);
+      cityMeshes.push(dot);
+
+      // Glow ring
+      const ring = new THREE.Mesh(
+        new THREE.RingGeometry(sz*1.6, sz*2.8, 24),
+        new THREE.MeshBasicMaterial({ color: hex, transparent:true, opacity:0.22, side:THREE.DoubleSide })
+      );
+      ring.position.copy(pos);
+      ring.lookAt(pos.clone().multiplyScalar(2));
+      globeGroup.add(ring);
+    });
+
+    // ══════════════════════════════════════
+    // ARCS
+    // ══════════════════════════════════════
+    const arcLines = [];
+    const cityMap = {};
+    CITIES.forEach(c => cityMap[c.city] = c);
+
+    ROUTES.forEach(([a, b]) => {
+      if (!cityMap[a] || !cityMap[b]) return;
+      const ca = cityMap[a], cb = cityMap[b];
+      const isAsiaRoute = ASIA_COUNTRIES.has(ca.country) && ASIA_COUNTRIES.has(cb.country);
+      const p1 = latLngToVec3(ca.lat, ca.lng, 1.0);
+      const p2 = latLngToVec3(cb.lat, cb.lng, 1.0);
+      const mid = p1.clone().add(p2).multiplyScalar(0.5);
+      mid.normalize().multiplyScalar(1.0 + p1.distanceTo(p2) * 0.3);
+
+      const geo = new THREE.BufferGeometry().setFromPoints(
+        new THREE.QuadraticBezierCurve3(p1, mid, p2).getPoints(48)
+      );
+      const mat = new THREE.LineBasicMaterial({
+        color: isAsiaRoute ? C.asiaArc : C.europeArc,
+        transparent: true, opacity: 0.12,
+      });
+      const line = new THREE.Line(geo, mat);
+      arcLines.push(line);
+      globeGroup.add(line);
+    });
+
+    // ══════════════════════════════════════
+    // INTERACTION
+    // ══════════════════════════════════════
+    let autoRotate = true, isDragging = false, prevMouse = {x:0,y:0}, hintHidden = false;
+    function hideHint() { if(!hintHidden){hintEl.classList.add('hidden');hintHidden=true;} }
+
+    wrapper.addEventListener('mousedown', e => { isDragging=true; prevMouse={x:e.clientX,y:e.clientY}; hideHint(); });
+    wrapper.addEventListener('mousemove', e => {
+      if (isDragging) {
+        globeGroup.rotation.y += (e.clientX - prevMouse.x) * 0.003;
+        globeGroup.rotation.x += (e.clientY - prevMouse.y) * 0.003;
+        prevMouse = { x:e.clientX, y:e.clientY };
+      }
+      const rect = canvas.getBoundingClientRect();
+      const mouse = new THREE.Vector2(
+        ((e.clientX-rect.left)/rect.width)*2-1,
+        -((e.clientY-rect.top)/rect.height)*2+1
+      );
+      const rc = new THREE.Raycaster();
+      rc.setFromCamera(mouse, camera);
+      const hits = rc.intersectObjects(cityMeshes);
+      if (hits.length) {
+        const c = hits[0].object.userData;
+        tooltipEl.querySelector('.tooltip-city').textContent = c.flag+' '+c.city;
+        tooltipEl.querySelector('.tooltip-country').textContent = c.country;
+        const pl = tooltipEl.querySelector('.tooltip-places');
+        pl.textContent = c.pins > 0 ? `${c.pins} saved places` : 'Visited';
+        pl.className = 'tooltip-places' + (c.isAsia ? ' amber' : '');
+        tooltipEl.style.left = (e.clientX-rect.left+16)+'px';
+        tooltipEl.style.top = (e.clientY-rect.top-20)+'px';
+        tooltipEl.classList.add('visible');
+        canvas.style.cursor = 'pointer';
+      } else {
+        tooltipEl.classList.remove('visible');
+        canvas.style.cursor = isDragging ? 'grabbing' : 'grab';
+      }
+    });
+    wrapper.addEventListener('mouseup', () => { isDragging=false; });
+    wrapper.addEventListener('mouseleave', () => { isDragging=false; tooltipEl.classList.remove('visible'); });
+
+    wrapper.addEventListener('touchstart', e => {
+      isDragging=true; prevMouse={x:e.touches[0].clientX,y:e.touches[0].clientY}; hideHint();
+    }, {passive:true});
+    wrapper.addEventListener('touchmove', e => {
+      if(!isDragging) return;
+      globeGroup.rotation.y += (e.touches[0].clientX-prevMouse.x)*0.004;
+      globeGroup.rotation.x += (e.touches[0].clientY-prevMouse.y)*0.004;
+      prevMouse = {x:e.touches[0].clientX, y:e.touches[0].clientY};
+    }, {passive:true});
+    wrapper.addEventListener('touchend', () => { isDragging=false; });
+
+    wrapper.addEventListener('wheel', e => {
+      e.preventDefault();
+      camera.position.z = Math.max(1.8, Math.min(5, camera.position.z + e.deltaY*0.002));
+      hideHint();
+    }, {passive:false});
+
+    document.getElementById('btn-spin').addEventListener('click', function() {
+      autoRotate = !autoRotate; this.classList.toggle('active');
+    });
+    document.getElementById('btn-reset').addEventListener('click', () => {
+      globeGroup.rotation.x = 0.15; globeGroup.rotation.y = 0; camera.position.z = 2.8;
+    });
+
+    document.querySelectorAll('.city-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        const lat = +tag.dataset.lat, lng = +tag.dataset.lng;
+        const ty = -lng*Math.PI/180 - Math.PI/2;
+        const tx = lat*Math.PI/180*0.5;
+        const sy = globeGroup.rotation.y, sx = globeGroup.rotation.x;
+        const t0 = Date.now();
+        (function anim() {
+          const t = Math.min(1,(Date.now()-t0)/800);
+          const e = 1 - Math.pow(1-t,3);
+          globeGroup.rotation.y = sy + (ty-sy)*e;
+          globeGroup.rotation.x = sx + (tx-sx)*e;
+          if(t<1) requestAnimationFrame(anim);
+        })();
+        autoRotate = false;
+        document.getElementById('btn-spin').classList.remove('active');
+        wrapper.scrollIntoView({behavior:'smooth',block:'center'});
+      });
+    });
+
+    // ══════════════════════════════════════
+    // ANIMATION
+    // ══════════════════════════════════════
+    function animate() {
+      requestAnimationFrame(animate);
+      if (autoRotate && !isDragging) globeGroup.rotation.y += 0.0012;
+      const t = Date.now() * 0.003;
+      cityMeshes.forEach((d,i) => d.scale.setScalar(1 + Math.sin(t+i*0.5)*0.15));
+      arcLines.forEach((l,i) => { l.material.opacity = 0.07 + Math.sin(t*0.3+i*0.7)*0.05; });
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = wrapper.clientWidth / wrapper.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
+      initStarfield();
+    });
+
+    })();
+    </script>
+    <script src="scripts.js"></script>
+    <script src="alter-widget.js"></script>
+</body>
+</html>
