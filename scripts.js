@@ -383,6 +383,8 @@ if (mobileMenuToggle && mobileDrawer) {
     mobileMenuToggle.setAttribute('aria-expanded', 'false');
     mobileDrawer.setAttribute('aria-hidden', 'true');
 
+    let savedScrollY = 0;
+
     const closeMobileDrawer = () => {
         mobileDrawer.classList.remove('active');
         drawerOverlay.classList.remove('active');
@@ -390,6 +392,8 @@ if (mobileMenuToggle && mobileDrawer) {
         mobileMenuToggle.setAttribute('aria-expanded', 'false');
         mobileDrawer.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('mobile-nav-open');
+        document.body.style.top = '';
+        window.scrollTo(0, savedScrollY);
     };
 
     mobileMenuToggle.addEventListener('click', () => {
@@ -398,6 +402,13 @@ if (mobileMenuToggle && mobileDrawer) {
         mobileMenuToggle.classList.toggle('active', isOpen);
         mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
         mobileDrawer.setAttribute('aria-hidden', String(!isOpen));
+        if (isOpen) {
+            savedScrollY = window.scrollY;
+            document.body.style.top = `-${savedScrollY}px`;
+        } else {
+            document.body.style.top = '';
+            window.scrollTo(0, savedScrollY);
+        }
         document.body.classList.toggle('mobile-nav-open', isOpen);
     });
 

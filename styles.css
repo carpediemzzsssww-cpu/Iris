@@ -375,6 +375,9 @@ html[data-theme='dark'] .mobile-drawer-overlay {
 
 body.mobile-nav-open {
     overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 .mobile-drawer.active {
