@@ -167,15 +167,27 @@ const allProjects = [
         links: {}
     },
     {
-        slug: "codebase-to-course",
-        title: "Codebase-to-Course",
-        oneLiner: "A skill that transforms any codebase into a beautiful interactive HTML course for non-technical learners",
+        slug: "case-study-skill",
+        title: "Case Study Generator",
+        oneLiner: "A Claude Code skill that creates polished, interactive case study pages from project materials",
         featured: false,
         coverImage: "",
         role: "Skill Designer",
         time: "2026.03",
-        outcome: "Single-page interactive course with code translation blocks, iMessage-style component chat animations, data flow visualizations, and quizzes",
-        tags: ["AI/ML", "Prototyping", "Claude Code Skill"],
+        outcome: "Two modes (showcase + teardown) with scroll-triggered reveals, metric cards, before/after sliders, and editorial-grade typography",
+        tags: ["AI/ML", "Product Design", "Claude Code Skill"],
+        links: {}
+    },
+    {
+        slug: "rpa-etl-skill",
+        title: "RPA-ETL Data Pipeline Generator",
+        oneLiner: "A Claude Code skill that generates production-grade data cleaning scripts for RPA workflows",
+        featured: false,
+        coverImage: "",
+        role: "Skill Designer",
+        time: "2026.03",
+        outcome: "Supports standalone scripts and RPA inline modes, multi-format file reading with 5-level fallback, fuzzy store matching, and standardized 27-field output schema",
+        tags: ["AI/ML", "Automation", "Claude Code Skill"],
         links: {}
     },
     {
