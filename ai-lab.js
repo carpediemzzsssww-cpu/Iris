@@ -85,64 +85,24 @@ const aiLabData = {
 
     experiments: [
         {
-            slug: "design-critique-agent",
-            title: "AI Design Critique Agent",
-            goal: "Build an agent that provides structured feedback on UI designs",
-            setup: "Using Claude API with custom prompt engineering. Fed with design principles, WCAG guidelines, and examples of good/bad design patterns.",
-            result: "70% accuracy in identifying usability issues. Particularly good at catching accessibility violations and inconsistent spacing. Struggles with subjective aesthetic judgments.",
-            next: "Add multi-modal analysis (screenshots + Figma API). Train on my past design critiques to match my voice.",
-            tags: ["Design", "Claude API", "Automation"],
-            githubLink: "https://github.com/iriszhou/design-critique-agent"
+            slug: "cgec-error-analysis",
+            title: "CGEC Error Analysis Agent",
+            goal: "Verify whether LLMs can detect and correct Chinese L2 learner grammatical errors at scale",
+            setup: "Python + DeepSeek API on MuCGEC benchmark dataset. Two-step pipeline: (1) detect error type and location, (2) generate correction with explanation. Evaluated against ChERRANT metrics.",
+            result: "Detection F1 ~80-90%, Correction F0.5 ~30-50%. Strong at word-order and missing-word errors, weaker on subtle collocation mistakes. Proved LLMs can augment — not replace — human annotators.",
+            next: "Add RAG with HSK grammar corpus for context-aware correction. Build error source analysis (L1 transfer vs. developmental).",
+            tags: ["NLP", "DeepSeek API", "Linguistics"],
+            githubLink: ""
         },
         {
-            slug: "user-interview-synthesizer",
-            title: "Interview Transcript Synthesizer",
-            goal: "Automatically extract insights from user research transcripts",
-            setup: "RAG pipeline: Transcripts → Embeddings (OpenAI) → Vector DB (FAISS) → Synthesis prompt (Claude). Queries: pain points, quotes, opportunities.",
-            result: "Saves ~2 hours per interview synthesis. Maintains 85% accuracy vs. manual analysis. Great at finding cross-interview patterns.",
-            next: "Add sentiment analysis. Integrate with Dovetail for seamless workflow.",
-            tags: ["Research", "RAG", "NLP"],
-            githubLink: "https://github.com/iriszhou/interview-synthesizer"
-        },
-        {
-            slug: "competitive-analysis-dashboard",
-            title: "AI-Powered Competitive Analysis",
-            goal: "Track competitor product updates automatically",
-            setup: "Web scraper + Claude for summarization. Monitors changelogs, release notes, blog posts. Generates weekly digest with categorized updates.",
-            result: "Monitors 12 competitors. Catches 90% of significant updates. Reduced manual monitoring from 5 hours/week to 30 min review.",
-            next: "Add visual diff for UI changes. Email alerts for high-priority updates.",
-            tags: ["Strategy", "Automation", "Web Scraping"],
-            githubLink: "https://github.com/iriszhou/comp-tracker"
-        },
-        {
-            slug: "figma-variable-generator",
-            title: "Design Token Generator",
-            goal: "Convert Figma variables to code (CSS, Swift, Kotlin)",
-            setup: "Figma Plugin API → LLM for format conversion → Multi-platform output. Uses Claude to intelligently map design tokens to platform conventions.",
-            result: "Supports 5 platforms. Reduces token setup from 2 days to 15 minutes. Adopted by 3 teams at my company.",
-            next: "Add validation layer. Generate type definitions for TypeScript.",
-            tags: ["Design Systems", "Tooling", "Figma"],
-            githubLink: "https://github.com/iriszhou/token-generator"
-        },
-        {
-            slug: "context-aware-search",
-            title: "Context-Aware Project Search",
-            goal: "Semantic search across all my design files, notes, and docs",
-            setup: "Embeddings for all content (Figma descriptions, Notion pages, code comments). Hybrid search: keyword + semantic similarity.",
-            result: "10x faster than manual searching. Surfaces connections I didn't know existed. Helps with 'I saw something like this before...' moments.",
-            next: "Add temporal context (when did I work on this?). Integrate with browser history.",
-            tags: ["Search", "Embeddings", "Productivity"],
-            githubLink: "https://github.com/iriszhou/semantic-search"
-        },
-        {
-            slug: "prp-generator",
-            title: "PRD Generator from Sketches",
-            goal: "Convert whiteboard sketches into structured PRDs",
-            setup: "GPT-4 Vision to interpret hand-drawn diagrams. Extracts user flows, features, edge cases. Generates Markdown PRD with placeholders for details.",
-            result: "Great for rapid ideation → documentation. 60% complete PRD from a 10-minute sketch. Still requires human editing.",
-            next: "Add voice input for context. Generate technical requirements section.",
-            tags: ["Product", "GPT-4V", "Documentation"],
-            githubLink: "https://github.com/iriszhou/prd-generator"
+            slug: "yunyou-flight-agent",
+            title: "Yunyou Flight Decision Agent",
+            goal: "Build an AI agent that answers 'should I buy now?' — not just 'what flights exist?'",
+            setup: "Doubao (Volcano Engine) Pro model with real Function Calling. 6 tool definitions for price history, trend analysis, route comparison, and market context. SSE streaming via Vercel Serverless. React + TypeScript frontend with transparent step-by-step reasoning UI.",
+            result: "AI genuinely selects and calls tools (5-8 steps per query). Transparent reasoning chain builds user trust. Post-purchase price guard with automatic rebooking calculations. Deployed at yunyou.vercel.app.",
+            next: "Connect to real flight APIs (mock data currently). Add push notifications for price drops. Mobile-first redesign.",
+            tags: ["AI Agent", "Function Calling", "Doubao API", "React"],
+            githubLink: ""
         }
     ],
 

@@ -117,6 +117,58 @@ const allProjects = [
         }
     },
     {
+        slug: "bestcem-ai-journey",
+        title: "AI Customer Journey Generator",
+        oneLiner: "An AI feature that generates customer journey maps in 15 minutes instead of hours",
+        featured: false,
+        coverImage: "",
+        role: "AI Product Intern",
+        time: "2026.02 - Present",
+        outcome: "End-to-end PRD (V2.0) with 3-prompt architecture, competitive analysis, Axure prototype, and HTML demo for a B2B CEM SaaS platform",
+        tags: ["AI/ML", "Product Design", "Prototyping"],
+        links: {}
+    },
+    {
+        slug: "bestcem-voc-pipeline",
+        title: "VOC Data Pipeline",
+        oneLiner: "Automated data collection and cleaning across 9 platforms for enterprise customer insights",
+        featured: false,
+        coverImage: "",
+        role: "AI Product Intern",
+        time: "2026.02",
+        outcome: "30,000+ data entries collected via RPA automation, 6 Python cleaning scripts handling format conversion, dual-header detection, and city mapping",
+        tags: ["AI/ML", "Product Design", "Research"],
+        links: {}
+    },
+    {
+        slug: "clawd",
+        title: "Clawd on Desk",
+        oneLiner: "A Claude Code desktop pet that responds to your coding workflow in real time",
+        featured: false,
+        coverImage: "",
+        role: "Solo Developer",
+        time: "2026.03",
+        outcome: "Electron app with 13 lifecycle event mappings, IPC communication, eye-tracking, draggable window, cross-platform packaging (macOS + Windows)",
+        tags: ["AI/ML", "Prototyping", "Interaction Design"],
+        links: {
+            repo: "https://github.com/carpediemzzsssww-cpu/clawd"
+        }
+    },
+    {
+        slug: "ai-daily-digest",
+        title: "AI Daily Digest",
+        oneLiner: "Automated daily AI news email powered by GitHub Actions",
+        featured: false,
+        coverImage: "",
+        role: "Solo Developer",
+        time: "2026",
+        outcome: "Fully automated pipeline: web scraping + AI summarization + email delivery, running daily via GitHub Actions",
+        tags: ["AI/ML", "Prototyping"],
+        links: {
+            repo: "https://github.com/carpediemzzsssww-cpu/news-follow--builders"
+        }
+    },
+    {
         slug: "ai-agent-industry-report",
         title: "AI Agent Industry Report",
         oneLiner: "2025–2026 AI Agent industry landscape: players, use cases, and where it's heading",
