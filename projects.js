@@ -137,35 +137,59 @@ const allProjects = [
         role: "AI Product Intern",
         time: "2026.02",
         outcome: "30,000+ data entries collected via RPA automation, 6 Python cleaning scripts handling format conversion, dual-header detection, and city mapping",
-        tags: ["AI/ML", "Product Design", "Research"],
+        tags: ["AI/ML", "Automation", "Research"],
         links: {}
     },
     {
-        slug: "clawd",
-        title: "Clawd on Desk",
-        oneLiner: "A Claude Code desktop pet that responds to your coding workflow in real time",
+        slug: "clone-me",
+        title: "Clone Me — AI Digital Twin Builder",
+        oneLiner: "A Claude Code skill that generates personalized AI chatbots from your identity materials",
         featured: false,
         coverImage: "",
-        role: "Solo Developer",
-        time: "2026.03",
-        outcome: "Electron app with 13 lifecycle event mappings, IPC communication, eye-tracking, draggable window, cross-platform packaging (macOS + Windows)",
-        tags: ["AI/ML", "Prototyping", "Interaction Design"],
+        role: "Skill Designer",
+        time: "2026.04",
+        outcome: "6-phase guided interview + system prompt generator + self-contained HTML chat widget with 10+ LLM provider support (OpenAI, Claude, Gemini, DeepSeek, Groq, etc.)",
+        tags: ["AI/ML", "Prototyping", "Claude Code Skill"],
         links: {
-            repo: "https://github.com/carpediemzzsssww-cpu/clawd"
+            repo: "https://github.com/carpediemzzsssww-cpu/clone-me"
         }
+    },
+    {
+        slug: "prd-skill",
+        title: "AI-First PRD Generator",
+        oneLiner: "A Claude Code skill that writes PRDs optimized for both humans and AI coding agents",
+        featured: false,
+        coverImage: "",
+        role: "Skill Designer",
+        time: "2026.03",
+        outcome: "14-section PRD structure with pre-delivery checklist preventing common AI coding pitfalls (broken links, missing states, generic copy, data silos)",
+        tags: ["AI/ML", "Product Design", "Claude Code Skill"],
+        links: {}
+    },
+    {
+        slug: "codebase-to-course",
+        title: "Codebase-to-Course",
+        oneLiner: "A skill that transforms any codebase into a beautiful interactive HTML course for non-technical learners",
+        featured: false,
+        coverImage: "",
+        role: "Skill Designer",
+        time: "2026.03",
+        outcome: "Single-page interactive course with code translation blocks, iMessage-style component chat animations, data flow visualizations, and quizzes",
+        tags: ["AI/ML", "Prototyping", "Claude Code Skill"],
+        links: {}
     },
     {
         slug: "ai-daily-digest",
         title: "AI Daily Digest",
-        oneLiner: "Automated daily AI news email powered by GitHub Actions",
+        oneLiner: "Bilingual AI news email tracking 25 builders and 5 podcasts, delivered daily to your inbox",
         featured: false,
         coverImage: "",
         role: "Solo Developer",
         time: "2026",
-        outcome: "Fully automated pipeline: web scraping + AI summarization + email delivery, running daily via GitHub Actions",
-        tags: ["AI/ML", "Prototyping"],
+        outcome: "GitHub Actions automation + DeepSeek API bilingual summarization + Gmail SMTP delivery, zero-cost infrastructure, running daily",
+        tags: ["AI/ML", "Automation"],
         links: {
-            repo: "https://github.com/carpediemzzsssww-cpu/news-follow--builders"
+            repo: "https://github.com/carpediemzzsssww-cpu/news_follow_builders"
         }
     },
     {
@@ -241,11 +265,13 @@ function getProjectTechnicalScore(project) {
         'Interaction Design',
         'Design Systems',
         'Industry Analysis',
-        'Research'
+        'Research',
+        'Automation',
+        'Claude Code Skill'
     ]);
     const tagScore = project.tags.reduce((score, tag) => score + (technicalTags.has(tag) ? 1 : 0), 0);
     const text = `${project.oneLiner || ''} ${project.outcome || ''}`;
-    const keywordScore = (text.match(/\b(ai|agent|model|python|hashing|analysis|system)\b/ig) || []).length;
+    const keywordScore = (text.match(/\b(ai|agent|model|python|hashing|analysis|system|skill|automation|rpa|llm|rag|api)\b/ig) || []).length;
     return tagScore * 10 + keywordScore;
 }
 
