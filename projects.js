@@ -8,7 +8,7 @@ const allProjects = [
         title: "Yunyou 云游",
         oneLiner: "An AI agent that tells you when to buy flights — not just where to search",
         featured: true,
-        coverImage: "assets/project-covers/projects/yunyou-cover.webp",
+        coverImage: "assets/project-covers/projects/yunyou-cover.png",
         role: "Product Designer & Developer",
         time: "2026.03",
         outcome: "AI decision engine with transparent reasoning · post-purchase price guard · React + Doubao API · deployed on Vercel",
