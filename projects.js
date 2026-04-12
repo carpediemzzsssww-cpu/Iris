@@ -4,6 +4,20 @@
 
 const allProjects = [
     {
+        slug: "yunyou",
+        title: "Yunyou 云游",
+        oneLiner: "An AI agent that tells you when to buy flights — not just where to search",
+        featured: true,
+        coverImage: "assets/project-covers/projects/yunyou-cover.webp",
+        role: "Product Designer & Developer",
+        time: "2026.03",
+        outcome: "AI decision engine with transparent reasoning · post-purchase price guard · React + Doubao API · deployed on Vercel",
+        tags: ["AI/ML", "Product Design", "Prototyping"],
+        links: {
+            demo: "https://yunyou.vercel.app"
+        }
+    },
+    {
         slug: "ai-prd-copilot",
         title: "AI PRD Copilot",
         oneLiner: "An AI Copilot that helps product managers think, not just write",
