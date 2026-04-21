@@ -89,16 +89,29 @@ html[data-theme='light'] .about-hero-portrait-wrap {
 
 .page-title {
     font-family: var(--font-display);
-    font-size: 48px;
-    font-weight: 600;
-    margin-bottom: 16px;
+    font-style: italic;
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+    color: var(--ink);
+}
+.page-title::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--copper);
+    margin-bottom: 20px;
 }
 
 .page-subtitle {
+    font-family: var(--font-body);
     font-size: 18px;
-    line-height: 1.6;
-    color: var(--muted);
-    max-width: 700px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 680px;
 }
 
 /* Toolbar */
@@ -307,11 +320,14 @@ html[data-theme='dark'] .toolbar-search:focus-within {
 
 .section-heading {
     font-family: var(--font-display);
-    font-size: 28px;
-    font-weight: 600;
+    font-size: clamp(32px, 3.6vw, 44px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
     margin-bottom: clamp(var(--space-4), 2.6vw, var(--space-5));
     color: var(--text);
 }
+.section-heading em { font-style: italic; color: var(--ink-soft); }
 
 .content-text {
     font-size: 16px;

@@ -171,7 +171,7 @@ Core drive: "At least I had the most beautiful day."`;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6B5876, #95A89C);
+  background: linear-gradient(135deg, #6B5876, #B8A4C9);
   cursor: pointer;
   z-index: 99999;
   display: flex;
@@ -182,7 +182,7 @@ Core drive: "At least I had the most beautiful day."`;
   animation: alter-pulse 2.8s ease-in-out infinite;
 }
 html[data-theme='dark'] .alter-bubble {
-  background: linear-gradient(135deg, #B8A4C9, #95A89C);
+  background: linear-gradient(135deg, #B8A4C9, #B8A4C9);
   box-shadow: 0 4px 20px rgba(184, 164, 201, 0.3), 0 0 0 0 rgba(184, 164, 201, 0.2);
 }
 .alter-bubble:hover {
@@ -495,7 +495,7 @@ html[data-theme='dark'] .alter-input:focus {
   height: 40px;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(135deg, #6B5876, #95A89C);
+  background: linear-gradient(135deg, #6B5876, #B8A4C9);
   color: #fff;
   font-size: 16px;
   cursor: pointer;
@@ -507,7 +507,7 @@ html[data-theme='dark'] .alter-input:focus {
   align-self: flex-end;
 }
 html[data-theme='dark'] .alter-send {
-  background: linear-gradient(135deg, #B8A4C9, #95A89C);
+  background: linear-gradient(135deg, #B8A4C9, #B8A4C9);
 }
 .alter-send:hover { opacity: 0.9; transform: scale(1.04); }
 .alter-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }

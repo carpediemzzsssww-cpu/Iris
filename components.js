@@ -8,6 +8,26 @@
 
     var siteConfig = null;
 
+    // Iris signature mark — used in running header and section dividers
+    var irisMarkSvg =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true">' +
+            '<path d="M12 21 C 6 16, 7 9, 12 3" />' +
+            '<path d="M12 21 L 12 3" />' +
+            '<path d="M12 21 C 18 16, 17 9, 12 3" />' +
+            '<circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>' +
+        '</svg>';
+
+    // Magazine folio map: which § each page is
+    var folioMap = {
+        'index.html':    { folio: '§ 01', chapter: 'At Home' },
+        'projects.html': { folio: '§ 02', chapter: 'Projects' },
+        'ai-lab.html':   { folio: '§ 03', chapter: 'Laboratory' },
+        'learning.html': { folio: '§ 04', chapter: 'Library' },
+        'travel.html':   { folio: '§ 05', chapter: 'Field Notes' },
+        'about.html':    { folio: '§ 06', chapter: 'Dossier' },
+        'resume.html':   { folio: '§ 07', chapter: 'Dossier / CV' }
+    };
+
     // SVG icon templates
     var icons = {
         email: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
@@ -104,10 +124,66 @@
             '<a href="' + c.github + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.github + ' GitHub</a>';
     }
 
+    // ---- Running Header (magazine masthead) ----
+
+    function renderRunningHeader() {
+        var page = getCurrentPage();
+        var f = folioMap[page] || { folio: '', chapter: '' };
+        var isHomeFirstVisit = false;
+        try {
+            if (page === 'index.html' && !sessionStorage.getItem('irisMarkSeen')) {
+                isHomeFirstVisit = true;
+                sessionStorage.setItem('irisMarkSeen', '1');
+            }
+        } catch (e) { /* sessionStorage may be blocked; skip intro */ }
+
+        var markClass = 'iris-mark rh-mark' + (isHomeFirstVisit ? ' iris-mark--intro' : '');
+        var mark = '<span class="' + markClass + '">' + irisMarkSvg + '</span>';
+
+        var year = new Date().getFullYear();
+        return mark +
+               '<span>IRIS ZHOU</span>' +
+               mark +
+               '<span class="rh-hide-sm">AN ISSUE OF ONE</span>' +
+               '<span class="rh-hide-sm">' + mark.replace('iris-mark--intro', '') + '</span>' +
+               '<span class="rh-folio">' + f.folio + ' / ' + f.chapter.toUpperCase() + '</span>' +
+               '<span class="rh-hide-sm">' + mark.replace('iris-mark--intro', '') + '</span>' +
+               '<span class="rh-hide-sm">' + year + '</span>';
+    }
+
+    function mountRunningHeader() {
+        // Running header removed per design feedback — kept render function
+        // available in case a magazine masthead is desired elsewhere.
+        return;
+    }
+
+    // ---- Drop Folio scroll-in animation ----
+
+    function initDropFolios() {
+        var folios = document.querySelectorAll('.drop-folio');
+        if (!folios.length) return;
+        if (!('IntersectionObserver' in window)) {
+            folios.forEach(function (el) { el.classList.add('is-written'); });
+            return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-written');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3, rootMargin: '0px 0px -10% 0px' });
+        folios.forEach(function (el) { io.observe(el); });
+    }
+
     // ---- Boot ----
 
     function init(config) {
         siteConfig = config;
+
+        mountRunningHeader();
+        initDropFolios();
 
         var navEl = document.getElementById('site-nav');
         if (navEl) {

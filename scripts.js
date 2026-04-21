@@ -580,26 +580,6 @@ function setupProjectCardMicroInteractions(scope = document) {
     const cards = scope.querySelectorAll('.project-card');
     const reducedMotionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
 
-    const createProjectCardRipple = (card, clientX, clientY) => {
-        const rect = card.getBoundingClientRect();
-        const ripple = document.createElement('span');
-        ripple.className = 'card-ripple';
-
-        const maxDiameter = Math.max(rect.width, rect.height) * 2.2;
-        ripple.style.width = `${maxDiameter}px`;
-        ripple.style.height = `${maxDiameter}px`;
-
-        const originX = typeof clientX === 'number' ? clientX - rect.left : rect.width / 2;
-        const originY = typeof clientY === 'number' ? clientY - rect.top : rect.height / 2;
-        ripple.style.left = `${originX}px`;
-        ripple.style.top = `${originY}px`;
-
-        card.appendChild(ripple);
-        ripple.addEventListener('animationend', () => {
-            ripple.remove();
-        }, { once: true });
-    };
-
     const startImmersiveProjectTransition = (card, href) => {
         if (!href || immersiveProjectTransitionInProgress) return;
 
@@ -662,27 +642,6 @@ function setupProjectCardMicroInteractions(scope = document) {
     cards.forEach(card => {
         if (card.dataset.microReady === 'true') return;
         card.dataset.microReady = 'true';
-
-        card.addEventListener('pointermove', (e) => {
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--glow-x', `${e.clientX - rect.left}px`);
-            card.style.setProperty('--glow-y', `${e.clientY - rect.top}px`);
-        });
-
-        card.addEventListener('pointerleave', () => {
-            card.style.removeProperty('--glow-x');
-            card.style.removeProperty('--glow-y');
-        });
-
-        card.addEventListener('pointerdown', (e) => {
-            if (e.pointerType === 'mouse' && e.button !== 0) return;
-            createProjectCardRipple(card, e.clientX, e.clientY);
-        });
-
-        card.addEventListener('keydown', (e) => {
-            if (e.key !== 'Enter' && e.key !== ' ') return;
-            createProjectCardRipple(card);
-        });
 
         card.addEventListener('click', (e) => {
             const href = card.getAttribute('href');
