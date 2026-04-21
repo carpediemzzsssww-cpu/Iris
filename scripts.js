@@ -54,16 +54,20 @@ function handleSystemThemeChange(event) {
 }
 
 applyTheme(activeTheme);
-document.addEventListener('DOMContentLoaded', () => {
-    const themeButtons = document.querySelectorAll('[data-theme-toggle]');
-    updateThemeToggleButtons(activeTheme);
 
-    themeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const next = activeTheme === 'dark' ? 'light' : 'dark';
-            setThemePreference(next);
-        });
-    });
+document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-theme-toggle]');
+    if (!button) return;
+    const next = activeTheme === 'dark' ? 'light' : 'dark';
+    setThemePreference(next);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateThemeToggleButtons(activeTheme);
+});
+
+document.addEventListener('site-components:ready', () => {
+    updateThemeToggleButtons(activeTheme);
 });
 
 if (themeMediaQuery) {

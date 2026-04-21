@@ -210,6 +210,8 @@
         if (window.i18n && window.i18n.applyTranslations) {
             window.i18n.applyTranslations();
         }
+
+        document.dispatchEvent(new CustomEvent('site-components:ready'));
     }
 
     // Load config and initialize

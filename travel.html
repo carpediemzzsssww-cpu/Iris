@@ -93,11 +93,11 @@
         height: clamp(440px, 60vh, 600px);
         border-radius: var(--border-radius);
         overflow: hidden;
-        background: radial-gradient(ellipse at 35% 40%, #111d30 0%, #080e1a 60%, #050810 100%);
-        border: 1px solid rgba(255,255,255,0.06);
+        background: radial-gradient(ellipse at 35% 40%, #241E2B 0%, #1A1620 58%, #120F18 100%);
+        border: 1px solid rgba(232, 223, 240, 0.08);
         cursor: grab;
         margin-bottom: var(--space-6);
-        box-shadow: 0 4px 40px rgba(0,0,0,0.25);
+        box-shadow: 0 4px 40px rgba(0,0,0,0.35);
     }
     .globe-section:active { cursor: grabbing; }
     .globe-starfield {
@@ -126,8 +126,9 @@
     .globe-tooltip.visible { opacity: 1; }
     .tooltip-city { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
     .tooltip-country { font-size: 0.8rem; color: rgba(230,237,243,0.55); }
-    .tooltip-places { font-size: 0.75rem; color: #2dd4bf; margin-top: 6px; font-family: 'Space Mono', monospace; }
-    .tooltip-places.amber { color: #fbbf24; }
+    .tooltip-places { font-size: 0.75rem; color: #B8A4C9; margin-top: 6px; font-family: 'DM Mono', 'Space Mono', monospace; letter-spacing: 0.08em; }
+    .tooltip-places.asia { color: #D4B5E0; }
+    .tooltip-places.gold { color: #D4956A; }
 
     /* Controls — forced dark */
     .globe-controls {
@@ -169,9 +170,10 @@
     .globe-legend-dot {
         width: 8px; height: 8px; border-radius: 50%;
     }
-    .globe-legend-dot.asia { background: #fbbf24; box-shadow: 0 0 6px rgba(251,191,36,0.4); }
-    .globe-legend-dot.europe { background: #2dd4bf; box-shadow: 0 0 6px rgba(45,212,191,0.4); }
-    .globe-legend-dot.other { background: rgba(120,150,180,0.4); }
+    .globe-legend-dot.asia { background: #B8A4C9; box-shadow: 0 0 6px rgba(184,164,201,0.4); }
+    .globe-legend-dot.europe { background: #95A89C; box-shadow: 0 0 6px rgba(149,168,156,0.4); }
+    .globe-legend-dot.capital { background: #D4956A; box-shadow: 0 0 6px rgba(212,149,106,0.45); }
+    .globe-legend-dot.other { background: rgba(160,150,170,0.35); }
 
     /* Loading */
     .globe-loading {
@@ -184,7 +186,7 @@
     .globe-loading-spinner {
         width: 28px; height: 28px;
         border: 2px solid rgba(255,255,255,0.1);
-        border-top-color: #2dd4bf;
+        border-top-color: #B8A4C9;
         border-radius: 50%;
         animation: globeSpin 0.8s linear infinite;
     }
@@ -325,6 +327,7 @@
                         <div class="tooltip-places"></div>
                     </div>
                     <div class="globe-legend">
+                        <div class="globe-legend-item"><span class="globe-legend-dot capital"></span><span>Lingered</span></div>
                         <div class="globe-legend-item"><span class="globe-legend-dot europe"></span><span data-i18n="travel.legend.europe">Europe</span></div>
                         <div class="globe-legend-item"><span class="globe-legend-dot asia"></span><span data-i18n="travel.legend.asia">Asia</span></div>
                         <div class="globe-legend-item"><span class="globe-legend-dot other"></span><span data-i18n="travel.legend.other">Unvisited</span></div>
@@ -463,25 +466,32 @@
     ];
 
     // ══════════════════════════════════════
-    // COLORS (always dark — globe is its own space viewport)
+    // COLORS — plum × sage, aligned with site palette
     // ══════════════════════════════════════
     const C = {
-      sphere: 0x0c1525,
-      graticule: 0x1a3050,
-      graticuleAlpha: 0.12,
-      landDot: new THREE.Color(0.35, 0.45, 0.55),
-      landAlpha: 0.28,
-      europeDot: new THREE.Color(0.18, 0.83, 0.75),
-      europeAlpha: 0.7,
-      asiaDot: new THREE.Color(0.98, 0.75, 0.14),
-      asiaAlpha: 0.65,
-      europeCityHex: 0x2dd4bf,
-      asiaCityHex: 0xfbbf24,
-      europeArc: 0x2dd4bf,
-      asiaArc: 0xfbbf24,
-      atmosTeal: [0.18, 0.83, 0.75],
-      atmosAmber: [0.98, 0.75, 0.14],
-      ambient: 0x334466,
+      sphere: 0x1A1620,                                // 深紫黑，匹配 hero-photon
+      graticule: 0x3D3346,                             // 深紫经纬线
+      graticuleAlpha: 0.14,
+      landDot: new THREE.Color(0.42, 0.36, 0.48),      // 雾紫灰 (未访问)
+      landAlpha: 0.30,
+      europeDot: new THREE.Color(0.585, 0.658, 0.612), // sage #95A89C
+      europeAlpha: 0.72,
+      asiaDot: new THREE.Color(0.722, 0.643, 0.788),   // plum-light #B8A4C9
+      asiaAlpha: 0.68,
+      europeCityHex: 0x95A89C,
+      asiaCityHex: 0xB8A4C9,
+      goldCityHex: 0xD4956A,                           // 暖金 — Tier A only
+      europeArc: 0x95A89C,
+      asiaArc: 0xB8A4C9,
+      goldArc: 0xD4956A,
+      europeBorder: 0x95A89C,
+      asiaBorder: 0xB8A4C9,
+      atmosPlum: [0.420, 0.345, 0.463],                // #6B5876
+      atmosSage: [0.585, 0.658, 0.612],                // #95A89C
+      ambient: 0x3A3240,                               // 暖中性
+      keyLight: 0xE8DFF0,                              // 冷白光（hero 里的 text 色）
+      rimLightHex: 0x95A89C,                           // sage rim
+      warmLightHex: 0xB8A4C9,                          // plum warm
     };
 
     // ══════════════════════════════════════
@@ -566,8 +576,10 @@
     renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+    // Default view centered on Paris (lat 48.86, lng 2.35) — where the visual density is
     const globeGroup = new THREE.Group();
-    globeGroup.rotation.x = 0.15;
+    globeGroup.rotation.x = 0.426;
+    globeGroup.rotation.y = -1.612;
     scene.add(globeGroup);
 
     // Occluder — invisible depth writer to hide back-side dots
@@ -590,7 +602,7 @@
       })
     ));
 
-    // Atmosphere glow — dual color (teal dominant, amber accent)
+    // Atmosphere glow — plum (Asia side) × sage (Europe side) rim
     const atmosMat = new THREE.ShaderMaterial({
       vertexShader: `
         varying vec3 vNormal;
@@ -601,20 +613,20 @@
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
         }`,
       fragmentShader: `
-        uniform vec3 uTeal;
-        uniform vec3 uAmber;
+        uniform vec3 uSage;
+        uniform vec3 uPlum;
         varying vec3 vNormal;
         varying vec3 vWorldPos;
         void main() {
-          float rim = pow(0.62 - dot(vNormal, vec3(0,0,1)), 2.8);
-          // Blend teal ↔ amber based on world x position (left=Asia, right=Europe roughly)
-          float blend = smoothstep(-0.5, 0.8, vWorldPos.x);
-          vec3 col = mix(uAmber, uTeal, blend);
-          gl_FragColor = vec4(col, rim * 0.45);
+          float rim = pow(0.64 - dot(vNormal, vec3(0,0,1)), 2.6);
+          // Blend plum ↔ sage by world x (left=Asia plum, right=Europe sage)
+          float blend = smoothstep(-0.6, 0.8, vWorldPos.x);
+          vec3 col = mix(uPlum, uSage, blend);
+          gl_FragColor = vec4(col, rim * 0.55);
         }`,
       uniforms: {
-        uTeal: { value: new THREE.Vector3(...C.atmosTeal) },
-        uAmber: { value: new THREE.Vector3(...C.atmosAmber) },
+        uSage: { value: new THREE.Vector3(...C.atmosSage) },
+        uPlum: { value: new THREE.Vector3(...C.atmosPlum) },
       },
       blending: THREE.AdditiveBlending,
       side: THREE.BackSide,
@@ -622,15 +634,15 @@
     });
     scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.12, 64, 64), atmosMat));
 
-    // Lights
-    scene.add(new THREE.AmbientLight(C.ambient, 0.5));
-    const keyLight = new THREE.DirectionalLight(0xccddee, 0.7);
+    // Lights — warmer ambient, plum/sage fills
+    scene.add(new THREE.AmbientLight(C.ambient, 0.55));
+    const keyLight = new THREE.DirectionalLight(C.keyLight, 0.72);
     keyLight.position.set(4, 3, 5);
     scene.add(keyLight);
-    const rimLight = new THREE.DirectionalLight(0x2dd4bf, 0.2);
+    const rimLight = new THREE.DirectionalLight(C.rimLightHex, 0.22);
     rimLight.position.set(-4, -1, -3);
     scene.add(rimLight);
-    const warmLight = new THREE.DirectionalLight(0xfbbf24, 0.1);
+    const warmLight = new THREE.DirectionalLight(C.warmLightHex, 0.12);
     warmLight.position.set(3, -2, -4);
     scene.add(warmLight);
 
@@ -719,6 +731,31 @@
       if (europeC.length) dotMats.push(makePoints(europeC, C.europeDot, C.europeAlpha, 2.8));
       if (asiaC.length) dotMats.push(makePoints(asiaC, C.asiaDot, C.asiaAlpha, 2.8));
 
+      // Country borders — extract outlines of visited countries only
+      function addBorders(geometries, colorHex) {
+        if (!geometries.length) return;
+        const subTopo = { type: 'Topology', arcs: topo.arcs, transform: topo.transform,
+                          objects: { sub: { type: 'GeometryCollection', geometries } } };
+        const mesh = topojson.mesh(subTopo, subTopo.objects.sub, (a, b) => a !== b || true);
+        const positions = [];
+        mesh.coordinates.forEach(line => {
+          for (let i = 0; i < line.length - 1; i++) {
+            const a = latLngToVec3(line[i][1], line[i][0], 1.008);
+            const b = latLngToVec3(line[i+1][1], line[i+1][0], 1.008);
+            positions.push(a.x, a.y, a.z, b.x, b.y, b.z);
+          }
+        });
+        if (!positions.length) return;
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+        const mat = new THREE.LineBasicMaterial({
+          color: colorHex, transparent: true, opacity: 0.32, depthWrite: false,
+        });
+        globeGroup.add(new THREE.LineSegments(geo, mat));
+      }
+      addBorders(topo.objects.countries.geometries.filter(g => EUROPE_IDS.has(+g.id)), C.europeBorder);
+      addBorders(topo.objects.countries.geometries.filter(g => ASIA_IDS.has(+g.id)), C.asiaBorder);
+
       // Fade in
       const t0 = Date.now();
       (function fadeIn() {
@@ -733,60 +770,127 @@
     loadingEl.classList.add('hidden');
 
     // ══════════════════════════════════════
-    // CITY MARKERS
+    // CITY MARKERS — three-tier hierarchy
+    //   Tier A (≥20 pins): gold capital, 3 rings + pulse halo
+    //   Tier B (5-19):     plum-light / sage, 2 rings
+    //   Tier C (0-4):      plum-light / sage, 1 ring
     // ══════════════════════════════════════
     const cityMeshes = [];
-    CITIES.forEach(city => {
-      const isAsia = ASIA_COUNTRIES.has(city.country);
-      const hex = isAsia ? C.asiaCityHex : C.europeCityHex;
-      const pos = latLngToVec3(city.lat, city.lng, 1.014);
-      const sz = Math.max(0.014, Math.min(0.032, 0.014 + city.pins * 0.0008));
+    const pulseHalos = []; // Tier A only
+    const cityIntroTargets = []; // for stagger-in during intro
 
-      const dot = new THREE.Mesh(
-        new THREE.SphereGeometry(sz, 10, 10),
-        new THREE.MeshBasicMaterial({ color: hex })
-      );
-      dot.position.copy(pos);
-      dot.userData = { ...city, isAsia };
-      globeGroup.add(dot);
-      cityMeshes.push(dot);
-
-      // Glow ring
+    function makeRing(pos, innerR, outerR, colorHex, opacity) {
       const ring = new THREE.Mesh(
-        new THREE.RingGeometry(sz*1.6, sz*2.8, 24),
-        new THREE.MeshBasicMaterial({ color: hex, transparent:true, opacity:0.22, side:THREE.DoubleSide })
+        new THREE.RingGeometry(innerR, outerR, 36),
+        new THREE.MeshBasicMaterial({
+          color: colorHex, transparent: true, opacity: opacity,
+          side: THREE.DoubleSide, depthWrite: false,
+        })
       );
       ring.position.copy(pos);
       ring.lookAt(pos.clone().multiplyScalar(2));
       globeGroup.add(ring);
+      return ring;
+    }
+
+    CITIES.forEach(city => {
+      const isAsia = ASIA_COUNTRIES.has(city.country);
+      const tier = city.pins >= 20 ? 'A' : (city.pins >= 5 ? 'B' : 'C');
+      const regionHex = isAsia ? C.asiaCityHex : C.europeCityHex;
+      const hex = tier === 'A' ? C.goldCityHex : regionHex;
+      const pos = latLngToVec3(city.lat, city.lng, 1.014);
+
+      // Core marker — discrete sizes per tier
+      const sz = tier === 'A' ? 0.026 : (tier === 'B' ? 0.018 : 0.010);
+      const dot = new THREE.Mesh(
+        new THREE.SphereGeometry(sz, 14, 14),
+        new THREE.MeshBasicMaterial({ color: hex })
+      );
+      dot.position.copy(pos);
+      dot.userData = { ...city, isAsia, tier };
+      globeGroup.add(dot);
+      cityMeshes.push(dot);
+
+      // Ring stack — layers depend on tier
+      const rings = [];
+      if (tier === 'A') {
+        rings.push(makeRing(pos, sz*1.7, sz*2.4, hex, 0.55));
+        rings.push(makeRing(pos, sz*2.8, sz*3.8, hex, 0.28));
+        rings.push(makeRing(pos, sz*4.4, sz*5.6, hex, 0.12));
+
+        // Pulse halo — radiating water-ripple
+        const halo = new THREE.Mesh(
+          new THREE.RingGeometry(sz*2.0, sz*2.25, 48),
+          new THREE.MeshBasicMaterial({
+            color: hex, transparent: true, opacity: 0.0,
+            side: THREE.DoubleSide, depthWrite: false,
+          })
+        );
+        halo.position.copy(pos);
+        halo.lookAt(pos.clone().multiplyScalar(2));
+        halo.userData = { baseR: sz*2.0, maxR: sz*6.0, phase: Math.random() * Math.PI * 2 };
+        globeGroup.add(halo);
+        pulseHalos.push(halo);
+      } else if (tier === 'B') {
+        rings.push(makeRing(pos, sz*1.7, sz*2.5, hex, 0.42));
+        rings.push(makeRing(pos, sz*3.0, sz*3.8, hex, 0.18));
+      } else {
+        rings.push(makeRing(pos, sz*1.8, sz*2.6, hex, 0.28));
+      }
+
+      cityIntroTargets.push({ dot, rings, tier });
     });
 
     // ══════════════════════════════════════
-    // ARCS
+    // ARCS — distance-based height + traveler dots
     // ══════════════════════════════════════
     const arcLines = [];
+    const travelerDots = []; // each: { mesh, curve, duration, offset, color }
     const cityMap = {};
     CITIES.forEach(c => cityMap[c.city] = c);
 
-    ROUTES.forEach(([a, b]) => {
+    ROUTES.forEach(([a, b], idx) => {
       if (!cityMap[a] || !cityMap[b]) return;
       const ca = cityMap[a], cb = cityMap[b];
-      const isAsiaRoute = ASIA_COUNTRIES.has(ca.country) && ASIA_COUNTRIES.has(cb.country);
+      const aAsia = ASIA_COUNTRIES.has(ca.country);
+      const bAsia = ASIA_COUNTRIES.has(cb.country);
+      const isAsiaRoute = aAsia && bAsia;
+      const isTierAPair = ca.pins >= 20 && cb.pins >= 20; // both capitals → gold arc
+      const arcHex = isTierAPair ? C.goldArc : (isAsiaRoute ? C.asiaArc : C.europeArc);
+
       const p1 = latLngToVec3(ca.lat, ca.lng, 1.0);
       const p2 = latLngToVec3(cb.lat, cb.lng, 1.0);
+      const dist = p1.distanceTo(p2); // 0..2 in unit sphere
+      const distRatio = Math.min(1, dist / 2.0);
+      const curveHeight = 0.10 + distRatio * 0.55; // short stays flat, long arcs higher
       const mid = p1.clone().add(p2).multiplyScalar(0.5);
-      mid.normalize().multiplyScalar(1.0 + p1.distanceTo(p2) * 0.3);
+      mid.normalize().multiplyScalar(1.0 + curveHeight);
 
-      const geo = new THREE.BufferGeometry().setFromPoints(
-        new THREE.QuadraticBezierCurve3(p1, mid, p2).getPoints(48)
-      );
+      const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
+      const geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(56));
       const mat = new THREE.LineBasicMaterial({
-        color: isAsiaRoute ? C.asiaArc : C.europeArc,
-        transparent: true, opacity: 0.12,
+        color: arcHex, transparent: true, opacity: 0.20, depthWrite: false,
       });
       const line = new THREE.Line(geo, mat);
       arcLines.push(line);
       globeGroup.add(line);
+
+      // Traveler dot — walks the curve
+      const dotSize = isTierAPair ? 0.012 : 0.008;
+      const dotMesh = new THREE.Mesh(
+        new THREE.SphereGeometry(dotSize, 10, 10),
+        new THREE.MeshBasicMaterial({
+          color: arcHex, transparent: true, opacity: 0.0, depthWrite: false,
+        })
+      );
+      globeGroup.add(dotMesh);
+      travelerDots.push({
+        mesh: dotMesh,
+        curve,
+        duration: 3200 + (distRatio * 2400), // 3.2s–5.6s by distance
+        offset: Math.random() * 6000,         // stagger start
+        maxOpacity: isTierAPair ? 0.95 : 0.75,
+      });
     });
 
     // ══════════════════════════════════════
@@ -816,7 +920,7 @@
         tooltipEl.querySelector('.tooltip-country').textContent = c.country;
         const pl = tooltipEl.querySelector('.tooltip-places');
         pl.textContent = c.pins > 0 ? `${c.pins} saved places` : 'Visited';
-        pl.className = 'tooltip-places' + (c.isAsia ? ' amber' : '');
+        pl.className = 'tooltip-places' + (c.tier === 'A' ? ' gold' : (c.isAsia ? ' asia' : ''));
         tooltipEl.style.left = (e.clientX-rect.left+16)+'px';
         tooltipEl.style.top = (e.clientY-rect.top-20)+'px';
         tooltipEl.classList.add('visible');
@@ -850,7 +954,11 @@
       autoRotate = !autoRotate; this.classList.toggle('active');
     });
     document.getElementById('btn-reset').addEventListener('click', () => {
-      globeGroup.rotation.x = 0.15; globeGroup.rotation.y = 0; camera.position.z = 2.8;
+      globeGroup.rotation.x = 0.426; globeGroup.rotation.y = -1.612; camera.position.z = 2.8;
+      if (introState) { introState.done = true; }
+      cityIntroTargets.forEach(t => {
+        t.dot.visible = true; t.rings.forEach(r => r.visible = true);
+      });
     });
 
     document.querySelectorAll('.city-tag').forEach(tag => {
@@ -874,14 +982,111 @@
     });
 
     // ══════════════════════════════════════
+    // INTRO CEREMONY — first visit sweeps Shanghai → Europe
+    // ══════════════════════════════════════
+    let introState = null;
+    try {
+      if (!sessionStorage.getItem('globeIntroSeen')) {
+        const INTRO_START = { x: 0.273, y: -3.691 }; // facing Shanghai (lat 31.23, lng 121.47)
+        const INTRO_END   = { x: 0.426, y: -1.612 }; // facing Paris, same as default
+        globeGroup.rotation.x = INTRO_START.x;
+        globeGroup.rotation.y = INTRO_START.y;
+        // Hide markers at first so they can stagger-in
+        cityIntroTargets.forEach(t => {
+          t.dot.visible = false;
+          t.rings.forEach(r => r.visible = false);
+        });
+        // Sort by pins descending so capitals light up first
+        const order = cityIntroTargets
+          .map((t, i) => ({ t, pins: CITIES[i].pins }))
+          .sort((a, b) => b.pins - a.pins)
+          .map(o => o.t);
+        introState = {
+          start: Date.now() + 400,          // tiny pause before sweep
+          camDur: 2200,
+          from: INTRO_START, to: INTRO_END,
+          order, staggerMs: 120,
+          done: false,
+        };
+        sessionStorage.setItem('globeIntroSeen', '1');
+        autoRotate = false; // suppress auto-rotate during intro
+      }
+    } catch (e) { /* sessionStorage unavailable; skip intro */ }
+
+    // ══════════════════════════════════════
     // ANIMATION
     // ══════════════════════════════════════
+    const animStart = Date.now();
     function animate() {
       requestAnimationFrame(animate);
+      const now = Date.now();
+      const t = now * 0.003;
+
+      // Intro tween
+      if (introState && !introState.done) {
+        const localT = now - introState.start;
+        if (localT > 0) {
+          const p = Math.min(1, localT / introState.camDur);
+          const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+          globeGroup.rotation.x = introState.from.x + (introState.to.x - introState.from.x) * eased;
+          globeGroup.rotation.y = introState.from.y + (introState.to.y - introState.from.y) * eased;
+          // Stagger-in city markers
+          introState.order.forEach((target, i) => {
+            const activateAt = i * introState.staggerMs;
+            if (localT > activateAt) {
+              target.dot.visible = true;
+              target.rings.forEach(r => r.visible = true);
+            }
+          });
+          if (p >= 1 && localT > introState.order.length * introState.staggerMs + 300) {
+            introState.done = true;
+            autoRotate = true;
+          }
+        }
+        // If user starts dragging, abort intro gracefully
+        if (isDragging) {
+          introState.order.forEach(target => {
+            target.dot.visible = true;
+            target.rings.forEach(r => r.visible = true);
+          });
+          introState.done = true;
+          autoRotate = false;
+        }
+      }
+
       if (autoRotate && !isDragging) globeGroup.rotation.y += 0.0012;
-      const t = Date.now() * 0.003;
-      cityMeshes.forEach((d,i) => d.scale.setScalar(1 + Math.sin(t+i*0.5)*0.15));
-      arcLines.forEach((l,i) => { l.material.opacity = 0.07 + Math.sin(t*0.3+i*0.7)*0.05; });
+
+      // City markers — gentle breathing (all tiers)
+      cityMeshes.forEach((d, i) => d.scale.setScalar(1 + Math.sin(t + i*0.5) * 0.10));
+
+      // Arc line opacity modulation
+      arcLines.forEach((l, i) => {
+        l.material.opacity = 0.16 + Math.sin(t*0.35 + i*0.7) * 0.06;
+      });
+
+      // Tier A pulse halos — water-ripple radiating outward every ~3.8s
+      pulseHalos.forEach(h => {
+        const cycle = 3800;
+        const phaseT = ((now + h.userData.phase * cycle / (Math.PI*2)) % cycle) / cycle;
+        const easeOut = 1 - Math.pow(1 - phaseT, 2);
+        const r = h.userData.baseR + (h.userData.maxR - h.userData.baseR) * easeOut;
+        const scale = r / h.userData.baseR;
+        h.scale.set(scale, scale, 1);
+        h.material.opacity = 0.40 * (1 - phaseT);
+      });
+
+      // Traveler dots — walk each arc
+      travelerDots.forEach(td => {
+        const phaseT = ((now + td.offset) % td.duration) / td.duration;
+        const pt = td.curve.getPoint(phaseT);
+        td.mesh.position.copy(pt);
+        // Fade in/out at endpoints (first 12% and last 12%)
+        let a = td.maxOpacity;
+        if (phaseT < 0.12) a *= phaseT / 0.12;
+        else if (phaseT > 0.88) a *= (1 - phaseT) / 0.12;
+        td.mesh.material.opacity = a;
+      });
+
       renderer.render(scene, camera);
     }
     animate();
