@@ -13,6 +13,13 @@
             document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
         } catch (error) {}
     })();
+    (function () {
+        try {
+            var lang = localStorage.getItem('langPreference') || 'en';
+            document.documentElement.setAttribute('data-lang', lang);
+            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        } catch (e) {}
+    })();
     </script>
     <meta name="description" content="Iris Zhou's portfolio: product design, AI experimentation, and human-centered systems built through research and iteration.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/index.html">
@@ -26,122 +33,92 @@
     <meta name="twitter:description" content="Portfolio featuring product projects, AI lab experiments, and practical design thinking.">
     <meta name="twitter:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/hero-photon.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Background Particle Field -->
     <div class="particle-field" id="particleField"></div>
 
-    <!-- Top Navigation -->
-    <nav class="top-nav" id="topNav">
-        <div class="container">
-            <div class="nav-brand">
-                <span class="brand-mark">IZ</span>
-            </div>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="learning.html" class="nav-link">Learning</a>
-                <a href="ai-lab.html" class="nav-link">AI Lab</a>
-                <a href="travel.html" class="nav-link">Footprints</a>
-                <a href="about.html" class="nav-link">About</a>
-            </div>
-            <div class="nav-actions">
-                <a href="mailto:carpediemzzsssww@gmail.com" class="nav-action" title="Email" aria-label="Send email">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/carpediemzzsssww-cpu" class="nav-action" title="GitHub" aria-label="Open GitHub profile" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="nav-action" title="LinkedIn" aria-label="Open LinkedIn profile" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                </a>
-                <button class="nav-action theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
-                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
-                    </svg>
-                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <circle cx="12" cy="12" r="4"/>
-                        <line x1="12" y1="2" x2="12" y2="5"/>
-                        <line x1="12" y1="19" x2="12" y2="22"/>
-                        <line x1="2" y1="12" x2="5" y2="12"/>
-                        <line x1="19" y1="12" x2="22" y2="12"/>
-                        <line x1="4.9" y1="4.9" x2="7" y2="7"/>
-                        <line x1="17" y1="17" x2="19.1" y2="19.1"/>
-                        <line x1="4.9" y1="19.1" x2="7" y2="17"/>
-                        <line x1="17" y1="7" x2="19.1" y2="4.9"/>
-                    </svg>
-                </button>
-            </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open mobile menu" aria-controls="mobileDrawer" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu Drawer -->
-    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-        <div class="mobile-drawer-links">
-            <a href="index.html" class="mobile-link active">Home</a>
-            <a href="projects.html" class="mobile-link">Projects</a>
-            <a href="learning.html" class="mobile-link">Learning</a>
-            <a href="ai-lab.html" class="mobile-link">AI Lab</a>
-            <a href="travel.html" class="mobile-link">Footprints</a>
-            <a href="about.html" class="mobile-link">About</a>
-            <button class="mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
-                <span data-theme-toggle-text>Switch to dark mode</span>
-            </button>
-        </div>
-    </div>
+    <!-- Navigation (injected by components.js) -->
+    <nav id="site-nav"></nav>
+    <div id="site-mobile-drawer"></div>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section reveal">
+        <!-- Hero: Photon Butterfly cinematic intro -->
+        <div class="hero-photon">
+            <svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+                <filter id="heroRoughen">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="4"/>
+                    <feDisplacementMap in="SourceGraphic" scale="1.5"/>
+                </filter>
+            </svg>
+
+            <section class="hero" aria-label="Introduction">
+                <div id="stage"><canvas id="c"></canvas></div>
+
+                <div class="mark-tl">IRIS ZHOU <span class="sep">&middot;</span> B. CHINESE LIT <span class="sep">&middot;</span> BUILDING AI</div>
+                <div class="mark-tr">
+                    <div class="v-line"></div>
+                    <div class="v-label">Shanghai &middot; Wuhan &middot; Paris</div>
+                </div>
+
+                <div class="title-block">
+                    <div class="title-prefix"></div>
+                    <h1>
+                        <span class="l1">From simple rules,</span>
+                        <span class="l2">systems emerge.</span>
+                        <span class="l3">&mdash; so do I.</span>
+                    </h1>
+                </div>
+
+                <div class="scroll-hint">scroll</div>
+
+                <div class="terminal">
+                    <div class="term-head">
+                        <div class="term-label">~/portfolio</div>
+                        <div class="term-status"><span class="status-dot"></span><span>idle</span></div>
+                    </div>
+                    <div class="term-body" id="term"></div>
+                    <div class="term-foot">build &middot; 20240720</div>
+                </div>
+            </section>
+
+            <div class="hero-transition" aria-hidden="true"></div>
+        </div>
+
+        <!-- After-hero: short intro with portrait, bridges the dark hero into the document body -->
+        <section class="after-hero">
             <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <h1 class="hero-title">
-                            <span class="title-line">Iris Zhou</span>
-                            <span class="title-line hero-meta">AI Product Builder</span>
-                        </h1>
-                        <p class="hero-subtitle">
-                            Building AI products from user insight to working systems — where humanities intuition meets technical craft.
+                <div class="after-hero-grid">
+                    <figure class="after-hero-portrait" aria-label="Portrait of Iris Zhou">
+                        <img
+                            src="assets/hero/hero-portrait.JPG"
+                            alt="Portrait of Iris Zhou"
+                            loading="eager"
+                            fetchpriority="high"
+                        >
+                    </figure>
+                    <div class="after-hero-content">
+                        <h2 class="after-hero-title">
+                            <span data-i18n="hero.name">Iris Zhou</span>
+                            <span class="after-hero-role" data-i18n="hero.role">AI Product Builder</span>
+                        </h2>
+                        <p class="after-hero-intro" data-i18n="hero.subtitle">
+                            Building AI products from user insight to working systems &mdash; where humanities intuition meets technical craft.
                         </p>
-                        <div class="hero-cta">
+                        <div class="after-hero-cta">
                             <a href="projects.html" class="btn btn-primary">
-                                View Projects
+                                <span data-i18n="btn.viewProjects">View Projects</span>
                                 <span class="btn-line"></span>
                             </a>
-                            <a href="mailto:carpediemzzsssww@gmail.com" class="btn btn-ghost">
+                            <a href="mailto:carpediemzzsssww@gmail.com" class="btn btn-ghost" data-i18n="btn.getInTouch">
                                 Get in Touch
                             </a>
                         </div>
-                    </div>
-                    <div class="hero-visual">
-                        <figure class="emergence-block hero-portrait-card" aria-label="Portrait visual">
-                            <img
-                                class="hero-portrait-image"
-                                src="assets/hero/hero-portrait.JPG"
-                                alt="Portrait of Iris Zhou"
-                                loading="eager"
-                                fetchpriority="high"
-                            >
-                            <span class="hero-portrait-overlay" aria-hidden="true"></span>
-                        </figure>
                     </div>
                 </div>
             </div>
@@ -152,20 +129,20 @@
             <div class="container">
                 <div class="profile-grid">
                     <div class="profile-card" data-profile="product">
-                        <h3 class="profile-title">Product</h3>
-                        <p class="profile-desc">From user close-reading to product decisions with measurable impact</p>
+                        <h3 class="profile-title" data-i18n="profile.product">Product</h3>
+                        <p class="profile-desc" data-i18n="profile.product.desc">From user close-reading to product decisions with measurable impact</p>
                     </div>
                     <div class="profile-card" data-profile="ai">
-                        <h3 class="profile-title">AI</h3>
-                        <p class="profile-desc">Building with LLMs, agents, and AI APIs — from RAG to Function Calling</p>
+                        <h3 class="profile-title" data-i18n="profile.ai">AI</h3>
+                        <p class="profile-desc" data-i18n="profile.ai.desc">Building with LLMs, agents, and AI APIs — from RAG to Function Calling</p>
                     </div>
                     <div class="profile-card" data-profile="research">
-                        <h3 class="profile-title">Research</h3>
-                        <p class="profile-desc">1,287 surveys, 3-city fieldwork, A/B testing — insights that ship</p>
+                        <h3 class="profile-title" data-i18n="profile.research">Research</h3>
+                        <p class="profile-desc" data-i18n="profile.research.desc">1,287 surveys, 3-city fieldwork, A/B testing — insights that ship</p>
                     </div>
                     <div class="profile-card" data-profile="build">
-                        <h3 class="profile-title">Build</h3>
-                        <p class="profile-desc">From zero-code to full-stack: React, Python, RPA, and deployment</p>
+                        <h3 class="profile-title" data-i18n="profile.build">Build</h3>
+                        <p class="profile-desc" data-i18n="profile.build.desc">From zero-code to full-stack: React, Python, RPA, and deployment</p>
                     </div>
                 </div>
             </div>
@@ -174,15 +151,15 @@
         <!-- Experience Timeline -->
         <section class="experience-section reveal">
             <div class="container">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title" data-i18n="section.experience">Experience</h2>
                 <div class="timeline">
                     <div class="timeline-item" data-expanded="false">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <div class="timeline-meta">
-                                    <h3 class="timeline-role">Bestcem (倍市得)</h3>
-                                    <span class="timeline-org">AI Product Intern</span>
+                                    <h3 class="timeline-role" data-i18n="exp.bestcem.name">Bestcem</h3>
+                                    <span class="timeline-org" data-i18n="exp.bestcem.role">AI Product Intern</span>
                                     <span class="timeline-date">2026.2 - Present</span>
                                 </div>
                                 <button class="timeline-toggle" type="button" aria-expanded="false">
@@ -191,27 +168,27 @@
                                     </svg>
                                 </button>
                             </div>
-                            <p class="timeline-impact">End-to-end AI product design, evaluation, and B2B SaaS iteration</p>
+                            <p class="timeline-impact" data-i18n="exp.bestcem.impact">End-to-end AI product design, evaluation, and B2B SaaS iteration</p>
                             <div class="timeline-details">
                                 <ul>
-                                    <li>Owned 0-to-1 product design for an AI-powered customer journey generator, from competitive analysis to PRD and interactive prototype</li>
-                                    <li>Built a 5-module AI quality evaluation framework with 20+ quantitative metrics for the AI research simulation product</li>
-                                    <li>Delivered full VOC project for a leading F&B enterprise — 30k+ data entries across 9 platforms, RPA automation, and analytics dashboard</li>
+                                    <li data-i18n="exp.bestcem.d1">Owned 0-to-1 product design for an AI-powered customer journey generator, from competitive analysis to PRD and interactive prototype</li>
+                                    <li data-i18n="exp.bestcem.d2">Built a 5-module AI quality evaluation framework with 20+ quantitative metrics for the AI research simulation product</li>
+                                    <li data-i18n="exp.bestcem.d3">Delivered full VOC project for a leading F&B enterprise — 30k+ data entries across 9 platforms, RPA automation, and analytics dashboard</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <h2 class="section-title">Education</h2>
+                <h2 class="section-title" data-i18n="section.education">Education</h2>
                 <div class="timeline">
                     <div class="timeline-item" data-expanded="false">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <div class="timeline-meta">
-                                    <h3 class="timeline-role">Wuhan university</h3>
-                                    <span class="timeline-org">Bachelor of Arts</span>
+                                    <h3 class="timeline-role" data-i18n="edu.whu.name">Wuhan University</h3>
+                                    <span class="timeline-org" data-i18n="edu.whu.degree">Bachelor of Arts</span>
                                     <span class="timeline-date">2023.9-2027.6</span>
                                 </div>
                                 <button class="timeline-toggle" type="button" aria-expanded="false">
@@ -220,11 +197,11 @@
                                     </svg>
                                 </button>
                             </div>
-                            <p class="timeline-impact">Major in Chinese Language and Literature, Minor in Communication Studies</p>
+                            <p class="timeline-impact" data-i18n="edu.whu.impact">Major in Chinese Language and Literature, Minor in Communication Studies</p>
                             <div class="timeline-details">
                                 <ul>
-                                    <li>Major Coursework: Sociolinguistics, Modern Chinese, Business English</li>
-                                    <li>Minor Coursework: Interaction Design, Communication Statistics, Gender Psychology</li>
+                                    <li data-i18n="edu.whu.d1">Major Coursework: Sociolinguistics, Modern Chinese, Business English</li>
+                                    <li data-i18n="edu.whu.d2">Minor Coursework: Interaction Design, Communication Statistics, Gender Psychology</li>
                                 </ul>
                             </div>
                         </div>
@@ -235,8 +212,8 @@
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <div class="timeline-meta">
-                                    <h3 class="timeline-role">Université Paris Nanterre</h3>
-                                    <span class="timeline-org">Exchange student</span>
+                                    <h3 class="timeline-role" data-i18n="edu.paris.name">Universit&eacute; Paris Nanterre</h3>
+                                    <span class="timeline-org" data-i18n="edu.paris.role">Exchange Student</span>
                                     <span class="timeline-date">2025.9-2026.1</span>
                                 </div>
                                 <button class="timeline-toggle" type="button" aria-expanded="false">
@@ -245,11 +222,11 @@
                                     </svg>
                                 </button>
                             </div>
-                            <p class="timeline-impact">Sciences Humaines et Sociales</p>
+                            <p class="timeline-impact" data-i18n="edu.paris.impact">Sciences Humaines et Sociales</p>
                             <div class="timeline-details">
                                 <ul>
-                                    <li>Completed course projects in multilingual settings, demonstrating cross-cultural collaboration and information synthesis skills</li>
-                                    <li>Through product experiences across 14 countries, identified regional differences in privacy design, payment behavior, and social media usage, building a strong understanding of localization strategy</li>
+                                    <li data-i18n="edu.paris.d1">Completed course projects in multilingual settings, demonstrating cross-cultural collaboration and information synthesis skills</li>
+                                    <li data-i18n="edu.paris.d2">Through product experiences across 14 countries, identified regional differences in privacy design, payment behavior, and social media usage, building a strong understanding of localization strategy</li>
                                 </ul>
                             </div>
                         </div>
@@ -260,8 +237,8 @@
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <div class="timeline-meta">
-                                    <h3 class="timeline-role">Shanghai Jiao Tong University</h3>
-                                    <span class="timeline-org">Awarded Outstanding Participant</span>
+                                    <h3 class="timeline-role" data-i18n="edu.sjtu.name">Shanghai Jiao Tong University</h3>
+                                    <span class="timeline-org" data-i18n="edu.sjtu.role">Awarded Outstanding Participant</span>
                                     <span class="timeline-date">2025.6-7</span>
                                 </div>
                                 <button class="timeline-toggle" type="button" aria-expanded="false">
@@ -270,12 +247,12 @@
                                     </svg>
                                 </button>
                             </div>
-                            <p class="timeline-impact">Language Technology Summer Workshop</p>
+                            <p class="timeline-impact" data-i18n="edu.sjtu.impact">Language Technology Summer Workshop</p>
                             <div class="timeline-details">
                                 <ul>
-                                    <li>Applied Praat, SPSS, and NVivo across language-tech and data-analysis tasks to generate user/content insights</li>
-                                    <li>Explored core NLP and LLM use cases, with emphasis on multilingual product scenarios and system-level understanding</li>
-                                    <li>Translated language-behavior and feedback signals into inputs for content and communication strategy</li>
+                                    <li data-i18n="edu.sjtu.d1">Applied Praat, SPSS, and NVivo across language-tech and data-analysis tasks to generate user/content insights</li>
+                                    <li data-i18n="edu.sjtu.d2">Explored core NLP and LLM use cases, with emphasis on multilingual product scenarios and system-level understanding</li>
+                                    <li data-i18n="edu.sjtu.d3">Translated language-behavior and feedback signals into inputs for content and communication strategy</li>
                                 </ul>
                             </div>
                         </div>
@@ -287,7 +264,7 @@
         <!-- Presentation -->
         <section class="presentation-section reveal">
             <div class="container">
-                <h2 class="section-title">Featured Work</h2>
+                <h2 class="section-title" data-i18n="section.featuredWork">Featured Work</h2>
                 <div class="presentation-grid">
                     <a href="https://yunyou.vercel.app" class="presentation-card" target="_blank" rel="noopener noreferrer">
                         <div class="presentation-media">
@@ -299,10 +276,10 @@
                             >
                         </div>
                         <div class="presentation-content">
-                            <h3 class="presentation-title">Yunyou 云游</h3>
-                            <p class="presentation-desc">An AI agent that tells you when to buy flights — not just where to search</p>
-                            <span class="presentation-link">
-                                Explore →
+                            <h3 class="presentation-title" data-i18n="featured.yunyou.title">Yunyou</h3>
+                            <p class="presentation-desc" data-i18n="featured.yunyou.desc">An AI agent that tells you when to buy flights — not just where to search</p>
+                            <span class="presentation-link" data-i18n="featured.yunyou.link">
+                                Explore &rarr;
                             </span>
                         </div>
                     </a>
@@ -317,10 +294,10 @@
                             >
                         </div>
                         <div class="presentation-content">
-                            <h3 class="presentation-title">AI PRD Copilot</h3>
-                            <p class="presentation-desc">An AI Copilot that helps product managers think, not just write</p>
-                            <span class="presentation-link">
-                                Use it →
+                            <h3 class="presentation-title" data-i18n="featured.prd.title">AI PRD Copilot</h3>
+                            <p class="presentation-desc" data-i18n="featured.prd.desc">An AI Copilot that helps product managers think, not just write</p>
+                            <span class="presentation-link" data-i18n="featured.prd.link">
+                                Use it &rarr;
                             </span>
                         </div>
                     </a>
@@ -335,10 +312,10 @@
                             >
                         </div>
                         <div class="presentation-content">
-                            <h3 class="presentation-title">NetEase Hi Echo — User Research</h3>
-                            <p class="presentation-desc">Led a 17-person team to uncover what AI English learners actually need</p>
-                            <span class="presentation-link">
-                                Read Case Study →
+                            <h3 class="presentation-title" data-i18n="featured.echo.title">NetEase Hi Echo — User Research</h3>
+                            <p class="presentation-desc" data-i18n="featured.echo.desc">Led a 17-person team to uncover what AI English learners actually need</p>
+                            <span class="presentation-link" data-i18n="featured.echo.link">
+                                Read Case Study &rarr;
                             </span>
                         </div>
                     </a>
@@ -349,10 +326,10 @@
         <!-- Skills Network -->
         <section class="skills-section reveal">
             <div class="container">
-                <h2 class="section-title">Skills & Tools</h2>
+                <h2 class="section-title" data-i18n="section.skills">Skills & Tools</h2>
                 <div class="skills-groups">
                     <div class="skill-group">
-                        <h3 class="skill-group-title">AI & LLM</h3>
+                        <h3 class="skill-group-title" data-i18n="skills.ai">AI & LLM</h3>
                         <div class="skill-pills">
                             <span class="skill-pill">Prompt Engineering</span>
                             <span class="skill-pill">RAG</span>
@@ -362,7 +339,7 @@
                         </div>
                     </div>
                     <div class="skill-group">
-                        <h3 class="skill-group-title">Product</h3>
+                        <h3 class="skill-group-title" data-i18n="skills.product">Product</h3>
                         <div class="skill-pills">
                             <span class="skill-pill">PRD Writing</span>
                             <span class="skill-pill">User Research</span>
@@ -373,7 +350,7 @@
                         </div>
                     </div>
                     <div class="skill-group">
-                        <h3 class="skill-group-title">Technical</h3>
+                        <h3 class="skill-group-title" data-i18n="skills.technical">Technical</h3>
                         <div class="skill-pills">
                             <span class="skill-pill">Python</span>
                             <span class="skill-pill">React / Next.js</span>
@@ -383,7 +360,7 @@
                         </div>
                     </div>
                     <div class="skill-group">
-                        <h3 class="skill-group-title">Language</h3>
+                        <h3 class="skill-group-title" data-i18n="skills.language">Language</h3>
                         <div class="skill-pills">
                             <span class="skill-pill">English (IELTS 7.0)</span>
                             <span class="skill-pill">French (Conversational)</span>
@@ -399,60 +376,34 @@
         <section class="contact-section reveal">
             <div class="container">
                 <div class="contact-card">
-                    <h2 class="contact-title">Let's Create Something</h2>
-                    <p class="contact-subtitle">
-                        I'm currently seeking internship opportunities in 
+                    <h2 class="contact-title" data-i18n="contact.title">Let's Create Something</h2>
+                    <p class="contact-subtitle" data-i18n="contact.subtitle">
+                        I'm currently seeking internship opportunities in
                         Product, AI roles.
                     </p>
                     <div class="contact-status">
                         <span class="status-indicator"></span>
-                        Open to opportunities
+                        <span data-i18n="contact.status">Open to opportunities</span>
                     </div>
-                    <div class="contact-links">
-                        <a href="mailto:carpediemzzsssww@gmail.com" class="contact-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                            carpediemzzsssww@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="contact-link" target="_blank" rel="noopener noreferrer">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect x="2" y="9" width="4" height="12"/>
-                                <circle cx="4" cy="4" r="2"/>
-                            </svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/carpediemzzsssww-cpu" class="contact-link" target="_blank" rel="noopener noreferrer">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                            </svg>
-                            GitHub
-                        </a>
+                    <div class="contact-links" id="contact-links">
+                        <!-- Injected by components.js from config.json -->
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">
-                    © 2026 Iris Zhou. Designed & built with intention.
-                </p>
-                <div class="footer-links">
-                    <a href="mailto:carpediemzzsssww@gmail.com" class="footer-link">Contact</a>
-                    <a href="https://github.com/carpediemzzsssww-cpu" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (injected by components.js) -->
+    <footer id="site-footer"></footer>
 
+    <script src="components.js"></script>
+    <script src="i18n.js"></script>
+    <script>
+    window.i18n.loadContent(['index.json']);
+    </script>
     <script src="projects.js"></script>
     <script src="scripts.js"></script>
+    <script src="scripts/hero-photon.js" defer></script>
     <script src="alter-widget.js"></script>
 </body>
 </html>

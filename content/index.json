@@ -1,0 +1,65 @@
+{
+  "translations": {
+    "hero.name": { "en": "Iris Zhou", "zh": "Iris Zhou" },
+    "hero.role": { "en": "AI Product Builder", "zh": "AI \u4ea7\u54c1\u4eba" },
+    "hero.subtitle": { "en": "Building AI products from user insight to working systems \u2014 where humanities intuition meets technical craft.", "zh": "\u7528\u8bfb\u6587\u672c\u7684\u65b9\u5f0f\u8bfb\u7528\u6237\uff0c\u7528\u505a\u4e1c\u897f\u7684\u65b9\u5f0f\u7406\u89e3\u4e16\u754c\u3002" },
+
+    "profile.product": { "en": "Product", "zh": "Product" },
+    "profile.product.desc": { "en": "From user close-reading to product decisions with measurable impact", "zh": "\u7528\u8bfb\u6587\u5b66\u7684\u65b9\u5f0f\u8bfb\u7528\u6237\uff0c\u505a\u7ecf\u5f97\u8d77\u7b97\u8d26\u7684\u4ea7\u54c1\u51b3\u7b56" },
+    "profile.ai": { "en": "AI", "zh": "AI" },
+    "profile.ai.desc": { "en": "Building with LLMs, agents, and AI APIs \u2014 from RAG to Function Calling", "zh": "LLM\u3001Agent\u3001AI API\u2014\u2014\u4ece RAG \u5230 Function Calling\uff0c\u90fd\u4e0a\u624b\u5199\u8fc7" },
+    "profile.research": { "en": "Research", "zh": "Research" },
+    "profile.research.desc": { "en": "1,287 surveys, 3-city fieldwork, A/B testing \u2014 insights that ship", "zh": "1,287 \u4efd\u95ee\u5377\u3001\u4e09\u57ce\u8dd1\u7528\u6237\u3001A/B \u6d4b\u8bd5\u2014\u2014\u505a\u7814\u7a76\u662f\u4e3a\u4e86\u843d\u5730\uff0c\u4e0d\u662f\u5199\u62a5\u544a" },
+    "profile.build": { "en": "Build", "zh": "Build" },
+    "profile.build.desc": { "en": "From zero-code to full-stack: React, Python, RPA, and deployment", "zh": "\u96f6\u57fa\u7840\u5f00\u59cb\u5199\u4ee3\u7801\uff1aReact\u3001Python\u3001RPA\uff0c\u5199\u5b8c\u81ea\u5df1\u90e8\u7f72" },
+
+    "section.experience": { "en": "Experience", "zh": "\u7ecf\u5386" },
+    "exp.bestcem.name": { "en": "Bestcem", "zh": "\u500d\u5e02\u5f97" },
+    "exp.bestcem.role": { "en": "AI Product Intern", "zh": "AI \u4ea7\u54c1\u5b9e\u4e60\u751f" },
+    "exp.bestcem.impact": { "en": "End-to-end AI product design, evaluation, and B2B SaaS iteration", "zh": "\u4ece 0 \u5230 1 \u505a AI \u4ea7\u54c1\u2014\u2014\u8bbe\u8ba1\u3001\u8bc4\u6d4b\u3001\u8fed\u4ee3\uff0c\u5168\u7a0b\u6211\u6765" },
+    "exp.bestcem.d1": { "en": "Owned 0-to-1 product design for an AI-powered customer journey generator, from competitive analysis to PRD and interactive prototype", "zh": "\u4e00\u4e2a\u4eba\u625b\u4e86 AI \u5ba2\u6237\u65c5\u7a0b\u751f\u6210\u5668\u7684 0-1\uff1a\u7ade\u54c1\u62c6\u89e3\u3001PRD\u3001\u4ea4\u4e92\u539f\u578b\uff0c\u4e00\u8def\u505a\u4e0b\u6765" },
+    "exp.bestcem.d2": { "en": "Built a 5-module AI quality evaluation framework with 20+ quantitative metrics for the AI research simulation product", "zh": "\u7ed9 AI \u8c03\u7814\u4eff\u771f\u4ea7\u54c1\u8bbe\u8ba1\u4e86\u8bc4\u6d4b\u6846\u67b6\uff1a5 \u4e2a\u6a21\u5757\u300120+ \u91cf\u5316\u6307\u6807" },
+    "exp.bestcem.d3": { "en": "Delivered full VOC project for a leading F&B enterprise \u2014 30k+ data entries across 9 platforms, RPA automation, and analytics dashboard", "zh": "\u7ed9\u5934\u90e8\u9910\u996e\u54c1\u724c\u505a VOC\uff1a9 \u4e2a\u5e73\u53f0\u3001\u4e09\u4e07\u591a\u6761\u6570\u636e\u3001\u4ece RPA \u91c7\u96c6\u5230\u5206\u6790\u770b\u677f\u5168\u4ea4\u4ed8" },
+
+    "section.education": { "en": "Education", "zh": "\u6559\u80b2" },
+    "edu.whu.name": { "en": "Wuhan University", "zh": "\u6b66\u6c49\u5927\u5b66" },
+    "edu.whu.degree": { "en": "Bachelor of Arts", "zh": "\u6587\u5b66\u5b66\u58eb" },
+    "edu.whu.impact": { "en": "Major in Chinese Language and Literature, Minor in Communication Studies", "zh": "\u6c49\u8bed\u8a00\u6587\u5b66\u4e13\u4e1a\uff0c\u8f85\u4fee\u4f20\u64ad\u5b66" },
+    "edu.whu.d1": { "en": "Major Coursework: Sociolinguistics, Modern Chinese, Business English", "zh": "\u4e3b\u4fee\uff1a\u793e\u4f1a\u8bed\u8a00\u5b66\u3001\u73b0\u4ee3\u6c49\u8bed\u3001\u5546\u52a1\u82f1\u8bed" },
+    "edu.whu.d2": { "en": "Minor Coursework: Interaction Design, Communication Statistics, Gender Psychology", "zh": "\u8f85\u4fee\uff1a\u4ea4\u4e92\u8bbe\u8ba1\u3001\u4f20\u64ad\u7edf\u8ba1\u5b66\u3001\u6027\u522b\u5fc3\u7406\u5b66" },
+
+    "edu.paris.name": { "en": "Universit\u00e9 Paris Nanterre", "zh": "\u5df4\u9ece\u5357\u7279\u5c14\u5927\u5b66" },
+    "edu.paris.role": { "en": "Exchange Student", "zh": "\u4ea4\u6362\u751f" },
+    "edu.paris.impact": { "en": "Sciences Humaines et Sociales", "zh": "\u4eba\u6587\u4e0e\u793e\u4f1a\u79d1\u5b66" },
+    "edu.paris.d1": { "en": "Completed course projects in multilingual settings, demonstrating cross-cultural collaboration and information synthesis skills", "zh": "\u5728\u6cd5\u8bed + \u82f1\u8bed\u7684\u73af\u5883\u91cc\u505a\u8bfe\u7a0b\u9879\u76ee\uff0c\u8de8\u6587\u5316\u534f\u4f5c\u662f\u771f\u7684\u5b66\u5230\u4e86" },
+    "edu.paris.d2": { "en": "Through product experiences across 14 countries, identified regional differences in privacy design, payment behavior, and social media usage, building a strong understanding of localization strategy", "zh": "\u8d70\u4e86 14 \u4e2a\u56fd\u5bb6\uff0c\u4eb2\u8eab\u611f\u53d7\u5230\u9690\u79c1\u8bbe\u8ba1\u3001\u652f\u4ed8\u4e60\u60ef\u3001\u793e\u4ea4\u5a92\u4f53\u7684\u5730\u533a\u5dee\u5f02\u2014\u2014\u5bf9\u672c\u5730\u5316\u6709\u4e86\u5b9e\u611f\uff0c\u4e0d\u53ea\u662f\u6982\u5ff5" },
+
+    "edu.sjtu.name": { "en": "Shanghai Jiao Tong University", "zh": "\u4e0a\u6d77\u4ea4\u901a\u5927\u5b66" },
+    "edu.sjtu.role": { "en": "Awarded Outstanding Participant", "zh": "\u4f18\u79c0\u5b66\u5458" },
+    "edu.sjtu.impact": { "en": "Language Technology Summer Workshop", "zh": "\u8bed\u8a00\u6280\u672f\u6691\u671f\u5de5\u4f5c\u574a" },
+    "edu.sjtu.d1": { "en": "Applied Praat, SPSS, and NVivo across language-tech and data-analysis tasks to generate user/content insights", "zh": "\u7528 Praat\u3001SPSS\u3001NVivo \u505a\u8bed\u8a00\u5206\u6790\u548c\u6570\u636e\u5904\u7406\uff0c\u4ea7\u51fa\u80fd\u7528\u7684\u6d1e\u5bdf" },
+    "edu.sjtu.d2": { "en": "Explored core NLP and LLM use cases, with emphasis on multilingual product scenarios and system-level understanding", "zh": "\u63a5\u89e6 NLP \u548c LLM \u7684\u6838\u5fc3\u573a\u666f\uff0c\u5f00\u59cb\u7406\u89e3\u591a\u8bed\u8a00\u4ea7\u54c1\u8bbe\u8ba1" },
+    "edu.sjtu.d3": { "en": "Translated language-behavior and feedback signals into inputs for content and communication strategy", "zh": "\u628a\u8bed\u8a00\u884c\u4e3a\u548c\u7528\u6237\u53cd\u9988\u53d8\u6210\u5185\u5bb9\u7b56\u7565\u7684\u8f93\u5165" },
+
+    "section.featuredWork": { "en": "Featured Work", "zh": "\u4ee3\u8868\u4f5c\u54c1" },
+    "featured.yunyou.title": { "en": "Yunyou", "zh": "\u4e91\u6e38" },
+    "featured.yunyou.desc": { "en": "An AI agent that tells you when to buy flights \u2014 not just where to search", "zh": "\u4e0d\u53ea\u662f\u641c\u822a\u73ed\u2014\u2014\u544a\u8bc9\u4f60\u300c\u73b0\u5728\u4e70\u4e0d\u4e70\u300d\u7684 AI \u667a\u80fd\u4f53" },
+    "featured.yunyou.link": { "en": "Explore \u2192", "zh": "\u53bb\u770b\u770b \u2192" },
+    "featured.prd.title": { "en": "AI PRD Copilot", "zh": "AI PRD Copilot" },
+    "featured.prd.desc": { "en": "An AI Copilot that helps product managers think, not just write", "zh": "\u5e2e\u4ea7\u54c1\u7ecf\u7406\u60f3\u6e05\u695a\u518d\u52a8\u7b14\u7684 AI \u526f\u9a7e" },
+    "featured.prd.link": { "en": "Use it \u2192", "zh": "\u53bb\u4f53\u9a8c \u2192" },
+    "featured.echo.title": { "en": "NetEase Hi Echo \u2014 User Research", "zh": "\u7f51\u6613\u6709\u9053 Hi Echo \u2014 \u7528\u6237\u7814\u7a76" },
+    "featured.echo.desc": { "en": "Led a 17-person team to uncover what AI English learners actually need", "zh": "\u5e26 17 \u4e2a\u4eba\u505a\u7528\u7814\uff0c\u641e\u6e05\u695a\u5b66\u82f1\u8bed\u7684\u4eba\u5230\u5e95\u8981\u4ec0\u4e48" },
+    "featured.echo.link": { "en": "Read Case Study \u2192", "zh": "\u770b\u6848\u4f8b \u2192" },
+
+    "section.skills": { "en": "Skills & Tools", "zh": "\u6280\u80fd & \u5de5\u5177" },
+    "skills.ai": { "en": "AI & LLM", "zh": "AI & LLM" },
+    "skills.product": { "en": "Product", "zh": "Product" },
+    "skills.technical": { "en": "Technical", "zh": "Technical" },
+    "skills.language": { "en": "Language", "zh": "Language" },
+
+    "contact.title": { "en": "Let's Create Something", "zh": "\u4e00\u8d77\u505a\u70b9\u4e1c\u897f\u5427" },
+    "contact.subtitle": { "en": "I'm currently seeking internship opportunities in Product, AI roles.", "zh": "\u6b63\u5728\u627e\u4ea7\u54c1/AI \u65b9\u5411\u7684\u5b9e\u4e60\u3002\u89c9\u5f97\u5408\u9002\u7684\u8bdd\uff0c\u6765\u804a\u3002" },
+    "contact.status": { "en": "Open to opportunities", "zh": "\u6b63\u5728\u627e\u673a\u4f1a" }
+  }
+}

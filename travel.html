@@ -13,6 +13,13 @@
             document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
         } catch (error) {}
     })();
+    (function () {
+        try {
+            var lang = localStorage.getItem('langPreference') || 'en';
+            document.documentElement.setAttribute('data-lang', lang);
+            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        } catch (e) {}
+    })();
     </script>
     <meta name="description" content="16 countries, 49 cities — Iris Zhou's travel footprints across Asia and Europe.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/travel.html">
@@ -29,7 +36,7 @@
     <link rel="stylesheet" href="pages.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
     .travel-hero {
         padding: clamp(var(--space-6), 6vw, var(--space-8)) 0 var(--space-5);
@@ -251,78 +258,15 @@
 <body>
     <div class="particle-field"></div>
 
-    <nav class="top-nav">
-        <div class="container">
-            <div class="nav-brand"><span class="brand-mark">IZ</span></div>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="learning.html" class="nav-link">Learning</a>
-                <a href="ai-lab.html" class="nav-link">AI Lab</a>
-                <a href="travel.html" class="nav-link active">Footprints</a>
-                <a href="about.html" class="nav-link">About</a>
-            </div>
-            <div class="nav-actions">
-                <a href="mailto:carpediemzzsssww@gmail.com" class="nav-action" title="Email" aria-label="Send email">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/carpediemzzsssww-cpu" class="nav-action" title="GitHub" aria-label="Open GitHub profile" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/" class="nav-action" title="LinkedIn" aria-label="Open LinkedIn profile" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                </a>
-                <button class="nav-action theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
-                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
-                    </svg>
-                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <circle cx="12" cy="12" r="4"/>
-                        <line x1="12" y1="2" x2="12" y2="5"/>
-                        <line x1="12" y1="19" x2="12" y2="22"/>
-                        <line x1="2" y1="12" x2="5" y2="12"/>
-                        <line x1="19" y1="12" x2="22" y2="12"/>
-                        <line x1="4.9" y1="4.9" x2="7" y2="7"/>
-                        <line x1="17" y1="17" x2="19.1" y2="19.1"/>
-                        <line x1="4.9" y1="19.1" x2="7" y2="17"/>
-                        <line x1="17" y1="7" x2="19.1" y2="4.9"/>
-                    </svg>
-                </button>
-            </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open mobile menu" aria-controls="mobileDrawer" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-        <div class="mobile-drawer-links">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="projects.html" class="mobile-link">Projects</a>
-            <a href="learning.html" class="mobile-link">Learning</a>
-            <a href="ai-lab.html" class="mobile-link">AI Lab</a>
-            <a href="travel.html" class="mobile-link active">Footprints</a>
-            <a href="about.html" class="mobile-link">About</a>
-            <button class="mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
-                <span data-theme-toggle-text>Switch to dark mode</span>
-            </button>
-        </div>
-    </div>
+    <!-- Navigation (injected by components.js) -->
+    <nav id="site-nav"></nav>
+    <div id="site-mobile-drawer"></div>
 
     <main class="main-content">
         <section class="travel-hero reveal">
             <div class="container">
-                <h1 class="travel-hero-title">Traces on the <em>Map</em></h1>
-                <p class="travel-hero-subtitle">
+                <h1 class="travel-hero-title" data-i18n-html="travel.title">Traces on the <em>Map</em></h1>
+                <p class="travel-hero-subtitle" data-i18n="travel.subtitle">
                     Every city leaves a mark — a perspective shift, a design pattern noticed, a conversation that rewired how I think about products and people.
                 </p>
             </div>
@@ -333,19 +277,19 @@
                 <div class="travel-stats" id="travel-stats">
                     <div class="travel-stat">
                         <div class="travel-stat-number" data-target="16">0</div>
-                        <div class="travel-stat-label">Countries</div>
+                        <div class="travel-stat-label" data-i18n="travel.countries">Countries</div>
                     </div>
                     <div class="travel-stat">
                         <div class="travel-stat-number" data-target="49">0</div>
-                        <div class="travel-stat-label">Cities</div>
+                        <div class="travel-stat-label" data-i18n="travel.cities">Cities</div>
                     </div>
                     <div class="travel-stat">
                         <div class="travel-stat-number" data-target="2">0</div>
-                        <div class="travel-stat-label">Continents</div>
+                        <div class="travel-stat-label" data-i18n="travel.continents">Continents</div>
                     </div>
                     <div class="travel-stat">
                         <div class="travel-stat-number" data-target="182">0</div>
-                        <div class="travel-stat-label">Saved Places</div>
+                        <div class="travel-stat-label" data-i18n="travel.savedPlaces">Saved Places</div>
                     </div>
                 </div>
                 <script>
@@ -381,9 +325,9 @@
                         <div class="tooltip-places"></div>
                     </div>
                     <div class="globe-legend">
-                        <div class="globe-legend-item"><span class="globe-legend-dot europe"></span>Europe</div>
-                        <div class="globe-legend-item"><span class="globe-legend-dot asia"></span>Asia</div>
-                        <div class="globe-legend-item"><span class="globe-legend-dot other"></span>Unvisited</div>
+                        <div class="globe-legend-item"><span class="globe-legend-dot europe"></span><span data-i18n="travel.legend.europe">Europe</span></div>
+                        <div class="globe-legend-item"><span class="globe-legend-dot asia"></span><span data-i18n="travel.legend.asia">Asia</span></div>
+                        <div class="globe-legend-item"><span class="globe-legend-dot other"></span><span data-i18n="travel.legend.other">Unvisited</span></div>
                     </div>
                     <div class="globe-controls">
                         <button class="globe-btn active" id="btn-spin" title="Auto-rotate">&#x21bb;</button>
@@ -397,24 +341,21 @@
                 </div>
 
                 <div class="destinations-divider">
-                    <h2 class="travel-grid-title">All Destinations</h2>
+                    <h2 class="travel-grid-title" data-i18n="travel.allDest">All Destinations</h2>
                 </div>
                 <div class="country-grid" id="city-grid"></div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">&copy; 2026 Iris Zhou. Designed &amp; built with intention.</p>
-                <div class="footer-links">
-                    <a href="mailto:carpediemzzsssww@gmail.com" class="footer-link">Contact</a>
-                    <a href="https://github.com/carpediemzzsssww-cpu" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (injected by components.js) -->
+    <footer id="site-footer"></footer>
+
+    <script src="components.js"></script>
+    <script src="i18n.js"></script>
+    <script>
+    window.i18n.loadContent(['travel.json']);
+    </script>
 
     <script>
     window.__globeDepsOk = 0;

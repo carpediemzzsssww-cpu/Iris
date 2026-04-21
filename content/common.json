@@ -1,0 +1,22 @@
+{
+  "nav.home": { "en": "Home", "zh": "Home" },
+  "nav.projects": { "en": "Projects", "zh": "Projects" },
+  "nav.learning": { "en": "Learning", "zh": "Learning" },
+  "nav.ailab": { "en": "AI Lab", "zh": "AI Lab" },
+  "nav.footprints": { "en": "Footprints", "zh": "Footprints" },
+  "nav.about": { "en": "About", "zh": "About" },
+
+  "footer.copyright": { "en": "\u00a9 2026 Iris Zhou. Designed & built with intention.", "zh": "\u00a9 2026 Iris Zhou. \u81ea\u5df1\u8bbe\u8ba1\uff0c\u81ea\u5df1\u642d\u3002" },
+  "footer.contact": { "en": "Contact", "zh": "\u8054\u7cfb\u6211" },
+
+  "theme.switchDark": { "en": "Switch to dark mode", "zh": "\u5207\u6362\u6df1\u8272\u6a21\u5f0f" },
+  "theme.switchLight": { "en": "Switch to light mode", "zh": "\u5207\u6362\u6d45\u8272\u6a21\u5f0f" },
+
+  "btn.viewProjects": { "en": "View Projects", "zh": "\u770b\u770b\u6211\u505a\u4e86\u4ec0\u4e48" },
+  "btn.getInTouch": { "en": "Get in Touch", "zh": "\u627e\u6211\u804a\u804a" },
+  "btn.explore": { "en": "Explore \u2192", "zh": "\u53bb\u770b\u770b \u2192" },
+  "btn.viewFootprints": { "en": "View My Footprints", "zh": "\u770b\u770b\u6211\u53bb\u8fc7\u54ea\u91cc" },
+
+  "lang.switchToChinese": { "en": "Switch to Chinese", "zh": "\u5207\u6362\u4e3a\u4e2d\u6587" },
+  "lang.switchToEnglish": { "en": "Switch to English", "zh": "Switch to English" }
+}

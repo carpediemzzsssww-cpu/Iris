@@ -196,10 +196,10 @@ function setupButterflyTrail() {
     const moveEventName = 'PointerEvent' in window ? 'pointermove' : 'mousemove';
 
     const readAccentColor = () => {
-        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#0F766E';
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#6B5876';
         const normalized = accent.replace('#', '');
         if (!/^[0-9a-fA-F]{6}$/.test(normalized) && !/^[0-9a-fA-F]{3}$/.test(normalized)) {
-            return { r: 15, g: 118, b: 110 };
+            return { r: 107, g: 88, b: 118 };
         }
         const hex = normalized.length === 3
             ? normalized.split('').map(ch => ch + ch).join('')
@@ -499,7 +499,7 @@ function createPathEffect(element) {
     line.setAttribute('y1', '90%');
     line.setAttribute('x2', '90%');
     line.setAttribute('y2', '10%');
-    line.setAttribute('stroke', 'rgba(15, 118, 110, 0.6)');
+    line.setAttribute('stroke', 'rgba(107, 88, 118, 0.6)');
     line.setAttribute('stroke-width', '1');
     
     svg.appendChild(line);

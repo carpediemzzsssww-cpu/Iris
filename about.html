@@ -13,6 +13,13 @@
             document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
         } catch (error) {}
     })();
+    (function () {
+        try {
+            var lang = localStorage.getItem('langPreference') || 'en';
+            document.documentElement.setAttribute('data-lang', lang);
+            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        } catch (e) {}
+    })();
     </script>
     <meta name="description" content="About Iris Zhou: product designer focused on human-centered AI systems, research-driven design, and rapid prototyping.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/about.html">
@@ -29,85 +36,22 @@
     <link rel="stylesheet" href="pages.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="particle-field"></div>
 
-    <nav class="top-nav">
-        <div class="container">
-            <div class="nav-brand"><span class="brand-mark">IZ</span></div>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="learning.html" class="nav-link">Learning</a>
-                <a href="ai-lab.html" class="nav-link">AI Lab</a>
-                <a href="travel.html" class="nav-link">Footprints</a>
-                <a href="about.html" class="nav-link active">About</a>
-            </div>
-            <div class="nav-actions">
-                <a href="mailto:carpediemzzsssww@gmail.com" class="nav-action" title="Email" aria-label="Send email">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/carpediemzzsssww-cpu" class="nav-action" title="GitHub" aria-label="Open GitHub profile" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/iris-zhou-a181013a8/?skipRedirect=true" class="nav-action" title="LinkedIn" aria-label="Open LinkedIn profile" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                </a>
-                <button class="nav-action theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
-                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
-                    </svg>
-                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <circle cx="12" cy="12" r="4"/>
-                        <line x1="12" y1="2" x2="12" y2="5"/>
-                        <line x1="12" y1="19" x2="12" y2="22"/>
-                        <line x1="2" y1="12" x2="5" y2="12"/>
-                        <line x1="19" y1="12" x2="22" y2="12"/>
-                        <line x1="4.9" y1="4.9" x2="7" y2="7"/>
-                        <line x1="17" y1="17" x2="19.1" y2="19.1"/>
-                        <line x1="4.9" y1="19.1" x2="7" y2="17"/>
-                        <line x1="17" y1="7" x2="19.1" y2="4.9"/>
-                    </svg>
-                </button>
-            </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open mobile menu" aria-controls="mobileDrawer" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-        <div class="mobile-drawer-links">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="projects.html" class="mobile-link">Projects</a>
-            <a href="learning.html" class="mobile-link">Learning</a>
-            <a href="ai-lab.html" class="mobile-link">AI Lab</a>
-            <a href="travel.html" class="mobile-link">Footprints</a>
-            <a href="about.html" class="mobile-link active">About</a>
-            <button class="mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
-                <span data-theme-toggle-text>Switch to dark mode</span>
-            </button>
-        </div>
-    </div>
+    <!-- Navigation (injected by components.js) -->
+    <nav id="site-nav"></nav>
+    <div id="site-mobile-drawer"></div>
 
     <main class="main-content">
         <section class="about-hero reveal">
             <div class="container">
                 <div class="about-hero-shell">
                     <div class="about-hero-copy">
-                        <h1 class="page-title about-hero-title">About</h1>
-                        <p class="page-subtitle about-hero-subtitle">
+                        <h1 class="page-title about-hero-title" data-i18n="about.title">About</h1>
+                        <p class="page-subtitle about-hero-subtitle" data-i18n="about.subtitle">
                             From literature to AI products — building with humanities intuition and technical craft.
                         </p>
                     </div>
@@ -123,73 +67,69 @@
         <section class="about-content reveal">
             <div class="container" style="max-width: 800px;">
                 <div class="about-intro">
-                    <p style="font-size: 18px; line-height: 1.7; color: var(--text); margin-bottom: 24px;">
+                    <p style="font-size: 18px; line-height: 1.7; color: var(--text); margin-bottom: 24px;" data-i18n="about.intro1">
                         I'm an AI product builder with a literature background — I understand users the way you close-read a text, and I understand the world by building things.
                     </p>
-                    <p style="font-size: 16px; line-height: 1.7; color: var(--muted); margin-bottom: 24px;">
+                    <p style="font-size: 16px; line-height: 1.7; color: var(--muted); margin-bottom: 24px;" data-i18n="about.intro2">
                         My path: Chinese Literature & Communication Studies at Wuhan University, exchange semester at Universit&eacute; Paris Nanterre across 16 countries, and now building AI products at Bestcem (B2B CEM SaaS). Each phase taught me something different — literature gave me sensitivity to language and human nuance, media work taught me platform logic, independent projects proved I can ship from zero, and enterprise SaaS showed me how products survive in the real world.
                     </p>
                 </div>
 
                 <div class="content-section">
-                    <h2 class="section-heading">What I Bring</h2>
+                    <h2 class="section-heading" data-i18n="about.whatIBring">What I Bring</h2>
                     <ul class="insight-list">
-                        <li>End-to-End AI Product Design: From competitive analysis to PRD to interactive prototype — owned 0-to-1 design for an AI customer journey generator that cuts creation time from hours to minutes</li>
-                        <li>User Research at Scale: Led a 17-person team through 1,287 surveys and 3-city fieldwork; report adopted by NetEase product team</li>
-                        <li>LLM Application Development: RAG pipelines (FAISS + embeddings), Function Calling agents, prompt architecture design, multi-model API integration (OpenAI, DeepSeek, Doubao, Anthropic)</li>
-                        <li>Full-Stack Prototyping: React/Next.js + Python + RPA — I build working demos, not just mockups</li>
-                        <li>Data Pipeline Engineering: Built a 30k+ entry VOC pipeline across 9 platforms with automated collection and cleaning</li>
+                        <li data-i18n="about.bring1">End-to-End AI Product Design: From competitive analysis to PRD to interactive prototype — owned 0-to-1 design for an AI customer journey generator that cuts creation time from hours to minutes</li>
+                        <li data-i18n="about.bring2">User Research at Scale: Led a 17-person team through 1,287 surveys and 3-city fieldwork; report adopted by NetEase product team</li>
+                        <li data-i18n="about.bring3">LLM Application Development: RAG pipelines (FAISS + embeddings), Function Calling agents, prompt architecture design, multi-model API integration (OpenAI, DeepSeek, Doubao, Anthropic)</li>
+                        <li data-i18n="about.bring4">Full-Stack Prototyping: React/Next.js + Python + RPA — I build working demos, not just mockups</li>
+                        <li data-i18n="about.bring5">Data Pipeline Engineering: Built a 30k+ entry VOC pipeline across 9 platforms with automated collection and cleaning</li>
                     </ul>
                 </div>
 
                 <div class="content-section">
-                    <h2 class="section-heading">How I Work</h2>
+                    <h2 class="section-heading" data-i18n="about.howIWork">How I Work</h2>
                     <ul class="learning-list">
-                        <li>Understand "why" before touching "how" — the problem matters more than the solution</li>
-                        <li>MVP first, iterate fast — ship early, learn from real users, polish what matters</li>
-                        <li>Quantify everything, then find the story — data first, narrative gives it meaning</li>
+                        <li data-i18n="about.work1">Understand "why" before touching "how" — the problem matters more than the solution</li>
+                        <li data-i18n="about.work2">MVP first, iterate fast — ship early, learn from real users, polish what matters</li>
+                        <li data-i18n="about.work3">Quantify everything, then find the story — data first, narrative gives it meaning</li>
                     </ul>
                 </div>
 
                 <div class="content-section">
-                    <h2 class="section-heading">Beyond Work</h2>
-                    <p style="font-size: 16px; line-height: 1.7; color: var(--text); margin-bottom: 12px;">
+                    <h2 class="section-heading" data-i18n="about.beyondWork">Beyond Work</h2>
+                    <p style="font-size: 16px; line-height: 1.7; color: var(--text); margin-bottom: 12px;" data-i18n="about.beyond1">
                         16 countries, 49 cities — I travel not to escape, but to see how differently people live and build. Paris taught me that loving a place and knowing you don't belong to it can coexist.
                     </p>
-                    <p style="font-size: 16px; line-height: 1.7; color: var(--text); margin-bottom: 20px;">
+                    <p style="font-size: 16px; line-height: 1.7; color: var(--text); margin-bottom: 20px;" data-i18n="about.beyond2">
                         I'm also a contracted photographer on Tuchong, trained in sketch and watercolor (Level 9), and I believe the best products — like the best writing — make people feel less alone in the world.
                     </p>
                     <a href="travel.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
-                        View My Footprints
+                        <span data-i18n="btn.viewFootprints">View My Footprints</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
 
                 <div class="content-section" style="text-align: center; padding: 48px 0;">
-                    <h2 class="section-heading">Let's Connect</h2>
-                    <p style="font-size: 16px; color: var(--muted); margin-bottom: 24px;">
+                    <h2 class="section-heading" data-i18n="about.connect">Let's Connect</h2>
+                    <p style="font-size: 16px; color: var(--muted); margin-bottom: 24px;" data-i18n="about.connectDesc">
                         I'm currently seeking internship opportunities
                     </p>
                     <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                        <a href="mailto:carpediemzzsssww@gmail.com" class="btn btn-primary">Get in Touch</a>
+                        <a href="mailto:carpediemzzsssww@gmail.com" class="btn btn-primary" data-i18n="btn.getInTouch">Get in Touch</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">© 2026 Iris Zhou. Designed & built with intention.</p>
-                <div class="footer-links">
-                    <a href="mailto:carpediemzzsssww@gmail.com" class="footer-link">Contact</a>
-                    <a href="https://github.com/carpediemzzsssww-cpu" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (injected by components.js) -->
+    <footer id="site-footer"></footer>
 
+    <script src="components.js"></script>
+    <script src="i18n.js"></script>
+    <script>
+    window.i18n.loadContent(['about.json']);
+    </script>
     <script src="scripts.js"></script>
     <script src="alter-widget.js"></script>
 </body>

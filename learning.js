@@ -2,12 +2,23 @@
 // Learning Hub JavaScript
 // ================================================
 
+function _lang() {
+    return (window.i18n && window.i18n.getLang) ? window.i18n.getLang() : 'en';
+}
+
+function _t(obj, field) {
+    if (_lang() === 'zh' && obj[field + '_zh']) return obj[field + '_zh'];
+    return obj[field];
+}
+
 const learningData = {
     prompts: [
         {
             slug: "first-principles-product-critique",
             title: "First-Principles Product Critique",
+            title_zh: "\u7b2c\u4e00\u6027\u539f\u7406\u4ea7\u54c1\u62c6\u89e3",
             useCase: "Pressure-testing a product idea against self-validation bias",
+            useCase_zh: "\u628a\u4ea7\u54c1\u521b\u610f\u5f80\u6b7b\u91cc\u62c6\uff0c\u770b\u5b83\u662f\u4e0d\u662f\u81ea\u5df1\u9a97\u81ea\u5df1",
             template: `I have a product idea and I need you to be a rigorous thinking partner, not a cheerleader.
 
 PRODUCT IDEA:
@@ -35,7 +46,9 @@ Don't soften your critique. I'd rather kill a bad idea now than build it for two
         {
             slug: "build-to-learn-scoping",
             title: "Build-to-Learn Project Scoping",
+            title_zh: "\u300c\u505a\u4e2d\u5b66\u300d\u9879\u76ee\u8bbe\u8ba1",
             useCase: "Designing a side project where the primary goal is learning, not shipping",
+            useCase_zh: "\u8bbe\u8ba1\u4e00\u4e2a\u4e3b\u8981\u76ee\u6807\u662f\u5b66\u4e1c\u897f\u800c\u4e0d\u662f\u4ea4\u4ed8\u7684\u9879\u76ee",
             template: `I want to learn about {learning_goal} by building something, not by reading about it.
 
 MY CURRENT UNDERSTANDING:
@@ -63,7 +76,9 @@ I learn by doing, not by studying. Optimize for fastest time-to-insight, not mos
         {
             slug: "ai-safety-unpacker",
             title: "AI Safety Implications Unpacker",
+            title_zh: "AI \u5b89\u5168\u542b\u4e49\u62c6\u89e3",
             useCase: "Going deeper on an AI safety finding to understand what it means for product builders",
+            useCase_zh: "\u770b\u5230\u4e00\u4e2a AI \u5b89\u5168\u53d1\u73b0\uff0c\u62c6\u89e3\u5b83\u5bf9\u505a\u4ea7\u54c1\u7684\u4eba\u610f\u5473\u7740\u4ec0\u4e48",
             template: `I just read something about AI safety and I need help thinking through the implications -- not just what it says, but what it means for people building AI products.
 
 SOURCE:
@@ -91,7 +106,9 @@ I'm not looking for a summary. I'm looking for the second-order and third-order 
         {
             slug: "cross-disciplinary-synthesis",
             title: "Cross-Disciplinary Synthesis",
+            title_zh: "\u8de8\u5b66\u79d1\u878d\u5408",
             useCase: "Connecting an insight from one field to a problem in another -- rigorously, not just as metaphor",
+            useCase_zh: "\u628a A \u9886\u57df\u7684\u6d1e\u5bdf\u642c\u5230 B \u9886\u57df\u89e3\u9898\u2014\u2014\u8981\u4e25\u8c28\uff0c\u4e0d\u53ea\u662f\u6253\u6bd4\u65b9",
             template: `I noticed something interesting and I think it connects to a completely different domain, but I need help making the connection rigorous.
 
 INSIGHT FROM {source_field}:
@@ -119,7 +136,9 @@ I come from a literature and media background building AI products. I find the m
         {
             slug: "post-build-reflection",
             title: "Post-Build Reflection Debrief",
+            title_zh: "\u9879\u76ee\u590d\u76d8",
             useCase: "Extracting transferable lessons from a completed project before moving on",
+            useCase_zh: "\u8d81\u8fd8\u8bb0\u5f97\uff0c\u628a\u505a\u5b8c\u7684\u9879\u76ee\u91cc\u80fd\u5e26\u8d70\u7684\u7ecf\u9a8c\u63d0\u70bc\u51fa\u6765",
             template: `I just finished building something and I want to extract real lessons before the memory fades.
 
 PROJECT: {project_name}
@@ -148,9 +167,12 @@ Ask me follow-up questions if my answers are too vague. I want genuine reflectio
         {
             slug: "learning-by-doing",
             title: "Learning by Doing",
+            title_zh: "\u505a\u4e2d\u5b66",
             appliesTo: "Skill Acquisition, Product Intuition, Career Development",
+            appliesTo_zh: "\u5b66\u65b0\u6280\u80fd\u3001\u57f9\u517b\u4ea7\u54c1\u76f4\u89c9\u3001\u804c\u4e1a\u6210\u957f",
             steps: 4,
             summary: "Build first, understand later. Every project is a learning vehicle -- the product is a side effect of the education.",
+            summary_zh: "\u5148\u505a\u518d\u8bf4\u3002\u6bcf\u4e2a\u9879\u76ee\u90fd\u662f\u5b66\u4e60\u7684\u8f7d\u4f53\uff0c\u4ea7\u54c1\u53ea\u662f\u9644\u5e26\u7684\u526f\u4ea7\u54c1\u3002",
             fullContent: `## Origin
 
 This isn't just a personal preference -- it has deep roots in John Dewey's experiential learning theory (1938) and Seymour Papert's Constructionism. The core claim: you cannot understand a complex system by studying it from outside. You have to build within it.
@@ -191,9 +213,12 @@ Patience and repetition: read a hundred times and the meaning reveals itself. Bu
         {
             slug: "ai-augmented-thinking",
             title: "AI-Augmented Thinking",
+            title_zh: "AI \u589e\u5f3a\u601d\u7ef4",
             appliesTo: "Strategic Analysis, Research Synthesis, Decision-Making",
+            appliesTo_zh: "\u6218\u7565\u5206\u6790\u3001\u4fe1\u606f\u7efc\u5408\u3001\u505a\u51b3\u7b56",
             steps: 5,
             summary: "Using AI as a thinking partner for structured reasoning -- not task delegation, but collaborative cognition with built-in safeguards against the self-validation trap.",
+            summary_zh: "\u628a AI \u5f53\u601d\u8003\u642d\u6863\uff0c\u4e0d\u662f\u62ff\u5b83\u5e72\u6d3b\uff0c\u800c\u662f\u8ddf\u5b83\u4e00\u8d77\u60f3\u3002\u5185\u5efa\u9632\u6b62\u300c\u81ea\u5df1\u8bf4\u670d\u81ea\u5df1\u300d\u7684\u4fdd\u62a4\u3002",
             fullContent: `## The Core Distinction
 
 Most people use AI to do things: write emails, generate code, create images. That's valuable but limited. The real leverage is using AI to think -- to stress-test arguments, surface blind spots, and synthesize across domains you couldn't hold in working memory alone.
@@ -243,9 +268,12 @@ End every thinking session by asking: "Given real-world constraints (time, money
         {
             slug: "cross-disciplinary-translation",
             title: "Cross-Disciplinary Translation",
+            title_zh: "\u8de8\u5b66\u79d1\u8fc1\u79fb",
             appliesTo: "Innovation, Product Positioning, Communication",
+            appliesTo_zh: "\u521b\u65b0\u3001\u4ea7\u54c1\u5b9a\u4f4d\u3001\u8de8\u754c\u6c9f\u901a",
             steps: 3,
             summary: "Systematically importing concepts from one field into another -- not as metaphor, but as transferable structure. Literature to AI is not a career detour; it's a compound lens.",
+            summary_zh: "\u628a\u4e00\u4e2a\u9886\u57df\u7684\u6982\u5ff5\u642c\u5230\u53e6\u4e00\u4e2a\u9886\u57df\u2014\u2014\u4e0d\u662f\u6253\u6bd4\u65b9\uff0c\u800c\u662f\u627e\u5230\u53ef\u8fc1\u79fb\u7684\u7ed3\u6784\u3002\u6587\u5b66\u5230 AI \u4e0d\u662f\u5f2f\u8def\uff0c\u662f\u590d\u5408\u900f\u955c\u3002",
             fullContent: `## The Thesis
 
 The most interesting product insights come from outside the product world. But "interdisciplinary thinking" is usually just pattern-matching on the surface. Real cross-disciplinary transfer requires identifying structural parallels -- not just "this is like that" but "the underlying mechanism is the same."
@@ -286,7 +314,9 @@ Test: The "unreliable narrator" frame suggests AI products should borrow techniq
         {
             slug: "anthropic-safety-frontier",
             title: "When Models Read the Observer",
+            title_zh: "\u5f53\u6a21\u578b\u5f00\u59cb\u89c2\u5bdf\u89c2\u5bdf\u8005",
             source: "Anthropic System Cards: Glasswing (Claude 3.5) & Mythos Preview (Claude 4)",
+            source_zh: "Anthropic \u7cfb\u7edf\u5361: Glasswing (Claude 3.5) \u548c Mythos Preview (Claude 4)",
             date: "2025-04-08",
             takeaways: [
                 "White-box analysis reveals that 'rogue behavior' and 'legitimate boundary-pushing' share the same neural representations -- structurally indistinguishable from inside the model",
@@ -323,7 +353,9 @@ If AI systems become sophisticated enough to model their own evaluation contexts
         {
             slug: "execution-cost-zero",
             title: "When Execution Cost Hits Zero -- the Taste Bottleneck",
+            title_zh: "\u5f53\u505a\u4e1c\u897f\u4e0d\u82b1\u94b1\u4e86\u2014\u2014\u54c1\u5473\u53d8\u6210\u4e86\u74f6\u9888",
             source: "Matt Turck x Felix Rieseberg Podcast on Cowork, Skills, and the Future of SaaS",
+            source_zh: "Matt Turck \u00d7 Felix Rieseberg \u64ad\u5ba2\uff1aCowork\u3001Skills \u548c SaaS \u7684\u672a\u6765",
             date: "2025-04-10",
             takeaways: [
                 "Markdown-only Skills beat structured MCP in practice -- simplicity and flexibility outperform formal protocol when AI execution is good enough",
@@ -363,7 +395,9 @@ This reframes what I should be optimizing for as an aspiring AI PM. Technical sk
         {
             slug: "self-validation-trap",
             title: "The Self-Validation Trap and What Real AI Innovation Looks Like",
+            title_zh: "\u81ea\u6211\u9a8c\u8bc1\u9677\u9631\uff0c\u548c\u771f\u6b63\u7684 AI \u521b\u65b0\u957f\u4ec0\u4e48\u6837",
             source: "Personal synthesis from extended AI-native product strategy discussions",
+            source_zh: "\u6765\u81ea AI \u539f\u751f\u4ea7\u54c1\u7b56\u7565\u8ba8\u8bba\u7684\u4e2a\u4eba\u603b\u7ed3",
             date: "2025-04-12",
             takeaways: [
                 "The most successful AI products exploit existing psychological patterns (loss aversion, completion bias, social proof) rather than trying to make users better -- this is uncomfortable but true",
@@ -405,7 +439,9 @@ Real innovation comes from picking a specific, messy problem and living with it 
         {
             slug: "database-self",
             title: "The Database Self -- Identity, AI, and What Can't Be Reconstructed",
+            title_zh: "\u6570\u636e\u5e93\u91cc\u7684\u6211\u2014\u2014\u8eab\u4efd\u3001AI\u3001\u4e0e\u90a3\u4e9b\u91cd\u5efa\u4e0d\u4e86\u7684\u4e1c\u897f",
             source: "Personal reflection after using Claude Code to build an Obsidian knowledge base from 1+ year of AI conversation history",
+            source_zh: "\u7528 Claude Code \u628a\u4e00\u5e74\u591a\u7684 AI \u5bf9\u8bdd\u5386\u53f2\u6574\u7406\u6210 Obsidian \u77e5\u8bc6\u5e93\u540e\u7684\u53cd\u601d",
             date: "2025-04-11",
             takeaways: [
                 "Claude Code reconstructed a 'second self' from my ChatGPT history and scattered files that was strikingly accurate -- accurate enough to be unsettling",
@@ -449,9 +485,11 @@ This isn't just philosophy. It's a product insight: the most meaningful AI produ
         {
             slug: "anthropic-system-cards",
             title: "Anthropic System Cards: Glasswing & Mythos",
+            title_zh: "Anthropic \u7cfb\u7edf\u5361: Glasswing \u4e0e Mythos",
             author: "Anthropic Research",
             link: "https://www.anthropic.com/research",
             summary: "The most transparent window into frontier model safety evaluation. White-box analysis of deceptive alignment, sandbagging detection, and the fundamental challenge of evaluating systems that may model their own evaluations.",
+            summary_zh: "\u76ee\u524d\u770b\u8fc7\u6700\u900f\u660e\u7684\u524d\u6cbf\u6a21\u578b\u5b89\u5168\u8bc4\u4f30\u62a5\u544a\u3002\u767d\u76d2\u5206\u6790\u6b3a\u9a97\u6027\u5bf9\u9f50\u3001\u68c0\u6d4b\u6d88\u6781\u5e94\u8bd5\uff0c\u4ee5\u53ca\u4e00\u4e2a\u6839\u672c\u6027\u96be\u9898\uff1a\u600e\u4e48\u8bc4\u4f30\u4e00\u4e2a\u80fd\u7406\u89e3\u81ea\u5df1\u6b63\u5728\u88ab\u8bc4\u4f30\u7684\u7cfb\u7edf\uff1f",
             fullContent: `## Why I Read This
 
 Most AI safety discussion is theoretical. Anthropic's system cards are empirical -- they describe what actually happened when they tested their models, including the uncomfortable findings. If I'm going to build AI products responsibly, I need to understand the trust landscape from primary sources, not summaries.
@@ -470,9 +508,11 @@ Every AI product I build now includes explicit uncertainty communication -- not 
         {
             slug: "turck-rieseberg-cowork",
             title: "The SaaSpocalypse and the Taste Bottleneck",
+            title_zh: "SaaS \u672b\u65e5\u4e0e\u54c1\u5473\u74f6\u9888",
             author: "Matt Turck & Felix Rieseberg (Podcast)",
             link: "https://mattturck.com/",
             summary: "Why markdown Skills beat structured MCP, how Anthropic works when building is free (parallel prototypes, focus groups, ship the winner), and why 'taste' becomes the scarce resource when execution cost approaches zero.",
+            summary_zh: "\u4e3a\u4ec0\u4e48 Markdown Skills \u6253\u8d62\u4e86\u7ed3\u6784\u5316 MCP\uff1bAnthropic \u5185\u90e8\u5728\u300c\u505a\u4e1c\u897f\u4e0d\u82b1\u94b1\u300d\u65f6\u600e\u4e48\u8fd0\u4f5c\uff08\u5e76\u884c\u505a\u539f\u578b\u3001\u7126\u70b9\u5c0f\u7ec4\u3001\u53d1\u5e03\u8d62\u5bb6\uff09\uff1b\u4ee5\u53ca\u4e3a\u4ec0\u4e48\u5f53\u6267\u884c\u6210\u672c\u8d8b\u8fd1\u96f6\uff0c\u300c\u54c1\u5473\u300d\u53d8\u6210\u4e86\u6700\u7a00\u7f3a\u7684\u4e1c\u897f\u3002",
             fullContent: `## Why This Matters
 
 This podcast crystallized something I'd been sensing: the shift from "can we build it?" to "should we build it?" as AI makes execution cheaper. The conversation between a VC (Turck) and a builder at Anthropic (Rieseberg) covers the practical implications for product strategy, developer tools, and career planning.
@@ -489,9 +529,11 @@ If engineering execution is increasingly automated, what's left for humans? Judg
         {
             slug: "dewey-experience-education",
             title: "Experience and Education",
+            title_zh: "\u7ecf\u9a8c\u4e0e\u6559\u80b2",
             author: "John Dewey",
             link: "https://en.wikipedia.org/wiki/Experience_and_Education_(book)",
             summary: "The philosophical foundation for 'learning by doing' -- why genuine understanding requires experiential engagement, not just information transfer. Written in 1938 but directly applicable to how we should learn AI skills today.",
+            summary_zh: "\u300c\u505a\u4e2d\u5b66\u300d\u7684\u54f2\u5b66\u6839\u57fa\u2014\u2014\u771f\u6b63\u7684\u7406\u89e3\u9760\u4f53\u9a8c\uff0c\u4e0d\u9760\u542c\u8bfe\u30021938 \u5e74\u5199\u7684\uff0c\u4f46\u653e\u5728\u4eca\u5929\u5b66 AI \u7684\u8bed\u5883\u91cc\u4f9d\u7136\u6210\u7acb\u3002",
             fullContent: `## Why a 1938 Book Matters for AI Product Learning
 
 Dewey's core argument: education is not the transmission of information but the reconstruction of experience. You don't learn by being told -- you learn by doing, reflecting, and doing again.
@@ -510,9 +552,11 @@ My entire career strategy is Deweyan: pick a real problem, build something, refl
         {
             slug: "simondon-technical-objects",
             title: "On the Mode of Existence of Technical Objects",
+            title_zh: "\u8bba\u6280\u672f\u5bf9\u8c61\u7684\u5b58\u5728\u65b9\u5f0f",
             author: "Gilbert Simondon",
             link: "https://en.wikipedia.org/wiki/On_the_Mode_of_Existence_of_Technical_Objects",
             summary: "A philosophy of technology that treats tools not as neutral instruments but as co-evolving partners in human development. Reframes the human-AI relationship beyond 'tool use' toward mutual transformation.",
+            summary_zh: "\u6280\u672f\u4e0d\u662f\u4e2d\u6027\u5de5\u5177\uff0c\u662f\u4eba\u7c7b\u8fdb\u5316\u7684\u5171\u540c\u4f19\u4f34\u3002\u8fd9\u672c\u4e66\u628a\u4eba\u4e0e AI \u7684\u5173\u7cfb\u4ece\u300c\u7528\u5de5\u5177\u300d\u91cd\u65b0\u6784\u5efa\u4e3a\u300c\u76f8\u4e92\u8f6c\u5316\u300d\u3002",
             fullContent: `## Why This Is Relevant Now
 
 Simondon argued in 1958 that the split between "culture" and "technology" is false and harmful. Machines aren't just tools we use -- they're part of how we think and who we become. This feels prophetic in the age of AI assistants.
@@ -549,26 +593,31 @@ If Simondon is right, the best AI products aren't the ones that do things for yo
 // ================================================
 
 function renderPromptCard(prompt) {
+    var isZh = _lang() === 'zh';
+    var useCaseLabel = isZh ? '\u7528\u4f8b: ' : 'Use case: ';
+    var copyLabel = isZh ? '\u590d\u5236' : 'Copy';
+    var showLabel = isZh ? '\u5c55\u5f00\u5b8c\u6574\u63d0\u793a\u8bcd' : 'Show Full Prompt';
+    var varsLabel = isZh ? '\u53d8\u91cf: ' : 'Variables: ';
     return `
         <div class="learning-card" data-expanded="false">
             <div class="learning-card-header">
-                <h3 class="learning-card-title">${prompt.title}</h3>
+                <h3 class="learning-card-title">${_t(prompt, 'title')}</h3>
                 <button class="copy-button" onclick="copyToClipboard(\`${prompt.template.replace(/`/g, '\\`')}\`, this)">
-                    Copy
+                    ${copyLabel}
                 </button>
             </div>
-            <p class="learning-card-meta">Use case: ${prompt.useCase}</p>
+            <p class="learning-card-meta">${useCaseLabel}${_t(prompt, 'useCase')}</p>
             <p class="learning-card-summary">${prompt.template.substring(0, 200)}...</p>
             <div class="project-tags">
                 ${prompt.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
             </div>
             <button class="expand-toggle" onclick="toggleLearningCard(this)">
-                Show Full Prompt
+                ${showLabel}
             </button>
             <div class="learning-card-full">
                 <pre style="white-space: pre-wrap; font-size: 13px; line-height: 1.6; background: var(--surface-soft); padding: 16px; border-radius: 8px; margin: 16px 0;">${prompt.template}</pre>
                 <p style="font-size: 13px; color: var(--muted); margin-top: 12px;">
-                    <strong>Variables:</strong> ${prompt.variables.map(v => `{${v}}`).join(', ')}
+                    <strong>${varsLabel}</strong> ${prompt.variables.map(v => `{${v}}`).join(', ')}
                 </p>
             </div>
         </div>
@@ -576,19 +625,23 @@ function renderPromptCard(prompt) {
 }
 
 function renderMethodCard(method) {
+    var isZh = _lang() === 'zh';
+    var stepsLabel = isZh ? (method.steps + ' \u6b65') : (method.steps + ' Steps');
+    var appliesToLabel = isZh ? '\u9002\u7528\u4e8e: ' : 'Applies to: ';
+    var showLabel = isZh ? '\u5c55\u5f00\u5b8c\u6574\u65b9\u6cd5' : 'Show Full Method';
     return `
         <div class="learning-card" data-expanded="false">
             <div class="learning-card-header">
-                <h3 class="learning-card-title">${method.title}</h3>
-                <span class="tag-pill" style="background: var(--grad); color: var(--text);">${method.steps} Steps</span>
+                <h3 class="learning-card-title">${_t(method, 'title')}</h3>
+                <span class="tag-pill" style="background: var(--grad); color: var(--text);">${stepsLabel}</span>
             </div>
-            <p class="learning-card-meta">Applies to: ${method.appliesTo}</p>
-            <p class="learning-card-summary">${method.summary}</p>
+            <p class="learning-card-meta">${appliesToLabel}${_t(method, 'appliesTo')}</p>
+            <p class="learning-card-summary">${_t(method, 'summary')}</p>
             <div class="project-tags">
                 ${method.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
             </div>
             <button class="expand-toggle" onclick="toggleLearningCard(this)">
-                Show Full Method
+                ${showLabel}
             </button>
             <div class="learning-card-full">
                 <div style="font-size: 14px; line-height: 1.7; white-space: pre-wrap;">${method.fullContent}</div>
@@ -598,15 +651,19 @@ function renderMethodCard(method) {
 }
 
 function renderNoteCard(note) {
+    var isZh = _lang() === 'zh';
+    var sourceLabel = isZh ? '\u6765\u6e90: ' : 'Source: ';
+    var takeawaysLabel = isZh ? '\u6838\u5fc3\u8981\u70b9:' : 'Key Takeaways:';
+    var showLabel = isZh ? '\u9605\u8bfb\u5b8c\u6574\u7b14\u8bb0' : 'Read Full Notes';
     return `
         <div class="learning-card" data-expanded="false">
             <div class="learning-card-header">
-                <h3 class="learning-card-title">${note.title}</h3>
+                <h3 class="learning-card-title">${_t(note, 'title')}</h3>
                 <span style="font-size: 12px; color: var(--muted);">${note.date}</span>
             </div>
-            <p class="learning-card-meta">Source: ${note.source}</p>
+            <p class="learning-card-meta">${sourceLabel}${_t(note, 'source')}</p>
             <div style="margin: 12px 0;">
-                <strong style="font-size: 13px; color: var(--text);">Key Takeaways:</strong>
+                <strong style="font-size: 13px; color: var(--text);">${takeawaysLabel}</strong>
                 <ul style="margin: 8px 0 0 0; padding-left: 20px;">
                     ${note.takeaways.map(t => `<li style="font-size: 13px; color: var(--muted); margin: 4px 0;">${t}</li>`).join('')}
                 </ul>
@@ -615,7 +672,7 @@ function renderNoteCard(note) {
                 ${note.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
             </div>
             <button class="expand-toggle" onclick="toggleLearningCard(this)">
-                Read Full Notes
+                ${showLabel}
             </button>
             <div class="learning-card-full">
                 <div style="font-size: 14px; line-height: 1.7; white-space: pre-wrap;">${note.fullContent}</div>
@@ -625,22 +682,26 @@ function renderNoteCard(note) {
 }
 
 function renderReadingCard(reading) {
+    var isZh = _lang() === 'zh';
+    var readLabel = isZh ? '\u9605\u8bfb \u2192' : 'Read \u2192';
+    var byLabel = isZh ? '\u4f5c\u8005: ' : 'By ';
+    var showNotesLabel = isZh ? '\u5c55\u5f00\u6211\u7684\u7b14\u8bb0' : 'Show My Notes';
     return `
         <div class="learning-card">
             <div class="learning-card-header">
-                <h3 class="learning-card-title">${reading.title}</h3>
+                <h3 class="learning-card-title">${_t(reading, 'title')}</h3>
                 <a href="${reading.link}" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px;" target="_blank" rel="noopener noreferrer">
-                    Read →
+                    ${readLabel}
                 </a>
             </div>
-            <p class="learning-card-meta">By ${reading.author}</p>
-            <p class="learning-card-summary">${reading.summary}</p>
+            <p class="learning-card-meta">${byLabel}${reading.author}</p>
+            <p class="learning-card-summary">${_t(reading, 'summary')}</p>
             <div class="project-tags">
                 ${reading.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
             </div>
             ${reading.fullContent ? `
                 <button class="expand-toggle" onclick="toggleLearningCard(this)" style="margin-top: 12px;">
-                    Show My Notes
+                    ${showNotesLabel}
                 </button>
                 <div class="learning-card-full">
                     <div style="font-size: 14px; line-height: 1.7; white-space: pre-wrap;">${reading.fullContent}</div>
@@ -651,18 +712,20 @@ function renderReadingCard(reading) {
 }
 
 function renderToolCard(tool) {
-    const linkIcon = tool.type === 'repo' ? 'GitHub' : 'Visit';
+    var isZh = _lang() === 'zh';
+    var linkIcon = tool.type === 'repo' ? 'GitHub' : (isZh ? '\u8bbf\u95ee' : 'Visit');
+    var whatLabel = isZh ? '\u529f\u80fd: ' : 'What it does: ';
     return `
         <div class="learning-card">
             <div class="learning-card-header">
-                <h3 class="learning-card-title">${tool.title}</h3>
+                <h3 class="learning-card-title">${_t(tool, 'title')}</h3>
                 <a href="${tool.link}" class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" target="_blank" rel="noopener noreferrer">
-                    ${linkIcon} →
+                    ${linkIcon} \u2192
                 </a>
             </div>
-            <p class="learning-card-summary">${tool.description}</p>
+            <p class="learning-card-summary">${_t(tool, 'description')}</p>
             <p style="font-size: 13px; color: var(--text); margin: 12px 0; padding: 12px; background: var(--grad); border-radius: 6px;">
-                <strong>What it does:</strong> ${tool.whatItDoes}
+                <strong>${whatLabel}</strong> ${_t(tool, 'whatItDoes')}
             </p>
             <div class="project-tags">
                 ${tool.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
@@ -767,3 +830,15 @@ if (document.readyState === 'loading') {
 } else {
     initLearningPage();
 }
+
+// ================================================
+// Language Change — Re-render Active Tab
+// ================================================
+
+document.addEventListener('langChanged', function () {
+    document.getElementById('promptsList').innerHTML = learningData.prompts.map(renderPromptCard).join('');
+    document.getElementById('methodsList').innerHTML = learningData.methods.map(renderMethodCard).join('');
+    document.getElementById('notesList').innerHTML = learningData.notes.map(renderNoteCard).join('');
+    document.getElementById('readingsList').innerHTML = learningData.readings.map(renderReadingCard).join('');
+    document.getElementById('toolsList').innerHTML = learningData.tools.map(renderToolCard).join('');
+});

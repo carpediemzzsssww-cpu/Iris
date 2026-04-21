@@ -1,0 +1,14 @@
+{
+  "translations": {
+    "resume.title": { "en": "Resume", "zh": "\u7b80\u5386" },
+    "resume.subtitle": { "en": "View and download both language versions in one place.", "zh": "\u5728\u8fd9\u91cc\u67e5\u770b\u548c\u4e0b\u8f7d\u4e2d\u82f1\u6587\u7248\u672c\u3002" },
+    "resume.enTitle": { "en": "English Resume", "zh": "\u82f1\u6587\u7b80\u5386" },
+    "resume.enMeta": { "en": "EN \u00b7 PDF", "zh": "EN \u00b7 PDF" },
+    "resume.openPdf": { "en": "Open PDF", "zh": "\u6253\u5f00 PDF" },
+    "resume.download": { "en": "Download", "zh": "\u4e0b\u8f7d" },
+    "resume.zhTitle": { "en": "Chinese Resume", "zh": "\u4e2d\u6587\u7b80\u5386" },
+    "resume.zhMeta": { "en": "CN \u00b7 PDF", "zh": "CN \u00b7 PDF" },
+    "resume.zhOpenPdf": { "en": "Open PDF", "zh": "\u6253\u5f00 PDF" },
+    "resume.zhDownload": { "en": "Download", "zh": "\u4e0b\u8f7d" }
+  }
+}

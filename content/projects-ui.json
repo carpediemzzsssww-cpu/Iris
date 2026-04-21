@@ -1,0 +1,13 @@
+{
+  "translations": {
+    "projects.title": { "en": "Projects", "zh": "Projects" },
+    "projects.subtitle": { "en": "Designing systems that solve real problems through iteration, research, and human-centered thinking.", "zh": "\u8fed\u4ee3\u3001\u7814\u7a76\u3001\u4ee5\u4eba\u4e3a\u672c\u2014\u2014\u505a\u80fd\u89e3\u51b3\u771f\u95ee\u9898\u7684\u4e1c\u897f\u3002" },
+    "projects.search": { "en": "Search projects...", "zh": "\u641c\u7d22\u9879\u76ee..." },
+    "projects.sortLabel": { "en": "Sort:", "zh": "\u6392\u5e8f\uff1a" },
+    "projects.sortLatest": { "en": "Latest", "zh": "\u6700\u65b0" },
+    "projects.sortImpact": { "en": "Most Impact", "zh": "\u6700\u6709\u5f71\u54cd\u529b" },
+    "projects.sortTechnical": { "en": "Most Technical", "zh": "\u6280\u672f\u542b\u91cf\u6700\u9ad8" },
+    "projects.noResults": { "en": "No projects found matching your criteria.", "zh": "\u6ca1\u627e\u5230\u5339\u914d\u7684\u9879\u76ee\u3002" },
+    "projects.tags": { "en": "Tags:", "zh": "\u6807\u7b7e\uff1a" }
+  }
+}

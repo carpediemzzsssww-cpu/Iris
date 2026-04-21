@@ -552,10 +552,10 @@
         document.querySelectorAll(".lang-btn").forEach((button) => {
             button.classList.toggle("active", button.dataset.lang === lang);
         });
-        localStorage.setItem("hiEchoLang", lang);
+        localStorage.setItem("langPreference", lang);
     }
 
-    const savedLang = localStorage.getItem("hiEchoLang");
+    const savedLang = localStorage.getItem("langPreference");
     const initialLang = savedLang === "zh" ? "zh" : "en";
     applyLanguage(initialLang);
 
