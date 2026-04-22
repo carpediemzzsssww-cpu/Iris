@@ -15,7 +15,10 @@
 
     function resize() {
         const hero = root.querySelector('.hero');
-        DPR = Math.min(window.devicePixelRatio || 1, 2);
+        // Mobile keeps native 3x DPR for sharpness; desktop caps at 2x (already
+        // high-res, 3x would waste GPU).
+        const maxDpr = window.innerWidth <= 820 ? 3 : 2;
+        DPR = Math.min(window.devicePixelRatio || 1, maxDpr);
         W = hero.clientWidth;
         H = hero.clientHeight;
         canvas.width = W * DPR;
@@ -59,7 +62,9 @@
     }
     buildButterflyField();
 
-    const TARGET_DENSITY = 800;
+    // Mobile gets denser particle field (~+33%) to compensate for the smaller
+    // viewport feeling sparse relative to desktop.
+    const TARGET_DENSITY = window.innerWidth <= 820 ? 600 : 800;
     const N = Math.min(2000, Math.floor((W * H) / TARGET_DENSITY));
     const particles = [];
 
@@ -121,13 +126,20 @@
 
     const mouse = { x: -9999, y: -9999, active: false };
     const heroEl = root.querySelector('.hero');
-    heroEl.addEventListener('mousemove', (e) => {
+    // Pointer Events cover mouse, pen, and touch in one listener — gives touch
+    // devices the same particle-repulsion feedback desktop gets from the mouse.
+    heroEl.addEventListener('pointermove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
         mouse.active = true;
     });
-    heroEl.addEventListener('mouseleave', () => { mouse.active = false; });
+    heroEl.addEventListener('pointerleave', () => { mouse.active = false; });
+    heroEl.addEventListener('pointercancel', () => { mouse.active = false; });
+    // Prevent page scroll from hijacking drags inside the hero canvas area.
+    heroEl.addEventListener('touchmove', (e) => {
+        if (e.cancelable) e.preventDefault();
+    }, { passive: false });
 
     const termRect = { x: 0, y: 0, w: 0, h: 0, active: false };
     const TERM_AVOID_PADDING = 24;
@@ -346,7 +358,7 @@
                 if (mdSq < 12000) {
                     const dist = Math.sqrt(mdSq);
                     const force = (Math.sqrt(12000) - dist) / Math.sqrt(12000);
-                    const f = force * force * 0.15;
+                    const f = force * force * 0.18;
                     ax += (mdx / dist) * f;
                     ay += (mdy / dist) * f;
                 }

@@ -374,15 +374,25 @@ document.addEventListener('DOMContentLoaded', setupButterflyTrail);
 
 // ================================================
 // Mobile Menu Toggle
+// Nav + drawer are injected asynchronously by components.js after
+// `fetch('content/config.json')` resolves, so we wait for the
+// `site-components:ready` event before binding. The bind is idempotent
+// so repeated events (e.g. re-init on lang change) don't duplicate listeners.
 // ================================================
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-const mobileDrawer = document.getElementById('mobileDrawer');
+function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileDrawer = document.getElementById('site-mobile-drawer');
+    if (!mobileMenuToggle || !mobileDrawer) return;
+    if (mobileMenuToggle.dataset.menuBound === '1') return;
+    mobileMenuToggle.dataset.menuBound = '1';
 
-if (mobileMenuToggle && mobileDrawer) {
-    const drawerOverlay = document.createElement('div');
-    drawerOverlay.className = 'mobile-drawer-overlay';
-    drawerOverlay.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(drawerOverlay);
+    let drawerOverlay = document.querySelector('.mobile-drawer-overlay');
+    if (!drawerOverlay) {
+        drawerOverlay = document.createElement('div');
+        drawerOverlay.className = 'mobile-drawer-overlay';
+        drawerOverlay.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(drawerOverlay);
+    }
 
     mobileMenuToggle.setAttribute('aria-expanded', 'false');
     mobileDrawer.setAttribute('aria-hidden', 'true');
@@ -436,6 +446,11 @@ if (mobileMenuToggle && mobileDrawer) {
         }
     }, { passive: true });
 }
+
+document.addEventListener('site-components:ready', initMobileMenu);
+// Fallback in case the event already fired before this listener attached
+document.addEventListener('DOMContentLoaded', initMobileMenu);
+initMobileMenu();
 
 // ================================================
 // Timeline Accordion
