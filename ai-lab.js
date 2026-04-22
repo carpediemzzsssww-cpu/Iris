@@ -84,44 +84,29 @@ const aiLabData = {
     ],
 
     featuredExperiment: {
-        label: "Featured Project",
-        label_zh: "\u4ee3\u8868\u9879\u76ee",
-        title: "DELAY THE END",
-        title_zh: "DELAY THE END",
-        subtitle: "A Fan-made Narrative Strategy Web Game",
-        subtitle_zh: "\u7c89\u4e1d\u81ea\u5236\u7684\u53d9\u4e8b\u7b56\u7565\u7f51\u9875\u6e38\u620f",
-        stats: "7 rounds \u00b7 5 endings \u00b7 18 playtesters \u00b7 Bilingual",
-        stats_zh: "7 \u8f6e\u535a\u5f08 \u00b7 5 \u4e2a\u7ed3\u5c40 \u00b7 18 \u4eba\u6d4b\u8bd5 \u00b7 \u4e2d\u82f1\u53cc\u8bed",
-        quote: "\"You cannot stop what is written. You can only delay it.\"",
-        quote_zh: "\"\u5df2\u5199\u597d\u7684\u547d\u8fd0\u65e0\u6cd5\u963b\u6b62\uff0c\u4f60\u53ea\u80fd\u5ef6\u7f13\u5b83\u3002\"",
-        gameLinkText: "Play the Game \u2192",
-        gameLinkText_zh: "\u53bb\u73a9 \u2192",
-        caseLinkText: "View Case Study \u2192",
-        caseLinkText_zh: "\u770b\u6848\u4f8b \u2192",
-        coverImage: "assets/project-covers/ai-lab/delay-the-end-cover.webp",
-        tags: ["Narrative Design", "Systems Design", "Monte Carlo", "Vanilla JS", "Bilingual"],
+        label: "Featured Tool",
+        label_zh: "\u4ee3\u8868\u5de5\u5177",
+        title: "Markdown Converter",
+        title_zh: "Markdown \u8f6c\u6362\u5668",
+        subtitle: "What AI writes best \u2192 what humans read best",
+        subtitle_zh: "AI \u6700\u64c5\u957f\u7684\u8bed\u8a00 \u2192 \u4eba\u7c7b\u6700\u80fd\u8bfb\u61c2\u7684\u8bed\u8a00",
+        stats: "Markdown \u2192 docx \u00b7 pdf \u00b7 xlsx \u00b7 Local-first \u00b7 One click",
+        stats_zh: "Markdown \u2192 docx \u00b7 pdf \u00b7 xlsx \u00b7 \u5168\u672c\u5730 \u00b7 \u4e00\u952e\u8f6c\u6362",
+        quote: "\"AI speaks Markdown. The world reads Word. This is the bridge.\"",
+        quote_zh: "\"AI \u8bb2 Markdown\uff0c\u8fd9\u4e2a\u4e16\u754c\u8bfb Word\u3002\u8fd9\u662f\u90a3\u5ea7\u6865\u3002\"",
+        gameLinkText: "Source on GitHub \u2192",
+        gameLinkText_zh: "GitHub \u6e90\u7801 \u2192",
+        caseLinkText: "",
+        caseLinkText_zh: "",
+        coverImage: "",
+        tags: ["Local-first", "File Format", "DX", "TypeScript", "Open Source"],
         links: {
-            game: "https://carpediemzzsssww-cpu.github.io/delay-the-end/",
-            caseStudy: "https://delay-the-end-website.vercel.app"
+            game: "https://github.com/carpediemzzsssww-cpu/markdown--converter",
+            caseStudy: ""
         }
     },
 
     experiments: [
-        {
-            slug: "cgec-error-analysis",
-            title: "CGEC Error Analysis Agent",
-            title_zh: "CGEC \u9519\u8bef\u5206\u6790 Agent",
-            goal: "Verify whether LLMs can detect and correct Chinese L2 learner grammatical errors at scale",
-            goal_zh: "\u8bd5\u8bd5 LLM \u80fd\u4e0d\u80fd\u6279\u91cf\u627e\u51fa\u5e76\u7ea0\u6b63\u4e2d\u6587\u4e8c\u8bed\u5b66\u4e60\u8005\u7684\u8bed\u6cd5\u9519\u8bef",
-            setup: "Python + DeepSeek API on MuCGEC benchmark dataset. Two-step pipeline: (1) detect error type and location, (2) generate correction with explanation. Evaluated against ChERRANT metrics.",
-            setup_zh: "Python + DeepSeek API\uff0c\u8dd1\u5728 MuCGEC \u57fa\u51c6\u6570\u636e\u96c6\u4e0a\u3002\u4e24\u6b65\u8d70\uff1a\u5148\u627e\u9519\u8bef\u7c7b\u578b\u548c\u4f4d\u7f6e\uff0c\u518d\u751f\u6210\u7ea0\u6b63 + \u89e3\u91ca\u3002\u7528 ChERRANT \u6307\u6807\u8bc4\u4f30\u3002",
-            result: "Detection F1 ~80-90%, Correction F0.5 ~30-50%. Strong at word-order and missing-word errors, weaker on subtle collocation mistakes. Proved LLMs can augment — not replace — human annotators.",
-            result_zh: "\u68c0\u6d4b F1 ~80-90%\uff0c\u7ea0\u6b63 F0.5 ~30-50%\u3002\u8bed\u5e8f\u548c\u7f3a\u8bcd\u95ee\u9898\u627e\u5f97\u51c6\uff0c\u7ec6\u5fae\u642d\u914d\u8fd8\u5dee\u4e9b\u3002\u7ed3\u8bba\uff1aLLM \u80fd\u8f85\u52a9\u4eba\u5de5\u6807\u6ce8\uff0c\u4f46\u66ff\u4ee3\u4e0d\u4e86\u3002",
-            next: "Add RAG with HSK grammar corpus for context-aware correction. Build error source analysis (L1 transfer vs. developmental).",
-            next_zh: "\u52a0 HSK \u8bed\u6cd5\u8bed\u6599\u5e93\u505a RAG\uff0c\u8ba9\u7ea0\u6b63\u66f4\u61c2\u4e0a\u4e0b\u6587\u3002\u518d\u505a\u9519\u8bef\u6765\u6e90\u5206\u6790\uff1a\u662f\u6bcd\u8bed\u8fc1\u79fb\u8fd8\u662f\u53d1\u5c55\u6027\u9519\u8bef\uff1f",
-            tags: ["NLP", "DeepSeek API", "Linguistics"],
-            githubLink: ""
-        },
         {
             slug: "yunyou-flight-agent",
             title: "Yunyou Flight Decision Agent",
@@ -310,8 +295,8 @@ function renderFeaturedExperimentCard(item) {
             <p class="featured-experiment-stats">${stats}</p>
             <blockquote class="featured-experiment-quote">${quote}</blockquote>
             <div class="featured-experiment-actions">
-                <a href="${item.links.game}" class="featured-experiment-action" target="_blank" rel="noopener noreferrer">${gameText}</a>
-                <a href="${item.links.caseStudy}" class="featured-experiment-action" target="_blank" rel="noopener noreferrer">${caseText}</a>
+                ${item.links.game ? `<a href="${item.links.game}" class="featured-experiment-action" target="_blank" rel="noopener noreferrer">${gameText}</a>` : ''}
+                ${item.links.caseStudy ? `<a href="${item.links.caseStudy}" class="featured-experiment-action" target="_blank" rel="noopener noreferrer">${caseText}</a>` : ''}
             </div>
             <div class="featured-experiment-tag-row">
                 <span class="featured-experiment-tag-label">Tags:</span>
@@ -500,7 +485,113 @@ document.addEventListener('keydown', (e) => {
 // Initialize Page
 // ================================================
 
+// ================================================
+// Chronicle (AI session receipts)
+// ================================================
+
+function fmtCurrency(n) {
+    if (n == null) return '$0';
+    if (n < 0.01) return '<$0.01';
+    if (n < 100) return '$' + n.toFixed(2);
+    return '$' + Math.round(n).toLocaleString();
+}
+
+function fmtCompact(n) {
+    if (n == null) return '0';
+    if (n < 1000) return String(n);
+    if (n < 1_000_000) return (n / 1000).toFixed(n < 10_000 ? 1 : 0) + 'k';
+    return (n / 1_000_000).toFixed(1) + 'M';
+}
+
+function renderChronicleSpark(tokens) {
+    const vals = [tokens.input || 0, tokens.output || 0, tokens.cache_create || 0, tokens.cache_read || 0];
+    const max = Math.max(1, ...vals);
+    const labels = ['IN', 'OUT', 'CC', 'CR'];
+    const bars = vals.map((v, i) => {
+        const h = Math.max(2, Math.round((v / max) * 24));
+        const cls = i === 1 ? 'bar plum' : 'bar';
+        return '<div class="' + cls + '" style="height:' + h + 'px" title="' + labels[i] + ': ' + v.toLocaleString() + '"></div>';
+    }).join('');
+    const legend = labels.map(l => '<span>' + l + '</span>').join('');
+    return '<div class="chronicle-spark" aria-hidden="true">' + bars + '</div>'
+         + '<div class="chronicle-spark-labels">' + legend + '</div>';
+}
+
+function renderChronicleCard(entry) {
+    const lang = window.i18n ? window.i18n.getLang() : 'en';
+    const projName = (lang === 'zh' && entry.project?.name_zh) ? entry.project.name_zh : (entry.project?.name_en || '—');
+    const dateStr = entry.date || '';
+    const num = 'Nº ' + String(entry.number || 0).padStart(3, '0');
+    const kModel = lang === 'zh' ? '\u6a21\u578b' : 'Model';
+    const kTurns = lang === 'zh' ? '\u8f6e\u6b21' : 'Turns';
+    const kCost  = lang === 'zh' ? '\u4f30\u7b97' : 'Est.';
+    const caption = (entry.summary && entry.summary[lang]) || entry.topic || '';
+    const href = './chronicles/' + (entry.file || '');
+    return (
+        '<a class="chronicle-card" href="' + href + '" target="_blank" rel="noopener">' +
+          '<div class="chronicle-card-head">' +
+            '<span class="chronicle-card-num">' + num + '</span>' +
+            '<span class="chronicle-card-date">' + dateStr + '</span>' +
+          '</div>' +
+          '<div class="chronicle-card-project">' + projName + '</div>' +
+          (caption ? '<div class="chronicle-card-topic">' + caption + '</div>' : '') +
+          '<div class="chronicle-card-meta">' +
+            '<div class="cell"><span class="k">' + kModel + '</span><span class="v">' + (entry.model_display || '—') + '</span></div>' +
+            '<div class="cell"><span class="k">' + kTurns + '</span><span class="v">' + (entry.turns || 0) + '</span></div>' +
+            '<div class="cell"><span class="k">' + kCost + '</span><span class="v cost">' + fmtCurrency(entry.cost_usd) + '</span></div>' +
+          '</div>' +
+          renderChronicleSpark(entry.tokens || {}) +
+        '</a>'
+    );
+}
+
+function renderChronicleStats(entries) {
+    const lang = window.i18n ? window.i18n.getLang() : 'en';
+    const lReceipts = lang === 'zh' ? '\u5f20\u624b\u672d' : 'receipts';
+    const lSpent    = lang === 'zh' ? 'API \u7b49\u4ef7' : 'est. API cost';
+    const lProjects = lang === 'zh' ? '\u4e2a\u9879\u76ee' : 'projects';
+    const totalCost = entries.reduce((s, e) => s + (e.cost_usd || 0), 0);
+    const projectSlugs = new Set(entries.map(e => e.project?.slug).filter(Boolean));
+    return (
+        '<div class="chronicle-stat"><span class="num">' + entries.length + '</span><span class="label">' + lReceipts + '</span></div>' +
+        '<div class="chronicle-stat"><span class="num">' + fmtCurrency(totalCost) + '</span><span class="label">' + lSpent + '</span></div>' +
+        '<div class="chronicle-stat"><span class="num">' + projectSlugs.size + '</span><span class="label">' + lProjects + '</span></div>'
+    );
+}
+
+async function renderChronicles() {
+    const grid = document.getElementById('chronicleGrid');
+    const stats = document.getElementById('chronicleStats');
+    if (!grid || !stats) return;
+    const lang = window.i18n ? window.i18n.getLang() : 'en';
+    const emptyMsg = lang === 'zh'
+        ? '\u6863\u6848\u8fd8\u662f\u7a7a\u7684\u2014\u2014\u7b2c\u4e00\u5f20\u624b\u672d\u4f1a\u51fa\u73b0\u5728\u8fd9\u91cc\u3002'
+        : 'The archive is empty \u2014 the first chronicle will land here.';
+
+    let data;
+    try {
+        const res = await fetch('./chronicles/index.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('index not found');
+        data = await res.json();
+    } catch (e) {
+        grid.innerHTML = '<div class="chronicle-empty">' + emptyMsg + '</div>';
+        stats.innerHTML = '';
+        return;
+    }
+    const entries = Array.isArray(data.entries) ? data.entries : [];
+    if (entries.length === 0) {
+        grid.innerHTML = '<div class="chronicle-empty">' + emptyMsg + '</div>';
+        stats.innerHTML = '';
+        return;
+    }
+    stats.innerHTML = renderChronicleStats(entries);
+    grid.innerHTML = entries.slice(0, 12).map(renderChronicleCard).join('');
+}
+
 function initAILabPage() {
+    // Render chronicle archive
+    renderChronicles();
+
     // Render gallery
     const galleryGrid = document.getElementById('galleryGrid');
     galleryGrid.innerHTML = aiLabData.gallery.map(renderGalleryItem).join('');

@@ -48,6 +48,24 @@ const allProjects = [
         }
     },
     {
+        slug: "delay-the-end",
+        title: "Delay the End",
+        title_zh: "Delay the End",
+        oneLiner: "A fan-made narrative strategy web game — bargain with fate, delay what's already written",
+        oneLiner_zh: "\u7c89\u4e1d\u81ea\u5236\u7684\u53d9\u4e8b\u7b56\u7565\u7f51\u9875\u6e38\u620f\u2014\u2014\u548c\u547d\u8fd0\u535a\u5f08\uff0c\u5ef6\u7f13\u5df2\u5199\u597d\u7684\u7ed3\u5c40",
+        featured: true,
+        coverImage: "assets/project-covers/ai-lab/delay-the-end-cover.webp",
+        role: "Solo Designer & Developer",
+        role_zh: "\u72ec\u7acb\u8bbe\u8ba1 + \u5f00\u53d1",
+        time: "2025",
+        outcome: "7 rounds \u00b7 5 endings \u00b7 18 playtesters \u00b7 bilingual \u00b7 Monte Carlo simulation \u00b7 vanilla JS",
+        outcome_zh: "7 \u8f6e\u535a\u5f08 \u00b7 5 \u4e2a\u7ed3\u5c40 \u00b7 18 \u4eba\u6d4b\u8bd5 \u00b7 \u4e2d\u82f1\u53cc\u8bed \u00b7 \u8499\u7279\u5361\u6d1b\u6a21\u62df \u00b7 \u539f\u751f JS",
+        tags: ["Narrative Design", "Systems Design", "Vanilla JS"],
+        links: {
+            demo: "https://carpediemzzsssww-cpu.github.io/delay-the-end/"
+        }
+    },
+    {
         slug: "netease-hi-echo-research",
         title: "NetEase Hi Echo — User Research",
         title_zh: "\u7f51\u6613\u6709\u9053 Hi Echo \u2014 \u7528\u6237\u7814\u7a76",

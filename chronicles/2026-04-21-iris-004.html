@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iris · Chronicle № 004 · Iris Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@400;500;700&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --cream-warm: #EDE8DF;
+  --cream-deep: #E4DCCE;
+  --plum: #6B5876;
+  --plum-dark: #4E3F5A;
+  --plum-light: #B8A4C9;
+  --sage: #95A89C;
+  --sage-light: #B8C6BB;
+  --ink: #2A2332;
+  --ink-soft: #4E3F5A;
+  --muted: #8A7F8E;
+  --font-display: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+  --font-body: 'DM Sans', 'Noto Serif SC', -apple-system, sans-serif;
+  --font-mono: 'DM Mono', 'SF Mono', Menlo, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #F0EADE; color: var(--ink); font-family: var(--font-body); }
+body {
+  min-height: 100vh;
+  padding: 48px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: repeating-linear-gradient(45deg, #F0EADE, #F0EADE 40px, #ECE5D6 40px, #ECE5D6 41px);
+}
+.receipt {
+  width: 100%;
+  max-width: 380px;
+  background: var(--cream);
+  padding: 36px 28px 28px;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(74, 63, 90, 0.12), 0 2px 8px rgba(74, 63, 90, 0.06);
+}
+/* Torn / zigzag top & bottom edge */
+.receipt::before,
+.receipt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background:
+    linear-gradient(-45deg, var(--cream) 8px, transparent 0) 0 0,
+    linear-gradient( 45deg, var(--cream) 8px, transparent 0) 0 0;
+  background-size: 16px 16px;
+  background-repeat: repeat-x;
+}
+.receipt::before { top: -10px; }
+.receipt::after  { bottom: -10px; transform: rotate(180deg); }
+
+.nameplate {
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.nameplate .amp { font-style: italic; color: var(--plum); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--plum);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sage);
+  font-size: 10px;
+  margin: 18px 0 16px;
+  letter-spacing: 0.4em;
+}
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px dotted var(--sage);
+  margin: 0 10px;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 7px;
+  column-gap: 16px;
+  font-size: 12.5px;
+}
+.meta dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 2px;
+}
+.meta dd {
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+.meta dd .zh { color: var(--muted); font-size: 11.5px; }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-top: 18px;
+  margin-bottom: 8px;
+  border-bottom: 1px dotted var(--sage);
+  padding-bottom: 4px;
+}
+
+.ledger {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+.ledger .label { color: var(--ink-soft); }
+.ledger .val   { color: var(--ink); text-align: right; }
+
+.total {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 12px;
+  background: var(--cream-warm);
+  border: 1px dashed var(--plum);
+}
+.total .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--plum-dark);
+  max-width: 60%;
+  line-height: 1.3;
+}
+.total .val {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--plum);
+}
+.total-note {
+  margin-top: 6px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.topic {
+  margin-top: 18px;
+  padding: 12px 0;
+  border-top: 1px dotted var(--sage);
+  border-bottom: 1px dotted var(--sage);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.topic::before { content: "“"; color: var(--plum-light); margin-right: 2px; }
+.topic::after  { content: "”"; color: var(--plum-light); margin-left: 2px; }
+
+.tagline {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--plum);
+  text-align: center;
+  line-height: 1.5;
+}
+.tagline .dash { color: var(--sage); font-size: 11px; letter-spacing: 0.2em; }
+
+.footer {
+  margin-top: 22px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.footer .ornament {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--plum);
+  margin-bottom: 6px;
+}
+.footer a { color: var(--muted); text-decoration: none; }
+
+@media print {
+  body { background: white; padding: 0; }
+  .receipt { box-shadow: none; max-width: 80mm; }
+  .receipt::before, .receipt::after { display: none; }
+}
+</style>
+</head>
+<body>
+<article class="receipt">
+  <div class="nameplate">Iris <span class="amp">·</span> Chronicle</div>
+  <div class="eyebrow">AI Chronicle № 004</div>
+
+  <div class="divider">✦</div>
+
+  <dl class="meta">
+    <dt>Date</dt>     <dd>2026-04-21</dd>
+    <dt>Project</dt>  <dd>Iris Site</dd>
+    <dt>Model</dt>    <dd>Opus 4.7</dd>
+    <dt>Turns</dt>    <dd>3</dd>
+    <dt>Duration</dt> <dd>36m</dd>
+    <dt>Session</dt>  <dd style="font-family: var(--font-mono); font-size: 10px; color: var(--muted);">b4e809de</dd>
+  </dl>
+
+  <div class="section-label">Tokens</div>
+  <div class="ledger">
+    <div class="label">Input</div>       <div class="val">396</div>
+    <div class="label">Output</div>      <div class="val">179,014</div>
+    <div class="label">Cache · Create</div> <div class="val">872,568</div>
+    <div class="label">Cache · Read</div>   <div class="val">36,088,560</div>
+  </div>
+
+  <div class="total">
+    <span class="label">Est. API Cost</span>
+    <span class="val">$83.93</span>
+  </div>
+  <div class="total-note">* list-price estimate, not actual billing</div>
+
+  <p class="topic">Wove the Photon Butterfly generative hero into the homepage.</p>
+
+  
+
+  <div class="footer">
+    <span class="ornament">✦ merci ✦</span>
+    <a href="https://carpediemzzsssww-cpu.github.io/Iris/ai-lab.html" target="_blank" rel="noopener">iris · ai lab</a>
+  </div>
+</article>
+</body>
+</html>
