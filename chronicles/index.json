@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-04-22T14:31:28.446Z",
+  "generated_at": "2026-04-22T15:17:48.239Z",
   "entries": [
     {
       "id": "2026-04-22-iris-005",
@@ -156,6 +156,37 @@
       "tagline": null,
       "file": "2026-04-12-iris-001.html",
       "session_id": "bba1cb74-f5fc-4742-badb-b193978b3d02"
+    },
+    {
+      "id": "2026-04-11-yunyou-006",
+      "number": 6,
+      "date": "2026-04-11",
+      "started_at": "2026-04-11T06:30:22.892Z",
+      "ended_at": "2026-04-22T15:17:41.812Z",
+      "duration_minutes": 206,
+      "project": {
+        "slug": "yunyou",
+        "name_en": "Yunyou",
+        "name_zh": "云游"
+      },
+      "model": "claude-opus-4-6",
+      "model_display": "Opus 4.6",
+      "turns": 30,
+      "tokens": {
+        "input": 68930,
+        "output": 254614,
+        "cache_create": 6194142,
+        "cache_read": 158384498
+      },
+      "cost_usd": 373.8469,
+      "topic": "文件中是已经基本确定的产品PRD，UI设计的参考html和图片都已经给出，按照prd的里的技术栈来搭建这个平台。给出方案后逐步搭建。",
+      "summary": {
+        "en": "Shipped Yunyou MVP — an AI decision agent for flight purchases, reframed as purchase-first.",
+        "zh": "云游 MVP 上线：AI 机票决策 Agent——从「该不该买」到「随时可买」。"
+      },
+      "tagline": null,
+      "file": "2026-04-11-yunyou-006.html",
+      "session_id": "a8f8268f-be84-4ad2-89d5-76fb2c78c75b"
     }
   ]
 }
