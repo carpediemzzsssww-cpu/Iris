@@ -4,23 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iris Zhou - AI Product Builder</title>
-    <script>
-    (function () {
-        try {
-            var stored = localStorage.getItem('themePreference');
-            var preference = stored ? JSON.parse(stored) : null;
-            var isDark = preference ? preference === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        } catch (error) {}
-    })();
-    (function () {
-        try {
-            var lang = localStorage.getItem('langPreference') || 'en';
-            document.documentElement.setAttribute('data-lang', lang);
-            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-        } catch (e) {}
-    })();
-    </script>
+    <script src="scripts/init-theme-lang.js"></script>
     <meta name="description" content="Iris Zhou's portfolio: product design, AI experimentation, and human-centered systems built through research and iteration.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/index.html">
     <meta property="og:type" content="website">
@@ -95,12 +79,18 @@
             <div class="container">
                 <div class="after-hero-grid">
                     <figure class="after-hero-portrait" aria-label="Portrait of Iris Zhou">
-                        <img
-                            src="assets/hero/hero-portrait.JPG"
-                            alt="Portrait of Iris Zhou"
-                            loading="eager"
-                            fetchpriority="high"
-                        >
+                        <picture>
+                            <source srcset="assets/hero/hero-portrait.webp" type="image/webp">
+                            <img
+                                src="assets/hero/hero-portrait.JPG"
+                                alt="Portrait of Iris Zhou"
+                                loading="eager"
+                                fetchpriority="high"
+                                decoding="async"
+                                width="1200"
+                                height="1600"
+                            >
+                        </picture>
                     </figure>
                     <div class="after-hero-content">
                         <h2 class="after-hero-title">
@@ -297,6 +287,7 @@
                                 src="assets/featured/featured-yunyou.jpg"
                                 alt="Yunyou AI flight decision platform preview"
                                 loading="lazy"
+                                decoding="async"
                             >
                         </div>
                         <div class="presentation-content">
@@ -315,6 +306,7 @@
                                 src="assets/featured/featured-prd-copilot.jpg"
                                 alt="AI PRD Copilot preview"
                                 loading="lazy"
+                                decoding="async"
                             >
                         </div>
                         <div class="presentation-content">
@@ -333,6 +325,7 @@
                                 src="assets/featured/featured-hi-echo.jpg"
                                 alt="NetEase Hi Echo user research case study"
                                 loading="lazy"
+                                decoding="async"
                             >
                         </div>
                         <div class="presentation-content">
@@ -433,9 +426,9 @@
     <script>
     window.i18n.loadContent(['index.json']);
     </script>
-    <script src="projects.js"></script>
-    <script src="scripts.js"></script>
+    <script src="projects.js" defer></script>
+    <script src="scripts.js" defer></script>
     <script src="scripts/hero-photon.js" defer></script>
-    <script src="alter-widget.js"></script>
+    <script src="alter-widget.js" defer></script>
 </body>
 </html>

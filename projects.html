@@ -4,23 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Iris Zhou</title>
-    <script>
-    (function () {
-        try {
-            var stored = localStorage.getItem('themePreference');
-            var preference = stored ? JSON.parse(stored) : null;
-            var isDark = preference ? preference === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        } catch (error) {}
-    })();
-    (function () {
-        try {
-            var lang = localStorage.getItem('langPreference') || 'en';
-            document.documentElement.setAttribute('data-lang', lang);
-            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-        } catch (e) {}
-    })();
-    </script>
+    <script src="scripts/init-theme-lang.js"></script>
     <meta name="description" content="Project portfolio by Iris Zhou: AI product explorations, design systems, and practical prototypes with measurable outcomes.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/projects.html">
     <meta property="og:type" content="website">
@@ -107,8 +91,8 @@
     <script>
     window.i18n.loadContent(['projects-ui.json']);
     </script>
-    <script src="scripts.js"></script>
-    <script src="projects.js"></script>
-    <script src="alter-widget.js"></script>
+    <script src="scripts.js" defer></script>
+    <script src="projects.js" defer></script>
+    <script src="alter-widget.js" defer></script>
 </body>
 </html>

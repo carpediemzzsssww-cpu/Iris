@@ -4,25 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Lab - Iris Zhou</title>
-    <script>
-    (function () {
-        try {
-            var stored = localStorage.getItem('themePreference');
-            var preference = stored ? JSON.parse(stored) : null;
-            var isDark = preference ? preference === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        } catch (error) {}
-    })();
-    </script>
-    <script>
-    (function () {
-        try {
-            var lang = localStorage.getItem('langPreference') || 'en';
-            document.documentElement.setAttribute('data-lang', lang);
-            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-        } catch (e) {}
-    })();
-    </script>
+    <script src="scripts/init-theme-lang.js"></script>
     <meta name="description" content="AI Lab by Iris Zhou: AIGC gallery, agent experiments, and insights on human-AI interaction and product design.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/ai-lab.html">
     <meta property="og:type" content="website">
@@ -128,8 +110,8 @@
     <script>
     window.i18n.loadContent(['ai-lab-ui.json']);
     </script>
-    <script src="ai-lab.js"></script>
-    <script src="scripts.js"></script>
-    <script src="alter-widget.js"></script>
+    <script src="ai-lab.js" defer></script>
+    <script src="scripts.js" defer></script>
+    <script src="alter-widget.js" defer></script>
 </body>
 </html>
