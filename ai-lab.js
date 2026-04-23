@@ -4,168 +4,6 @@
 
 const aiLabData = {
     gallery: [
-        {
-            id: 1,
-            title: "Surreal Butterfly Dream",
-            title_zh: "\u8d85\u73b0\u5b9e\u8776\u68a6",
-            goal: "Dream-like symbolic visual narrative",
-            goal_zh: "\u68a6\u4e00\u6837\u7684\u89c6\u89c9\u53d9\u4e8b",
-            prompt: "Create a surreal dream sequence where butterflies burst outward in a particle dispersion bloom, now infused with dream logic, dopamine color styling, Y2K glitch aesthetics, vaporwave atmosphere, and acid-surreal painterly textures.",
-            model: "Midjourney v7",
-            date: "2026-02-10",
-            image: "./assets/ai-lab/surreal-butterflies.png"
-        },
-        {
-            id: 2,
-            title: "Multi-layer Architecture",
-            title_zh: "\u591a\u5c42\u5efa\u7b51",
-            goal: "Complex spatial imagination",
-            goal_zh: "\u590d\u6742\u7a7a\u95f4\u7684\u60f3\u8c61\u529b\u5b9e\u9a8c",
-            prompt: "An extraordinarily complex multi-level architectural greenhouse, a colossal glass sunroom transformed into a living ecosystem palace. Intricate layered structure with floating walkways, split-level conservatories, spiral ramps, suspended gardens, and vertical water channels. Curved low-iron glass facades interwoven with delicate metal ribs, casting prismatic sunlight patterns across stone floors. A monumental central mother tree rises through multiple stories, fused with steel framework, supporting translucent platforms covered in moss, ferns, orchids, climbing vines, and lush tropical foliage. Indoor microclimates with soft mist, rain chains, cascading water walls, mirror pools, and thin waterfalls connecting different heights. Hyper-detailed interior objects: botanical specimen cabinets, handwritten plant labels, brass mist valves, antique astronomical clocks, ceramic pots, woven lanterns, reclaimed wood benches. Atmosphere of biophilic futurism + Victorian conservatory + subtle steampunk craftsmanship. Golden volumetric daylight, rich green reflections, cinematic depth, ultra-detailed textures, grand scale, elegant spatial hierarchy, immersive composition, architectural visualization, 8k, photoreal, masterpiece. --ar 2:3 --profile o2dyims",
-            model: "Midjourney v7",
-            date: "2026-02-10",
-            image: "./assets/ai-lab/complex-architecture.png"
-        },
-        {
-            id: 3,
-            title: "Young Girl Portrait",
-            title_zh: "\u5c11\u5973\u7684\u50cf",
-            goal: "Character portrait study",
-            goal_zh: "\u4eba\u7269\u8096\u50cf\u7ec3\u4e60",
-            prompt: "A young girl with auburn curly hair, soft freckles, and luminous eyes, wearing an enchanted forest-inspired outfit: layered moss-green and earthy brown fabrics, leaf embroidery, delicate lace, tiny floral details, and handmade leather accessories. She has an ethereal, elf-like presence--graceful, playful, and mysterious. Standing in a misty woodland with filtered golden light through tall trees, floating dust particles, wildflowers, mushrooms, and glowing fireflies. Cinematic fantasy style, whimsical mood, ultra-detailed textures, natural skin, soft volumetric lighting, shallow depth of field, magical realism, dreamy color grading. --profile o2dyims",
-            model: "Midjourney v7",
-            date: "2026-02-01",
-            image: "./assets/ai-lab/young-girl-portrait.png"
-        },
-        {
-            id: 4,
-            title: "Yellow Cottage in Forest",
-            title_zh: "\u68ee\u6797\u4e2d\u7684\u9ec4\u8272\u5c0f\u5c4b",
-            goal: "Fairy-tale environment concept",
-            goal_zh: "\u7ae5\u8bdd\u611f\u7684\u573a\u666f\u6982\u5ff5",
-            prompt: "A warm yellow cottage hidden in a dark green forest, dense canopy blocking most of the sky, only scattered light rays filtering through leaves onto moss-covered ground. The cottage has weathered wooden walls, textured details, glowing honey-colored windows, and a cozy golden light spilling from the doorway. Around the stone steps: ferns, tiny white wildflowers, mushrooms, damp soil, thin mist, floating dust particles. A girl is playing with her kitten at the front door, crouching with a gentle smile as the kitten jumps toward a ribbon toy, tail raised. Her dress edge touches grass, slight mud on her shoes, natural candid motion. Strong cool-warm contrast: deep emerald and teal shadows in the forest, soft amber glow around the cottage and characters. Whimsical, fairy-tale, cinematic, atmospheric, ultra-detailed, storybook realism, volumetric light, shallow depth of field. --ar 3:2 --profile pxm2t38",
-            model: "Midjourney v7",
-            date: "2026-02-10",
-            image: "./assets/ai-lab/yellow-cottage-forest.png"
-        },
-        {
-            id: 5,
-            title: "Floating Cloud House",
-            title_zh: "\u6d6e\u4e91\u5c0f\u5c4b",
-            goal: "Whimsical sky-home concept",
-            goal_zh: "\u5947\u5e7b\u98ce\u683c\u7684\u7a7a\u4e2d\u5c0f\u5c4b",
-            prompt: "A tiny cozy house floating above the clouds, suspended by many colorful balloons in different sizes, bright rainbow palette, soft sunlight, dreamy sky, whimsical fairy-tale mood, fluffy clouds, gentle wind, magical atmosphere, cinematic composition, highly detailed, storybook style. --ar 3:4 --profile pxm2t38",
-            model: "Midjourney v7",
-            date: "2026-02-05",
-            image: "./assets/ai-lab/floating-cloud-house.png"
-        },
-        {
-            id: 6,
-            title: "Whimsical Park Walk",
-            title_zh: "\u68a6\u5e7b\u516c\u56ed\u6f2b\u6b65",
-            goal: "Gentle surreal daily scene",
-            goal_zh: "\u6e29\u67d4\u7684\u3001\u5e26\u70b9\u8d85\u73b0\u5b9e\u7684\u65e5\u5e38",
-            prompt: "A girl walking in a park, whimsical and slightly surreal yet warm, fairy-tale atmosphere. Lush vivid green grass like velvet, subtly distorted storybook trees, soft golden-peach sunset light, tiny floating light particles in the air. A Ferris wheel in the background, slowly turning, with glowing candy-like cabins and a gentle vintage touch. Cozy magical mood, dreamy but comforting, cinematic composition, soft volumetric light, rich details, storybook realism. --ar 16:9 --profile o2hm7ab",
-            model: "Midjourney v7",
-            date: "2026-02-09",
-            image: "./assets/ai-lab/whimsical-park-walk.png"
-        },
-        {
-            id: 7,
-            title: "Love",
-            title_zh: "\u7231",
-            goal: "In a fixed stylistic framework, the interpretation and visualization of abstract concepts",
-            goal_zh: "\u5728\u56fa\u5b9a\u98ce\u683c\u91cc\u770b\u770b\u62bd\u8c61\u6982\u5ff5\u80fd\u53d8\u6210\u4ec0\u4e48",
-            prompt: "love --chaos 5 --ar 2:3 --profile kktzzkb",
-            params: { ar: "2:3", chaos: 5, profile: "kktzzkb" },
-            model: "Midjourney v7",
-            date: "2026-02-09",
-            image: "./assets/ai-lab/love.png"
-        },
-        {
-            id: 8,
-            title: "Lone Astronaut",
-            title_zh: "\u72ec\u884c\u5b87\u822a\u5458",
-            goal: "Quiet solitude inside a confined void",
-            goal_zh: "\u5bc6\u95ed\u865a\u7a7a\u91cc\u7684\u5b89\u9759",
-            prompt: "A lone astronaut floating inside a vast dimly lit spacecraft cabin, rendered in desaturated tones of slate blue, warm grey and faded copper, loose painterly brushstrokes with visible canvas texture, a single small window casting pale starlight across the floor --ar 3:4 --stylize 800 --profile [Global V7]",
-            params: { ar: "3:4", stylize: 800, profile: "Global V7", version: "7" },
-            model: "Midjourney v7",
-            date: "2026-04-23",
-            image: "./assets/ai-lab/lone-astronaut.png"
-        },
-        {
-            id: 9,
-            title: "Clay Plateau Figure",
-            title_zh: "\u9ecf\u571f\u9ad8\u539f\u4e0a\u7684\u8eab\u5f71",
-            goal: "Human scale against a vast hand-drawn landscape",
-            goal_zh: "\u4eba\u4e0e\u5de8\u5927\u624b\u7ed8\u5730\u666f\u7684\u5bf9\u7167",
-            prompt: "A solitary figure standing at the edge of an enormous soft clay-colored plateau, the landscape rendered in loose impasto brushstrokes of warm sand, terracotta and muted sage, hand-drawn quality with visible brush texture, vast negative space of pale sky --ar 3:4 --v 6.1 --stylize 800 --profile [Global V6]",
-            params: { ar: "3:4", stylize: 800, profile: "Global V6", version: "6.1" },
-            model: "Midjourney v6.1",
-            date: "2026-04-23",
-            image: "./assets/ai-lab/solitary-figure-plateau.png"
-        },
-        {
-            id: 10,
-            title: "Asteroid Civilization",
-            title_zh: "\u5c0f\u884c\u661f\u4e0a\u7684\u5c0f\u6587\u660e",
-            goal: "Tenderness at cosmic scale",
-            goal_zh: "\u5b87\u5b99\u5c3a\u5ea6\u4e0b\u7684\u67d4\u8f6f",
-            prompt: "A tiny civilization built on the surface of a drifting asteroid, seen from a distance through a spacecraft porthole, muted palette of charcoal, dusty rose and faded teal, the settlement glows faintly with warm light against the cold void, painterly impasto texture, organic hand-sculpted feeling to both the asteroid and the architecture, vast black negative space, tender and immense --ar 16:9 --stylize 800 --profile [Global V7]",
-            params: { ar: "16:9", stylize: 800, profile: "Global V7", version: "7" },
-            model: "Midjourney v7",
-            date: "2026-04-23",
-            image: "./assets/ai-lab/tiny-civilization-asteroid.png"
-        },
-        {
-            id: 11,
-            title: "Whale Ribcage Library",
-            title_zh: "\u9cb8\u9aa8\u56fe\u4e66\u9986",
-            goal: "A reading space built from what once lived",
-            goal_zh: "\u7528\u66fe\u7ecf\u6d3b\u8fc7\u7684\u4e1c\u897f\uff0c\u642d\u4e00\u5904\u9605\u8bfb\u7a7a\u95f4",
-            prompt: "The ribcage of an ancient whale skeleton converted into a moss-covered library, tiny mushrooms growing along the spine serving as reading lamps glowing faint violet, a single figure curled up reading inside, seen from far away through ocean fog --ar 3:4 --stylize 800 --profile [Global V7]",
-            params: { ar: "3:4", stylize: 800, profile: "Global V7", version: "7" },
-            model: "Midjourney v7",
-            date: "2026-04-23",
-            image: "./assets/ai-lab/whale-ribcage-library.png"
-        },
-        {
-            id: 12,
-            title: "Coffee Shop in a Stone",
-            title_zh: "\u77f3\u4e2d\u5496\u5561\u9986",
-            goal: "Warmth hidden inside the ordinary",
-            goal_zh: "\u5e73\u51e1\u4e4b\u7269\u91cc\u7684\u6696\u5149",
-            prompt: "A miniature coffee shop built into the hollow of a moss-covered stone, warm light glowing from tiny windows, a wisp of steam rising from the chimney into vast empty fog, muted palette of forest green, dusty mauve, warm brown and pale grey, thick impasto brush --ar 3:4 --stylize 800 --style [Style Creator]",
-            params: { ar: "3:4", stylize: 800, style: "Style Creator" },
-            model: "Midjourney v7",
-            date: "2026-04-23",
-            image: "./assets/ai-lab/coffee-shop-in-stone.png"
-        },
-        {
-            id: 13,
-            title: "Paper Letters in Zero G",
-            title_zh: "\u5931\u91cd\u4e2d\u7684\u5343\u5c01\u4fe1",
-            goal: "Silence with weight",
-            goal_zh: "\u8ba9\u6c89\u9ed8\u6709\u91cd\u91cf",
-            prompt: "A thousand paper letters frozen mid-flight in zero gravity inside an empty spacecraft, each letter slowly sprouting moss and small purple flowers from its folds, faint warm light source from somewhere unseen, desaturated cream, dried lavender and soft charcoal, ink brushstroke edges on the letters dissolving into watercolor wash, the silence has weight",
-            params: {},
-            model: "Midjourney v7",
-            date: "2026-04-23",
-            image: "./assets/ai-lab/paper-letters-zero-g.png"
-        },
-        {
-            id: 14,
-            title: "Happiness",
-            title_zh: "\u5e78\u798f",
-            goal: "One abstract word meets one personalized profile",
-            goal_zh: "\u4e00\u4e2a\u62bd\u8c61\u8bcd\u78b0\u4e0a\u4e00\u4e2a\u4e2a\u4eba\u5316 profile \u7684\u56de\u7b54",
-            prompt: "happiness --profile 5j7ipub --v 7",
-            params: { profile: "5j7ipub", version: "7" },
-            model: "Midjourney v7",
-            date: "2026-04-23",
-            image: "./assets/ai-lab/happiness-profile.png"
-        }
     ],
 
     featuredExperiment: {
@@ -210,86 +48,6 @@ const aiLabData = {
     ],
 
     ideas: [
-        {
-            id: 1,
-            title: "Progressive Disclosure in AI Interfaces",
-            title_zh: "AI \u754c\u9762\u7684\u6e10\u8fdb\u62ab\u9732",
-            content: "Most AI tools dump all capabilities upfront ('I can do X, Y, Z...'). What if interfaces revealed capabilities progressively based on user expertise? Beginners see 3 core actions. Power users unlock advanced features through use.",
-            content_zh: "\u5927\u591a\u6570 AI \u5de5\u5177\u4e00\u6253\u5f00\u5c31\u628a\u6240\u6709\u529f\u80fd\u5806\u5728\u4f60\u9762\u524d\u3002\u5982\u679c\u754c\u9762\u80fd\u6839\u636e\u4f60\u7684\u719f\u7ec3\u5ea6\u6162\u6162\u5c55\u5f00\u5462\uff1f\u65b0\u624b\u53ea\u770b\u5230 3 \u4e2a\u6838\u5fc3\u52a8\u4f5c\uff0c\u7528\u5f97\u591a\u4e86\u81ea\u7136\u89e3\u9501\u66f4\u591a\u3002",
-            tags: ["UX", "AI", "Design Patterns"],
-            pinned: true,
-            date: "2024-02-20"
-        },
-        {
-            id: 2,
-            title: "The 'Undo' Problem for AI Actions",
-            title_zh: "AI \u64cd\u4f5c\u7684\u300c\u64a4\u9500\u300d\u96be\u9898",
-            content: "Traditional software: Undo is trivial. AI agents: How do you undo an email sent, a calendar invite accepted, a file deleted? We need new interaction patterns for AI that acts on your behalf. Maybe: preview mode by default, confirmation for irreversible actions.",
-            content_zh: "\u4f20\u7edf\u8f6f\u4ef6\u7684\u64a4\u9500\u5f88\u7b80\u5355\u3002\u4f46 AI Agent \u5462\uff1f\u5b83\u5e2e\u4f60\u53d1\u7684\u90ae\u4ef6\u3001\u63a5\u7684\u65e5\u5386\u9080\u8bf7\u3001\u5220\u7684\u6587\u4ef6\uff0c\u600e\u4e48\u64a4\uff1f\u9700\u8981\u65b0\u7684\u4ea4\u4e92\u6a21\u5f0f\u3002\u4e5f\u8bb8\uff1a\u9ed8\u8ba4\u9884\u89c8\u6a21\u5f0f\uff0c\u4e0d\u53ef\u9006\u7684\u64cd\u4f5c\u5fc5\u987b\u786e\u8ba4\u3002",
-            tags: ["AI", "UX", "Trust"],
-            pinned: true,
-            date: "2024-02-18"
-        },
-        {
-            id: 3,
-            title: "AI Confidence as a Design Material",
-            title_zh: "AI \u7f6e\u4fe1\u5ea6\u4f5c\u4e3a\u8bbe\u8ba1\u6750\u6599",
-            content: "AI systems have varying confidence in their outputs. Most UIs hide this. What if we designed with confidence as a first-class element? High confidence = direct answer. Medium = show alternatives. Low = 'I'm not sure, here's my reasoning.'",
-            content_zh: "AI \u7cfb\u7edf\u5bf9\u81ea\u5df1\u7684\u56de\u7b54\u6709\u591a\u6709\u5c11\u628a\u63e1\uff0c\u4f46\u5927\u591a\u6570 UI \u628a\u8fd9\u4e2a\u4fe1\u606f\u85cf\u4e86\u3002\u5982\u679c\u628a\u7f6e\u4fe1\u5ea6\u5f53\u6210\u4e00\u7b49\u8bbe\u8ba1\u5143\u7d20\u5462\uff1f\u5f88\u786e\u5b9a=\u76f4\u63a5\u7ed9\u7b54\u6848\uff0c\u6709\u70b9\u62ff\u4e0d\u51c6=\u5c55\u793a\u5907\u9009\uff0c\u4e0d\u786e\u5b9a=\u300c\u6211\u4e0d\u786e\u5b9a\uff0c\u8fd9\u662f\u6211\u7684\u63a8\u7406\u300d\u3002",
-            tags: ["AI", "Design", "Trust"],
-            pinned: false,
-            date: "2024-02-15"
-        },
-        {
-            id: 4,
-            title: "Prompt Engineering as Product Design",
-            title_zh: "\u63d0\u793a\u8bcd\u5de5\u7a0b\u5373\u4ea7\u54c1\u8bbe\u8ba1",
-            content: "Writing prompts isn't just engineering—it's UX design. The prompt shapes user expectations, defines interaction patterns, and sets boundaries. Good prompts: set clear scope, provide examples, allow progressive complexity.",
-            content_zh: "\u5199\u63d0\u793a\u8bcd\u4e0d\u53ea\u662f\u5de5\u7a0b\u6d3b\uff0c\u5b83\u672c\u8d28\u4e0a\u662f UX \u8bbe\u8ba1\u3002\u63d0\u793a\u8bcd\u5851\u9020\u7528\u6237\u671f\u671b\u3001\u5b9a\u4e49\u4ea4\u4e92\u89c4\u5219\u3001\u753b\u597d\u8fb9\u754c\u3002\u597d\u7684\u63d0\u793a\u8bcd\uff1a\u8303\u56f4\u6e05\u6670\u3001\u5e26\u793a\u4f8b\u3001\u5141\u8bb8\u6e10\u8fdb\u53d8\u590d\u6742\u3002",
-            tags: ["AI", "Product", "UX"],
-            pinned: false,
-            date: "2024-02-10"
-        },
-        {
-            id: 5,
-            title: "Designing for 'AI Surprise'",
-            title_zh: "\u4e3a\u300cAI \u60ca\u559c\u300d\u800c\u8bbe\u8ba1",
-            content: "Sometimes AI outputs surprise us positively (novel insight). Sometimes negatively (hallucination). How do we design systems that maximize good surprise while minimizing bad? Maybe: sandbox mode for exploration, validation layer for production.",
-            content_zh: "AI \u7684\u8f93\u51fa\u6709\u65f6\u662f\u597d\u60ca\u559c\uff08\u65b0\u89d2\u5ea6\uff09\uff0c\u6709\u65f6\u662f\u574f\u60ca\u559c\uff08\u80e1\u8bf4\u516b\u9053\uff09\u3002\u600e\u4e48\u8ba9\u7cfb\u7edf\u591a\u7ed9\u597d\u7684\u3001\u5c11\u7ed9\u574f\u7684\uff1f\u4e5f\u8bb8\uff1a\u63a2\u7d22\u7528\u6c99\u7bb1\u6a21\u5f0f\uff0c\u751f\u4ea7\u52a0\u9a8c\u8bc1\u5c42\u3002",
-            tags: ["AI", "Design", "Trust"],
-            pinned: false,
-            date: "2024-02-05"
-        },
-        {
-            id: 6,
-            title: "The Portfolio Problem for AI Products",
-            title_zh: "AI \u4ea7\u54c1\u7684\u4f5c\u54c1\u96c6\u96be\u9898",
-            content: "How do you showcase AI product work when outputs are non-deterministic? Traditional portfolios show 'the design.' AI portfolios need to show: prompt evolution, failure modes, edge cases, how you tuned behavior. New format needed.",
-            content_zh: "AI \u4ea7\u54c1\u7684\u8f93\u51fa\u6bcf\u6b21\u90fd\u4e0d\u4e00\u6837\uff0c\u4f5c\u54c1\u96c6\u8be5\u600e\u4e48\u505a\uff1f\u4f20\u7edf\u4f5c\u54c1\u96c6\u5c55\u793a\u300c\u8bbe\u8ba1\u7a3f\u300d\u3002AI \u4f5c\u54c1\u96c6\u5f97\u5c55\u793a\uff1a\u63d0\u793a\u8bcd\u8fed\u4ee3\u8fc7\u7a0b\u3001\u5931\u8d25\u6a21\u5f0f\u3001\u8fb9\u7f18\u6848\u4f8b\u3001\u884c\u4e3a\u8c03\u4f18\u600e\u4e48\u505a\u3002\u8fd9\u4e2a\u9886\u57df\u9700\u8981\u65b0\u683c\u5f0f\u3002",
-            tags: ["Career", "AI", "Portfolio"],
-            pinned: false,
-            date: "2024-01-30"
-        },
-        {
-            id: 7,
-            title: "Multi-Agent Collaboration Patterns",
-            title_zh: "\u591a Agent \u534f\u4f5c\u6a21\u5f0f",
-            content: "Future: Multiple AI agents working together. Design challenge: How do users understand agent relationships? Who's responsible when things go wrong? Potential pattern: Agent 'introduction' flow showing roles and capabilities upfront.",
-            content_zh: "\u672a\u6765\u4f1a\u6709\u591a\u4e2a AI Agent \u4e00\u8d77\u5e72\u6d3b\u3002\u8bbe\u8ba1\u96be\u9898\uff1a\u7528\u6237\u600e\u4e48\u7406\u89e3\u5b83\u4eec\u7684\u5173\u7cfb\uff1f\u51fa\u4e86\u9519\u8c01\u8d1f\u8d23\uff1f\u4e5f\u8bb8\u53ef\u4ee5\u8bbe\u8ba1\u4e00\u4e2a Agent\u300c\u81ea\u6211\u4ecb\u7ecd\u300d\u6d41\u7a0b\uff0c\u5148\u8ba9\u7528\u6237\u77e5\u9053\u8c01\u662f\u8c01\u3001\u80fd\u505a\u4ec0\u4e48\u3002",
-            tags: ["AI", "Systems", "Future"],
-            pinned: false,
-            date: "2024-01-25"
-        },
-        {
-            id: 8,
-            title: "Voice as the New Wireframe",
-            title_zh: "\u8bed\u97f3\u662f\u65b0\u7684\u7ebf\u6846\u56fe",
-            content: "With AI, you can prototype interactions through conversation before building UI. 'Show me a dashboard for this data' → iterate through voice → only then design visual interface. Voice-first prototyping could be huge for speed.",
-            content_zh: "\u6709\u4e86 AI\uff0c\u53ef\u4ee5\u5148\u7528\u5bf9\u8bdd\u539f\u578b\u4ea4\u4e92\uff0c\u518d\u505a UI\u3002\u300c\u7ed9\u6211\u770b\u8fd9\u4e2a\u6570\u636e\u7684\u770b\u677f\u300d\u2192 \u8bed\u97f3\u8fed\u4ee3 \u2192 \u7136\u540e\u624d\u753b\u754c\u9762\u3002\u8bed\u97f3\u4f18\u5148\u539f\u578b\u53ef\u80fd\u4f1a\u6781\u5927\u63d0\u901f\u3002",
-            tags: ["Voice", "Prototyping", "Process"],
-            pinned: false,
-            date: "2024-01-20"
-        }
     ]
 };
 
@@ -673,7 +431,23 @@ async function renderChronicles() {
     grid.innerHTML = entries.slice(0, 12).map(renderChronicleCard).join('');
 }
 
-function initAILabPage() {
+async function loadAILabData() {
+    try {
+        var response = await fetch('content/ai-lab-data.json', { cache: 'no-cache' });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        var data = await response.json();
+        aiLabData.gallery = Array.isArray(data.gallery) ? data.gallery : [];
+        aiLabData.ideas = Array.isArray(data.ideas) ? data.ideas : [];
+    } catch (err) {
+        console.error('Failed to load ai-lab-data.json:', err);
+        aiLabData.gallery = [];
+        aiLabData.ideas = [];
+    }
+}
+
+async function initAILabPage() {
+    await loadAILabData();
+
     // Render chronicle archive
     renderChronicles();
 

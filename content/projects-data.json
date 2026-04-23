@@ -1,0 +1,368 @@
+{
+  "projects": [
+    {
+      "slug": "ai-agent-industry-report",
+      "title": "AI Agent Industry Report",
+      "oneLiner": "2025–2026 AI Agent industry landscape: players, use cases, and where it's heading",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/ai-agent-industry-report-cover.webp",
+      "role": "Research & Analysis",
+      "time": "2026.02",
+      "outcome": "Covers agent architecture, key players (domestic + overseas), enterprise adoption patterns, and investment trends across 2025–2026",
+      "tags": [
+        "Research",
+        "AI/ML",
+        "Industry Analysis"
+      ],
+      "links": {
+        "demo": "assets/reports/AI_Agent_Industry_Report_2025_2026.pdf"
+      },
+      "title_zh": "AI Agent 行业报告",
+      "oneLiner_zh": "2025–2026 AI Agent 行业全景：谁在做、怎么用、往哪走",
+      "role_zh": "研究与分析",
+      "outcome_zh": "整理了 Agent 架构、国内外核心玩家、企业落地场景和投资趋势"
+    },
+    {
+      "slug": "ai-daily-digest",
+      "title": "AI Daily Digest",
+      "oneLiner": "Bilingual AI news email tracking 25 builders and 5 podcasts, delivered daily to your inbox",
+      "featured": false,
+      "coverImage": "",
+      "role": "Solo Developer",
+      "time": "2026",
+      "outcome": "GitHub Actions automation + DeepSeek API bilingual summarization + Gmail SMTP delivery, zero-cost infrastructure, running daily",
+      "tags": [
+        "AI/ML",
+        "Automation"
+      ],
+      "links": {
+        "repo": "https://github.com/carpediemzzsssww-cpu/news_follow_builders"
+      },
+      "title_zh": "AI Daily Digest",
+      "oneLiner_zh": "每天自动追 25 个 AI builder + 5 个播客，双语摘要发到邮箱",
+      "role_zh": "独立开发者",
+      "outcome_zh": "GitHub Actions + DeepSeek API 双语摘要 + Gmail 发送，零成本跑起来，每天自动运行"
+    },
+    {
+      "slug": "ai-prd-copilot",
+      "title": "AI PRD Copilot",
+      "oneLiner": "An AI Copilot that helps product managers think, not just write",
+      "featured": true,
+      "coverImage": "assets/project-covers/projects/ai-prd-copilot-cover.webp",
+      "role": "Product Designer",
+      "time": "2026",
+      "outcome": "Improved overall quality by 17.5% and content specificity by 41%",
+      "tags": [
+        "AI/ML",
+        "Product Design",
+        "Prototyping"
+      ],
+      "links": {
+        "demo": "https://prd-copilot-av8y8qmsthw7i3cay3efeq.streamlit.app"
+      },
+      "title_zh": "AI PRD Copilot",
+      "oneLiner_zh": "帮产品经理想清楚再动笔的 AI 副驾",
+      "role_zh": "产品设计",
+      "outcome_zh": "整体质量提 17.5%，内容具体性提 41%"
+    },
+    {
+      "slug": "bestcem-ai-journey",
+      "title": "AI Customer Journey Generator",
+      "oneLiner": "An AI feature that generates customer journey maps in 15 minutes instead of hours",
+      "featured": false,
+      "coverImage": "",
+      "role": "AI Product Intern",
+      "time": "2026.02 - Present",
+      "outcome": "End-to-end PRD (V2.0) with 3-prompt architecture, competitive analysis, Axure prototype, and HTML demo for a B2B CEM SaaS platform",
+      "tags": [
+        "AI/ML",
+        "Product Design",
+        "Prototyping"
+      ],
+      "links": {},
+      "title_zh": "AI 客户旅程生成器",
+      "oneLiner_zh": "以前做几小时的客户旅程地图，现在 15 分钟",
+      "role_zh": "AI 产品实习生",
+      "outcome_zh": "完整 PRD (V2.0) + 3-prompt 架构 + 竞品分析 + Axure 原型 + HTML 演示，服务 B2B CEM 平台"
+    },
+    {
+      "slug": "bestcem-voc-pipeline",
+      "title": "VOC Data Pipeline",
+      "oneLiner": "Automated data collection and cleaning across 9 platforms for enterprise customer insights",
+      "featured": false,
+      "coverImage": "",
+      "role": "AI Product Intern",
+      "time": "2026.02",
+      "outcome": "30,000+ data entries collected via RPA automation, 6 Python cleaning scripts handling format conversion, dual-header detection, and city mapping",
+      "tags": [
+        "AI/ML",
+        "Automation",
+        "Research"
+      ],
+      "links": {},
+      "title_zh": "VOC 数据管线",
+      "oneLiner_zh": "9 个平台的用户声音，自动采集 + 清洗。让企业听到用户在说什么",
+      "role_zh": "AI 产品实习生",
+      "outcome_zh": "RPA 自动采集 3 万+ 条数据，6 个 Python 脚本处理格式、双表头、城市映射等脏活"
+    },
+    {
+      "slug": "bionic-reading",
+      "title": "Bionic Reading - Interaction Concept",
+      "oneLiner": "A 151-response survey uncovered e-book UX pain points, then reimagined the future of reading.",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/bionic-reading-cover.webp",
+      "role": "Research + Concept Design",
+      "time": "2025",
+      "outcome": "User research (SPSS factor analysis) -> concept proposal combining bio-typography, BCI feedback, and immersive co-reading.",
+      "tags": [
+        "User Research",
+        "Product Design",
+        "Interaction Design"
+      ],
+      "links": {
+        "demo": "case-studies/bionic-reading/index.html"
+      },
+      "title_zh": "仿生阅读 - 交互概念",
+      "oneLiner_zh": "151 份问卷挖出电子书的 UX 痛点，重新想象「阅读」",
+      "role_zh": "研究 + 概念设计",
+      "outcome_zh": "用研 (SPSS 因子分析) → 仿生排版 + 脑机接口反馈 + 沉浸式共读的概念方案"
+    },
+    {
+      "slug": "case-study-skill",
+      "title": "Case Study Generator",
+      "oneLiner": "A Claude Code skill that creates polished, interactive case study pages from project materials",
+      "featured": false,
+      "coverImage": "",
+      "role": "Skill Designer",
+      "time": "2026.03",
+      "outcome": "Two modes (showcase + teardown) with scroll-triggered reveals, metric cards, before/after sliders, and editorial-grade typography",
+      "tags": [
+        "AI/ML",
+        "Product Design",
+        "Claude Code Skill"
+      ],
+      "links": {},
+      "title_zh": "Case Study 生成器",
+      "oneLiner_zh": "把项目材料变成好看的交互式案例页",
+      "role_zh": "Skill 设计师",
+      "outcome_zh": "展示/拆解两种模式 · 滚动动画 · 指标卡片 · 前后对比滑块 · 编辑级排版"
+    },
+    {
+      "slug": "chrysalis",
+      "title": "Chrysalis",
+      "oneLiner": "A butterfly-themed mobile journaling PWA built for daily reflection — private, local-first, and AI-powered",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/chrysalis-cover.webp",
+      "role": "Solo Developer",
+      "time": "2026",
+      "outcome": "Next.js 14 + TypeScript · local-first storage · AI summaries (DeepSeek / OpenAI / Anthropic) · PWA installable on iPhone",
+      "tags": [
+        "AI/ML",
+        "Prototyping",
+        "Product Design"
+      ],
+      "links": {
+        "demo": "https://chrysalis-pink.vercel.app",
+        "repo": "https://github.com/carpediemzzsssww-cpu/chrysalis"
+      },
+      "title_zh": "Chrysalis",
+      "oneLiner_zh": "给自己做的日记 App——数据存本地、带 AI 总结",
+      "role_zh": "独立开发者",
+      "outcome_zh": "Next.js 14 + TypeScript · 数据存本地 · AI 智能总结 · iPhone 可装的 PWA"
+    },
+    {
+      "slug": "clone-me",
+      "title": "Clone Me — AI Digital Twin Builder",
+      "oneLiner": "A Claude Code skill that generates personalized AI chatbots from your identity materials",
+      "featured": false,
+      "coverImage": "",
+      "role": "Skill Designer",
+      "time": "2026.04",
+      "outcome": "6-phase guided interview + system prompt generator + self-contained HTML chat widget with 10+ LLM provider support (OpenAI, Claude, Gemini, DeepSeek, Groq, etc.)",
+      "tags": [
+        "AI/ML",
+        "Prototyping",
+        "Claude Code Skill"
+      ],
+      "links": {
+        "repo": "https://github.com/carpediemzzsssww-cpu/clone-me"
+      },
+      "title_zh": "Clone Me — AI 数字分身生成器",
+      "oneLiner_zh": "把你的身份材料变成一个能聊天的 AI 分身",
+      "role_zh": "Skill 设计师",
+      "outcome_zh": "6 步引导访谈 + 提示词自动生成 + 自带聊天 Widget，支持 10+ 个模型提供商"
+    },
+    {
+      "slug": "delay-the-end",
+      "title": "Delay the End",
+      "oneLiner": "A fan-made narrative strategy web game — bargain with fate, delay what's already written",
+      "featured": true,
+      "coverImage": "assets/project-covers/ai-lab/delay-the-end-cover.webp",
+      "role": "Solo Designer & Developer",
+      "time": "2025",
+      "outcome": "7 rounds · 5 endings · 18 playtesters · bilingual · Monte Carlo simulation · vanilla JS",
+      "tags": [
+        "Narrative Design",
+        "Systems Design",
+        "Vanilla JS"
+      ],
+      "links": {
+        "demo": "https://carpediemzzsssww-cpu.github.io/delay-the-end/"
+      },
+      "title_zh": "Delay the End",
+      "oneLiner_zh": "粉丝自制的叙事策略网页游戏——和命运博弈，延缓已写好的结局",
+      "role_zh": "独立设计 + 开发",
+      "outcome_zh": "7 轮博弈 · 5 个结局 · 18 人测试 · 中英双语 · 蒙特卡洛模拟 · 原生 JS"
+    },
+    {
+      "slug": "netease-hi-echo-research",
+      "title": "NetEase Hi Echo — User Research",
+      "oneLiner": "Led a 17-person team to understand what AI English learners actually need",
+      "featured": true,
+      "coverImage": "assets/project-covers/projects/netease-hi-echo-research-cover.webp",
+      "role": "Project Lead",
+      "time": "2024.06 – 2025.03",
+      "outcome": "1,287 surveys · 3-city field research · 78-page report adopted by NetEase Hi Echo · University First Prize (2/18)",
+      "tags": [
+        "User Research",
+        "Product Strategy",
+        "AI/ML"
+      ],
+      "links": {
+        "demo": "case-studies/netease-hi-echo/index.html"
+      },
+      "title_zh": "网易有道 Hi Echo — 用户研究",
+      "oneLiner_zh": "带 17 个人做用研，搞清楚学英语的人到底要什么",
+      "role_zh": "项目负责人",
+      "outcome_zh": "1,287 份问卷 · 三城跑用户 · 78 页报告被网易有道产品组采纳 · 校级一等奖 (2/18)"
+    },
+    {
+      "slug": "prd-skill",
+      "title": "AI-First PRD Generator",
+      "oneLiner": "A Claude Code skill that writes PRDs optimized for both humans and AI coding agents",
+      "featured": false,
+      "coverImage": "",
+      "role": "Skill Designer",
+      "time": "2026.03",
+      "outcome": "14-section PRD structure with pre-delivery checklist preventing common AI coding pitfalls (broken links, missing states, generic copy, data silos)",
+      "tags": [
+        "AI/ML",
+        "Product Design",
+        "Claude Code Skill"
+      ],
+      "links": {},
+      "title_zh": "AI-First PRD 生成器",
+      "oneLiner_zh": "写出人和 AI Agent 都能用的 PRD",
+      "role_zh": "Skill 设计师",
+      "outcome_zh": "14 节 PRD + 交付检查清单，专门防 AI 编程常见坑：断链、漏状态、通用文案、数据孤岛"
+    },
+    {
+      "slug": "rpa-etl-skill",
+      "title": "RPA-ETL Data Pipeline Generator",
+      "oneLiner": "A Claude Code skill that generates production-grade data cleaning scripts for RPA workflows",
+      "featured": false,
+      "coverImage": "",
+      "role": "Skill Designer",
+      "time": "2026.03",
+      "outcome": "Supports standalone scripts and RPA inline modes, multi-format file reading with 5-level fallback, fuzzy store matching, and standardized 27-field output schema",
+      "tags": [
+        "AI/ML",
+        "Automation",
+        "Claude Code Skill"
+      ],
+      "links": {},
+      "title_zh": "RPA-ETL 数据管线生成器",
+      "oneLiner_zh": "给 RPA 工作流自动生成能直接跑的清洗脚本",
+      "role_zh": "Skill 设计师",
+      "outcome_zh": "支持独立脚本 / RPA 内联两种模式 · 5 级文件读取回退 · 模糊门店匹配 · 标准化 27 字段输出"
+    },
+    {
+      "slug": "smart-photo-organizer",
+      "title": "Smart Photo Organizer — A Failure",
+      "oneLiner": "Built an AI photo tool in 2 hours. A user's one question broke it.",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/smart-photo-organizer-cover.webp",
+      "role": "Solo Developer",
+      "time": "2026.01",
+      "outcome": "Python + Qwen 2.5 7B local model · perceptual hashing · full product reflection on over-engineering without user validation",
+      "tags": [
+        "AI/ML",
+        "Product Thinking",
+        "Reflection"
+      ],
+      "links": {
+        "demo": "https://photo-organizer-eta.vercel.app"
+      },
+      "title_zh": "智能照片整理器 — 一次失败",
+      "oneLiner_zh": "两小时写了个 AI 照片工具，用户一个问题就把它问崩了",
+      "role_zh": "独立开发者",
+      "outcome_zh": "Python + Qwen 2.5 7B 本地模型 · 感知哈希 · 一次关于「先做完再说」不如「先问用户」的教训"
+    },
+    {
+      "slug": "web-design-playground",
+      "title": "Web Design Playground",
+      "oneLiner": "50+ UI case studies — exploring how visual language shapes product experience",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/web-design-playground-cover.webp",
+      "role": "UI Designer",
+      "time": "2026",
+      "outcome": "Built and curated 50+ UI case studies (ongoing), gradually shaping a distinctive personal design style",
+      "tags": [
+        "Product Design",
+        "Figma",
+        "Design Systems"
+      ],
+      "links": {
+        "demo": "https://web-design-playground-nq4f.vercel.app"
+      },
+      "title_zh": "Web Design Playground",
+      "oneLiner_zh": "50+ 个 UI 拆解——研究视觉语言怎么影响产品体验",
+      "role_zh": "UI 设计师",
+      "outcome_zh": "50+ 个 UI 案例拆解（持续更新中），慢慢长出自己的设计风格"
+    },
+    {
+      "slug": "whudo-system",
+      "title": "WHUDO System",
+      "oneLiner": "A smart dormitory OS designed for four people sharing one space",
+      "featured": true,
+      "coverImage": "assets/project-covers/projects/whudo-system-cover.webp",
+      "role": "UI Designer",
+      "time": "Spring 2025",
+      "outcome": "6-module AI-powered concept: face recognition, voice assistant, multi-user device control, behavior analytics, and a graduation memoir easter egg",
+      "tags": [
+        "Product Design",
+        "AI/ML",
+        "Prototyping"
+      ],
+      "links": {
+        "demo": "https://whudo-casestudy.vercel.app"
+      },
+      "title_zh": "WHUDO 智慧宿舍系统",
+      "oneLiner_zh": "四个人住一间宿舍，怎么让它更聪明一点",
+      "role_zh": "UI 设计师",
+      "outcome_zh": "6 个 AI 模块：人脸识别、语音助手、多人设备控制、行为分析，还藏了个毕业纪念彩蛋"
+    },
+    {
+      "slug": "yunyou",
+      "title": "Yunyou",
+      "oneLiner": "An AI agent that tells you when to buy flights — not just where to search",
+      "featured": true,
+      "coverImage": "assets/project-covers/projects/yunyou-cover.jpg",
+      "role": "Product Designer & Developer",
+      "time": "2026.03",
+      "outcome": "AI decision engine with transparent reasoning · post-purchase price guard · React + Doubao API · deployed on Vercel",
+      "tags": [
+        "AI/ML",
+        "Product Design",
+        "Prototyping"
+      ],
+      "links": {
+        "demo": "https://yunyou.vercel.app"
+      },
+      "title_zh": "云游",
+      "oneLiner_zh": "不只是搜航班——告诉你「现在买不买」的 AI",
+      "role_zh": "产品 + 开发",
+      "outcome_zh": "推理透明的 AI 决策引擎 · 购后价保 · React + 豆包 API · 跑在 Vercel"
+    }
+  ]
+}

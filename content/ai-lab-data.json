@@ -1,0 +1,272 @@
+{
+  "gallery": [
+    {
+      "id": 10,
+      "title": "Asteroid Civilization",
+      "goal": "Tenderness at cosmic scale",
+      "prompt": "A tiny civilization built on the surface of a drifting asteroid, seen from a distance through a spacecraft porthole, muted palette of charcoal, dusty rose and faded teal, the settlement glows faintly with warm light against the cold void, painterly impasto texture, organic hand-sculpted feeling to both the asteroid and the architecture, vast black negative space, tender and immense --ar 16:9 --stylize 800 --profile [Global V7]",
+      "model": "Midjourney v7",
+      "date": "2026-04-23",
+      "image": "./assets/ai-lab/tiny-civilization-asteroid.png",
+      "title_zh": "小行星上的小文明",
+      "goal_zh": "宇宙尺度下的柔软"
+    },
+    {
+      "id": 9,
+      "title": "Clay Plateau Figure",
+      "goal": "Human scale against a vast hand-drawn landscape",
+      "prompt": "A solitary figure standing at the edge of an enormous soft clay-colored plateau, the landscape rendered in loose impasto brushstrokes of warm sand, terracotta and muted sage, hand-drawn quality with visible brush texture, vast negative space of pale sky --ar 3:4 --v 6.1 --stylize 800 --profile [Global V6]",
+      "model": "Midjourney v6.1",
+      "date": "2026-04-23",
+      "image": "./assets/ai-lab/solitary-figure-plateau.png",
+      "title_zh": "黏土高原上的身影",
+      "goal_zh": "人与巨大手绘地景的对照"
+    },
+    {
+      "id": 12,
+      "title": "Coffee Shop in a Stone",
+      "goal": "Warmth hidden inside the ordinary",
+      "prompt": "A miniature coffee shop built into the hollow of a moss-covered stone, warm light glowing from tiny windows, a wisp of steam rising from the chimney into vast empty fog, muted palette of forest green, dusty mauve, warm brown and pale grey, thick impasto brush --ar 3:4 --stylize 800 --style [Style Creator]",
+      "model": "Midjourney v7",
+      "date": "2026-04-23",
+      "image": "./assets/ai-lab/coffee-shop-in-stone.png",
+      "title_zh": "石中咖啡馆",
+      "goal_zh": "平凡之物里的暖光"
+    },
+    {
+      "id": 14,
+      "title": "Happiness",
+      "goal": "One abstract word meets one personalized profile",
+      "prompt": "happiness --profile 5j7ipub --v 7",
+      "model": "Midjourney v7",
+      "date": "2026-04-23",
+      "image": "./assets/ai-lab/happiness-profile.png",
+      "title_zh": "幸福",
+      "goal_zh": "一个抽象词碰上一个个人化 profile 的回答"
+    },
+    {
+      "id": 8,
+      "title": "Lone Astronaut",
+      "goal": "Quiet solitude inside a confined void",
+      "prompt": "A lone astronaut floating inside a vast dimly lit spacecraft cabin, rendered in desaturated tones of slate blue, warm grey and faded copper, loose painterly brushstrokes with visible canvas texture, a single small window casting pale starlight across the floor --ar 3:4 --stylize 800 --profile [Global V7]",
+      "model": "Midjourney v7",
+      "date": "2026-04-23",
+      "image": "./assets/ai-lab/lone-astronaut.png",
+      "title_zh": "独行宇航员",
+      "goal_zh": "密闭虚空里的安静"
+    },
+    {
+      "id": 13,
+      "title": "Paper Letters in Zero G",
+      "goal": "Silence with weight",
+      "prompt": "A thousand paper letters frozen mid-flight in zero gravity inside an empty spacecraft, each letter slowly sprouting moss and small purple flowers from its folds, faint warm light source from somewhere unseen, desaturated cream, dried lavender and soft charcoal, ink brushstroke edges on the letters dissolving into watercolor wash, the silence has weight",
+      "model": "Midjourney v7",
+      "date": "2026-04-23",
+      "image": "./assets/ai-lab/paper-letters-zero-g.png",
+      "title_zh": "失重中的千封信",
+      "goal_zh": "让沉默有重量"
+    },
+    {
+      "id": 11,
+      "title": "Whale Ribcage Library",
+      "goal": "A reading space built from what once lived",
+      "prompt": "The ribcage of an ancient whale skeleton converted into a moss-covered library, tiny mushrooms growing along the spine serving as reading lamps glowing faint violet, a single figure curled up reading inside, seen from far away through ocean fog --ar 3:4 --stylize 800 --profile [Global V7]",
+      "model": "Midjourney v7",
+      "date": "2026-04-23",
+      "image": "./assets/ai-lab/whale-ribcage-library.png",
+      "title_zh": "鲸骨图书馆",
+      "goal_zh": "用曾经活过的东西，搭一处阅读空间"
+    },
+    {
+      "id": 2,
+      "title": "Multi-layer Architecture",
+      "goal": "Complex spatial imagination",
+      "prompt": "An extraordinarily complex multi-level architectural greenhouse, a colossal glass sunroom transformed into a living ecosystem palace. Intricate layered structure with floating walkways, split-level conservatories, spiral ramps, suspended gardens, and vertical water channels. Curved low-iron glass facades interwoven with delicate metal ribs, casting prismatic sunlight patterns across stone floors. A monumental central mother tree rises through multiple stories, fused with steel framework, supporting translucent platforms covered in moss, ferns, orchids, climbing vines, and lush tropical foliage. Indoor microclimates with soft mist, rain chains, cascading water walls, mirror pools, and thin waterfalls connecting different heights. Hyper-detailed interior objects: botanical specimen cabinets, handwritten plant labels, brass mist valves, antique astronomical clocks, ceramic pots, woven lanterns, reclaimed wood benches. Atmosphere of biophilic futurism + Victorian conservatory + subtle steampunk craftsmanship. Golden volumetric daylight, rich green reflections, cinematic depth, ultra-detailed textures, grand scale, elegant spatial hierarchy, immersive composition, architectural visualization, 8k, photoreal, masterpiece. --ar 2:3 --profile o2dyims",
+      "model": "Midjourney v7",
+      "date": "2026-02-10",
+      "image": "./assets/ai-lab/complex-architecture.png",
+      "title_zh": "多层建筑",
+      "goal_zh": "复杂空间的想象力实验"
+    },
+    {
+      "id": 1,
+      "title": "Surreal Butterfly Dream",
+      "goal": "Dream-like symbolic visual narrative",
+      "prompt": "Create a surreal dream sequence where butterflies burst outward in a particle dispersion bloom, now infused with dream logic, dopamine color styling, Y2K glitch aesthetics, vaporwave atmosphere, and acid-surreal painterly textures.",
+      "model": "Midjourney v7",
+      "date": "2026-02-10",
+      "image": "./assets/ai-lab/surreal-butterflies.png",
+      "title_zh": "超现实蝶梦",
+      "goal_zh": "梦一样的视觉叙事"
+    },
+    {
+      "id": 4,
+      "title": "Yellow Cottage in Forest",
+      "goal": "Fairy-tale environment concept",
+      "prompt": "A warm yellow cottage hidden in a dark green forest, dense canopy blocking most of the sky, only scattered light rays filtering through leaves onto moss-covered ground. The cottage has weathered wooden walls, textured details, glowing honey-colored windows, and a cozy golden light spilling from the doorway. Around the stone steps: ferns, tiny white wildflowers, mushrooms, damp soil, thin mist, floating dust particles. A girl is playing with her kitten at the front door, crouching with a gentle smile as the kitten jumps toward a ribbon toy, tail raised. Her dress edge touches grass, slight mud on her shoes, natural candid motion. Strong cool-warm contrast: deep emerald and teal shadows in the forest, soft amber glow around the cottage and characters. Whimsical, fairy-tale, cinematic, atmospheric, ultra-detailed, storybook realism, volumetric light, shallow depth of field. --ar 3:2 --profile pxm2t38",
+      "model": "Midjourney v7",
+      "date": "2026-02-10",
+      "image": "./assets/ai-lab/yellow-cottage-forest.png",
+      "title_zh": "森林中的黄色小屋",
+      "goal_zh": "童话感的场景概念"
+    },
+    {
+      "id": 7,
+      "title": "Love",
+      "goal": "In a fixed stylistic framework, the interpretation and visualization of abstract concepts",
+      "prompt": "love --chaos 5 --ar 2:3 --profile kktzzkb",
+      "model": "Midjourney v7",
+      "date": "2026-02-09",
+      "image": "./assets/ai-lab/love.png",
+      "title_zh": "爱",
+      "goal_zh": "在固定风格里看看抽象概念能变成什么"
+    },
+    {
+      "id": 6,
+      "title": "Whimsical Park Walk",
+      "goal": "Gentle surreal daily scene",
+      "prompt": "A girl walking in a park, whimsical and slightly surreal yet warm, fairy-tale atmosphere. Lush vivid green grass like velvet, subtly distorted storybook trees, soft golden-peach sunset light, tiny floating light particles in the air. A Ferris wheel in the background, slowly turning, with glowing candy-like cabins and a gentle vintage touch. Cozy magical mood, dreamy but comforting, cinematic composition, soft volumetric light, rich details, storybook realism. --ar 16:9 --profile o2hm7ab",
+      "model": "Midjourney v7",
+      "date": "2026-02-09",
+      "image": "./assets/ai-lab/whimsical-park-walk.png",
+      "title_zh": "梦幻公园漫步",
+      "goal_zh": "温柔的、带点超现实的日常"
+    },
+    {
+      "id": 5,
+      "title": "Floating Cloud House",
+      "goal": "Whimsical sky-home concept",
+      "prompt": "A tiny cozy house floating above the clouds, suspended by many colorful balloons in different sizes, bright rainbow palette, soft sunlight, dreamy sky, whimsical fairy-tale mood, fluffy clouds, gentle wind, magical atmosphere, cinematic composition, highly detailed, storybook style. --ar 3:4 --profile pxm2t38",
+      "model": "Midjourney v7",
+      "date": "2026-02-05",
+      "image": "./assets/ai-lab/floating-cloud-house.png",
+      "title_zh": "浮云小屋",
+      "goal_zh": "奇幻风格的空中小屋"
+    },
+    {
+      "id": 3,
+      "title": "Young Girl Portrait",
+      "goal": "Character portrait study",
+      "prompt": "A young girl with auburn curly hair, soft freckles, and luminous eyes, wearing an enchanted forest-inspired outfit: layered moss-green and earthy brown fabrics, leaf embroidery, delicate lace, tiny floral details, and handmade leather accessories. She has an ethereal, elf-like presence--graceful, playful, and mysterious. Standing in a misty woodland with filtered golden light through tall trees, floating dust particles, wildflowers, mushrooms, and glowing fireflies. Cinematic fantasy style, whimsical mood, ultra-detailed textures, natural skin, soft volumetric lighting, shallow depth of field, magical realism, dreamy color grading. --profile o2dyims",
+      "model": "Midjourney v7",
+      "date": "2026-02-01",
+      "image": "./assets/ai-lab/young-girl-portrait.png",
+      "title_zh": "少女的像",
+      "goal_zh": "人物肖像练习"
+    }
+  ],
+  "ideas": [
+    {
+      "id": 1,
+      "title": "Progressive Disclosure in AI Interfaces",
+      "content": "Most AI tools dump all capabilities upfront ('I can do X, Y, Z...'). What if interfaces revealed capabilities progressively based on user expertise? Beginners see 3 core actions. Power users unlock advanced features through use.",
+      "tags": [
+        "UX",
+        "AI",
+        "Design Patterns"
+      ],
+      "pinned": true,
+      "date": "2024-02-20",
+      "title_zh": "AI 界面的渐进披露",
+      "content_zh": "大多数 AI 工具一打开就把所有功能堆在你面前。如果界面能根据你的熟练度慢慢展开呢？新手只看到 3 个核心动作，用得多了自然解锁更多。"
+    },
+    {
+      "id": 2,
+      "title": "The 'Undo' Problem for AI Actions",
+      "content": "Traditional software: Undo is trivial. AI agents: How do you undo an email sent, a calendar invite accepted, a file deleted? We need new interaction patterns for AI that acts on your behalf. Maybe: preview mode by default, confirmation for irreversible actions.",
+      "tags": [
+        "AI",
+        "UX",
+        "Trust"
+      ],
+      "pinned": true,
+      "date": "2024-02-18",
+      "title_zh": "AI 操作的「撤销」难题",
+      "content_zh": "传统软件的撤销很简单。但 AI Agent 呢？它帮你发的邮件、接的日历邀请、删的文件，怎么撤？需要新的交互模式。也许：默认预览模式，不可逆的操作必须确认。"
+    },
+    {
+      "id": 3,
+      "title": "AI Confidence as a Design Material",
+      "content": "AI systems have varying confidence in their outputs. Most UIs hide this. What if we designed with confidence as a first-class element? High confidence = direct answer. Medium = show alternatives. Low = 'I'm not sure, here's my reasoning.'",
+      "tags": [
+        "AI",
+        "Design",
+        "Trust"
+      ],
+      "pinned": false,
+      "date": "2024-02-15",
+      "title_zh": "AI 置信度作为设计材料",
+      "content_zh": "AI 系统对自己的回答有多有少把握，但大多数 UI 把这个信息藏了。如果把置信度当成一等设计元素呢？很确定=直接给答案，有点拿不准=展示备选，不确定=「我不确定，这是我的推理」。"
+    },
+    {
+      "id": 4,
+      "title": "Prompt Engineering as Product Design",
+      "content": "Writing prompts isn't just engineering—it's UX design. The prompt shapes user expectations, defines interaction patterns, and sets boundaries. Good prompts: set clear scope, provide examples, allow progressive complexity.",
+      "tags": [
+        "AI",
+        "Product",
+        "UX"
+      ],
+      "pinned": false,
+      "date": "2024-02-10",
+      "title_zh": "提示词工程即产品设计",
+      "content_zh": "写提示词不只是工程活，它本质上是 UX 设计。提示词塑造用户期望、定义交互规则、画好边界。好的提示词：范围清晰、带示例、允许渐进变复杂。"
+    },
+    {
+      "id": 5,
+      "title": "Designing for 'AI Surprise'",
+      "content": "Sometimes AI outputs surprise us positively (novel insight). Sometimes negatively (hallucination). How do we design systems that maximize good surprise while minimizing bad? Maybe: sandbox mode for exploration, validation layer for production.",
+      "tags": [
+        "AI",
+        "Design",
+        "Trust"
+      ],
+      "pinned": false,
+      "date": "2024-02-05",
+      "title_zh": "为「AI 惊喜」而设计",
+      "content_zh": "AI 的输出有时是好惊喜（新角度），有时是坏惊喜（胡说八道）。怎么让系统多给好的、少给坏的？也许：探索用沙箱模式，生产加验证层。"
+    },
+    {
+      "id": 6,
+      "title": "The Portfolio Problem for AI Products",
+      "content": "How do you showcase AI product work when outputs are non-deterministic? Traditional portfolios show 'the design.' AI portfolios need to show: prompt evolution, failure modes, edge cases, how you tuned behavior. New format needed.",
+      "tags": [
+        "Career",
+        "AI",
+        "Portfolio"
+      ],
+      "pinned": false,
+      "date": "2024-01-30",
+      "title_zh": "AI 产品的作品集难题",
+      "content_zh": "AI 产品的输出每次都不一样，作品集该怎么做？传统作品集展示「设计稿」。AI 作品集得展示：提示词迭代过程、失败模式、边缘案例、行为调优怎么做。这个领域需要新格式。"
+    },
+    {
+      "id": 7,
+      "title": "Multi-Agent Collaboration Patterns",
+      "content": "Future: Multiple AI agents working together. Design challenge: How do users understand agent relationships? Who's responsible when things go wrong? Potential pattern: Agent 'introduction' flow showing roles and capabilities upfront.",
+      "tags": [
+        "AI",
+        "Systems",
+        "Future"
+      ],
+      "pinned": false,
+      "date": "2024-01-25",
+      "title_zh": "多 Agent 协作模式",
+      "content_zh": "未来会有多个 AI Agent 一起干活。设计难题：用户怎么理解它们的关系？出了错谁负责？也许可以设计一个 Agent「自我介绍」流程，先让用户知道谁是谁、能做什么。"
+    },
+    {
+      "id": 8,
+      "title": "Voice as the New Wireframe",
+      "content": "With AI, you can prototype interactions through conversation before building UI. 'Show me a dashboard for this data' → iterate through voice → only then design visual interface. Voice-first prototyping could be huge for speed.",
+      "tags": [
+        "Voice",
+        "Prototyping",
+        "Process"
+      ],
+      "pinned": false,
+      "date": "2024-01-20",
+      "title_zh": "语音是新的线框图",
+      "content_zh": "有了 AI，可以先用对话原型交互，再做 UI。「给我看这个数据的看板」→ 语音迭代 → 然后才画界面。语音优先原型可能会极大提速。"
+    }
+  ]
+}
