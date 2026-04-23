@@ -8,5 +8,5 @@ goal_zh: 一个抽象词碰上一个个人化 profile 的回答
 prompt: happiness --profile 5j7ipub --v 7
 model: Midjourney v7
 date: "2026-04-23"
-image: ./assets/ai-lab/happiness-profile.png
+image: ./assets/ai-lab/happiness-profile.webp
 ---

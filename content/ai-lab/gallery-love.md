@@ -8,5 +8,5 @@ goal_zh: 在固定风格里看看抽象概念能变成什么
 prompt: "love --chaos 5 --ar 2:3 --profile kktzzkb"
 model: Midjourney v7
 date: "2026-02-09"
-image: ./assets/ai-lab/love.png
+image: ./assets/ai-lab/love.webp
 ---

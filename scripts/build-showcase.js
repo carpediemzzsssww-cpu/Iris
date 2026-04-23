@@ -82,7 +82,14 @@ function shapeGallery(fm) {
         date: fm.date,
         image: fm.image,
     });
-    if (fm.thumbnail) out.thumbnail = fm.thumbnail;
+    // Auto-derive a thumbnail path from the image stem: `foo.webp` -> `foo-thumb.webp`.
+    // Explicit `thumbnail:` in frontmatter overrides this.
+    if (fm.thumbnail) {
+        out.thumbnail = fm.thumbnail;
+    } else if (typeof fm.image === 'string') {
+        const m = fm.image.match(/^(.*?)(\.[a-zA-Z0-9]+)$/);
+        if (m) out.thumbnail = m[1] + '-thumb.webp';
+    }
     return out;
 }
 
