@@ -9,9 +9,9 @@ featured: false
 role: Solo Designer-Developer
 role_zh: 独立设计开发
 time: "2026.04"
-outcome: "Local CLI: 1.7s end-to-end on 1,233 chars, 99.6% match rate against 13,714-char EVOBC dataset. Mid-build discovered ccamc.org anti-bot CAPTCHA blocking the Web data source — re-architected the Web product from “fetch-and-render comparison table” to “navigation table with 4 authoritative source links”, kept CLI as the recommended path. Documented the architectural pivot in README."
-outcome_zh: 本地 CLI 1.7 秒处理 1,233 字，命中 EVOBC 13,714 字数据集 99.6%。开发途中实测发现 ccamc.org 对密集请求触发验证码反爬 → 主动重构 Web 端定位（从「在线抓取对照表」改为「四大字源库导航表」），CLI 作为主推交付。架构决策完整写入 README。
+outcome: "Local CLI: 1.7s on 1,233 chars at 99.6%. Web hit anti-bot CAPTCHA mid-build, shipped a graceful source-link fallback first. Returned 24h later — discovered the anti-bot is window-based, not permanent — and rebuilt with a 5-layer resilience stack (server cache · CN↔TW fallback · silent-failure detection · per-char singleflight · auto-degrade) plus a form-ancient/voice-modern UI inversion."
+outcome_zh: 本地 CLI 1.7 秒命中 1,233 字 99.6%。Web 开发途中撞上 ccamc.org 反爬 → 先紧急降级为「字源链接表」上线。24 小时后回测发现反爬是窗口性惩罚而非永久封禁，遂重建：叠加 5 层韧性（30 天缓存 · 简↔繁回退 · 静默失败检测 · 同字 singleflight · 自动降级）+「视觉古籍 · 文字现代」反向 UI。
 tags: [Automation, Prototyping, Product Thinking]
-linkDemo: "https://ancient-char-lookup.vercel.app"
+linkDemo: "case-studies/ancient-char-lookup/index.html"
 linkRepo: "https://github.com/carpediemzzsssww-cpu/ancient-char-lookup"
 ---
