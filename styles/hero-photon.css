@@ -96,6 +96,7 @@ html[data-theme='dark'] .hero-photon .hero-transition {
     z-index: 20;
     pointer-events: none;
     text-transform: uppercase;
+    max-width: calc(100vw - 72px);
 }
 .hero-photon .mark-tl .sep {
     color: #4A3A28;
@@ -341,8 +342,11 @@ html[data-theme='dark'] .hero-photon .hero-transition {
     .hero-photon .mark-tr { display: none; }
     .hero-photon .mark-tl {
         font-size: 9px;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.14em;
+        line-height: 1.5;
         top: 88px;
+        left: 24px;
+        max-width: calc(100vw - 48px);
     }
     .hero-photon .title-block {
         left: 50%;

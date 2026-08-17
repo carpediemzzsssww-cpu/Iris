@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume - Iris Zhou</title>
     <script src="scripts/init-theme-lang.js"></script>
-    <meta name="description" content="Iris Zhou resume hub with both English and Chinese PDF versions.">
+    <meta name="description" content="Iris Zhou's current online experience, with English and Chinese resume PDFs.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/resume.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Resume - Iris Zhou">
-    <meta property="og:description" content="View and download both English and Chinese resume PDFs.">
+    <meta property="og:description" content="Explore Iris Zhou's current experience online and access English and Chinese resume PDFs.">
     <meta property="og:url" content="https://carpediemzzsssww-cpu.github.io/Iris/resume.html">
     <meta property="og:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Resume - Iris Zhou">
-    <meta name="twitter:description" content="View and download both English and Chinese resume PDFs.">
+    <meta name="twitter:description" content="Explore Iris Zhou's current experience online and access English and Chinese resume PDFs.">
     <meta name="twitter:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
@@ -33,7 +33,68 @@
         <section class="page-header reveal">
             <div class="container">
                 <h1 class="page-title" data-i18n="resume.title">Resume</h1>
-                <p class="page-subtitle" data-i18n="resume.subtitle">View and download both language versions in one place.</p>
+                <p class="page-subtitle" data-i18n="resume.subtitle">Explore current experience online, with PDF versions in both languages.</p>
+            </div>
+        </section>
+
+        <section class="experience-section resume-experience reveal">
+            <div class="container">
+                <h2 class="section-title" data-i18n="resume.experienceTitle">Selected Experience</h2>
+                <p class="resume-experience-note" data-i18n="resume.experienceNote">This online profile reflects the latest selected experience; downloadable PDFs are preserved as issued.</p>
+                <div class="timeline">
+                    <div class="timeline-item" data-expanded="false">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-meta">
+                                    <h3 class="timeline-role" data-i18n="exp.xiaohongshu.name">Xiaohongshu (RED)</h3>
+                                    <span class="timeline-org" data-i18n="exp.xiaohongshu.role">Technical Branding Intern</span>
+                                    <span class="timeline-date">2026.06 - 2026.08</span>
+                                </div>
+                                <button class="timeline-toggle" type="button" aria-expanded="false">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="timeline-impact" data-i18n="exp.xiaohongshu.impact">Built technical-brand infrastructure, developer contribution pathways, and AI prototypes at Xiaohongshu.</p>
+                            <div class="timeline-details">
+                                <ul>
+                                    <li data-i18n="exp.xiaohongshu.d1">Synthesized 500+ candidate decision records, six stakeholder interviews, and five benchmark studies to shape a Builder-oriented talent narrative and technical asset map.</li>
+                                    <li data-i18n="exp.xiaohongshu.d2">Built a reusable technical-brand workflow from story sourcing and AI-assisted editing to multi-channel distribution and performance review.</li>
+                                    <li data-i18n="exp.xiaohongshu.d3">Designed and launched an open-source contributor pathway: 400 registrations against a target of 40, while supporting a technical account from 0 to 800+ followers in three weeks.</li>
+                                    <li data-i18n="exp.xiaohongshu.d4">Contributed to early definition and prototype iterations for an AI companion product; received Best Aesthetic Award at the internal Buildathon.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-expanded="false">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-meta">
+                                    <h3 class="timeline-role" data-i18n="exp.bestcem.name">Bestcem</h3>
+                                    <span class="timeline-org" data-i18n="exp.bestcem.role">AI Product Intern</span>
+                                    <span class="timeline-date">2026.02 - 2026.05</span>
+                                </div>
+                                <button class="timeline-toggle" type="button" aria-expanded="false">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="timeline-impact" data-i18n="exp.bestcem.impact">AI product design, quality evaluation, and B2B SaaS delivery at a leading CEM platform</p>
+                            <div class="timeline-details">
+                                <ul>
+                                    <li data-i18n="exp.bestcem.d1">Owned 0-to-1 product design for an AI-powered customer journey generator.</li>
+                                    <li data-i18n="exp.bestcem.d2">Led an AI text-analysis quality audit and built a reusable evaluation framework.</li>
+                                    <li data-i18n="exp.bestcem.d3">Independently delivered enterprise VOC projects with RPA workflows, Python ETL, dashboards, and a reusable SOP.</li>
+                                    <li data-i18n="exp.bestcem.d4">Shipped an SMS review workflow PRD and multiple SaaS feature PRDs.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -78,7 +139,7 @@
     <script src="components.js"></script>
     <script src="i18n.js"></script>
     <script>
-    window.i18n.loadContent(['resume.json']);
+    window.i18n.loadContent(['index.json', 'resume.json']);
     </script>
     <script src="scripts.js" defer></script>
     <script src="alter-widget.js" defer></script>
