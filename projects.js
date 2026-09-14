@@ -17,7 +17,7 @@ let allTags = [];
 
 function getPrimaryProjectLink(project) {
     if (!project || !project.links) return '#';
-    return project.links.demo || project.links.figma || project.links.repo || '#';
+    return project.links.caseStudy || project.links.demo || project.links.figma || project.links.repo || '#';
 }
 
 function computeAllTags() {

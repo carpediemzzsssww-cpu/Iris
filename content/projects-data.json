@@ -151,6 +151,75 @@
       "outcome_zh": "用研 (SPSS 因子分析) → 仿生排版 + 脑机接口反馈 + 沉浸式共读的概念方案"
     },
     {
+      "slug": "birthday-stays-open",
+      "title": "Birthday Stays Open",
+      "oneLiner": "A cozy 3D birthday room where little discoveries lead to a wish",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/birthday-stays-open-cover.jpg",
+      "role": "Design & Development",
+      "time": "2026.09",
+      "outcome": "Seven weather settings · interactive keepsakes · memory discoveries that unlock a cake, a wish, and a letter",
+      "tags": [
+        "3D Interaction",
+        "Creative Coding",
+        "Narrative Design",
+        "Three.js",
+        "Emotional Design"
+      ],
+      "links": {
+        "demo": "https://birthday-stays-open.vercel.app",
+        "repo": "https://github.com/carpediemzzsssww-cpu/birthday-stays-open",
+        "caseStudy": "case-studies/birthday-stays-open/index.html"
+      },
+      "title_zh": "生日不打烊",
+      "oneLiner_zh": "一间随时可以回来的 3D 生日小屋，在探索中收集回忆、点亮心愿",
+      "coverAlt_zh": "暖光中的 3D 生日小屋，摆着沙发、书、回忆物件与蛋糕",
+      "role_zh": "设计与开发",
+      "outcome_zh": "七种天气 · 可探索的回忆物件 · 收集回忆后解锁蛋糕、许愿与信件",
+      "tags_zh": [
+        "3D交互",
+        "创意编程",
+        "叙事设计",
+        "Three.js",
+        "情感化设计"
+      ],
+      "demoLabel_zh": "走进生日小屋"
+    },
+    {
+      "slug": "bloom-photo",
+      "title": "BLOOM Photo",
+      "oneLiner": "Turn a photograph into a particle artwork that grows from a point you choose",
+      "featured": false,
+      "coverImage": "",
+      "role": "Design & Development",
+      "time": "2026.08",
+      "outcome": "Choose a bloom origin · shape particles and color · export high-resolution PNG or MP4, entirely in the browser",
+      "tags": [
+        "Creative Coding",
+        "Generative Art",
+        "WebGL",
+        "Interaction Design",
+        "Local-first"
+      ],
+      "links": {
+        "demo": "https://bloom1-kappa.vercel.app",
+        "repo": "https://github.com/carpediemzzsssww-cpu/bloomphoto",
+        "caseStudy": "case-studies/bloom-photo/index.html"
+      },
+      "title_zh": "BLOOM Photo｜让照片开花",
+      "oneLiner_zh": "让照片从你选择的位置开始，生长成一幅粒子画",
+      "role_zh": "设计与开发",
+      "outcome_zh": "自选生长起点 · 调节粒子结构与色彩 · 浏览器本地处理并导出高清 PNG 或 MP4",
+      "tags_zh": [
+        "创意编程",
+        "生成艺术",
+        "WebGL",
+        "交互设计",
+        "本地优先"
+      ],
+      "demoLabel_zh": "体验 BLOOM Photo"
+    },
+    {
       "slug": "case-study-skill",
       "title": "Case Study Generator",
       "oneLiner": "A Claude Code skill that creates polished, interactive case study pages from project materials",
@@ -322,6 +391,38 @@
       "outcome_zh": "Python + Qwen 2.5 7B 本地模型 · 感知哈希 · 一次关于「先做完再说」不如「先问用户」的教训"
     },
     {
+      "slug": "sound-vending-machine",
+      "title": "Sound Vending Machine",
+      "oneLiner": "A playful vending machine for unexpected songs and small exchanges between strangers",
+      "featured": false,
+      "coverImage": "",
+      "role": "Design & Development",
+      "time": "2026",
+      "outcome": "Tactile coin-and-knob interaction · collectible music cans · a hidden Song Exchange with custom can designs",
+      "tags": [
+        "3D Interaction",
+        "Creative Coding",
+        "Music Discovery",
+        "Interaction Design",
+        "Vibe Coding"
+      ],
+      "links": {
+        "caseStudy": "case-studies/sound-vending-machine/index.html"
+      },
+      "title_zh": "Sound Vending Machine｜音乐自动贩卖机",
+      "oneLiner_zh": "投一枚硬币，收下一罐音乐，再给陌生人留下一首歌",
+      "role_zh": "设计与开发",
+      "outcome_zh": "投币与旋钮交互 · 独立设计的音乐罐头 · 隐藏的歌曲互换与罐身创作",
+      "tags_zh": [
+        "3D交互",
+        "创意编程",
+        "音乐发现",
+        "交互设计",
+        "Vibe Coding"
+      ],
+      "demoLabel_zh": "体验 Sound Vending Machine"
+    },
+    {
       "slug": "web-design-playground",
       "title": "Web Design Playground",
       "oneLiner": "50+ UI case studies — exploring how visual language shapes product experience",
@@ -364,6 +465,40 @@
       "oneLiner_zh": "四个人住一间宿舍，怎么让它更聪明一点",
       "role_zh": "UI 设计师",
       "outcome_zh": "6 个 AI 模块：人脸识别、语音助手、多人设备控制、行为分析，还藏了个毕业纪念彩蛋"
+    },
+    {
+      "slug": "wonderpark",
+      "title": "Idea Wonderpark",
+      "oneLiner": "An interactive 3D park for wandering through ideas, experiments, and visual stories",
+      "featured": false,
+      "coverImage": "",
+      "role": "Design & Development",
+      "time": "2026.08",
+      "outcome": "A low-poly park with changing light and sound, concept studies, a learning archive, generative visuals, and an abstract globe",
+      "tags": [
+        "3D Interaction",
+        "Creative Coding",
+        "Spatial UI",
+        "Interaction Design",
+        "Generative Art"
+      ],
+      "links": {
+        "demo": "https://wonderpark-publiccp4hwz.vercel.app",
+        "repo": "https://github.com/carpediemzzsssww-cpu/wonderpark",
+        "caseStudy": "case-studies/wonderpark/index.html"
+      },
+      "title_zh": "Idea Wonderpark｜灵感游乐园",
+      "oneLiner_zh": "把想法、实验和视觉故事放进一座可以漫游的 3D 公园",
+      "role_zh": "设计与开发",
+      "outcome_zh": "低多边形公园 · 光影与声音切换 · 概念案例、学习档案、生成视觉与抽象地球仪",
+      "tags_zh": [
+        "3D交互",
+        "创意编程",
+        "空间界面",
+        "交互设计",
+        "生成艺术"
+      ],
+      "demoLabel_zh": "逛逛灵感游乐园"
     },
     {
       "slug": "yunyou",

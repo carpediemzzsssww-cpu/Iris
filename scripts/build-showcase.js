@@ -15,6 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const { parseFrontmatter, withZh } = require('./lib/frontmatter');
+const { buildProjectStories } = require('./build-project-stories');
 
 const ROOT = path.resolve(__dirname, '..');
 const PROJECTS_SRC = path.join(ROOT, 'content', 'projects');
@@ -183,6 +184,7 @@ function main() {
         process.exit(1);
     }
 
+    buildProjectStories();
     fs.writeFileSync(PROJECTS_OUT, JSON.stringify({ projects }, null, 2) + '\n', 'utf8');
     fs.writeFileSync(AI_LAB_OUT, JSON.stringify(aiLab, null, 2) + '\n', 'utf8');
 

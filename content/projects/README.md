@@ -38,6 +38,20 @@ cp content/projects/_template-project.md content/projects/my-new-thing.md
 | `linkDemo` |  | 主链接（demo/case study/PDF） |
 | `linkRepo` |  | GitHub 链接 |
 | `linkFigma` |  | Figma 链接 |
+| `linkCaseStudy` |  | 站内项目介绍；有值时卡片优先进入这里，介绍页再提供 demo / GitHub 链接 |
+| `storyPage` |  | `true` 从此 Markdown 的双语正文生成项目介绍页 |
+
+### 项目介绍页
+
+新增项目可设置 `storyPage: true` 和 `linkCaseStudy: case-studies/<slug>/index.html`，文件名必须为 `<slug>.md`。
+在 frontmatter 之后依次填写 `## English` 和 `## 中文` 两节完整介绍；支持分段与 `**加粗**`。
+`node scripts/build-showcase.js` 同时生成卡片 JSON 和双语静态介绍页，英文默认展示；生成后的 HTML 不直接编辑。
+`demoLabel` / `demoLabel_zh` 可自定义体验按钮，`tags_zh` 可提供中文标签。
+没有真实 demo 地址时省略 `linkDemo`，介绍页不显示虚假体验按钮。
+
+`publish-content.sh` 只暂存 `content/` 内容。更新介绍页时，还需在运行它之前执行
+`node scripts/build-showcase.js`，并用 `git add case-studies/<slug>/index.html` 暂存对应生成页；
+若新增或更换封面，也要暂存对应的 `assets/` 图片，确保正文、卡片与图片一起发布。
 
 ### 双语（可选）
 
