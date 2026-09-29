@@ -8,6 +8,7 @@
       "coverImage": "assets/project-covers/projects/1001-moons-cover.webp",
       "role": "Design & Development",
       "time": "2026.09",
+      "date": "2026-09-25",
       "outcome": "16 scenes in a single HTML file · Canvas 2D at 24 fps with 12 fps hand-drawn jitter · an original waltz whose instruments change with the story",
       "tags": [
         "Creative Coding",
@@ -60,7 +61,7 @@
       "featured": false,
       "coverImage": "",
       "role": "Solo Developer",
-      "time": "2026",
+      "time": "2026.03",
       "outcome": "GitHub Actions automation + DeepSeek API bilingual summarization + Gmail SMTP delivery, zero-cost infrastructure, running daily",
       "tags": [
         "AI/ML",
@@ -81,7 +82,7 @@
       "featured": true,
       "coverImage": "assets/project-covers/projects/ai-prd-copilot-cover.webp",
       "role": "Product Designer",
-      "time": "2026",
+      "time": "2026.02",
       "outcome": "Improved overall quality by 17.5% and content specificity by 41%",
       "tags": [
         "AI/ML",
@@ -104,6 +105,7 @@
       "coverImage": "",
       "role": "Solo Designer-Developer",
       "time": "2026.04",
+      "date": "2026-04-28",
       "outcome": "Local CLI: 1.7s on 1,233 chars at 99.6%. Web hit anti-bot CAPTCHA mid-build, shipped a graceful source-link fallback first. Returned 24h later — discovered the anti-bot is window-based, not permanent — and rebuilt with a 5-layer resilience stack (server cache · CN↔TW fallback · silent-failure detection · per-char singleflight · auto-degrade) plus a form-ancient/voice-modern UI inversion.",
       "tags": [
         "Automation",
@@ -189,6 +191,7 @@
       "coverImage": "assets/project-covers/projects/birthday-stays-open-cover.jpg",
       "role": "Design & Development",
       "time": "2026.09",
+      "date": "2026-09-12",
       "outcome": "Seven weather settings · interactive keepsakes · memory discoveries that unlock a cake, a wish, and a letter",
       "tags": [
         "3D Interaction",
@@ -224,6 +227,7 @@
       "coverImage": "",
       "role": "Design & Development",
       "time": "2026.08",
+      "date": "2026-08-30",
       "outcome": "Choose a bloom origin · shape particles and color · export high-resolution PNG or MP4, entirely in the browser",
       "tags": [
         "Creative Coding",
@@ -277,7 +281,7 @@
       "featured": false,
       "coverImage": "assets/project-covers/projects/chrysalis-cover.webp",
       "role": "Solo Developer",
-      "time": "2026",
+      "time": "2026.03",
       "outcome": "Next.js 14 + TypeScript · local-first storage · AI summaries (DeepSeek / OpenAI / Anthropic) · PWA installable on iPhone",
       "tags": [
         "AI/ML",
@@ -301,6 +305,7 @@
       "coverImage": "",
       "role": "Skill Designer",
       "time": "2026.04",
+      "date": "2026-04-12",
       "outcome": "6-phase guided interview + system prompt generator + self-contained HTML chat widget with 10+ LLM provider support (OpenAI, Claude, Gemini, DeepSeek, Groq, etc.)",
       "tags": [
         "AI/ML",
@@ -345,6 +350,7 @@
       "coverImage": "assets/project-covers/projects/fanjian-flashcards-cover.webp",
       "role": "Design & Development",
       "time": "2026.06",
+      "date": "2026-06-14",
       "outcome": "450 traditional–simplified pairs · review gaps of 1, 3, 7, 16 and 35 days · 20 new cards a day · offline, with progress kept on the phone",
       "tags": [
         "Product Design",
@@ -375,6 +381,7 @@
       "coverImage": "assets/project-covers/projects/garden-giverny-cover.webp",
       "role": "Design & Development",
       "time": "2026.09",
+      "date": "2026-09-19",
       "outcome": "20 plantable flowers on a Giverny bloom calendar · light from 05:00 to 22:00 · walk into the house and greenhouse · room for 2,400 plantings",
       "tags": [
         "3D Interaction",
@@ -407,6 +414,7 @@
       "coverImage": "assets/project-covers/projects/liaozhai-by-night-cover.webp",
       "role": "Design & Development",
       "time": "2026.08",
+      "date": "2026-08-24",
       "outcome": "3 scrolls, 9 encounters · lantern, ink-ripple and firefly interactions · a seal for every finished scroll · two-finger panning on phones",
       "tags": [
         "Interaction Design",
@@ -439,6 +447,7 @@
       "coverImage": "assets/project-covers/projects/lot-665-the-opera-cover.webp",
       "role": "Design & Development",
       "time": "2026.09",
+      "date": "2026-09-27",
       "outcome": "Three turns of the key wake it · a chandelier, stalls and a lake stage unfold · 16 hidden medallions · a masquerade when you find them all",
       "tags": [
         "3D Interaction",
@@ -493,6 +502,7 @@
       "coverImage": "assets/project-covers/projects/notre-dame-cover.webp",
       "role": "Design & Development",
       "time": "2026.09",
+      "date": "2026-09-07",
       "outcome": "First-person walk on desktop and touch · stained-glass light and sculpture · map, guided tour and bilingual notes · an artistic study, not a digital twin",
       "tags": [
         "3D Interaction",
@@ -525,6 +535,7 @@
       "coverImage": "assets/project-covers/projects/pot-pot-cover.webp",
       "role": "Design & Development",
       "time": "2026.09",
+      "date": "2026-09-26",
       "outcome": "8 pot shapes to pinch and glaze · still lifes with up to 8 pots · 6 townsfolk with commissions · a 3D gallery you restore room by room",
       "tags": [
         "3D Interaction",
@@ -597,6 +608,7 @@
       "coverImage": "assets/project-covers/projects/shigu-cover.webp",
       "role": "Design & Development",
       "time": "2026.06",
+      "date": "2026-06-14",
       "outcome": "1,218 characters · 126 key characters with offline glyphs from oracle bone to seal script · Leitner spaced repetition · works offline on iPhone",
       "tags": [
         "Product Design",
@@ -649,7 +661,8 @@
       "featured": false,
       "coverImage": "",
       "role": "Design & Development",
-      "time": "2026",
+      "time": "2026.09",
+      "date": "2026-09-06",
       "outcome": "Tactile coin-and-knob interaction · collectible music cans · a hidden Song Exchange with custom can designs",
       "tags": [
         "3D Interaction",
@@ -683,6 +696,7 @@
       "coverImage": "assets/project-covers/projects/tin-cover.webp",
       "role": "Design & Development",
       "time": "2026.09",
+      "date": "2026-09-24",
       "outcome": "40 original objects in 6 drawers · 5 themes · photos and notes stay on your device · export the finished tin as PNG",
       "tags": [
         "3D Interaction",
@@ -714,7 +728,7 @@
       "featured": false,
       "coverImage": "assets/project-covers/projects/web-design-playground-cover.webp",
       "role": "UI Designer",
-      "time": "2026",
+      "time": "2026.01",
       "outcome": "Built and curated 50+ UI case studies (ongoing), gradually shaping a distinctive personal design style",
       "tags": [
         "Product Design",
@@ -759,6 +773,7 @@
       "coverImage": "assets/project-covers/projects/wonderpark-cover.webp",
       "role": "Design & Development",
       "time": "2026.08",
+      "date": "2026-08-26",
       "outcome": "A low-poly park with changing light and sound, concept studies, a learning archive, generative visuals, and an abstract globe",
       "tags": [
         "3D Interaction",
@@ -794,6 +809,7 @@
       "coverImage": "assets/project-covers/projects/yili-selection-agent-cover.webp",
       "role": "Product Design & Development",
       "time": "2026.05 – 2026.06",
+      "date": "2026-06-07",
       "outcome": "19-node LangGraph agent · 290 Xiaohongshu notes and 344 1688 listings across 5 categories · 181 tests · reports stream in over SSE",
       "tags": [
         "AI/ML",

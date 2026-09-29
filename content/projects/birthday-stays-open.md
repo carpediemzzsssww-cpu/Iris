@@ -14,6 +14,7 @@ coverHeight: 720
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
+date: 2026-09-12
 outcome: Seven weather settings · interactive keepsakes · memory discoveries that unlock a cake, a wish, and a letter
 outcome_zh: 七种天气 · 可探索的回忆物件 · 收集回忆后解锁蛋糕、许愿与信件
 tags: [3D Interaction, Creative Coding, Narrative Design, Three.js, Emotional Design]

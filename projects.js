@@ -32,6 +32,12 @@ let currentFilters = {
 };
 
 function getProjectDateScore(project) {
+    // Optional `date` (YYYY-MM-DD) orders projects that share a month; otherwise fall back to `time`.
+    const exact = String(project.date || '').match(/^(20\d{2})-(\d{1,2})-(\d{1,2})$/);
+    if (exact) {
+        return Number(exact[1]) * 10000 + Number(exact[2]) * 100 + Number(exact[3]);
+    }
+
     const time = String(project.time || '');
     const matches = Array.from(time.matchAll(/(20\d{2})(?:[.\-/](\d{1,2}))?/g));
     if (matches.length === 0) return 0;
@@ -45,7 +51,7 @@ function getProjectDateScore(project) {
         latest = Math.max(latest, year * 100 + safeMonth);
     });
 
-    return latest;
+    return latest * 100;
 }
 
 function getProjectImpactScore(project) {
@@ -87,9 +93,11 @@ function sortProjects(projects, sortBy) {
     const sorted = [...projects];
 
     sorted.sort((a, b) => {
-        // Keep featured projects at the top regardless of the selected sort mode.
-        const featuredDiff = Number(b.featured) - Number(a.featured);
-        if (featuredDiff !== 0) return featuredDiff;
+        // Latest is purely chronological; the other modes keep featured projects on top.
+        if (sortBy !== 'latest') {
+            const featuredDiff = Number(b.featured) - Number(a.featured);
+            if (featuredDiff !== 0) return featuredDiff;
+        }
 
         switch (sortBy) {
             case 'latest': {

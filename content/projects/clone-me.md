@@ -9,6 +9,7 @@ featured: false
 role: Skill Designer
 role_zh: Skill 设计师
 time: "2026.04"
+date: 2026-04-12
 outcome: "6-phase guided interview + system prompt generator + self-contained HTML chat widget with 10+ LLM provider support (OpenAI, Claude, Gemini, DeepSeek, Groq, etc.)"
 outcome_zh: "6 步引导访谈 + 提示词自动生成 + 自带聊天 Widget，支持 10+ 个模型提供商"
 tags: [AI/ML, Prototyping, Claude Code Skill]

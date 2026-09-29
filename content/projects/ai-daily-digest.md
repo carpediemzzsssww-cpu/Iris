@@ -8,7 +8,7 @@ oneLiner_zh: 每天自动追 25 个 AI builder + 5 个播客，双语摘要发�
 featured: false
 role: Solo Developer
 role_zh: 独立开发者
-time: "2026"
+time: "2026.03"
 outcome: "GitHub Actions automation + DeepSeek API bilingual summarization + Gmail SMTP delivery, zero-cost infrastructure, running daily"
 outcome_zh: GitHub Actions + DeepSeek API 双语摘要 + Gmail 发送，零成本跑起来，每天自动运行
 tags: [AI/ML, Automation]

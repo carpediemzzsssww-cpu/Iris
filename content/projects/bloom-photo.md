@@ -9,6 +9,7 @@ featured: false
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.08"
+date: 2026-08-30
 outcome: Choose a bloom origin · shape particles and color · export high-resolution PNG or MP4, entirely in the browser
 outcome_zh: 自选生长起点 · 调节粒子结构与色彩 · 浏览器本地处理并导出高清 PNG 或 MP4
 tags: [Creative Coding, Generative Art, WebGL, Interaction Design, Local-first]

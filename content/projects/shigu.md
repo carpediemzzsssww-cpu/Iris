@@ -14,6 +14,7 @@ coverHeight: 1000
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.06"
+date: 2026-06-14
 outcome: 1,218 characters · 126 key characters with offline glyphs from oracle bone to seal script · Leitner spaced repetition · works offline on iPhone
 outcome_zh: 1,218 字 · 126 个课堂重点字带甲骨到篆书的离线字形 · Leitner 间隔重复 · iPhone 离线可用
 tags: [Product Design, Prototyping, Local-first]

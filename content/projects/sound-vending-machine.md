@@ -8,7 +8,8 @@ oneLiner_zh: 投一枚硬币，收下一罐音乐，再给陌生人留下一首�
 featured: false
 role: Design & Development
 role_zh: 设计与开发
-time: "2026"
+time: "2026.09"
+date: 2026-09-06
 outcome: Tactile coin-and-knob interaction · collectible music cans · a hidden Song Exchange with custom can designs
 outcome_zh: 投币与旋钮交互 · 独立设计的音乐罐头 · 隐藏的歌曲互换与罐身创作
 tags: [3D Interaction, Creative Coding, Music Discovery, Interaction Design, Vibe Coding]

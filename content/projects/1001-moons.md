@@ -14,6 +14,7 @@ coverHeight: 820
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
+date: 2026-09-25
 outcome: 16 scenes in a single HTML file · Canvas 2D at 24 fps with 12 fps hand-drawn jitter · an original waltz whose instruments change with the story
 outcome_zh: 16 幕，一个 HTML 文件 · Canvas 2D，24 fps 运动叠 12 fps 手绘抖动 · 原创圆舞曲，乐器跟着故事换
 tags: [Creative Coding, Narrative Design, Generative Art]

@@ -14,6 +14,7 @@ coverHeight: 998
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
+date: 2026-09-07
 outcome: First-person walk on desktop and touch · stained-glass light and sculpture · map, guided tour and bilingual notes · an artistic study, not a digital twin
 outcome_zh: 桌面和触屏都能第一人称漫游 · 玫瑰窗的光与雕塑 · 地图、导览和中英文注释 · 一次艺术研究，不是数字孪生
 tags: [3D Interaction, Spatial UI, Three.js, Creative Coding]

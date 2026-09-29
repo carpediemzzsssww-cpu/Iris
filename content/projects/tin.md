@@ -14,6 +14,7 @@ coverHeight: 725
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
+date: 2026-09-24
 outcome: 40 original objects in 6 drawers · 5 themes · photos and notes stay on your device · export the finished tin as PNG
 outcome_zh: 6 类抽屉、40 件原创小物 · 5 套主题 · 照片和字条只存在本机 · 装好的铁盒可导出 PNG
 tags: [3D Interaction, Interaction Design, Emotional Design, Local-first]

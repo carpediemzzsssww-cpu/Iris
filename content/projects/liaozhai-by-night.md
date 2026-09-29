@@ -14,6 +14,7 @@ coverHeight: 720
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.08"
+date: 2026-08-24
 outcome: 3 scrolls, 9 encounters · lantern, ink-ripple and firefly interactions · a seal for every finished scroll · two-finger panning on phones
 outcome_zh: 三卷画，九段奇遇 · 提灯、叩墨、萤光三种互动 · 一卷遇齐，钤一枚印 · 手机上双指移卷
 tags: [Interaction Design, Narrative Design, Creative Coding, WebGL]

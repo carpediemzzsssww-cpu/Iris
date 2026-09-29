@@ -14,6 +14,7 @@ coverHeight: 1000
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.06"
+date: 2026-06-14
 outcome: 450 traditional–simplified pairs · review gaps of 1, 3, 7, 16 and 35 days · 20 new cards a day · offline, with progress kept on the phone
 outcome_zh: 450 组繁简字 · 复习间隔 1、3、7、16、35 天 · 每天 20 个新字 · 离线可用，进度只存本机
 tags: [Product Design, Prototyping, Local-first]

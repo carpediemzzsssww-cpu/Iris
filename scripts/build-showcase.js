@@ -66,6 +66,8 @@ function shapeProject(fm) {
         coverImage: fm.coverImage || '',
         role: fm.role,
         time: fm.time,
+        // Optional YYYY-MM-DD, used only to order projects within a month.
+        ...(fm.date ? { date: String(fm.date) } : {}),
         outcome: fm.outcome,
         tags: fm.tags,
         links: collectLinks(fm),

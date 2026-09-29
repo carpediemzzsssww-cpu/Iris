@@ -31,9 +31,10 @@ cp content/projects/_template-project.md content/projects/my-new-thing.md
 | `oneLiner` | ✓ | 一句话简介（<= 90 字符最好） |
 | `role` | ✓ | 你的角色 |
 | `time` | ✓ | 项目时间。格式建议 `2026.03` 或 `2024.06 – 2025.03`（影响排序） |
+| `date` |  | 精确到日，eg `2026-09-27`。只用于排序（同一个月的项目靠它分先后），页面上不显示 |
 | `outcome` | ✓ | 成果/数据。包含数字时会被 impact 排序识别 |
 | `tags` | ✓ | 标签数组，eg `[AI/ML, Product Design]`（决定 tag filter 出现项） |
-| `featured` |  | `true` 会置顶 |
+| `featured` |  | `true` 在 Impact / Technical 排序里置顶，并带高亮边框；默认的 Latest 不置顶 |
 | `coverImage` |  | 封面路径，eg `assets/project-covers/projects/xxx.webp`，留空则用无图样式 |
 | `linkDemo` |  | 主链接（demo/case study/PDF） |
 | `linkRepo` |  | GitHub 链接 |
@@ -73,4 +74,6 @@ cp content/projects/_template-project.md content/projects/my-new-thing.md
 ## 排序规则
 
 Projects 页的排序（Latest / Impact / Technical）在浏览器端算，跟文件顺序无关。
+默认的 Latest 只看时间，越新越前：有 `date` 的按日期排，没有的按 `time` 里最晚的年月排；同一时间再按 impact 分。
+Impact / Technical 会先把 `featured` 项目放在最前。
 Build 脚本只保证 JSON 输出稳定——按 `slug` 字母序或显式 `order` 字段。

@@ -14,6 +14,7 @@ coverHeight: 1000
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
+date: 2026-09-27
 outcome: Three turns of the key wake it · a chandelier, stalls and a lake stage unfold · 16 hidden medallions · a masquerade when you find them all
 outcome_zh: 上满三圈发条才会醒 · 吊灯、池座和地下湖舞台依次展开 · 16 枚藏起来的圆章 · 集齐开一场假面舞会
 tags: [3D Interaction, Creative Coding, Narrative Design, Three.js]

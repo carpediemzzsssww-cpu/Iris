@@ -9,7 +9,7 @@ featured: false
 coverImage: assets/project-covers/projects/web-design-playground-cover.webp
 role: UI Designer
 role_zh: UI 设计师
-time: "2026"
+time: "2026.01"
 outcome: "Built and curated 50+ UI case studies (ongoing), gradually shaping a distinctive personal design style"
 outcome_zh: "50+ 个 UI 案例拆解（持续更新中），慢慢长出自己的设计风格"
 tags: [Product Design, Figma, Design Systems]

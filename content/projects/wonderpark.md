@@ -14,6 +14,7 @@ coverHeight: 947
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.08"
+date: 2026-08-26
 outcome: A low-poly park with changing light and sound, concept studies, a learning archive, generative visuals, and an abstract globe
 outcome_zh: 低多边形公园 · 光影与声音切换 · 概念案例、学习档案、生成视觉与抽象地球仪
 tags: [3D Interaction, Creative Coding, Spatial UI, Interaction Design, Generative Art]

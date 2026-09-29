@@ -14,6 +14,7 @@ coverHeight: 600
 role: Product Design & Development
 role_zh: 产品设计与开发
 time: "2026.05 – 2026.06"
+date: 2026-06-07
 outcome: 19-node LangGraph agent · 290 Xiaohongshu notes and 344 1688 listings across 5 categories · 181 tests · reports stream in over SSE
 outcome_zh: 19 节点 LangGraph Agent · 5 个品类、290 条小红书笔记与 344 条 1688 货源 · 181 个测试 · 报告经 SSE 流式生成
 tags: [AI/ML, Automation, Systems Design, Product Design]

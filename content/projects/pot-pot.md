@@ -14,6 +14,7 @@ coverHeight: 775
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
+date: 2026-09-26
 outcome: 8 pot shapes to pinch and glaze · still lifes with up to 8 pots · 6 townsfolk with commissions · a 3D gallery you restore room by room
 outcome_zh: 8 种器形，捏形上釉 · 一幅静物最多 8 只罐子 · 6 位小镇委托人 · 一间间修缮的 3D 展厅
 tags: [3D Interaction, Creative Coding, Interaction Design, Local-first]

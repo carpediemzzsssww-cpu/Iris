@@ -14,6 +14,7 @@ coverHeight: 947
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
+date: 2026-09-19
 outcome: 20 plantable flowers on a Giverny bloom calendar · light from 05:00 to 22:00 · walk into the house and greenhouse · room for 2,400 plantings
 outcome_zh: 20 种花按吉维尼花历开放 · 05:00 到 22:00 的光线 · 能走进粉屋和温室 · 最多 2,400 处种植与布置
 tags: [3D Interaction, Creative Coding, Spatial UI, Three.js]
