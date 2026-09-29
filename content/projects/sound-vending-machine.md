@@ -15,6 +15,7 @@ tags: [3D Interaction, Creative Coding, Music Discovery, Interaction Design, Vib
 tags_zh: [3D交互, 创意编程, 音乐发现, 交互设计, Vibe Coding]
 storyPage: true
 linkCaseStudy: case-studies/sound-vending-machine/index.html
+linkDemo: https://soundvendingmachine.vercel.app
 demoLabel: Play the project
 demoLabel_zh: 体验 Sound Vending Machine
 ---

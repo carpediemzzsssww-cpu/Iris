@@ -6,6 +6,11 @@ title_zh: Idea Wonderpark｜灵感游乐园
 oneLiner: An interactive 3D park for wandering through ideas, experiments, and visual stories
 oneLiner_zh: 把想法、实验和视觉故事放进一座可以漫游的 3D 公园
 featured: false
+coverImage: assets/project-covers/projects/wonderpark-cover.webp
+coverAlt: A low-poly amusement park on a snowy night, with a Ferris wheel, a carousel and a roller coaster
+coverAlt_zh: 雪夜里的低多边形游乐园，有摩天轮、旋转木马和过山车
+coverWidth: 1600
+coverHeight: 947
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.08"

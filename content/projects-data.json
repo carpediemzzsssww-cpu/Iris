@@ -1,6 +1,37 @@
 {
   "projects": [
     {
+      "slug": "1001-moons",
+      "title": "1001 States of the Moon",
+      "oneLiner": "A Mid-Autumn short where a full stop tries fifteen ways to become the moon",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/1001-moons-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.09",
+      "outcome": "16 scenes in a single HTML file · Canvas 2D at 24 fps with 12 fps hand-drawn jitter · an original waltz whose instruments change with the story",
+      "tags": [
+        "Creative Coding",
+        "Narrative Design",
+        "Generative Art"
+      ],
+      "links": {
+        "demo": "https://1001moons.vercel.app",
+        "repo": "https://github.com/carpediemzzsssww-cpu/1001moons",
+        "caseStudy": "case-studies/1001-moons/index.html"
+      },
+      "title_zh": "月亮的一千零一种状态",
+      "oneLiner_zh": "中秋短片：一个句号试了十五种办法，想成为今晚的月亮",
+      "coverAlt_zh": "纸上的深色圆里有一轮月亮，旁边写着 There are a thousand and one moons tonight",
+      "role_zh": "设计与开发",
+      "outcome_zh": "16 幕，一个 HTML 文件 · Canvas 2D，24 fps 运动叠 12 fps 手绘抖动 · 原创圆舞曲，乐器跟着故事换",
+      "tags_zh": [
+        "创意编程",
+        "叙事设计",
+        "生成艺术"
+      ],
+      "demoLabel_zh": "看今晚的月亮"
+    },
+    {
       "slug": "ai-agent-industry-report",
       "title": "AI Agent Industry Report",
       "oneLiner": "2025–2026 AI Agent industry landscape: players, use cases, and where it's heading",
@@ -80,7 +111,7 @@
         "Product Thinking"
       ],
       "links": {
-        "demo": "case-studies/ancient-char-lookup/index.html",
+        "demo": "https://ancient-char-lookup.vercel.app",
         "repo": "https://github.com/carpediemzzsssww-cpu/ancient-char-lookup"
       },
       "title_zh": "古文字字源工具",
@@ -307,6 +338,132 @@
       "outcome_zh": "7 轮博弈 · 5 个结局 · 18 人测试 · 中英双语 · 蒙特卡洛模拟 · 原生 JS"
     },
     {
+      "slug": "fanjian-flashcards",
+      "title": "Traditional → Simplified Flashcards",
+      "oneLiner": "Offline spaced-repetition flashcards for 450 traditional–simplified character pairs",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/fanjian-flashcards-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.06",
+      "outcome": "450 traditional–simplified pairs · review gaps of 1, 3, 7, 16 and 35 days · 20 new cards a day · offline, with progress kept on the phone",
+      "tags": [
+        "Product Design",
+        "Prototyping",
+        "Local-first"
+      ],
+      "links": {
+        "demo": "https://fanjian-zika.vercel.app",
+        "caseStudy": "case-studies/fanjian-flashcards/index.html"
+      },
+      "title_zh": "繁→简字卡",
+      "oneLiner_zh": "繁体→简体记忆卡：一个 HTML 文件，离线可用，用间隔重复刷 450 组字",
+      "coverAlt_zh": "两张手机截图：卡片正面的繁体「礙」和翻面后的简体「碍」",
+      "role_zh": "设计与开发",
+      "outcome_zh": "450 组繁简字 · 复习间隔 1、3、7、16、35 天 · 每天 20 个新字 · 离线可用，进度只存本机",
+      "tags_zh": [
+        "产品设计",
+        "原型设计",
+        "本地优先"
+      ],
+      "demoLabel_zh": "开始翻卡"
+    },
+    {
+      "slug": "garden-giverny",
+      "title": "GARDEN",
+      "oneLiner": "A painterly Giverny-inspired garden to wander, plant, and watch through a year",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/garden-giverny-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.09",
+      "outcome": "20 plantable flowers on a Giverny bloom calendar · light from 05:00 to 22:00 · walk into the house and greenhouse · room for 2,400 plantings",
+      "tags": [
+        "3D Interaction",
+        "Creative Coding",
+        "Spatial UI",
+        "Three.js"
+      ],
+      "links": {
+        "demo": "https://dist-blue-beta-26.vercel.app",
+        "caseStudy": "case-studies/garden-giverny/index.html"
+      },
+      "title_zh": "GARDEN｜莫奈花园",
+      "oneLiner_zh": "一座参考吉维尼的三维花园：可以漫游、种花，看它走过一整年",
+      "coverAlt_zh": "三维花园：花圃、睡莲池、绿色拱桥和砖房",
+      "role_zh": "设计与开发",
+      "outcome_zh": "20 种花按吉维尼花历开放 · 05:00 到 22:00 的光线 · 能走进粉屋和温室 · 最多 2,400 处种植与布置",
+      "tags_zh": [
+        "3D交互",
+        "创意编程",
+        "空间界面",
+        "Three.js"
+      ],
+      "demoLabel_zh": "走进花园"
+    },
+    {
+      "slug": "liaozhai-by-night",
+      "title": "Night Walk in Liaozhai",
+      "oneLiner": "Carry a lantern into a night-time scroll painting and meet its strange tales",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/liaozhai-by-night-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.08",
+      "outcome": "3 scrolls, 9 encounters · lantern, ink-ripple and firefly interactions · a seal for every finished scroll · two-finger panning on phones",
+      "tags": [
+        "Interaction Design",
+        "Narrative Design",
+        "Creative Coding",
+        "WebGL"
+      ],
+      "links": {
+        "demo": "https://liaozhai-by-night.vercel.app",
+        "caseStudy": "case-studies/liaozhai-by-night/index.html"
+      },
+      "title_zh": "夜行聊斋",
+      "oneLiner_zh": "你误入一幅夜色古卷：提灯而行，在三卷画里遇见九段奇遇",
+      "coverAlt_zh": "卷首：红日前竖排的「夜行聊斋」，下方是一众画中人物",
+      "role_zh": "设计与开发",
+      "outcome_zh": "三卷画，九段奇遇 · 提灯、叩墨、萤光三种互动 · 一卷遇齐，钤一枚印 · 手机上双指移卷",
+      "tags_zh": [
+        "交互设计",
+        "叙事设计",
+        "创意编程",
+        "WebGL"
+      ],
+      "demoLabel_zh": "点此入画"
+    },
+    {
+      "slug": "lot-665-the-opera",
+      "title": "Lot 665 · The Opera",
+      "oneLiner": "An 1881 Paris music box: wind it up, and a tiny opera house performs inside",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/lot-665-the-opera-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.09",
+      "outcome": "Three turns of the key wake it · a chandelier, stalls and a lake stage unfold · 16 hidden medallions · a masquerade when you find them all",
+      "tags": [
+        "3D Interaction",
+        "Creative Coding",
+        "Narrative Design",
+        "Three.js"
+      ],
+      "links": {
+        "demo": "https://music-box-phantom.vercel.app",
+        "caseStudy": "case-studies/lot-665-the-opera/index.html"
+      },
+      "title_zh": "Lot 665 · 歌剧魅影音乐盒",
+      "oneLiner_zh": "一只 1881 年的巴黎音乐盒：拧紧发条，盒子里的微缩歌剧院就开演",
+      "coverAlt_zh": "打开的音乐盒：盒顶的猴子、水晶吊灯、红色幕布和一排排座椅",
+      "role_zh": "设计与开发",
+      "outcome_zh": "上满三圈发条才会醒 · 吊灯、池座和地下湖舞台依次展开 · 16 枚藏起来的圆章 · 集齐开一场假面舞会",
+      "tags_zh": [
+        "3D交互",
+        "创意编程",
+        "叙事设计",
+        "Three.js"
+      ],
+      "demoLabel_zh": "拧上发条"
+    },
+    {
       "slug": "netease-hi-echo-research",
       "title": "NetEase Hi Echo — User Research",
       "oneLiner": "Led a 17-person team to understand what AI English learners actually need",
@@ -327,6 +484,70 @@
       "oneLiner_zh": "带 17 个人做用研，搞清楚学英语的人到底要什么",
       "role_zh": "项目负责人",
       "outcome_zh": "1,287 份问卷 · 三城跑用户 · 78 页报告被网易有道产品组采纳 · 校级一等奖 (2/18)"
+    },
+    {
+      "slug": "notre-dame",
+      "title": "Notre-Dame: A Quiet Passage",
+      "oneLiner": "A quiet first-person walk through Notre-Dame, from the parvis into stained-glass light",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/notre-dame-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.09",
+      "outcome": "First-person walk on desktop and touch · stained-glass light and sculpture · map, guided tour and bilingual notes · an artistic study, not a digital twin",
+      "tags": [
+        "3D Interaction",
+        "Spatial UI",
+        "Three.js",
+        "Creative Coding"
+      ],
+      "links": {
+        "demo": "https://notre-dame-presence.vercel.app",
+        "caseStudy": "case-studies/notre-dame/index.html"
+      },
+      "title_zh": "巴黎圣母院 · 石与光之间",
+      "oneLiner_zh": "第一人称走进巴黎圣母院：从前广场一直走到玫瑰窗的光里",
+      "coverAlt_zh": "从前广场仰望巴黎圣母院西立面和门廊上方的玫瑰窗",
+      "role_zh": "设计与开发",
+      "outcome_zh": "桌面和触屏都能第一人称漫游 · 玫瑰窗的光与雕塑 · 地图、导览和中英文注释 · 一次艺术研究，不是数字孪生",
+      "tags_zh": [
+        "3D交互",
+        "空间界面",
+        "Three.js",
+        "创意编程"
+      ],
+      "demoLabel_zh": "走进圣母院"
+    },
+    {
+      "slug": "pot-pot",
+      "title": "POT POT",
+      "oneLiner": "A tiny still-life studio: pinch pots, glaze them, paint a still life, run a gallery",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/pot-pot-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.09",
+      "outcome": "8 pot shapes to pinch and glaze · still lifes with up to 8 pots · 6 townsfolk with commissions · a 3D gallery you restore room by room",
+      "tags": [
+        "3D Interaction",
+        "Creative Coding",
+        "Interaction Design",
+        "Local-first"
+      ],
+      "links": {
+        "demo": "https://potpot-wine.vercel.app",
+        "caseStudy": "case-studies/pot-pot/index.html"
+      },
+      "title_zh": "POT POT｜罐罐",
+      "oneLiner_zh": "一间口袋静物画室：捏罐子、上釉、摆一幅静物画，再经营自己的小展厅",
+      "coverAlt_zh": "三维小画室：工作台、浅色陶罐和墙上的静物画",
+      "role_zh": "设计与开发",
+      "outcome_zh": "8 种器形，捏形上釉 · 一幅静物最多 8 只罐子 · 6 位小镇委托人 · 一间间修缮的 3D 展厅",
+      "tags_zh": [
+        "3D交互",
+        "创意编程",
+        "交互设计",
+        "本地优先"
+      ],
+      "demoLabel_zh": "推开画室的门"
     },
     {
       "slug": "prd-skill",
@@ -369,6 +590,37 @@
       "outcome_zh": "支持独立脚本 / RPA 内联两种模式 · 5 级文件读取回退 · 模糊门店匹配 · 标准化 27 字段输出"
     },
     {
+      "slug": "shigu",
+      "title": "Shigu: Ancient Script Flashcards",
+      "oneLiner": "An offline iPhone flashcard app for reading ancient Chinese script before the exam",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/shigu-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.06",
+      "outcome": "1,218 characters · 126 key characters with offline glyphs from oracle bone to seal script · Leitner spaced repetition · works offline on iPhone",
+      "tags": [
+        "Product Design",
+        "Prototyping",
+        "Local-first"
+      ],
+      "links": {
+        "demo": "https://learn-ancient-character.vercel.app",
+        "repo": "https://github.com/carpediemzzsssww-cpu/learn-ancient-character",
+        "caseStudy": "case-studies/shigu/index.html"
+      },
+      "title_zh": "识古｜古文字识读记忆",
+      "oneLiner_zh": "文字学考前自用的古文字识读 PWA：看甲骨金文，回忆简体字",
+      "coverAlt_zh": "两张手机截图：126 个课堂重点字的首页，和一张古文字识读卡",
+      "role_zh": "设计与开发",
+      "outcome_zh": "1,218 字 · 126 个课堂重点字带甲骨到篆书的离线字形 · Leitner 间隔重复 · iPhone 离线可用",
+      "tags_zh": [
+        "产品设计",
+        "原型设计",
+        "本地优先"
+      ],
+      "demoLabel_zh": "开始识古"
+    },
+    {
       "slug": "smart-photo-organizer",
       "title": "Smart Photo Organizer — A Failure",
       "oneLiner": "Built an AI photo tool in 2 hours. A user's one question broke it.",
@@ -407,6 +659,7 @@
         "Vibe Coding"
       ],
       "links": {
+        "demo": "https://soundvendingmachine.vercel.app",
         "caseStudy": "case-studies/sound-vending-machine/index.html"
       },
       "title_zh": "Sound Vending Machine｜音乐自动贩卖机",
@@ -421,6 +674,38 @@
         "Vibe Coding"
       ],
       "demoLabel_zh": "体验 Sound Vending Machine"
+    },
+    {
+      "slug": "tin",
+      "title": "TIN",
+      "oneLiner": "A private tin box for photos, notes, and the little things of your day",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/tin-cover.webp",
+      "role": "Design & Development",
+      "time": "2026.09",
+      "outcome": "40 original objects in 6 drawers · 5 themes · photos and notes stay on your device · export the finished tin as PNG",
+      "tags": [
+        "3D Interaction",
+        "Interaction Design",
+        "Emotional Design",
+        "Local-first"
+      ],
+      "links": {
+        "demo": "https://tin-orpin.vercel.app",
+        "caseStudy": "case-studies/tin/index.html"
+      },
+      "title_zh": "TIN｜把日常装进去",
+      "oneLiner_zh": "一只私人铁盒：把照片、字条和日常小物一件件收进去",
+      "coverAlt_zh": "打开的铁盒里放着照片、票根、钥匙、兰花和小熊，背景是红色针织纹",
+      "role_zh": "设计与开发",
+      "outcome_zh": "6 类抽屉、40 件原创小物 · 5 套主题 · 照片和字条只存在本机 · 装好的铁盒可导出 PNG",
+      "tags_zh": [
+        "3D交互",
+        "交互设计",
+        "情感化设计",
+        "本地优先"
+      ],
+      "demoLabel_zh": "打开铁盒"
     },
     {
       "slug": "web-design-playground",
@@ -471,7 +756,7 @@
       "title": "Idea Wonderpark",
       "oneLiner": "An interactive 3D park for wandering through ideas, experiments, and visual stories",
       "featured": false,
-      "coverImage": "",
+      "coverImage": "assets/project-covers/projects/wonderpark-cover.webp",
       "role": "Design & Development",
       "time": "2026.08",
       "outcome": "A low-poly park with changing light and sound, concept studies, a learning archive, generative visuals, and an abstract globe",
@@ -489,6 +774,7 @@
       },
       "title_zh": "Idea Wonderpark｜灵感游乐园",
       "oneLiner_zh": "把想法、实验和视觉故事放进一座可以漫游的 3D 公园",
+      "coverAlt_zh": "雪夜里的低多边形游乐园，有摩天轮、旋转木马和过山车",
       "role_zh": "设计与开发",
       "outcome_zh": "低多边形公园 · 光影与声音切换 · 概念案例、学习档案、生成视觉与抽象地球仪",
       "tags_zh": [
@@ -499,6 +785,36 @@
         "生成艺术"
       ],
       "demoLabel_zh": "逛逛灵感游乐园"
+    },
+    {
+      "slug": "yili-selection-agent",
+      "title": "Yili: Product Selection Agent",
+      "oneLiner": "An e-commerce selection agent that reads Xiaohongshu demand and 1688 supply",
+      "featured": false,
+      "coverImage": "assets/project-covers/projects/yili-selection-agent-cover.webp",
+      "role": "Product Design & Development",
+      "time": "2026.05 – 2026.06",
+      "outcome": "19-node LangGraph agent · 290 Xiaohongshu notes and 344 1688 listings across 5 categories · 181 tests · reports stream in over SSE",
+      "tags": [
+        "AI/ML",
+        "Automation",
+        "Systems Design",
+        "Product Design"
+      ],
+      "links": {
+        "caseStudy": "case-studies/yili-selection-agent/index.html"
+      },
+      "title_zh": "一粒 · 选品 Agent",
+      "oneLiner_zh": "电商选品 Agent：读小红书的需求、看 1688 的供给，写一份选品报告",
+      "coverAlt_zh": "一粒首页：品牌名、搜索框和推荐品类",
+      "role_zh": "产品设计与开发",
+      "outcome_zh": "19 节点 LangGraph Agent · 5 个品类、290 条小红书笔记与 344 条 1688 货源 · 181 个测试 · 报告经 SSE 流式生成",
+      "tags_zh": [
+        "AI/ML",
+        "自动化",
+        "系统设计",
+        "产品设计"
+      ]
     },
     {
       "slug": "yunyou",
