@@ -1,6 +1,6 @@
 {
   "translations": {
-    "colophon.title": { "en": "About this site", "zh": "本站说明" },
+    "colophon.title": { "en": "About this site", "zh": "About this site" },
     "colophon.subtitle": { "en": "How this small museum was put together.", "zh": "这座小陈列馆是怎么搭起来的。" },
 
     "colophon.idea.title": { "en": "The idea", "zh": "想法" },
@@ -25,6 +25,12 @@
 
     "colophon.details.title": { "en": "Small details", "zh": "小细节" },
     "colophon.details.lantern": { "en": "In the gallery, your pointer is a lantern: the light follows it.", "zh": "展厅里，你的鼠标就是一盏灯，光会跟着它走。" },
+    "colophon.details.shadow": { "en": "Each work casts its shadow away from your lantern.", "zh": "每件展品的影子都会避开你的提灯，落向另一边。" },
+    "colophon.details.color": { "en": "Colors fade the farther a work stands from the light, the way they do for our eyes in a dim room.", "zh": "离灯越远，颜色越淡，就像人眼在暗处看东西。" },
+    "colophon.details.spot": { "en": "Stop in front of a work and the spotlight settles on it.", "zh": "在一件展品前停下，追光会落到它身上。" },
+    "colophon.details.counter": { "en": "The lot counter rolls like a mechanical one.", "zh": "右上角的展品编号像机械计数器一样滚动。" },
+    "colophon.details.marginalia": { "en": "In Things that think, each number gets a pencil line once it has counted up, like a note in the margin.", "zh": "在 Things that think 这一室，数字数完之后会被铅笔划上一道，像读书时写的批注。" },
+    "colophon.details.cover": { "en": "Open a work and its cover carries you into its page, in browsers that support it.", "zh": "点开一件作品，封面会一路把你送进它的页面（需要浏览器支持）。" },
     "colophon.details.lots": { "en": "Lots are numbered newest first, in the order I made them.", "zh": "展品按我做它们的时间编号，最新的在最前面。" },
     "colophon.details.lights": { "en": "Between the gallery and the reading rooms, the lights come up.", "zh": "从展厅走进阅读室的时候，灯会慢慢亮起来。" },
     "colophon.details.moon": { "en": "The loader is a small moon walking through its phases in steps, a nod to the hand-made jitter in 1001 States of the Moon.", "zh": "加载提示是一枚一格一格走过月相的小月亮，致敬《月亮的一千零一种状态》里的手作抖动。" },

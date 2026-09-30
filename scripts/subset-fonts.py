@@ -38,7 +38,8 @@ def build(source_name, out_name, text=None):
     options.layout_features = ["*"]
     options.name_IDs = ["*"]  # keep copyright and license records
     options.notdef_outline = True
-    font = TTFont(os.path.join(SOURCE, source_name))
+    # Keep the source's timestamp, so re-running with the same text gives byte-identical files.
+    font = TTFont(os.path.join(SOURCE, source_name), recalcTimestamp=False)
     subsetter = subset.Subsetter(options)
     if text is None:
         subsetter.populate(unicodes=font.getBestCmap().keys())

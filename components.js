@@ -55,7 +55,7 @@
         var c = config.site;
         return '<div class="container">' +
             '<div class="nav-brand"><span class="brand-mark">IZ</span></div>' +
-            '<div class="nav-links">' +
+            '<div class="nav-links" lang="en">' +
                 '<a href="index.html" class="nav-link' + isActive('index.html') + '" data-i18n="nav.home">Home</a>' +
                 '<a href="projects.html" class="nav-link' + isActive('projects.html') + '" data-i18n="nav.projects">Projects</a>' +
                 '<a href="learning.html" class="nav-link' + isActive('learning.html') + '" data-i18n="nav.learning">Learning</a>' +
@@ -75,7 +75,7 @@
     }
 
     function renderMobileDrawer() {
-        return '<div class="mobile-drawer-links">' +
+        return '<div class="mobile-drawer-links" lang="en">' +
             '<a href="index.html" class="mobile-link' + isActive('index.html') + '" data-i18n="nav.home">Home</a>' +
             '<a href="projects.html" class="mobile-link' + isActive('projects.html') + '" data-i18n="nav.projects">Projects</a>' +
             '<a href="learning.html" class="mobile-link' + isActive('learning.html') + '" data-i18n="nav.learning">Learning</a>' +

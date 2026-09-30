@@ -434,8 +434,8 @@ select:focus-visible {
 
 /* Chinese Typography Overrides */
 html[data-lang="zh"] {
-    /* Display: Instrument Serif for English headings, Noto Serif SC for Chinese headings (auto fallback) */
-    --font-display: 'Instrument Serif', 'Noto Serif SC', Georgia, serif;
+    /* Display: big titles stay English in both languages, so Cormorant leads and Chinese falls back to Noto Serif SC */
+    --font-display: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
     /* Body: DM Sans for Latin chars, system Chinese sans-serif for CJK (cleaner than serif for body) */
     --font-body: 'DM Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
 }
@@ -447,7 +447,7 @@ html[data-lang="zh"] body {
 }
 
 html[data-lang="zh"] .after-hero-title,
-html[data-lang="zh"] .page-title,
+html[data-lang="zh"] .page-title:not([lang="en"]),
 html[data-lang="zh"] .section-title,
 html[data-lang="zh"] .section-heading {
     letter-spacing: 0.02em;
@@ -2221,4 +2221,33 @@ html[data-theme='dark'] .project-transition-overlay {
 .project-card.has-cover.cover-ready .project-card-media {
     opacity: 1;
     transition: opacity 0.6s var(--ease-out), transform var(--duration-slow) var(--ease-out), filter var(--duration-normal) var(--ease-out);
+}
+
+/* ================================================
+   Page to page: a soft crossfade, and a work's cover flies from the gallery
+   or the archive into its page (cross-document view transitions; browsers
+   without them simply navigate). Mirrored in styles/project-story.css.
+   ================================================ */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-group(lot-cover) {
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(lot-cover),
+::view-transition-new(lot-cover) {
+    height: 100%;
+    object-fit: cover;
+    overflow: clip;
 }

@@ -37,10 +37,12 @@
             <div class="gallery-stage" id="galleryStage">
                 <div class="gallery-light" aria-hidden="true"></div>
                 <div class="gallery-grain" aria-hidden="true"></div>
+                <div class="gallery-spot" id="gallerySpot" aria-hidden="true"></div>
+                <div class="gallery-shadows" id="galleryShadows" aria-hidden="true"></div>
 
                 <header class="gallery-intro" id="galleryIntro">
                     <p class="gallery-kicker" data-i18n="home.kicker">Iris Zhou &middot; AI product builder</p>
-                    <h1 class="gallery-title" id="galleryTitle" data-i18n="home.title">A museum of small worlds</h1>
+                    <h1 class="gallery-title" id="galleryTitle" lang="en" data-i18n="home.title">A museum of small worlds</h1>
                     <p class="gallery-sub" data-i18n="home.sub">Everything here is something I built. Some you can play with; some think for you.</p>
                 </header>
 
@@ -56,7 +58,11 @@
                 </div>
 
                 <p class="gallery-hint" aria-hidden="true"><span class="hint-line"></span><span data-i18n="home.hint">Scroll to walk the gallery</span></p>
-                <p class="gallery-count" id="galleryCount" aria-hidden="true"></p>
+                <div class="gallery-index" id="galleryIndex" aria-hidden="true">
+                    <p class="gallery-count" id="galleryCount"></p>
+                    <div class="gallery-rail" id="galleryRail"></div>
+                    <p class="gallery-rail-tip" id="galleryRailTip"></p>
+                </div>
             </div>
         </section>
 
@@ -72,13 +78,13 @@
             <div class="container">
                 <header class="room-head reveal">
                     <p class="room-no">№ 02</p>
-                    <h2 class="room-title" id="thinkTitle" data-i18n="home.room2">Things that think</h2>
+                    <h2 class="room-title" id="thinkTitle" lang="en" data-i18n="home.room2">Things that think</h2>
                     <p class="room-lead" data-i18n="hero.subtitle">I turn ambiguous AI opportunities into working products, repeatable systems, and communities that build.</p>
                 </header>
 
                 <ol class="specimens">
                     <li class="specimen reveal">
-                        <p class="specimen-figure"><span class="specimen-number" data-count="400">400</span> <span class="specimen-unit">/ 40</span></p>
+                        <p class="specimen-figure"><span class="specimen-number" data-count="400">400</span> <span class="specimen-unit">/ 40</span> <span class="margin-note" aria-hidden="true">&times;10</span></p>
                         <div class="specimen-body">
                             <p class="specimen-meta" data-i18n="home.spec.xhs.meta">Xiaohongshu &middot; 2026</p>
                             <h3 class="specimen-title" data-i18n="home.spec.xhs.title">An open-source contributor pathway</h3>
@@ -138,7 +144,7 @@
             <div class="container">
                 <header class="room-head reveal">
                     <p class="room-no">№ 03</p>
-                    <h2 class="room-title" id="pathTitle" data-i18n="home.room3">The path so far</h2>
+                    <h2 class="room-title" id="pathTitle" lang="en" data-i18n="home.room3">The path so far</h2>
                     <p class="room-sub" data-i18n="home.room3.sub">Wuhan &middot; Paris &middot; back again</p>
                 </header>
 
@@ -168,7 +174,7 @@
                                             <span class="timeline-date" data-i18n="exp.xiaohongshu.date">2026.06 - Present</span>
                                         </div>
                                         <button class="timeline-toggle" type="button" aria-expanded="false" data-i18n-aria="home.showDetails" aria-label="Show details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg>
                                         </button>
                                     </div>
                                     <p class="timeline-impact" data-i18n="exp.xiaohongshu.impact">Built technical-brand infrastructure, developer contribution pathways, and AI prototypes at Xiaohongshu.</p>
@@ -192,7 +198,7 @@
                                             <span class="timeline-date">2026.02 - 2026.05</span>
                                         </div>
                                         <button class="timeline-toggle" type="button" aria-expanded="false" data-i18n-aria="home.showDetails" aria-label="Show details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg>
                                         </button>
                                     </div>
                                     <p class="timeline-impact" data-i18n="exp.bestcem.impact">AI product design, quality evaluation, and B2B SaaS delivery at a leading CEM platform</p>
@@ -220,7 +226,7 @@
                                             <span class="timeline-date">2023.9-2027.6</span>
                                         </div>
                                         <button class="timeline-toggle" type="button" aria-expanded="false" data-i18n-aria="home.showDetails" aria-label="Show details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg>
                                         </button>
                                     </div>
                                     <p class="timeline-impact" data-i18n="edu.whu.impact">Major in Chinese Language and Literature, Minor in Communication Studies</p>
@@ -242,7 +248,7 @@
                                             <span class="timeline-date">2025.9-2026.1</span>
                                         </div>
                                         <button class="timeline-toggle" type="button" aria-expanded="false" data-i18n-aria="home.showDetails" aria-label="Show details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg>
                                         </button>
                                     </div>
                                     <p class="timeline-impact" data-i18n="edu.paris.impact">Sciences Humaines et Sociales</p>
@@ -264,7 +270,7 @@
                                             <span class="timeline-date">2025.6-7</span>
                                         </div>
                                         <button class="timeline-toggle" type="button" aria-expanded="false" data-i18n-aria="home.showDetails" aria-label="Show details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg>
                                         </button>
                                     </div>
                                     <p class="timeline-impact" data-i18n="edu.sjtu.impact">Language Technology Summer Workshop</p>
@@ -336,7 +342,7 @@
         <section class="museum-exit" id="contact" aria-labelledby="exitTitle">
             <div class="container">
                 <p class="room-no" data-i18n="home.exit">Exit</p>
-                <h2 class="exit-title" id="exitTitle" data-i18n="contact.title">Let's Create Something</h2>
+                <h2 class="exit-title" id="exitTitle" lang="en" data-i18n="contact.title">Let's Create Something</h2>
                 <p class="exit-sub" data-i18n="contact.subtitle">I'm looking for 2027 full-time roles, mainly in AI product. If that sounds like your team, let's talk.</p>
                 <div class="contact-status">
                     <span class="status-indicator"></span>

@@ -7,3 +7,6 @@
 # Local-only tools: kept on disk, not published
 content-editor.html
 alter-widget-irisy.html
+
+# Copy deck for editing by hand (scripts/copy-deck.js)
+文案清单.md

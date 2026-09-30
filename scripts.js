@@ -598,6 +598,9 @@ function resetProjectTransitionState() {
 function setupProjectCardMicroInteractions(scope = document) {
     const cards = scope.querySelectorAll('.project-card');
     const reducedMotionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    // Where cross-document view transitions exist, the cover itself carries over into the work's
+    // page (styles.css, styles/project-story.css); elsewhere the card expands before navigating.
+    const crossDocTransitions = 'onpagereveal' in window && !!(window.CSS && CSS.supports && CSS.supports('view-transition-name', 'none'));
 
     const startImmersiveProjectTransition = (card, href) => {
         if (!href || immersiveProjectTransitionInProgress) return;
@@ -691,6 +694,14 @@ function setupProjectCardMicroInteractions(scope = document) {
                 !isSameOrigin ||
                 immersiveProjectTransitionInProgress
             ) {
+                return;
+            }
+
+            if (crossDocTransitions) {
+                // Only one element may hold the name; the link then navigates as usual.
+                document.querySelectorAll('.project-card-media').forEach(media => { media.style.viewTransitionName = ''; });
+                const media = card.querySelector('.project-card-media');
+                if (media) media.style.viewTransitionName = 'lot-cover';
                 return;
             }
 
