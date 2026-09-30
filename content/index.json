@@ -92,7 +92,7 @@
     "home.spec.yili.unit": { "en": "nodes", "zh": "个节点" },
     "home.spec.yili.meta": { "en": "Independent · 2026", "zh": "个人项目 · 2026" },
     "home.spec.yili.title": { "en": "Yili, a product-selection agent", "zh": "一粒 · 选品 Agent" },
-    "home.spec.yili.desc": { "en": "LangGraph reads demand and 1688 supply, re-plans when the data runs thin, and streams a report. 181 tests.", "zh": "LangGraph 读需求、看 1688 的供给，数据不够的时候会重新规划，一边跑一边给出报告；181 个测试。" },
+    "home.spec.yili.desc": { "en": "LangGraph reads demand on social media and supply on 1688, re-plans when the data runs thin, and streams a report. 181 tests.", "zh": "LangGraph 读社交媒体上的需求、看 1688 的供给，数据不够的时候会重新规划，一边跑一边给出报告；181 个测试。" },
     "home.spec.bestcem.unit": { "en": "records", "zh": "条标注数据" },
     "home.spec.bestcem.meta": { "en": "Bestcem · 2026", "zh": "倍市得 · 2026" },
     "home.spec.bestcem.title": { "en": "An AI quality audit", "zh": "一次 AI 质量审核" },

@@ -24,7 +24,7 @@ tags: [3D Interaction, Creative Coding, Spatial UI, Three.js]
 tags_zh: [3D交互, 创意编程, 空间界面, Three.js]
 storyPage: true
 linkCaseStudy: case-studies/garden-giverny/index.html
-linkDemo: https://dist-blue-beta-26.vercel.app
+linkDemo: https://garden-giverny.vercel.app
 demoLabel: Walk into the garden
 demoLabel_zh: 走进花园
 ---

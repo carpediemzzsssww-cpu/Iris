@@ -70,7 +70,7 @@ This is NOT a detour -- each phase built different competencies:
 - Bestcem, AI Product Intern: 0-to-1 AI Customer Journey Generator (PRD with 16 exception scenarios and 30 acceptance cases, 3 prompt templates across 6 industries, Axure prototype); AI text-analysis quality audit on 34K labeled records (1,117 verified, 83.5% accuracy, 5 error patterns, a 5-module evaluation framework with 20+ metrics); 2 enterprise VOC projects (10+ platforms, 70K+ entries, 18 RPA workflows, 4 dashboards).
 
 ## AI Products & Tools (can discuss in detail)
-- Yili (2026.05-06): e-commerce product-selection agent -- reads Xiaohongshu demand and 1688 supply, scores the gaps, writes a report. 19-node LangGraph, DeepSeek + Doubao, SSE streaming, 181 tests. The live demo is offline for now.
+- Yili (2026.05-06): e-commerce product-selection agent -- reads demand on social media and supply on 1688, scores the gaps, writes a report. 19-node LangGraph, DeepSeek + Doubao, SSE streaming, 181 tests. The live demo is offline for now.
 - Yunyou: AI flight decision agent -- tells you WHEN to buy, not just WHERE to search. React + Doubao Function Calling. yunyou.vercel.app
 - AI PRD Copilot: RAG-powered tool helping PMs think, not just write. 17.5% quality improvement, 41% specificity improvement.
 - NetEase Hi Echo Research: Led 17-person team, 1287 surveys, 3-city fieldwork, 78-page report adopted by NetEase. University First Prize (2/18).
