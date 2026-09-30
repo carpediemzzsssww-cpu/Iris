@@ -1,0 +1,139 @@
+/* ================================================
+   404: an empty plinth under a spotlight
+   ================================================ */
+
+.page-404 .main-content {
+    padding-top: 0;
+}
+
+.nf-room {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    min-height: calc(100svh - var(--nav-h, 69px));
+    margin-top: calc(-1 * var(--nav-h, 69px));
+    padding: calc(var(--nav-h, 69px) + 6vh) var(--space-5) 8vh;
+    overflow: hidden;
+    color: #cbbdae;
+    background:
+        radial-gradient(30vmax 30vmax at var(--mx, 50%) var(--my, 45%), rgba(255, 224, 182, 0.08), transparent 70%),
+        linear-gradient(180deg, #14100d 0%, #231b16 100%);
+}
+
+/* A cone of light from the ceiling onto the plinth */
+.nf-light {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: min(520px, 90vw);
+    height: 62%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(255, 232, 200, 0.2), rgba(255, 232, 200, 0.02));
+    clip-path: polygon(44% 0, 56% 0, 100% 100%, 0 100%);
+    filter: blur(6px);
+    pointer-events: none;
+    animation: nf-flicker 6s ease-in-out infinite;
+}
+
+@keyframes nf-flicker {
+    0%, 100% { opacity: 1; }
+    48% { opacity: 0.92; }
+    50% { opacity: 0.7; }
+    52% { opacity: 0.95; }
+}
+
+.nf-plinth {
+    position: relative;
+    align-self: end;
+    width: min(240px, 50vw);
+    margin-top: 32vh;
+}
+
+.nf-plinth-top {
+    display: block;
+    height: 22px;
+    background: #e9e0d2;
+    border-radius: 50% / 100%;
+    box-shadow: 0 0 60px rgba(255, 232, 200, 0.25);
+}
+
+.nf-plinth-body {
+    display: block;
+    height: 150px;
+    margin-top: -11px;
+    background: linear-gradient(90deg, #cfc4b4, #e9e0d2 45%, #bdb1a1);
+}
+
+.nf-label {
+    position: relative;
+    width: min(460px, 100%);
+    margin-top: 40px;
+    padding: 22px 24px;
+    background: #f3ede3;
+    color: #2a221d;
+    border-radius: 3px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.nf-no {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7c6e62;
+}
+
+.nf-title {
+    margin: 8px 0 4px;
+    font-family: var(--font-museum);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+.nf-medium {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    font-style: italic;
+    color: #6d6056;
+}
+
+html[data-lang='zh'] .nf-medium {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-style: normal;
+}
+
+.nf-body {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #5d5249;
+}
+
+.nf-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    margin-top: 16px;
+}
+
+.nf-links a {
+    padding-bottom: 2px;
+    border-bottom: 1px solid currentColor;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #6b5876;
+    text-decoration: none;
+}
+
+.page-404 .footer {
+    margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nf-light { animation: none; }
+}

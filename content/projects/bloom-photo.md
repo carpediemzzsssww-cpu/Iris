@@ -6,12 +6,20 @@ title_zh: BLOOM Photo｜让照片开花
 oneLiner: Turn a photograph into a particle artwork that grows from a point you choose
 oneLiner_zh: 让照片从你选择的位置开始，生长成一幅粒子画
 featured: false
+exhibit: true
+coverImage: assets/project-covers/projects/bloom-photo-cover.webp
+coverAlt: A bouquet photo rebuilt as a field of colored particles
+coverAlt_zh: 一张花束照片，被重新长成一片彩色粒子
+coverWidth: 1600
+coverHeight: 1200
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.08"
 date: 2026-08-30
 outcome: Choose a bloom origin · shape particles and color · export high-resolution PNG or MP4, entirely in the browser
 outcome_zh: 自选生长起点 · 调节粒子结构与色彩 · 浏览器本地处理并导出高清 PNG 或 MP4
+medium: One photo, one point, a field of particles
+medium_zh: 一张照片、一个起点、一片粒子
 tags: [Creative Coding, Generative Art, WebGL, Interaction Design, Local-first]
 tags_zh: [创意编程, 生成艺术, WebGL, 交互设计, 本地优先]
 storyPage: true

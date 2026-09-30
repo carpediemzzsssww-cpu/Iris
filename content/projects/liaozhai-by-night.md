@@ -6,6 +6,7 @@ title_zh: 夜行聊斋
 oneLiner: Carry a lantern into a night-time scroll painting and meet its strange tales
 oneLiner_zh: 你误入一幅夜色古卷：提灯而行，在三卷画里遇见九段奇遇
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/liaozhai-by-night-cover.webp
 coverAlt: The opening scroll, with a vertical Chinese title over a red sun and a crowd of painted figures
 coverAlt_zh: 卷首：红日前竖排的「夜行聊斋」，下方是一众画中人物
@@ -17,6 +18,8 @@ time: "2026.08"
 date: 2026-08-24
 outcome: 3 scrolls, 9 encounters · lantern, ink-ripple and firefly interactions · a seal for every finished scroll · two-finger panning on phones
 outcome_zh: 三卷画，九段奇遇 · 提灯、叩墨、萤光三种互动 · 一卷遇齐，钤一枚印 · 手机上双指移卷
+medium: Ink, a lantern, three scrolls, nine encounters
+medium_zh: 墨、一盏灯、三卷画、九段奇遇
 tags: [Interaction Design, Narrative Design, Creative Coding, WebGL]
 tags_zh: [交互设计, 叙事设计, 创意编程, WebGL]
 storyPage: true

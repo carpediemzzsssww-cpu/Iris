@@ -6,6 +6,7 @@ title_zh: POT POT｜罐罐
 oneLiner: "A tiny still-life studio: pinch pots, glaze them, paint a still life, run a gallery"
 oneLiner_zh: 一间口袋静物画室：捏罐子、上釉、摆一幅静物画，再经营自己的小展厅
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/pot-pot-cover.webp
 coverAlt: A small 3D studio with a worktable, pale ceramic pots and framed still lifes on the wall
 coverAlt_zh: 三维小画室：工作台、浅色陶罐和墙上的静物画
@@ -17,6 +18,8 @@ time: "2026.09"
 date: 2026-09-26
 outcome: 8 pot shapes to pinch and glaze · still lifes with up to 8 pots · 6 townsfolk with commissions · a 3D gallery you restore room by room
 outcome_zh: 8 种器形，捏形上釉 · 一幅静物最多 8 只罐子 · 6 位小镇委托人 · 一间间修缮的 3D 展厅
+medium: Eight pot shapes, one sun, six townsfolk
+medium_zh: 八种器形、一个太阳、六位小镇委托人
 tags: [3D Interaction, Creative Coding, Interaction Design, Local-first]
 tags_zh: [3D交互, 创意编程, 交互设计, 本地优先]
 storyPage: true

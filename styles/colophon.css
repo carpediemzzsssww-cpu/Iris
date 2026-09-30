@@ -1,0 +1,147 @@
+/* ================================================
+   Colophon (About this site)
+   ================================================ */
+
+.colophon {
+    max-width: 880px;
+    padding-bottom: var(--space-12);
+}
+
+.colophon-section {
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--border);
+}
+
+.colophon-heading {
+    margin-bottom: var(--space-4);
+    font-family: var(--font-museum);
+    font-size: clamp(30px, 3.6vw, 42px);
+    font-weight: 400;
+}
+
+html[data-lang='zh'] .colophon-heading {
+    letter-spacing: 0.06em;
+}
+
+.colophon-body {
+    max-width: 680px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.specimen-list,
+.swatches,
+.details-list {
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.type-specimen {
+    padding: var(--space-5) 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.type-sample {
+    font-size: clamp(30px, 4.4vw, 48px);
+    line-height: 1.2;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.type-name {
+    margin-top: var(--space-3);
+    font-family: var(--font-label);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.type-role {
+    margin-top: 4px;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.type-credit {
+    margin-top: 2px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-5);
+}
+
+.swatch {
+    display: grid;
+    gap: 6px;
+}
+
+.swatch-chip {
+    display: block;
+    height: 84px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+}
+
+.swatch-name {
+    font-size: 14px;
+    color: var(--text);
+}
+
+.swatch-hex {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.details-list li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.details-list li::before {
+    content: '·';
+    color: var(--accent);
+}
+
+.details-list li:has(.details-moon)::before {
+    content: none;
+}
+
+.details-moon {
+    color: var(--accent);
+    transform: translateY(2px);
+}
+
+.colophon-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    margin-top: var(--space-5);
+}
+
+.colophon-links a {
+    padding-bottom: 2px;
+    border-bottom: 1px solid currentColor;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+}

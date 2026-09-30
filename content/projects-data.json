@@ -9,6 +9,8 @@
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-25",
+      "exhibit": true,
+      "medium": "Canvas 2D, 24 fps, an original waltz",
       "outcome": "16 scenes in a single HTML file · Canvas 2D at 24 fps with 12 fps hand-drawn jitter · an original waltz whose instruments change with the story",
       "tags": [
         "Creative Coding",
@@ -25,6 +27,7 @@
       "coverAlt_zh": "纸上的深色圆里有一轮月亮，旁边写着 There are a thousand and one moons tonight",
       "role_zh": "设计与开发",
       "outcome_zh": "16 幕，一个 HTML 文件 · Canvas 2D，24 fps 运动叠 12 fps 手绘抖动 · 原创圆舞曲，乐器跟着故事换",
+      "medium_zh": "Canvas 2D、24 fps、一首原创圆舞曲",
       "tags_zh": [
         "创意编程",
         "叙事设计",
@@ -128,7 +131,7 @@
       "featured": false,
       "coverImage": "",
       "role": "AI Product Intern",
-      "time": "2026.02 - Present",
+      "time": "2026.02 – 2026.05",
       "outcome": "End-to-end PRD (V2.0) with 3-prompt architecture, competitive analysis, Axure prototype, and HTML demo for a B2B CEM SaaS platform",
       "tags": [
         "AI/ML",
@@ -192,6 +195,8 @@
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-12",
+      "exhibit": true,
+      "medium": "Seven weathers, keepsakes, one letter",
       "outcome": "Seven weather settings · interactive keepsakes · memory discoveries that unlock a cake, a wish, and a letter",
       "tags": [
         "3D Interaction",
@@ -210,6 +215,7 @@
       "coverAlt_zh": "暖光中的 3D 生日小屋，摆着沙发、书、回忆物件与蛋糕",
       "role_zh": "设计与开发",
       "outcome_zh": "七种天气 · 可探索的回忆物件 · 收集回忆后解锁蛋糕、许愿与信件",
+      "medium_zh": "七种天气、一屋子回忆、一封信",
       "tags_zh": [
         "3D交互",
         "创意编程",
@@ -224,10 +230,12 @@
       "title": "BLOOM Photo",
       "oneLiner": "Turn a photograph into a particle artwork that grows from a point you choose",
       "featured": false,
-      "coverImage": "",
+      "coverImage": "assets/project-covers/projects/bloom-photo-cover.webp",
       "role": "Design & Development",
       "time": "2026.08",
       "date": "2026-08-30",
+      "exhibit": true,
+      "medium": "One photo, one point, a field of particles",
       "outcome": "Choose a bloom origin · shape particles and color · export high-resolution PNG or MP4, entirely in the browser",
       "tags": [
         "Creative Coding",
@@ -243,8 +251,10 @@
       },
       "title_zh": "BLOOM Photo｜让照片开花",
       "oneLiner_zh": "让照片从你选择的位置开始，生长成一幅粒子画",
+      "coverAlt_zh": "一张花束照片，被重新长成一片彩色粒子",
       "role_zh": "设计与开发",
       "outcome_zh": "自选生长起点 · 调节粒子结构与色彩 · 浏览器本地处理并导出高清 PNG 或 MP4",
+      "medium_zh": "一张照片、一个起点、一片粒子",
       "tags_zh": [
         "创意编程",
         "生成艺术",
@@ -382,6 +392,8 @@
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-19",
+      "exhibit": true,
+      "medium": "Three.js, twenty flowers, one whole year",
       "outcome": "20 plantable flowers on a Giverny bloom calendar · light from 05:00 to 22:00 · walk into the house and greenhouse · room for 2,400 plantings",
       "tags": [
         "3D Interaction",
@@ -398,6 +410,7 @@
       "coverAlt_zh": "三维花园：花圃、睡莲池、绿色拱桥和砖房",
       "role_zh": "设计与开发",
       "outcome_zh": "20 种花按吉维尼花历开放 · 05:00 到 22:00 的光线 · 能走进粉屋和温室 · 最多 2,400 处种植与布置",
+      "medium_zh": "Three.js、二十种花、一整年",
       "tags_zh": [
         "3D交互",
         "创意编程",
@@ -415,6 +428,8 @@
       "role": "Design & Development",
       "time": "2026.08",
       "date": "2026-08-24",
+      "exhibit": true,
+      "medium": "Ink, a lantern, three scrolls, nine encounters",
       "outcome": "3 scrolls, 9 encounters · lantern, ink-ripple and firefly interactions · a seal for every finished scroll · two-finger panning on phones",
       "tags": [
         "Interaction Design",
@@ -431,6 +446,7 @@
       "coverAlt_zh": "卷首：红日前竖排的「夜行聊斋」，下方是一众画中人物",
       "role_zh": "设计与开发",
       "outcome_zh": "三卷画，九段奇遇 · 提灯、叩墨、萤光三种互动 · 一卷遇齐，钤一枚印 · 手机上双指移卷",
+      "medium_zh": "墨、一盏灯、三卷画、九段奇遇",
       "tags_zh": [
         "交互设计",
         "叙事设计",
@@ -448,6 +464,8 @@
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-27",
+      "exhibit": true,
+      "medium": "Three.js, a live recording, 16 hidden medallions",
       "outcome": "Three turns of the key wake it · a chandelier, stalls and a lake stage unfold · 16 hidden medallions · a masquerade when you find them all",
       "tags": [
         "3D Interaction",
@@ -464,6 +482,7 @@
       "coverAlt_zh": "打开的音乐盒：盒顶的猴子、水晶吊灯、红色幕布和一排排座椅",
       "role_zh": "设计与开发",
       "outcome_zh": "上满三圈发条才会醒 · 吊灯、池座和地下湖舞台依次展开 · 16 枚藏起来的圆章 · 集齐开一场假面舞会",
+      "medium_zh": "Three.js、一段现场录音、16 枚藏起来的圆章",
       "tags_zh": [
         "3D交互",
         "创意编程",
@@ -503,6 +522,8 @@
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-07",
+      "exhibit": true,
+      "medium": "Blender, stone, stained-glass light",
       "outcome": "First-person walk on desktop and touch · stained-glass light and sculpture · map, guided tour and bilingual notes · an artistic study, not a digital twin",
       "tags": [
         "3D Interaction",
@@ -519,6 +540,7 @@
       "coverAlt_zh": "从前广场仰望巴黎圣母院西立面和门廊上方的玫瑰窗",
       "role_zh": "设计与开发",
       "outcome_zh": "桌面和触屏都能第一人称漫游 · 玫瑰窗的光与雕塑 · 地图、导览和中英文注释 · 一次艺术研究，不是数字孪生",
+      "medium_zh": "Blender、石头、玫瑰窗的光",
       "tags_zh": [
         "3D交互",
         "空间界面",
@@ -536,6 +558,8 @@
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-26",
+      "exhibit": true,
+      "medium": "Eight pot shapes, one sun, six townsfolk",
       "outcome": "8 pot shapes to pinch and glaze · still lifes with up to 8 pots · 6 townsfolk with commissions · a 3D gallery you restore room by room",
       "tags": [
         "3D Interaction",
@@ -552,6 +576,7 @@
       "coverAlt_zh": "三维小画室：工作台、浅色陶罐和墙上的静物画",
       "role_zh": "设计与开发",
       "outcome_zh": "8 种器形，捏形上釉 · 一幅静物最多 8 只罐子 · 6 位小镇委托人 · 一间间修缮的 3D 展厅",
+      "medium_zh": "八种器形、一个太阳、六位小镇委托人",
       "tags_zh": [
         "3D交互",
         "创意编程",
@@ -659,10 +684,12 @@
       "title": "Sound Vending Machine",
       "oneLiner": "A playful vending machine for unexpected songs and small exchanges between strangers",
       "featured": false,
-      "coverImage": "",
+      "coverImage": "assets/project-covers/projects/sound-vending-machine-cover.webp",
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-06",
+      "exhibit": true,
+      "medium": "A coin, a knob, a can of music",
       "outcome": "Tactile coin-and-knob interaction · collectible music cans · a hidden Song Exchange with custom can designs",
       "tags": [
         "3D Interaction",
@@ -677,8 +704,10 @@
       },
       "title_zh": "Sound Vending Machine｜音乐自动贩卖机",
       "oneLiner_zh": "投一枚硬币，收下一罐音乐，再给陌生人留下一首歌",
+      "coverAlt_zh": "淡黄色的贩卖机里摆满音乐罐头，旁边是一盆植物和一台收音机",
       "role_zh": "设计与开发",
       "outcome_zh": "投币与旋钮交互 · 独立设计的音乐罐头 · 隐藏的歌曲互换与罐身创作",
+      "medium_zh": "一枚硬币、一个旋钮、一罐音乐",
       "tags_zh": [
         "3D交互",
         "创意编程",
@@ -697,6 +726,8 @@
       "role": "Design & Development",
       "time": "2026.09",
       "date": "2026-09-24",
+      "exhibit": true,
+      "medium": "Forty objects, five themes, kept on your device",
       "outcome": "40 original objects in 6 drawers · 5 themes · photos and notes stay on your device · export the finished tin as PNG",
       "tags": [
         "3D Interaction",
@@ -713,6 +744,7 @@
       "coverAlt_zh": "打开的铁盒里放着照片、票根、钥匙、兰花和小熊，背景是红色针织纹",
       "role_zh": "设计与开发",
       "outcome_zh": "6 类抽屉、40 件原创小物 · 5 套主题 · 照片和字条只存在本机 · 装好的铁盒可导出 PNG",
+      "medium_zh": "四十件小物、五套主题、只存在你的设备里",
       "tags_zh": [
         "3D交互",
         "交互设计",
@@ -774,6 +806,8 @@
       "role": "Design & Development",
       "time": "2026.08",
       "date": "2026-08-26",
+      "exhibit": true,
+      "medium": "A low-poly park, day to night, sound",
       "outcome": "A low-poly park with changing light and sound, concept studies, a learning archive, generative visuals, and an abstract globe",
       "tags": [
         "3D Interaction",
@@ -792,6 +826,7 @@
       "coverAlt_zh": "雪夜里的低多边形游乐园，有摩天轮、旋转木马和过山车",
       "role_zh": "设计与开发",
       "outcome_zh": "低多边形公园 · 光影与声音切换 · 概念案例、学习档案、生成视觉与抽象地球仪",
+      "medium_zh": "低多边形公园、从白天到夜晚、声音",
       "tags_zh": [
         "3D交互",
         "创意编程",

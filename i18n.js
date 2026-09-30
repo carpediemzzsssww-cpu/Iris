@@ -131,24 +131,14 @@
 
     // ---- JSON content loading ----
 
+    // i18n.js always lives at the site root, so its own URL tells us where content/ is.
+    // (Counting path segments broke on GitHub Pages, where the site sits under /Iris/.)
+    var siteRoot = (document.currentScript && document.currentScript.src)
+        ? document.currentScript.src.replace(/[^/]*$/, '')
+        : './';
+
     function resolveContentPath(filename) {
-        // Detect if we're in a subdirectory (e.g. case-studies/xxx/)
-        var depth = 0;
-        var path = window.location.pathname;
-        // Count directory segments after the base
-        var segments = path.split('/').filter(function(s) { return s.length > 0; });
-        // Remove the filename segment
-        segments.pop();
-        // Find how deep we are relative to the root
-        // For GitHub Pages, the root might have the repo name
-        // Simple heuristic: look for 'content' folder relative to current page
-        var prefix = '';
-        for (var i = 0; i < segments.length; i++) {
-            prefix += '../';
-        }
-        // If we're at root, no prefix needed
-        if (prefix === '') prefix = './';
-        return prefix + 'content/' + filename;
+        return siteRoot + 'content/' + filename;
     }
 
     function loadJSON(url) {

@@ -59,6 +59,7 @@ function renderStory(fm, story) {
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeHTML(fm.title)} — Iris Zhou</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <meta name="description" content="${escapeHTML(fm.oneLiner)}">
 <link rel="canonical" href="${escapeHTML(canonical)}">
 <meta property="og:type" content="article"><meta property="og:title" content="${escapeHTML(fm.title)} — Iris Zhou">

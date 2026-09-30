@@ -89,27 +89,56 @@
 
     // ---- Footer Component ----
 
+    // Footer: a museum colophon strip, with a small odometer of how far you have scrolled today.
     function renderFooter(config) {
         var c = config.site;
-        var page = getCurrentPage();
-        var linksHtml;
+        return '<div class="container">' +
+            '<div class="footer-museum">' +
+                '<div class="footer-sign">' +
+                    '<p class="footer-name">Iris Zhou</p>' +
+                    '<p class="footer-tagline" data-i18n="footer.tagline">Made by hand in Wuhan, Paris and Shanghai.</p>' +
+                '</div>' +
+                '<p class="footer-walk" id="footerWalk" aria-live="off"></p>' +
+                '<nav class="footer-links" aria-label="Footer">' +
+                    '<a href="mailto:' + c.email + '" class="footer-link" data-i18n="footer.contact">Contact</a>' +
+                    '<a href="' + c.github + '" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>' +
+                    '<a href="' + c.linkedin + '" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
+                    '<a href="colophon.html" class="footer-link" data-i18n="footer.colophon">About this site</a>' +
+                '</nav>' +
+            '</div>' +
+            '<div class="footer-base">' +
+                '<span data-i18n="footer.copyright">&copy; ' + c.copyright + ' Iris Zhou</span>' +
+                '<span data-i18n="footer.setIn">Set in Cormorant Garamond, DM Sans and Compagnon</span>' +
+            '</div>' +
+        '</div>';
+    }
 
-        if (page === 'resume.html') {
-            // Resume page has resume download links instead of GitHub
-            linksHtml =
-                '<a href="mailto:' + c.email + '" class="footer-link" data-i18n="footer.contact">Contact</a>' +
-                '<a href="' + c.resumeEn + '" class="footer-link" target="_blank" rel="noopener noreferrer" data-i18n="footer.resumeEn">Resume EN</a>' +
-                '<a href="' + c.resumeCn + '" class="footer-link" target="_blank" rel="noopener noreferrer" data-i18n="footer.resumeCn">Resume CN</a>';
-        } else {
-            linksHtml =
-                '<a href="mailto:' + c.email + '" class="footer-link" data-i18n="footer.contact">Contact</a>' +
-                '<a href="' + c.github + '" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>';
+    // "You have walked 3.2 m through this museum today": 1,000 px of scrolling = 1 m, kept for the session.
+    function initWalkCounter() {
+        var el = document.getElementById('footerWalk');
+        if (!el) return;
+        var walked = 0;
+        try { walked = parseFloat(sessionStorage.getItem('izWalkedPx')) || 0; } catch (e) {}
+        var lastY = window.scrollY;
+        var queued = false;
+
+        function render() {
+            queued = false;
+            var template = (window.i18n && window.i18n.t('footer.walked')) || 'You have walked {m} m through this museum today.';
+            el.textContent = template.replace('{m}', (walked / 1000).toFixed(1));
         }
 
-        return '<div class="container"><div class="footer-content">' +
-            '<p class="footer-text" data-i18n="footer.copyright">&copy; ' + c.copyright + ' Iris Zhou. Designed &amp; built with intention.</p>' +
-            '<div class="footer-links">' + linksHtml + '</div>' +
-            '</div></div>';
+        window.addEventListener('scroll', function () {
+            walked += Math.abs(window.scrollY - lastY);
+            lastY = window.scrollY;
+            if (!queued) { queued = true; window.requestAnimationFrame(render); }
+        }, { passive: true });
+        window.addEventListener('pagehide', function () {
+            try { sessionStorage.setItem('izWalkedPx', String(Math.round(walked))); } catch (e) {}
+        });
+        window.addEventListener('langChanged', render);
+        window.addEventListener('i18nContentLoaded', render);
+        render();
     }
 
     // ---- Contact Section (index.html only) ----
@@ -202,6 +231,7 @@
         if (footerEl) {
             footerEl.className = 'footer';
             footerEl.innerHTML = renderFooter(config);
+            initWalkCounter();
         }
 
         renderContactLinks(config);

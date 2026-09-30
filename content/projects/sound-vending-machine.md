@@ -6,12 +6,20 @@ title_zh: Sound Vending Machine｜音乐自动贩卖机
 oneLiner: A playful vending machine for unexpected songs and small exchanges between strangers
 oneLiner_zh: 投一枚硬币，收下一罐音乐，再给陌生人留下一首歌
 featured: false
+exhibit: true
+coverImage: assets/project-covers/projects/sound-vending-machine-cover.webp
+coverAlt: A pale yellow vending machine full of music cans, beside a plant and a radio
+coverAlt_zh: 淡黄色的贩卖机里摆满音乐罐头，旁边是一盆植物和一台收音机
+coverWidth: 1280
+coverHeight: 840
 role: Design & Development
 role_zh: 设计与开发
 time: "2026.09"
 date: 2026-09-06
 outcome: Tactile coin-and-knob interaction · collectible music cans · a hidden Song Exchange with custom can designs
 outcome_zh: 投币与旋钮交互 · 独立设计的音乐罐头 · 隐藏的歌曲互换与罐身创作
+medium: A coin, a knob, a can of music
+medium_zh: 一枚硬币、一个旋钮、一罐音乐
 tags: [3D Interaction, Creative Coding, Music Discovery, Interaction Design, Vibe Coding]
 tags_zh: [3D交互, 创意编程, 音乐发现, 交互设计, Vibe Coding]
 storyPage: true

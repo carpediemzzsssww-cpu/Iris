@@ -6,6 +6,7 @@ title_zh: Idea Wonderpark｜灵感游乐园
 oneLiner: An interactive 3D park for wandering through ideas, experiments, and visual stories
 oneLiner_zh: 把想法、实验和视觉故事放进一座可以漫游的 3D 公园
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/wonderpark-cover.webp
 coverAlt: A low-poly amusement park on a snowy night, with a Ferris wheel, a carousel and a roller coaster
 coverAlt_zh: 雪夜里的低多边形游乐园，有摩天轮、旋转木马和过山车
@@ -17,6 +18,8 @@ time: "2026.08"
 date: 2026-08-26
 outcome: A low-poly park with changing light and sound, concept studies, a learning archive, generative visuals, and an abstract globe
 outcome_zh: 低多边形公园 · 光影与声音切换 · 概念案例、学习档案、生成视觉与抽象地球仪
+medium: A low-poly park, day to night, sound
+medium_zh: 低多边形公园、从白天到夜晚、声音
 tags: [3D Interaction, Creative Coding, Spatial UI, Interaction Design, Generative Art]
 tags_zh: [3D交互, 创意编程, 空间界面, 交互设计, 生成艺术]
 storyPage: true

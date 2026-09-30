@@ -1,0 +1,791 @@
+/* ================================================
+   Home: A museum of small worlds
+   № 01 a dark gallery (sticky stage, scripts/home.js turns the arc),
+   a threshold where the lights come up, two reading rooms, and an exit.
+   ================================================ */
+
+.page-home {
+    --night: #14100d;
+    --night-2: #231b16;
+    --gallery-ink: #f4ebdd;
+    --gallery-text: #cbbdae;
+    --gallery-muted: #a39383;
+    --lot-paper: #f3ede3;
+    --lot-ink: #2a221d;
+    --lot-muted: #7c6e62;
+    --gallery-accent: #cdb6dd;
+}
+
+.page-home .main-content {
+    padding-top: 0;
+}
+
+/* ---------- № 01 The gallery ---------- */
+
+.museum-gallery {
+    position: relative;
+    /* Slide under the sticky nav so the stage fills the whole first screen */
+    margin-top: calc(-1 * var(--nav-h, 69px));
+    background: var(--night);
+}
+
+.gallery-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--gallery-text);
+    background: linear-gradient(180deg, var(--night) 0%, var(--night-2) 100%);
+}
+
+/* Ceiling spotlight, floor glow, and a lantern that follows the pointer */
+.gallery-light {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.8s var(--ease-out);
+    background:
+        radial-gradient(34vmax 34vmax at var(--mx, 50%) var(--my, 40%), rgba(255, 224, 182, 0.11), transparent 70%),
+        radial-gradient(64vw 72vh at 50% 14%, rgba(255, 232, 202, 0.13), transparent 62%),
+        radial-gradient(120vw 60vh at 50% 112%, rgba(255, 212, 168, 0.12), transparent 60%);
+}
+
+.lights-on .gallery-light {
+    opacity: 1;
+}
+
+.gallery-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.gallery-intro {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(var(--nav-h, 69px) + 8vh);
+    z-index: 4;
+    padding: 0 var(--space-5);
+    text-align: center;
+    will-change: opacity, transform;
+}
+
+.gallery-intro > * {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+    transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out), filter 1.2s var(--ease-out);
+}
+
+.lights-on .gallery-intro > * {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+.lights-on .gallery-intro > :nth-child(2) { transition-delay: 0.18s; }
+.lights-on .gallery-intro > :nth-child(3) { transition-delay: 0.4s; }
+
+.gallery-kicker {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gallery-muted);
+}
+
+.gallery-title {
+    margin: 18px 0 16px;
+    font-family: var(--font-museum);
+    font-size: clamp(46px, 7.4vw, 112px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    color: var(--gallery-ink);
+}
+
+html[data-lang='zh'] .gallery-title {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+}
+
+.gallery-sub {
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gallery-text);
+}
+
+.gallery-room {
+    position: absolute;
+    left: 40px;
+    top: calc(var(--nav-h, 69px) + 26px);
+    z-index: 5;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gallery-muted);
+    opacity: 0;
+}
+
+/* № reads best in the display serif (the label face has no numero sign) */
+.gallery-room .room-no {
+    margin-right: 6px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--gallery-accent);
+}
+
+.gallery-ring {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+/* A lot: a paper card with a cover, lot number, title and "medium" line */
+.lot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--cw, 220px);
+    padding: calc(var(--cw, 220px) * 0.045);
+    border-radius: 3px;
+    background: var(--lot-paper);
+    color: var(--lot-ink);
+    text-decoration: none;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    cursor: pointer;
+    outline: none;
+}
+
+.lot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 2px;
+    background: #d9d0c3;
+}
+
+.lot-no {
+    display: flex;
+    justify-content: space-between;
+    margin-top: calc(var(--cw, 220px) * 0.055);
+    font-family: var(--font-label);
+    font-size: calc(var(--cw, 220px) * 0.047);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--lot-muted);
+}
+
+.lot-title {
+    margin-top: calc(var(--cw, 220px) * 0.025);
+    font-family: var(--font-museum);
+    font-size: calc(var(--cw, 220px) * 0.088);
+    font-weight: 500;
+    line-height: 1.12;
+    text-wrap: balance;
+}
+
+.lot-medium {
+    margin-top: calc(var(--cw, 220px) * 0.03);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: calc(var(--cw, 220px) * 0.064);
+    font-style: italic;
+    line-height: 1.3;
+    text-wrap: pretty;
+    color: #6d6056;
+}
+
+/* Chinese titles break at spaces and punctuation, not inside a name like 歌剧魅影 */
+html[data-lang='zh'] .lot-title {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+html[data-lang='zh'] .lot-medium {
+    font-family: var(--font-body);
+    font-size: calc(var(--cw, 220px) * 0.052);
+    font-style: normal;
+}
+
+/* Dims the lots away from the spotlight; opacity is cheaper to animate than filter */
+.lot-shade {
+    position: absolute;
+    inset: 0;
+    border-radius: 3px;
+    background: #0d0a08;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.lot:focus-visible {
+    box-shadow: 0 0 0 3px var(--gallery-accent), 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* The last lot is a door to the full archive */
+.lot--archive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(var(--cw, 220px) * 1.28);
+    background: #1d1713;
+    color: var(--gallery-ink);
+    border: 1px solid rgba(239, 230, 216, 0.22);
+}
+
+.lot--archive .lot-no {
+    color: var(--gallery-muted);
+    margin-top: 0;
+}
+
+.lot-archive-count {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: calc(var(--cw, 220px) * 0.42);
+    font-weight: 300;
+    line-height: 1;
+}
+
+.lot--archive .lot-medium {
+    color: var(--gallery-text);
+}
+
+/* A few more works peeking out of the archive drawer */
+.archive-stack {
+    position: relative;
+    height: calc(var(--cw, 220px) * 0.46);
+    margin-top: calc(var(--cw, 220px) * 0.06);
+}
+
+.archive-stack img {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 52%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 3px solid #efe6d8;
+    border-radius: 2px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
+}
+
+.archive-stack img:nth-child(1) { transform: translateX(-92%) rotate(-9deg); }
+.archive-stack img:nth-child(2) { transform: translateX(-50%) translateY(-6%) rotate(2deg); z-index: 1; }
+.archive-stack img:nth-child(3) { transform: translateX(-8%) rotate(10deg); }
+
+.gallery-label {
+    position: absolute;
+    left: 50%;
+    bottom: 6.5vh;
+    z-index: 4;
+    width: min(600px, 88vw);
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.gallery-label.is-shown {
+    opacity: 1;
+}
+
+.gallery-label.is-swapping {
+    opacity: 0;
+    transition-duration: 0.14s;
+}
+
+.label-no {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gallery-muted);
+}
+
+.gallery-label h2 {
+    margin: 6px 0;
+    font-family: var(--font-museum);
+    font-size: clamp(26px, 3.1vw, 40px);
+    font-weight: 400;
+    color: var(--gallery-ink);
+}
+
+html[data-lang='zh'] .gallery-label h2 {
+    letter-spacing: 0.04em;
+}
+
+.gallery-label p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gallery-text);
+}
+
+.gallery-label a {
+    display: inline-block;
+    margin-top: 12px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid currentColor;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gallery-accent);
+    text-decoration: none;
+}
+
+.gallery-hint,
+.gallery-count {
+    position: absolute;
+    bottom: 34px;
+    z-index: 5;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gallery-muted);
+}
+
+.gallery-hint {
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: opacity 0.4s ease;
+}
+
+.hint-line {
+    width: 36px;
+    height: 1px;
+    background: currentColor;
+    transform-origin: left center;
+    animation: hint-breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes hint-breathe {
+    0%, 100% { transform: scaleX(0.35); opacity: 0.5; }
+    50% { transform: scaleX(1); opacity: 1; }
+}
+
+.gallery-count {
+    top: calc(var(--nav-h, 69px) + 26px);
+    right: 40px;
+    bottom: auto;
+    font-variant-numeric: tabular-nums;
+}
+
+.gallery-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    padding: 0;
+    color: var(--gallery-text);
+    --loader-shadow: #17120e;
+    transition: opacity 0.6s ease;
+}
+
+.lights-on .gallery-loader {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Clicking the lit lot: the card grows and the gallery dims before the work opens */
+.gallery-stage.is-leaving .lot:not(.is-entering),
+.gallery-stage.is-leaving .gallery-label,
+.gallery-stage.is-leaving .gallery-intro {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.lot.is-entering {
+    transition: transform 0.55s cubic-bezier(0.7, 0, 0.2, 1);
+    z-index: 200 !important;
+}
+
+/* ---------- Threshold: the lights come up ---------- */
+
+/* The quote holds still in the middle of the screen while the light rises behind it */
+.museum-threshold {
+    --lift: 0;
+    position: relative;
+    min-height: 170vh;
+    padding: 32vh var(--space-5) 30vh;
+    /* Night warms through lamplight before it reaches paper */
+    background: linear-gradient(180deg, #1b1511 0%, #2e2219 18%, #6a5444 42%, #c4ae95 68%, var(--bg) 100%);
+}
+
+/* In dark mode the rooms stay dark, so the threshold just deepens and the quote stays light */
+html[data-theme='dark'] .museum-threshold {
+    background: linear-gradient(180deg, #1b1511 0%, var(--bg) 100%);
+}
+
+html[data-theme='dark'] .threshold-quote {
+    color: var(--text);
+}
+
+.threshold-quote {
+    position: sticky;
+    top: calc(50vh - 1.4em);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-museum);
+    font-size: clamp(28px, 4vw, 54px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.28;
+    text-align: center;
+    color: color-mix(in oklab, #efe6d8, var(--text) calc(var(--lift) * 100%));
+}
+
+.threshold-quote em {
+    color: color-mix(in oklab, var(--gallery-accent), var(--accent) calc(var(--lift) * 100%));
+}
+
+html[data-lang='zh'] .threshold-quote {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+}
+
+/* ---------- Reading rooms ---------- */
+
+.museum-room {
+    padding: clamp(80px, 12vh, 140px) 0;
+    background: var(--bg);
+}
+
+.room-path {
+    padding-top: clamp(40px, 6vh, 72px);
+}
+
+.room-head {
+    max-width: 760px;
+    margin: 0 auto clamp(48px, 7vh, 80px);
+    text-align: center;
+}
+
+.room-no {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+}
+
+.room-title {
+    margin: 14px 0 18px;
+    font-family: var(--font-museum);
+    font-size: clamp(40px, 5.6vw, 76px);
+    font-weight: 300;
+    line-height: 1.05;
+}
+
+html[data-lang='zh'] .room-title {
+    font-weight: 400;
+    letter-spacing: 0.06em;
+}
+
+.room-lead {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.room-sub {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* Specimens: one number, one piece of work */
+.specimens {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border);
+}
+
+.specimen {
+    display: grid;
+    grid-template-columns: minmax(200px, 300px) 1fr;
+    gap: clamp(20px, 4vw, 56px);
+    align-items: baseline;
+    padding: clamp(28px, 4vh, 44px) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.specimen-figure {
+    margin: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(54px, 7vw, 92px);
+    font-weight: 300;
+    line-height: 0.9;
+    white-space: nowrap;
+    font-variant-numeric: lining-nums;
+    color: var(--text);
+}
+
+.specimen-unit {
+    font-family: var(--font-label);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.specimen-meta {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.specimen-title {
+    margin: 6px 0 8px;
+    font-family: var(--font-museum);
+    font-size: clamp(24px, 2.4vw, 30px);
+    font-weight: 500;
+}
+
+.specimen-desc {
+    max-width: 560px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.specimen-link,
+.exit-irisy {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 0 0 2px;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    background: none;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.specimen-link:hover,
+.exit-irisy:hover {
+    color: var(--text);
+}
+
+/* The path: the curator's portrait beside the timeline */
+.path-grid {
+    display: grid;
+    grid-template-columns: minmax(240px, 340px) 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+}
+
+.curator {
+    position: sticky;
+    top: calc(var(--nav-h, 69px) + 32px);
+    margin: 0;
+}
+
+.curator img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: var(--shadow-lg);
+}
+
+.curator-label {
+    display: grid;
+    gap: 4px;
+    margin-top: 16px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+}
+
+.curator-role {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.curator-name {
+    font-family: var(--font-museum);
+    font-size: 26px;
+}
+
+.curator-note {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.path-heading {
+    margin: 0 0 20px;
+    font-family: var(--font-museum);
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.path-timeline .timeline + .path-heading {
+    margin-top: 48px;
+}
+
+.toolkit {
+    margin-top: clamp(56px, 8vh, 96px);
+}
+
+/* ---------- Exit ---------- */
+
+.museum-exit {
+    padding: clamp(96px, 16vh, 180px) 0;
+    text-align: center;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+}
+
+.exit-title {
+    margin: 14px 0 18px;
+    font-family: var(--font-museum);
+    font-size: clamp(44px, 6.6vw, 96px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+}
+
+html[data-lang='zh'] .exit-title {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+}
+
+.exit-sub {
+    max-width: 560px;
+    margin: 0 auto 24px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.museum-exit .contact-links {
+    margin-top: 4px;
+}
+
+.exit-irisy {
+    margin-top: 32px;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 860px) {
+    .path-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .curator {
+        position: relative;
+        top: 0;
+        width: min(360px, 100%);
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 720px) {
+    .specimen {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .gallery-room {
+        left: 16px;
+    }
+
+    .gallery-hint {
+        left: 16px;
+        bottom: 18px;
+    }
+
+    .gallery-count {
+        right: 16px;
+    }
+
+    .gallery-intro {
+        top: calc(var(--nav-h, 60px) + 6vh);
+    }
+
+    .gallery-label {
+        bottom: 9vh;
+    }
+}
+
+/* ---------- Reduced motion: a still gallery, laid out as a grid ---------- */
+
+.museum-gallery.is-reduced {
+    height: auto !important;
+}
+
+.is-reduced .gallery-stage {
+    position: relative;
+    height: auto;
+    padding: calc(var(--nav-h, 69px) + 56px) var(--space-5) 80px;
+}
+
+.is-reduced .gallery-intro {
+    position: relative;
+    top: 0;
+}
+
+.is-reduced .gallery-ring {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-6);
+    max-width: 1200px;
+    margin: 56px auto 0;
+    --cw: 240px;
+}
+
+.is-reduced .lot {
+    position: relative;
+    width: auto;
+    transform: none !important;
+}
+
+.is-reduced .lot-shade,
+.is-reduced .gallery-label,
+.is-reduced .gallery-count,
+.is-reduced .gallery-hint,
+.is-reduced .gallery-room {
+    display: none;
+}

@@ -1,0 +1,43 @@
+{
+  "translations": {
+    "colophon.title": { "en": "About this site", "zh": "本站说明" },
+    "colophon.subtitle": { "en": "How this small museum was put together.", "zh": "这座小陈列馆是怎么搭起来的。" },
+
+    "colophon.idea.title": { "en": "The idea", "zh": "想法" },
+    "colophon.idea.body": { "en": "Almost everything I make ends up as a small world: a music box with an opera house inside, a tin for little things, a garden that keeps its own calendar, a scroll you walk through with a lantern. So I laid this site out like a museum. The works stand on an arc under one light, numbered like lots in an auction catalogue, and each one gets a wall label that says what it is made of. One room holds things you can play; another holds things that think.", "zh": "我做的东西，最后大多成了一个小世界：一只装着歌剧院的音乐盒，一个收小东西的铁盒，一座有自己花历的花园，一幅要提着灯走进去的画卷。所以我把这个网站布置成一座陈列馆：作品在一束光下沿着弧线排开，像拍卖图录一样编号，每件配一张展签，写着它是用什么做成的。一间展厅放可以玩的东西，另一间放会思考的东西。" },
+
+    "colophon.type.title": { "en": "Typefaces", "zh": "字体" },
+    "colophon.type.intro": { "en": "Six typefaces, all under open licenses.", "zh": "六款字体，全部是开源授权。" },
+    "colophon.type.cormorant": { "en": "Display. Headlines and the gallery title.", "zh": "标题。首页大标题和各个展厅的标题。" },
+    "colophon.type.dmsans": { "en": "Text. Everything you read at length.", "zh": "正文。所有需要慢慢读的文字。" },
+    "colophon.type.compagnon": { "en": "Museum labels. Lot numbers, dates and small captions.", "zh": "展签。编号、日期和小字说明。" },
+    "colophon.type.dmmono": { "en": "Interface details.", "zh": "界面里的小字。" },
+    "colophon.type.xiangcui": { "en": "Chinese display. It loads only in Chinese, and only the characters this site uses.", "zh": "中文标题。只在中文模式下加载，而且只包含本站用到的字。" },
+    "colophon.type.noto": { "en": "Chinese text.", "zh": "中文正文。" },
+
+    "colophon.color.title": { "en": "Colors", "zh": "颜色" },
+    "colophon.color.night": { "en": "Night, the gallery", "zh": "夜，展厅" },
+    "colophon.color.label": { "en": "Label paper", "zh": "展签纸" },
+    "colophon.color.cream": { "en": "Cream, the reading rooms", "zh": "奶油白，阅读室" },
+    "colophon.color.ink": { "en": "Ink", "zh": "墨" },
+    "colophon.color.plum": { "en": "Plum, the accent", "zh": "梅子紫，点缀色" },
+    "colophon.color.sage": { "en": "Sage", "zh": "鼠尾草绿" },
+
+    "colophon.details.title": { "en": "Small details", "zh": "小细节" },
+    "colophon.details.lantern": { "en": "In the gallery, your pointer is a lantern: the light follows it.", "zh": "展厅里，你的鼠标就是一盏灯，光会跟着它走。" },
+    "colophon.details.lots": { "en": "Lots are numbered newest first, in the order I made them.", "zh": "展品按我做它们的时间编号，最新的在最前面。" },
+    "colophon.details.lights": { "en": "Between the gallery and the reading rooms, the lights come up.", "zh": "从展厅走进阅读室的时候，灯会慢慢亮起来。" },
+    "colophon.details.moon": { "en": "The loader is a small moon walking through its phases in steps, a nod to the hand-made jitter in 1001 States of the Moon.", "zh": "加载提示是一枚一格一格走过月相的小月亮，致敬《月亮的一千零一种状态》里的手作抖动。" },
+    "colophon.details.walk": { "en": "The footer keeps count of how far you have scrolled today, at 1,000 pixels to the meter.", "zh": "页脚会记下你今天滚动了多远，1,000 像素算 1 米。" },
+    "colophon.details.irisy": { "en": "If you would rather ask than read, Irisy, my digital twin, waits in the corner.", "zh": "不想读的话，右下角的 Irisy 是我的数字分身，可以直接问她。" },
+
+    "colophon.built.title": { "en": "How it is built", "zh": "怎么做的" },
+    "colophon.built.body": { "en": "Hand-written HTML, CSS and JavaScript, with no framework. Words live in Markdown and JSON, and a few small Node scripts turn them into pages. The site is hosted on GitHub Pages. I build it with Claude Code and Codex as collaborators.", "zh": "手写的 HTML、CSS 和 JavaScript，没有用框架。文字放在 Markdown 和 JSON 里，几个小小的 Node 脚本把它们变成页面。网站托管在 GitHub Pages 上。我和 Claude Code、Codex 一起搭它。" },
+
+    "colophon.credits.title": { "en": "Credits", "zh": "致谢" },
+    "colophon.credits.body": { "en": "The covers are screenshots of my own works. All fonts are used under the SIL Open Font License; the license ships with the site.", "zh": "封面都是我自己作品的截图。所有字体都按 SIL 开源字体许可使用，许可文件随网站一起发布。" },
+    "colophon.credits.license": { "en": "Read the font license", "zh": "查看字体许可" },
+
+    "colophon.back": { "en": "Back to the museum", "zh": "回到陈列馆" }
+  }
+}

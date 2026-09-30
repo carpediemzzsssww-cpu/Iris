@@ -68,6 +68,9 @@ function shapeProject(fm) {
         time: fm.time,
         // Optional YYYY-MM-DD, used only to order projects within a month.
         ...(fm.date ? { date: String(fm.date) } : {}),
+        // Home page gallery: `exhibit: true` puts the work on display; `medium` is its museum-label line.
+        ...(fm.exhibit === true ? { exhibit: true } : {}),
+        ...(fm.medium ? { medium: fm.medium } : {}),
         outcome: fm.outcome,
         tags: fm.tags,
         links: collectLinks(fm),

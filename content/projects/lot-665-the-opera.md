@@ -6,6 +6,7 @@ title_zh: "Lot 665 · 歌剧魅影音乐盒"
 oneLiner: "An 1881 Paris music box: wind it up, and a tiny opera house performs inside"
 oneLiner_zh: 一只 1881 年的巴黎音乐盒：拧紧发条，盒子里的微缩歌剧院就开演
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/lot-665-the-opera-cover.webp
 coverAlt: The open music box, with a monkey automaton on the lid, a crystal chandelier, red curtains and rows of seats
 coverAlt_zh: 打开的音乐盒：盒顶的猴子、水晶吊灯、红色幕布和一排排座椅
@@ -17,6 +18,8 @@ time: "2026.09"
 date: 2026-09-27
 outcome: Three turns of the key wake it · a chandelier, stalls and a lake stage unfold · 16 hidden medallions · a masquerade when you find them all
 outcome_zh: 上满三圈发条才会醒 · 吊灯、池座和地下湖舞台依次展开 · 16 枚藏起来的圆章 · 集齐开一场假面舞会
+medium: Three.js, a live recording, 16 hidden medallions
+medium_zh: Three.js、一段现场录音、16 枚藏起来的圆章
 tags: [3D Interaction, Creative Coding, Narrative Design, Three.js]
 tags_zh: [3D交互, 创意编程, 叙事设计, Three.js]
 storyPage: true

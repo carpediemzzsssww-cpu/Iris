@@ -6,6 +6,7 @@ title_zh: TIN｜把日常装进去
 oneLiner: A private tin box for photos, notes, and the little things of your day
 oneLiner_zh: 一只私人铁盒：把照片、字条和日常小物一件件收进去
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/tin-cover.webp
 coverAlt: An open tin filled with photos, a ticket stub, a key, an orchid and a small bear, on a red knit background
 coverAlt_zh: 打开的铁盒里放着照片、票根、钥匙、兰花和小熊，背景是红色针织纹
@@ -17,6 +18,8 @@ time: "2026.09"
 date: 2026-09-24
 outcome: 40 original objects in 6 drawers · 5 themes · photos and notes stay on your device · export the finished tin as PNG
 outcome_zh: 6 类抽屉、40 件原创小物 · 5 套主题 · 照片和字条只存在本机 · 装好的铁盒可导出 PNG
+medium: Forty objects, five themes, kept on your device
+medium_zh: 四十件小物、五套主题、只存在你的设备里
 tags: [3D Interaction, Interaction Design, Emotional Design, Local-first]
 tags_zh: [3D交互, 交互设计, 情感化设计, 本地优先]
 storyPage: true

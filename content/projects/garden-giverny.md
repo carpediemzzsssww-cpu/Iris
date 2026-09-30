@@ -6,6 +6,7 @@ title_zh: GARDEN｜莫奈花园
 oneLiner: A painterly Giverny-inspired garden to wander, plant, and watch through a year
 oneLiner_zh: 一座参考吉维尼的三维花园：可以漫游、种花，看它走过一整年
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/garden-giverny-cover.webp
 coverAlt: A painterly 3D garden with flower beds, a water-lily pond, a green bridge and a brick house
 coverAlt_zh: 三维花园：花圃、睡莲池、绿色拱桥和砖房
@@ -17,6 +18,8 @@ time: "2026.09"
 date: 2026-09-19
 outcome: 20 plantable flowers on a Giverny bloom calendar · light from 05:00 to 22:00 · walk into the house and greenhouse · room for 2,400 plantings
 outcome_zh: 20 种花按吉维尼花历开放 · 05:00 到 22:00 的光线 · 能走进粉屋和温室 · 最多 2,400 处种植与布置
+medium: Three.js, twenty flowers, one whole year
+medium_zh: Three.js、二十种花、一整年
 tags: [3D Interaction, Creative Coding, Spatial UI, Three.js]
 tags_zh: [3D交互, 创意编程, 空间界面, Three.js]
 storyPage: true

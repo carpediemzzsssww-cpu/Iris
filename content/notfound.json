@@ -1,0 +1,10 @@
+{
+  "translations": {
+    "nf.no": { "en": "Lot 404", "zh": "展品 404" },
+    "nf.title": { "en": "Nothing on display here", "zh": "这里什么也没有陈列" },
+    "nf.medium": { "en": "An empty plinth, a wrong turn.", "zh": "一座空展台，一次走错的路。" },
+    "nf.body": { "en": "This room may have moved, or it was never built. The rest of the museum is still open.", "zh": "这间展厅可能搬走了，也可能从来没有建过。陈列馆的其他地方都还开着。" },
+    "nf.home": { "en": "Back to the museum", "zh": "回到陈列馆" },
+    "nf.archive": { "en": "Browse the archive", "zh": "翻翻作品档案" }
+  }
+}

@@ -6,6 +6,7 @@ title_zh: 生日不打烊
 oneLiner: A cozy 3D birthday room where little discoveries lead to a wish
 oneLiner_zh: 一间随时可以回来的 3D 生日小屋，在探索中收集回忆、点亮心愿
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/birthday-stays-open-cover.jpg
 coverAlt: A warmly lit 3D birthday room with a sofa, books, keepsakes, and a cake
 coverAlt_zh: 暖光中的 3D 生日小屋，摆着沙发、书、回忆物件与蛋糕
@@ -17,6 +18,8 @@ time: "2026.09"
 date: 2026-09-12
 outcome: Seven weather settings · interactive keepsakes · memory discoveries that unlock a cake, a wish, and a letter
 outcome_zh: 七种天气 · 可探索的回忆物件 · 收集回忆后解锁蛋糕、许愿与信件
+medium: Seven weathers, keepsakes, one letter
+medium_zh: 七种天气、一屋子回忆、一封信
 tags: [3D Interaction, Creative Coding, Narrative Design, Three.js, Emotional Design]
 tags_zh: [3D交互, 创意编程, 叙事设计, Three.js, 情感化设计]
 storyPage: true

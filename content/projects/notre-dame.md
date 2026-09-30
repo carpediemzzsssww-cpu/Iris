@@ -6,6 +6,7 @@ title_zh: 巴黎圣母院 · 石与光之间
 oneLiner: A quiet first-person walk through Notre-Dame, from the parvis into stained-glass light
 oneLiner_zh: 第一人称走进巴黎圣母院：从前广场一直走到玫瑰窗的光里
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/notre-dame-cover.webp
 coverAlt: The west facade of Notre-Dame seen from the parvis, with the rose window above the portals
 coverAlt_zh: 从前广场仰望巴黎圣母院西立面和门廊上方的玫瑰窗
@@ -17,6 +18,8 @@ time: "2026.09"
 date: 2026-09-07
 outcome: First-person walk on desktop and touch · stained-glass light and sculpture · map, guided tour and bilingual notes · an artistic study, not a digital twin
 outcome_zh: 桌面和触屏都能第一人称漫游 · 玫瑰窗的光与雕塑 · 地图、导览和中英文注释 · 一次艺术研究，不是数字孪生
+medium: Blender, stone, stained-glass light
+medium_zh: Blender、石头、玫瑰窗的光
 tags: [3D Interaction, Spatial UI, Three.js, Creative Coding]
 tags_zh: [3D交互, 空间界面, Three.js, 创意编程]
 storyPage: true

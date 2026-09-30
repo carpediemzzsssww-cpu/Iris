@@ -3,3 +3,7 @@
 
 # Claude Code local settings (dev-only)
 .claude/
+
+# Local-only tools: kept on disk, not published
+content-editor.html
+alter-widget-irisy.html

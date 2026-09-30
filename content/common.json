@@ -6,8 +6,12 @@
   "nav.footprints": { "en": "Footprints", "zh": "Footprints" },
   "nav.about": { "en": "About", "zh": "About" },
 
-  "footer.copyright": { "en": "\u00a9 2026 Iris Zhou. Designed & built with intention.", "zh": "\u00a9 2026 Iris Zhou. \u81ea\u5df1\u8bbe\u8ba1\uff0c\u81ea\u5df1\u642d\u3002" },
+    "footer.copyright": { "en": "© 2026 Iris Zhou", "zh": "© 2026 Iris Zhou" },
   "footer.contact": { "en": "Contact", "zh": "\u8054\u7cfb\u6211" },
+    "footer.tagline": { "en": "Made by hand in Wuhan, Paris and Shanghai.", "zh": "在武汉、巴黎和上海，一点点手作出来。" },
+    "footer.walked": { "en": "You have walked {m} m through this museum today.", "zh": "今天你在这座陈列馆里走了 {m} 米。" },
+    "footer.colophon": { "en": "About this site", "zh": "本站说明" },
+    "footer.setIn": { "en": "Set in Cormorant Garamond, DM Sans and Compagnon", "zh": "字体：Cormorant Garamond、DM Sans、Compagnon 与香萃刻宋" },
 
   "theme.switchDark": { "en": "Switch to dark mode", "zh": "\u5207\u6362\u6df1\u8272\u6a21\u5f0f" },
   "theme.switchLight": { "en": "Switch to light mode", "zh": "\u5207\u6362\u6d45\u8272\u6a21\u5f0f" },
@@ -16,6 +20,7 @@
   "btn.getInTouch": { "en": "Get in Touch", "zh": "\u627e\u6211\u804a\u804a" },
   "btn.explore": { "en": "Explore \u2192", "zh": "\u53bb\u770b\u770b \u2192" },
   "btn.viewFootprints": { "en": "View My Footprints", "zh": "\u770b\u770b\u6211\u53bb\u8fc7\u54ea\u91cc" },
+    "loader.text": { "en": "Bringing the pieces in…", "zh": "正在把展品搬进来…" },
 
   "lang.switchToChinese": { "en": "Switch to Chinese", "zh": "\u5207\u6362\u4e3a\u4e2d\u6587" },
   "lang.switchToEnglish": { "en": "Switch to English", "zh": "Switch to English" }

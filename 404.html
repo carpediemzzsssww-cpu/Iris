@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- GitHub Pages serves this page for any missing path, at any depth, so relative URLs are pinned to the site root.
+         The base sits in the markup so the browser's preloader resolves against it too. -->
+    <base href="/Iris/">
+    <script>
+    // Local previews serve the site from "/".
+    if (window.location.pathname.indexOf('/Iris/') !== 0) document.querySelector('base').href = '/';
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Nothing on display here - Iris Zhou</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <script src="scripts/init-theme-lang.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/notfound.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&family=DM+Sans:wght@400;500&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="page-404 nav-over-hero">
+    <nav id="site-nav"></nav>
+    <div id="site-mobile-drawer"></div>
+
+    <main class="main-content nf">
+        <section class="nf-room" id="nfRoom">
+            <div class="nf-light" aria-hidden="true"></div>
+            <div class="nf-plinth" aria-hidden="true">
+                <span class="nf-plinth-top"></span>
+                <span class="nf-plinth-body"></span>
+            </div>
+            <div class="nf-label">
+                <p class="nf-no" data-i18n="nf.no">Lot 404</p>
+                <h1 class="nf-title" data-i18n="nf.title">Nothing on display here</h1>
+                <p class="nf-medium" data-i18n="nf.medium">An empty plinth, a wrong turn.</p>
+                <p class="nf-body" data-i18n="nf.body">This room may have moved, or it was never built. The rest of the museum is still open.</p>
+                <p class="nf-links">
+                    <a href="index.html" data-i18n="nf.home">Back to the museum</a>
+                    <a href="projects.html" data-i18n="nf.archive">Browse the archive</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="components.js"></script>
+    <script src="i18n.js"></script>
+    <script>
+    window.i18n.loadContent(['notfound.json']);
+    // The lantern: the light follows the pointer, as in the gallery.
+    (function () {
+        var room = document.getElementById('nfRoom');
+        room.addEventListener('pointermove', function (e) {
+            if (e.pointerType !== 'mouse') return;
+            room.style.setProperty('--mx', e.clientX + 'px');
+            room.style.setProperty('--my', e.clientY + 'px');
+        });
+    })();
+    </script>
+    <script src="scripts.js" defer></script>
+</body>
+</html>

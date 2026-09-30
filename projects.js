@@ -20,8 +20,32 @@ function getPrimaryProjectLink(project) {
     return project.links.caseStudy || project.links.demo || project.links.figma || project.links.repo || '#';
 }
 
+// Most-used tags first, so the short visible row covers most projects.
 function computeAllTags() {
-    return [...new Set(allProjects.flatMap(p => p.tags))].sort();
+    const counts = new Map();
+    allProjects.forEach(p => p.tags.forEach(tag => counts.set(tag, (counts.get(tag) || 0) + 1)));
+    return [...counts.keys()].sort((a, b) => (counts.get(b) - counts.get(a)) || a.localeCompare(b));
+}
+
+// Tags are stored in English; Chinese labels come from each project's tags_zh,
+// then from the "tag.<name>" entries in projects-ui.json for older projects.
+let tagZh = {};
+
+function computeTagTranslations() {
+    tagZh = {};
+    allProjects.forEach(p => {
+        if (!Array.isArray(p.tags_zh)) return;
+        p.tags.forEach((tag, i) => { if (p.tags_zh[i] && !tagZh[tag]) tagZh[tag] = p.tags_zh[i]; });
+    });
+}
+
+function tagLabel(tag) {
+    if (!window.i18n || window.i18n.getLang() !== 'zh') return tag;
+    return tagZh[tag] || window.i18n.t('tag.' + tag) || tag;
+}
+
+function escapeAttr(value) {
+    return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
 // State
@@ -130,6 +154,7 @@ async function loadProjectsData() {
         var data = await response.json();
         allProjects = Array.isArray(data.projects) ? data.projects : [];
         allTags = computeAllTags();
+        computeTagTranslations();
     } catch (err) {
         console.error('Failed to load projects-data.json:', err);
         allProjects = [];
@@ -145,14 +170,24 @@ async function initProjectsPage() {
     updateProjects();
 }
 
-// Render tag filters
+// Render tag filters: the most-used tags stay visible, the rest fold behind "More tags".
+const VISIBLE_TAGS = 10;
+let showAllTags = false;
+
 function renderTagFilters() {
     const tagFiltersContainer = document.getElementById('tagFilters');
     if (!tagFiltersContainer) return;
-    
-    tagFiltersContainer.innerHTML = allTags.map(tag => `
-        <button class="tag-filter" data-tag="${tag}">${tag}</button>
-    `).join('');
+
+    const t = key => (window.i18n && window.i18n.t(key)) || '';
+    const button = tag => `<button class="tag-filter${currentFilters.tags.includes(tag) ? ' active' : ''}" type="button" data-tag="${escapeAttr(tag)}" aria-pressed="${currentFilters.tags.includes(tag)}">${tagLabel(tag)}</button>`;
+    // Keep any active tag visible even when the list is folded.
+    const visible = allTags.filter((tag, i) => showAllTags || i < VISIBLE_TAGS || currentFilters.tags.includes(tag));
+    const hiddenCount = allTags.length - visible.length;
+    const toggle = allTags.length > VISIBLE_TAGS
+        ? `<button class="tag-more" type="button" aria-expanded="${showAllTags}">${showAllTags ? (t('projects.fewerTags') || 'Fewer tags') : (t('projects.moreTags') || 'More tags') + ' +' + hiddenCount}</button>`
+        : '';
+
+    tagFiltersContainer.innerHTML = visible.map(button).join('') + toggle;
 }
 
 // Render projects
@@ -173,14 +208,14 @@ function renderProjects(projects) {
 
     grid.innerHTML = projects.map(project => {
         const projectLink = getPrimaryProjectLink(project);
+        // Internal work with nothing public to open is shown as a plain card, not a dead link.
+        const isStatic = projectLink === '#';
         const isExternal = /^https?:\/\//.test(projectLink) || /\.pdf($|[?#])/i.test(projectLink);
         const externalAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
         const hasCoverImage = Boolean(project.coverImage);
-        const safeCoverImage = hasCoverImage ? project.coverImage.replace(/'/g, '%27') : '';
-        const cardStyle = hasCoverImage
-            ? `style="--project-cover-image: url('${safeCoverImage}');"`
-            : '';
-        const tagsMarkup = project.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('');
+        // Covers load when the card nears the viewport (see observeCovers).
+        const coverAttr = hasCoverImage ? `data-cover="${escapeAttr(project.coverImage)}"` : '';
+        const tagsMarkup = project.tags.map(tag => `<span class="tag-pill">${tagLabel(tag)}</span>`).join('');
         const viewText = window.i18n && window.i18n.getLang() === 'zh' ? '\u67e5\u770b \u2192' : 'View \u2192';
         const contentMarkup = `
             <div class="project-card-content">
@@ -190,13 +225,16 @@ function renderProjects(projects) {
                     ${tagsMarkup}
                 </div>
                 <p class="project-outcome">${getLocalizedField(project, 'outcome')}</p>
-                <span class="project-view">${viewText}</span>
+                ${isStatic ? '' : `<span class="project-view">${viewText}</span>`}
             </div>
         `;
+        const tag = isStatic ? 'article' : 'a';
+        const linkAttrs = isStatic ? '' : `href="${projectLink}" ${externalAttrs}`;
+        const classes = `project-card ${project.featured ? 'featured' : ''} ${hasCoverImage ? 'has-cover' : ''} ${isStatic ? 'is-static' : ''} reveal`;
 
         if (hasCoverImage) {
             return `
-        <a href="${projectLink}" class="project-card ${project.featured ? 'featured' : ''} has-cover reveal" ${externalAttrs} ${cardStyle}>
+        <${tag} ${linkAttrs} class="${classes}" ${coverAttr}>
             <span class="project-card-hero" aria-hidden="true">
                 <span class="project-card-media"></span>
                 <span class="project-card-overlay"></span>
@@ -204,16 +242,18 @@ function renderProjects(projects) {
             <div class="project-card-body">
                 ${contentMarkup}
             </div>
-        </a>
+        </${tag}>
     `;
         }
 
         return `
-        <a href="${projectLink}" class="project-card ${project.featured ? 'featured' : ''} reveal" ${externalAttrs}>
+        <${tag} ${linkAttrs} class="${classes}">
             ${contentMarkup}
-        </a>
+        </${tag}>
     `;
     }).join('');
+
+    observeCovers(grid);
 
     if (window.portfolioUtils && typeof window.portfolioUtils.setupProjectCardMicroInteractions === 'function') {
         window.portfolioUtils.setupProjectCardMicroInteractions(grid);
@@ -225,6 +265,40 @@ function renderProjects(projects) {
             setTimeout(() => el.classList.add('active'), idx * 50);
         });
     }, 100);
+}
+
+// Load each cover once its card is within ~400px of the viewport, then fade it in.
+let coverObserver = null;
+
+function showCover(card) {
+    const src = card.getAttribute('data-cover');
+    if (!src) return;
+    card.removeAttribute('data-cover');
+    const img = new Image();
+    img.decoding = 'async';
+    img.onload = () => {
+        card.style.setProperty('--project-cover-image', `url('${src.replace(/'/g, '%27')}')`);
+        card.classList.add('cover-ready');
+    };
+    img.src = src;
+}
+
+function observeCovers(scope) {
+    const cards = scope.querySelectorAll('[data-cover]');
+    if (!('IntersectionObserver' in window)) {
+        cards.forEach(showCover);
+        return;
+    }
+    if (!coverObserver) {
+        coverObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                coverObserver.unobserve(entry.target);
+                showCover(entry.target);
+            });
+        }, { rootMargin: '400px 0px' });
+    }
+    cards.forEach(card => coverObserver.observe(card));
 }
 
 // Filter and sort projects
@@ -239,7 +313,7 @@ function updateProjects() {
             (p.title_zh || '').includes(search) ||
             (p.oneLiner || '').toLowerCase().includes(search) ||
             (p.oneLiner_zh || '').includes(search) ||
-            p.tags.some(t => t.toLowerCase().includes(search))
+            p.tags.some(t => t.toLowerCase().includes(search) || tagLabel(t).includes(search))
         );
     }
     
@@ -271,19 +345,21 @@ function setupEventListeners() {
     const tagFilters = document.getElementById('tagFilters');
     if (tagFilters) {
         tagFilters.addEventListener('click', (e) => {
-            if (e.target.classList.contains('tag-filter')) {
-                const tag = e.target.dataset.tag;
-                
-                if (currentFilters.tags.includes(tag)) {
-                    currentFilters.tags = currentFilters.tags.filter(t => t !== tag);
-                    e.target.classList.remove('active');
-                } else {
-                    currentFilters.tags.push(tag);
-                    e.target.classList.add('active');
-                }
-                
-                updateProjects();
+            if (e.target.closest('.tag-more')) {
+                showAllTags = !showAllTags;
+                renderTagFilters();
+                return;
             }
+            const button = e.target.closest('.tag-filter');
+            if (!button) return;
+            const tag = button.dataset.tag;
+            if (currentFilters.tags.includes(tag)) {
+                currentFilters.tags = currentFilters.tags.filter(t => t !== tag);
+            } else {
+                currentFilters.tags.push(tag);
+            }
+            renderTagFilters();
+            updateProjects();
         });
     }
     
@@ -304,4 +380,12 @@ if (document.readyState === 'loading') {
     initProjectsPage();
 }
 
-window.addEventListener('langChanged', function () { updateProjects(); });
+// Tag labels and the "More tags" text live in projects-ui.json, which can arrive after the data.
+// Only re-render once the data is in, so the loader never flashes "no results".
+function rerenderLocalized() {
+    if (!allProjects.length) return;
+    renderTagFilters();
+    updateProjects();
+}
+window.addEventListener('langChanged', rerenderLocalized);
+window.addEventListener('i18nContentLoaded', rerenderLocalized);

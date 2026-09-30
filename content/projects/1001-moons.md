@@ -6,6 +6,7 @@ title_zh: 月亮的一千零一种状态
 oneLiner: A Mid-Autumn short where a full stop tries fifteen ways to become the moon
 oneLiner_zh: 中秋短片：一个句号试了十五种办法，想成为今晚的月亮
 featured: false
+exhibit: true
 coverImage: assets/project-covers/projects/1001-moons-cover.webp
 coverAlt: A moon inside a large dark circle on textured paper, beside the line There are a thousand and one moons tonight
 coverAlt_zh: 纸上的深色圆里有一轮月亮，旁边写着 There are a thousand and one moons tonight
@@ -17,6 +18,8 @@ time: "2026.09"
 date: 2026-09-25
 outcome: 16 scenes in a single HTML file · Canvas 2D at 24 fps with 12 fps hand-drawn jitter · an original waltz whose instruments change with the story
 outcome_zh: 16 幕，一个 HTML 文件 · Canvas 2D，24 fps 运动叠 12 fps 手绘抖动 · 原创圆舞曲，乐器跟着故事换
+medium: Canvas 2D, 24 fps, an original waltz
+medium_zh: Canvas 2D、24 fps、一首原创圆舞曲
 tags: [Creative Coding, Narrative Design, Generative Art]
 tags_zh: [创意编程, 叙事设计, 生成艺术]
 storyPage: true

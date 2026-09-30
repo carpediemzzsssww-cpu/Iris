@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Iris Zhou</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <script src="scripts/init-theme-lang.js"></script>
     <meta name="description" content="Project portfolio by Iris Zhou: AI product explorations, design systems, and practical prototypes with measurable outcomes.">
     <link rel="canonical" href="https://carpediemzzsssww-cpu.github.io/Iris/projects.html">
@@ -54,7 +57,7 @@
                     </div>
                     <div class="toolbar-filters">
                         <div class="filter-group">
-                            <label class="filter-label">Tags:</label>
+                            <label class="filter-label" data-i18n="projects.tags">Tags:</label>
                             <div class="tag-filters" id="tagFilters"></div>
                         </div>
                         <div class="filter-group">
@@ -74,7 +77,10 @@
         <section class="projects-list-section">
             <div class="container">
                 <div class="projects-grid" id="allProjectsGrid">
-                    <!-- Projects loaded via JavaScript -->
+                    <div class="iz-loader" role="status" aria-live="polite">
+                        <span class="iz-moon" aria-hidden="true"></span>
+                        <span class="iz-loader-text" data-i18n="loader.text">Bringing the pieces in&hellip;</span>
+                    </div>
                 </div>
                 <div class="no-results" id="noResults" style="display: none;">
                     <p data-i18n="projects.noResults">No projects found matching your criteria.</p>
@@ -92,7 +98,7 @@
     window.i18n.loadContent(['projects-ui.json']);
     </script>
     <script src="scripts.js" defer></script>
-    <script src="projects.js?v=20260929-latest-first" defer></script>
+    <script src="projects.js?v=20260930-archive" defer></script>
     <script src="alter-widget.js" defer></script>
 </body>
 </html>
