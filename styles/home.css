@@ -179,6 +179,7 @@
 .gallery-sub {
     max-width: 520px;
     margin: 0 auto;
+    text-wrap: balance;
     font-size: 15px;
     line-height: 1.7;
     color: var(--gallery-text);
@@ -737,6 +738,7 @@ html[data-lang='zh'] .threshold-quote em {
 
 .room-lead {
     font-size: 17px;
+    text-wrap: balance;
     line-height: 1.7;
     color: var(--muted);
 }
@@ -1165,6 +1167,7 @@ html[data-lang='zh'] .museum-exit .room-no {
 
 .exit-sub {
     max-width: 560px;
+    text-wrap: balance;
     margin: 0 auto 24px;
     font-size: 17px;
     line-height: 1.7;

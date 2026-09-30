@@ -96,7 +96,7 @@
             '<div class="footer-museum">' +
                 '<div class="footer-sign">' +
                     '<p class="footer-name">Iris Zhou</p>' +
-                    '<p class="footer-tagline" data-i18n="footer.tagline">Made by hand in Wuhan, Paris and Shanghai.</p>' +
+                    '<p class="footer-tagline" data-i18n="footer.tagline">Made by hand, still in progress</p>' +
                 '</div>' +
                 '<p class="footer-walk" id="footerWalk" aria-live="off"></p>' +
                 '<nav class="footer-links" aria-label="Footer">' +

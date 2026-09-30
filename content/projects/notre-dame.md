@@ -1,10 +1,10 @@
 ---
 type: project
 slug: notre-dame
-title: "Notre-Dame: A Quiet Passage"
-title_zh: 巴黎圣母院 · 石与光之间
+title: Notre-Dame
+title_zh: 巴黎圣母院
 oneLiner: A quiet first-person walk through Notre-Dame, from the parvis into stained-glass light
-oneLiner_zh: 第一人称走进巴黎圣母院：从前广场一直走到玫瑰窗的光里
+oneLiner_zh: 第一人称走进巴黎圣母院，从前广场一直走进玫瑰窗的光里
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/notre-dame-cover.webp

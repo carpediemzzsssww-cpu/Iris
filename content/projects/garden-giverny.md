@@ -4,7 +4,7 @@ slug: garden-giverny
 title: GARDEN
 title_zh: GARDEN｜莫奈花园
 oneLiner: A painterly Giverny-inspired garden to wander, plant, and watch through a year
-oneLiner_zh: 一座参考吉维尼的三维花园：可以漫游、种花，看它走过一整年
+oneLiner_zh: 一座参考吉维尼的三维花园。可以漫游、种花，看它走过一整年
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/garden-giverny-cover.webp

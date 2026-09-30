@@ -3,7 +3,7 @@
     {
       "slug": "1001-moons",
       "title": "1001 States of the Moon",
-      "oneLiner": "A Mid-Autumn short where a full stop tries fifteen ways to become the moon",
+      "oneLiner": "A Mid-Autumn short made by Claude Opus 5.5, in which a full stop tries fifteen ways to become the moon",
       "featured": false,
       "coverImage": "assets/project-covers/projects/1001-moons-cover.webp",
       "role": "Design & Development",
@@ -22,8 +22,8 @@
         "repo": "https://github.com/carpediemzzsssww-cpu/1001moons",
         "caseStudy": "case-studies/1001-moons/index.html"
       },
-      "title_zh": "月亮的一千零一种状态",
-      "oneLiner_zh": "中秋短片：一个句号试了十五种办法，想成为今晚的月亮",
+      "title_zh": "月亮的 1001 种状态",
+      "oneLiner_zh": "Claude Opus 5.5 制作的中秋短片。一个句号试了十五种办法，想成为今晚的月亮",
       "coverAlt_zh": "纸上的深色圆里有一轮月亮，旁边写着 There are a thousand and one moons tonight",
       "role_zh": "设计与开发",
       "outcome_zh": "16 幕，一个 HTML 文件 · Canvas 2D，24 fps 运动叠 12 fps 手绘抖动 · 原创圆舞曲，乐器跟着故事换",
@@ -189,7 +189,7 @@
     {
       "slug": "birthday-stays-open",
       "title": "Birthday Stays Open",
-      "oneLiner": "A cozy 3D birthday room where little discoveries lead to a wish",
+      "oneLiner": "A cozy 3D birthday room made for a friend, where little discoveries lead to a wish",
       "featured": false,
       "coverImage": "assets/project-covers/projects/birthday-stays-open-cover.jpg",
       "role": "Design & Development",
@@ -211,7 +211,7 @@
         "caseStudy": "case-studies/birthday-stays-open/index.html"
       },
       "title_zh": "生日不打烊",
-      "oneLiner_zh": "一间随时可以回来的 3D 生日小屋，在探索中收集回忆、点亮心愿",
+      "oneLiner_zh": "一间送给朋友的 3D 生日小屋，在探索中收集回忆、点亮心愿",
       "coverAlt_zh": "暖光中的 3D 生日小屋，摆着沙发、书、回忆物件与蛋糕",
       "role_zh": "设计与开发",
       "outcome_zh": "七种天气 · 可探索的回忆物件 · 收集回忆后解锁蛋糕、许愿与信件",
@@ -249,7 +249,7 @@
         "repo": "https://github.com/carpediemzzsssww-cpu/bloomphoto",
         "caseStudy": "case-studies/bloom-photo/index.html"
       },
-      "title_zh": "BLOOM Photo｜让照片开花",
+      "title_zh": "BLOOM Photo｜让照片开花吧",
       "oneLiner_zh": "让照片从你选择的位置开始，生长成一幅粒子画",
       "coverAlt_zh": "一张花束照片，被重新长成一片彩色粒子",
       "role_zh": "设计与开发",
@@ -406,7 +406,7 @@
         "caseStudy": "case-studies/garden-giverny/index.html"
       },
       "title_zh": "GARDEN｜莫奈花园",
-      "oneLiner_zh": "一座参考吉维尼的三维花园：可以漫游、种花，看它走过一整年",
+      "oneLiner_zh": "一座参考吉维尼的三维花园。可以漫游、种花，看它走过一整年",
       "coverAlt_zh": "三维花园：花圃、睡莲池、绿色拱桥和砖房",
       "role_zh": "设计与开发",
       "outcome_zh": "20 种花按吉维尼花历开放 · 05:00 到 22:00 的光线 · 能走进粉屋和温室 · 最多 2,400 处种植与布置",
@@ -442,7 +442,7 @@
         "caseStudy": "case-studies/liaozhai-by-night/index.html"
       },
       "title_zh": "夜行聊斋",
-      "oneLiner_zh": "你误入一幅夜色古卷：提灯而行，在三卷画里遇见九段奇遇",
+      "oneLiner_zh": "你误入一幅夜色古卷，提灯而行，在三卷画里遇见九段奇遇",
       "coverAlt_zh": "卷首：红日前竖排的「夜行聊斋」，下方是一众画中人物",
       "role_zh": "设计与开发",
       "outcome_zh": "三卷画，九段奇遇 · 提灯、叩墨、萤光三种互动 · 一卷遇齐，钤一枚印 · 手机上双指移卷",
@@ -465,7 +465,7 @@
       "time": "2026.09",
       "date": "2026-09-27",
       "exhibit": true,
-      "medium": "Three.js, a live recording, 16 hidden medallions",
+      "medium": "Three.js, a live recording of The Phantom of the Opera, 16 hidden medallions",
       "outcome": "Three turns of the key wake it · a chandelier, stalls and a lake stage unfold · 16 hidden medallions · a masquerade when you find them all",
       "tags": [
         "3D Interaction",
@@ -478,11 +478,11 @@
         "caseStudy": "case-studies/lot-665-the-opera/index.html"
       },
       "title_zh": "Lot 665 · 歌剧魅影音乐盒",
-      "oneLiner_zh": "一只 1881 年的巴黎音乐盒：拧紧发条，盒子里的微缩歌剧院就开演",
+      "oneLiner_zh": "一只 1881 年的巴黎音乐盒。拧紧发条，盒子里的微缩歌剧院就会开演",
       "coverAlt_zh": "打开的音乐盒：盒顶的猴子、水晶吊灯、红色幕布和一排排座椅",
       "role_zh": "设计与开发",
       "outcome_zh": "上满三圈发条才会醒 · 吊灯、池座和地下湖舞台依次展开 · 16 枚藏起来的圆章 · 集齐开一场假面舞会",
-      "medium_zh": "Three.js、一段现场录音、16 枚藏起来的圆章",
+      "medium_zh": "Three.js、一段《歌剧魅影》现场录音、16 枚藏起来的圆章",
       "tags_zh": [
         "3D交互",
         "创意编程",
@@ -515,7 +515,7 @@
     },
     {
       "slug": "notre-dame",
-      "title": "Notre-Dame: A Quiet Passage",
+      "title": "Notre-Dame",
       "oneLiner": "A quiet first-person walk through Notre-Dame, from the parvis into stained-glass light",
       "featured": false,
       "coverImage": "assets/project-covers/projects/notre-dame-cover.webp",
@@ -535,8 +535,8 @@
         "demo": "https://notre-dame-presence.vercel.app",
         "caseStudy": "case-studies/notre-dame/index.html"
       },
-      "title_zh": "巴黎圣母院 · 石与光之间",
-      "oneLiner_zh": "第一人称走进巴黎圣母院：从前广场一直走到玫瑰窗的光里",
+      "title_zh": "巴黎圣母院",
+      "oneLiner_zh": "第一人称走进巴黎圣母院，从前广场一直走进玫瑰窗的光里",
       "coverAlt_zh": "从前广场仰望巴黎圣母院西立面和门廊上方的玫瑰窗",
       "role_zh": "设计与开发",
       "outcome_zh": "桌面和触屏都能第一人称漫游 · 玫瑰窗的光与雕塑 · 地图、导览和中英文注释 · 一次艺术研究，不是数字孪生",
@@ -572,7 +572,7 @@
         "caseStudy": "case-studies/pot-pot/index.html"
       },
       "title_zh": "POT POT｜罐罐",
-      "oneLiner_zh": "一间口袋静物画室：捏罐子、上釉、摆一幅静物画，再经营自己的小展厅",
+      "oneLiner_zh": "一间口袋静物画室。捏罐子、上釉、摆一幅静物画，再经营自己的小展厅吧",
       "coverAlt_zh": "三维小画室：工作台、浅色陶罐和墙上的静物画",
       "role_zh": "设计与开发",
       "outcome_zh": "8 种器形，捏形上釉 · 一幅静物最多 8 只罐子 · 6 位小镇委托人 · 一间间修缮的 3D 展厅",
@@ -682,7 +682,7 @@
     {
       "slug": "sound-vending-machine",
       "title": "Sound Vending Machine",
-      "oneLiner": "A playful vending machine for unexpected songs and small exchanges between strangers",
+      "oneLiner": "Drop in a coin, take home a can of music, and leave a song for a stranger",
       "featured": false,
       "coverImage": "assets/project-covers/projects/sound-vending-machine-cover.webp",
       "role": "Design & Development",
@@ -703,7 +703,7 @@
         "caseStudy": "case-studies/sound-vending-machine/index.html"
       },
       "title_zh": "Sound Vending Machine｜音乐自动贩卖机",
-      "oneLiner_zh": "投一枚硬币，收下一罐音乐，再给陌生人留下一首歌",
+      "oneLiner_zh": "投一枚硬币，就可以收下一罐音乐，再给陌生人留下一首歌",
       "coverAlt_zh": "淡黄色的贩卖机里摆满音乐罐头，旁边是一盆植物和一台收音机",
       "role_zh": "设计与开发",
       "outcome_zh": "投币与旋钮交互 · 独立设计的音乐罐头 · 隐藏的歌曲互换与罐身创作",
@@ -739,8 +739,8 @@
         "demo": "https://tin-orpin.vercel.app",
         "caseStudy": "case-studies/tin/index.html"
       },
-      "title_zh": "TIN｜把日常装进去",
-      "oneLiner_zh": "一只私人铁盒：把照片、字条和日常小物一件件收进去",
+      "title_zh": "TIN｜把你的日常装进去",
+      "oneLiner_zh": "一只私人的铁盒。把照片、字条和日常小物一件件收进去",
       "coverAlt_zh": "打开的铁盒里放着照片、票根、钥匙、兰花和小熊，背景是红色针织纹",
       "role_zh": "设计与开发",
       "outcome_zh": "6 类抽屉、40 件原创小物 · 5 套主题 · 照片和字条只存在本机 · 装好的铁盒可导出 PNG",

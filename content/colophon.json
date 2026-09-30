@@ -1,18 +1,18 @@
 {
   "translations": {
     "colophon.title": { "en": "About this site", "zh": "About this site" },
-    "colophon.subtitle": { "en": "How this small museum was put together.", "zh": "这座小陈列馆是怎么搭起来的。" },
+    "colophon.subtitle": { "en": "How this museum was built", "zh": "这座博物馆是如何 build 的" },
 
     "colophon.idea.title": { "en": "The idea", "zh": "想法" },
-    "colophon.idea.body": { "en": "Almost everything I make ends up as a small world: a music box with an opera house inside, a tin for little things, a garden that keeps its own calendar, a scroll you walk through with a lantern. So I laid this site out like a museum. The works stand on an arc under one light, numbered like lots in an auction catalogue, and each one gets a wall label that says what it is made of. One room holds things you can play; another holds things that think.", "zh": "我做的东西，最后大多成了一个小世界：一只装着歌剧院的音乐盒，一个收小东西的铁盒，一座有自己花历的花园，一幅要提着灯走进去的画卷。所以我把这个网站布置成一座陈列馆：作品在一束光下沿着弧线排开，像拍卖图录一样编号，每件配一张展签，写着它是用什么做成的。一间展厅放可以玩的东西，另一间放会思考的东西。" },
+    "colophon.idea.body": { "en": "Everything I build is a small world: a music box with an opera house inside, a tin for little things, a garden that keeps its own calendar, a scroll you walk through with a lantern. So I laid this site out as a museum. The works stand on an arc under one light, numbered like lots in an auction catalogue, and each gets a wall label that says what it is made of. One room holds things that are fun to play with; the other holds things that might make you think.", "zh": "我 build 的东西，都是一个小世界。一只装着歌剧院的音乐盒，一个收小东西的铁盒，一座有自己花历的花园，一幅要提着灯走进去的画卷。所以我把这个网站布置成了一座陈列馆，作品在一束光下沿着弧线排开，像拍卖图录一样编号，每件配一张展签，写着它是由什么做成的。一间展厅放一些好玩的东西，另一间放或许会让你思考的东西。" },
 
     "colophon.type.title": { "en": "Typefaces", "zh": "字体" },
-    "colophon.type.intro": { "en": "Six typefaces, all under open licenses.", "zh": "六款字体，全部是开源授权。" },
+    "colophon.type.intro": { "en": "Six typefaces, all under open licenses.", "zh": "六款开源授权字体。" },
     "colophon.type.cormorant": { "en": "Display. Headlines and the gallery title.", "zh": "标题。首页大标题和各个展厅的标题。" },
     "colophon.type.dmsans": { "en": "Text. Everything you read at length.", "zh": "正文。所有需要慢慢读的文字。" },
     "colophon.type.compagnon": { "en": "Museum labels. Lot numbers, dates and small captions.", "zh": "展签。编号、日期和小字说明。" },
     "colophon.type.dmmono": { "en": "Interface details.", "zh": "界面里的小字。" },
-    "colophon.type.xiangcui": { "en": "Chinese display. It loads only in Chinese, and only the characters this site uses.", "zh": "中文标题。只在中文模式下加载，而且只包含本站用到的字。" },
+    "colophon.type.xiangcui": { "en": "Chinese display. It loads in Chinese mode, and holds only the characters this site uses.", "zh": "中文标题。在中文模式下加载，只包含本站用到的字。" },
     "colophon.type.noto": { "en": "Chinese text.", "zh": "中文正文。" },
 
     "colophon.color.title": { "en": "Colors", "zh": "颜色" },
@@ -26,8 +26,8 @@
     "colophon.details.title": { "en": "Small details", "zh": "小细节" },
     "colophon.details.lantern": { "en": "In the gallery, your pointer is a lantern: the light follows it.", "zh": "展厅里，你的鼠标就是一盏灯，光会跟着它走。" },
     "colophon.details.shadow": { "en": "Each work casts its shadow away from your lantern.", "zh": "每件展品的影子都会避开你的提灯，落向另一边。" },
-    "colophon.details.color": { "en": "Colors fade the farther a work stands from the light, the way they do for our eyes in a dim room.", "zh": "离灯越远，颜色越淡，就像人眼在暗处看东西。" },
-    "colophon.details.spot": { "en": "Stop in front of a work and the spotlight settles on it.", "zh": "在一件展品前停下，追光会落到它身上。" },
+    "colophon.details.color": { "en": "Colors fade the farther a work stands from the light, the way they do for our eyes in a dim room.", "zh": "离灯光越远，颜色就会越淡，就像人眼在暗处看东西。" },
+    "colophon.details.spot": { "en": "Stop in front of a work and the light settles on it.", "zh": "在一件展品前停下，光会落到它身上。" },
     "colophon.details.counter": { "en": "The lot counter rolls like a mechanical one.", "zh": "右上角的展品编号像机械计数器一样滚动。" },
     "colophon.details.marginalia": { "en": "In Things that think, each number gets a pencil line once it has counted up, like a note in the margin.", "zh": "在 Things that think 这一室，数字数完之后会被铅笔划上一道，像读书时写的批注。" },
     "colophon.details.cover": { "en": "Open a work and its cover carries you into its page, in browsers that support it.", "zh": "点开一件作品，封面会一路把你送进它的页面（需要浏览器支持）。" },
@@ -35,10 +35,10 @@
     "colophon.details.lights": { "en": "Between the gallery and the reading rooms, the lights come up.", "zh": "从展厅走进阅读室的时候，灯会慢慢亮起来。" },
     "colophon.details.moon": { "en": "The loader is a small moon walking through its phases in steps, a nod to the hand-made jitter in 1001 States of the Moon.", "zh": "加载提示是一枚一格一格走过月相的小月亮，致敬《月亮的一千零一种状态》里的手作抖动。" },
     "colophon.details.walk": { "en": "The footer keeps count of how far you have scrolled today, at 1,000 pixels to the meter.", "zh": "页脚会记下你今天滚动了多远，1,000 像素算 1 米。" },
-    "colophon.details.irisy": { "en": "If you would rather ask than read, Irisy, my digital twin, waits in the corner.", "zh": "不想读的话，右下角的 Irisy 是我的数字分身，可以直接问她。" },
+    "colophon.details.irisy": { "en": "If you would rather ask than read, Irisy, my digital twin, waits in the corner.", "zh": "不想读那么多文字的话，右下角的 Irisy 是我的数字分身，可以直接问她。" },
 
     "colophon.built.title": { "en": "How it is built", "zh": "怎么做的" },
-    "colophon.built.body": { "en": "Hand-written HTML, CSS and JavaScript, with no framework. Words live in Markdown and JSON, and a few small Node scripts turn them into pages. The site is hosted on GitHub Pages. I build it with Claude Code and Codex as collaborators.", "zh": "手写的 HTML、CSS 和 JavaScript，没有用框架。文字放在 Markdown 和 JSON 里，几个小小的 Node 脚本把它们变成页面。网站托管在 GitHub Pages 上。我和 Claude Code、Codex 一起搭它。" },
+    "colophon.built.body": { "en": "Hand-written HTML, CSS and JavaScript, with no framework. Words live in Markdown and JSON, and a few small Node scripts turn them into pages. The site is hosted on GitHub Pages. I build it with Claude Code and Codex as collaborators.", "zh": "手写的 HTML、CSS 和 JavaScript，没有用框架。文字放在 Markdown 和 JSON 里，几个小小的 Node 脚本把它们变成页面。网站托管在 GitHub Pages 上。我和 Claude Code、Codex 一起搭建出来。" },
 
     "colophon.credits.title": { "en": "Credits", "zh": "致谢" },
     "colophon.credits.body": { "en": "The covers are screenshots of my own works. All fonts are used under the SIL Open Font License; the license ships with the site.", "zh": "封面都是我自己作品的截图。所有字体都按 SIL 开源字体许可使用，许可文件随网站一起发布。" },

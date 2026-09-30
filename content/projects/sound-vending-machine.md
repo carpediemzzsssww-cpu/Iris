@@ -3,8 +3,8 @@ type: project
 slug: sound-vending-machine
 title: Sound Vending Machine
 title_zh: Sound Vending Machine｜音乐自动贩卖机
-oneLiner: A playful vending machine for unexpected songs and small exchanges between strangers
-oneLiner_zh: 投一枚硬币，收下一罐音乐，再给陌生人留下一首歌
+oneLiner: Drop in a coin, take home a can of music, and leave a song for a stranger
+oneLiner_zh: 投一枚硬币，就可以收下一罐音乐，再给陌生人留下一首歌
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/sound-vending-machine-cover.webp

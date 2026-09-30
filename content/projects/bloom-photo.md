@@ -2,7 +2,7 @@
 type: project
 slug: bloom-photo
 title: BLOOM Photo
-title_zh: BLOOM Photo｜让照片开花
+title_zh: BLOOM Photo｜让照片开花吧
 oneLiner: Turn a photograph into a particle artwork that grows from a point you choose
 oneLiner_zh: 让照片从你选择的位置开始，生长成一幅粒子画
 featured: false

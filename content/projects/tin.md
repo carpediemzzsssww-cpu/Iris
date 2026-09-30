@@ -2,9 +2,9 @@
 type: project
 slug: tin
 title: TIN
-title_zh: TIN｜把日常装进去
+title_zh: TIN｜把你的日常装进去
 oneLiner: A private tin box for photos, notes, and the little things of your day
-oneLiner_zh: 一只私人铁盒：把照片、字条和日常小物一件件收进去
+oneLiner_zh: 一只私人的铁盒。把照片、字条和日常小物一件件收进去
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/tin-cover.webp

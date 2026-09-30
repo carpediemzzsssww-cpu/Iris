@@ -4,7 +4,7 @@ slug: pot-pot
 title: POT POT
 title_zh: POT POT｜罐罐
 oneLiner: "A tiny still-life studio: pinch pots, glaze them, paint a still life, run a gallery"
-oneLiner_zh: 一间口袋静物画室：捏罐子、上釉、摆一幅静物画，再经营自己的小展厅
+oneLiner_zh: 一间口袋静物画室。捏罐子、上釉、摆一幅静物画，再经营自己的小展厅吧
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/pot-pot-cover.webp

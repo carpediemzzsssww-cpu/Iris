@@ -4,7 +4,7 @@ slug: liaozhai-by-night
 title: Night Walk in Liaozhai
 title_zh: 夜行聊斋
 oneLiner: Carry a lantern into a night-time scroll painting and meet its strange tales
-oneLiner_zh: 你误入一幅夜色古卷：提灯而行，在三卷画里遇见九段奇遇
+oneLiner_zh: 你误入一幅夜色古卷，提灯而行，在三卷画里遇见九段奇遇
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/liaozhai-by-night-cover.webp

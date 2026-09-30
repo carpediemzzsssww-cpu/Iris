@@ -3,8 +3,8 @@ type: project
 slug: birthday-stays-open
 title: Birthday Stays Open
 title_zh: 生日不打烊
-oneLiner: A cozy 3D birthday room where little discoveries lead to a wish
-oneLiner_zh: 一间随时可以回来的 3D 生日小屋，在探索中收集回忆、点亮心愿
+oneLiner: A cozy 3D birthday room made for a friend, where little discoveries lead to a wish
+oneLiner_zh: 一间送给朋友的 3D 生日小屋，在探索中收集回忆、点亮心愿
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/birthday-stays-open-cover.jpg

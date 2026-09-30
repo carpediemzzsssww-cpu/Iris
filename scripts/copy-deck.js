@@ -328,7 +328,7 @@ function liveTranslations() {
 
 // ---------- Display <-> stored text ----------
 
-const ENTITIES = { '&mdash;': '—', '&ndash;': '–', '&middot;': '·', '&rarr;': '→', '&hellip;': '…', '&nbsp;': ' ', '&amp;': '&', '&times;': '×' };
+const ENTITIES = { '&mdash;': '—', '&ndash;': '–', '&middot;': '·', '&rarr;': '→', '&hellip;': '…', '&nbsp;': '\u00a0', '&amp;': '&', '&times;': '×', '&eacute;': 'é', '&egrave;': 'è', '&agrave;': 'à', '&ccedil;': 'ç', '&ouml;': 'ö', '&uuml;': 'ü', '&quot;': '"', '&apos;': "'", '&lt;': '<', '&gt;': '>' };
 
 function toDeck(value, html) {
     let s = String(value);
@@ -342,7 +342,7 @@ function toDeck(value, html) {
 function fromDeck(text, html) {
     let s = text.trim();
     if (html) {
-        s = s.replace(/&(?![a-z]+;|#\d+;)/g, '&amp;');
+        s = s.replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/\u00a0/g, '&nbsp;');
         s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
     }
     return s;
@@ -498,8 +498,8 @@ function applyDeck(file) {
     const edits = parseDeck(fs.readFileSync(file, 'utf8'));
     const keys = buildKeyIndex();
     const items = deckItems();
-    const changes = [], warnings = [];
-    const SMART = /[‘’“”]/;
+    const changes = [], warnings = [], englishEdits = [];
+    const SMART = /[\u2018\u2019\u201c\u201d]/;
 
     for (const [id, edit] of Object.entries(edits)) {
         const work = id.match(/^work:([a-z0-9-]+):(title|oneLiner|medium)$/);
@@ -536,15 +536,62 @@ function applyDeck(file) {
         else edited('zh', '中文');
         if (next.en !== now.en || next.zh !== now.zh) {
             writeJsonValue(found.file, id, next);
+            if (next.en !== now.en) englishEdits.push({ key: id, before: now.en, after: next.en });
             if (next.en !== now.en) changes.push(`#${id} en: ${now.en}  →  ${next.en}`);
             if (next.zh !== now.zh && !item.enOnly) changes.push(`#${id} zh: ${now.zh}  →  ${next.zh}`);
             if (SMART.test(next.en + next.zh)) warnings.push(`#${id}: has curly quotes`);
         }
     }
 
+    const fallbacks = syncMarkupFallbacks(englishEdits, warnings);
     console.log(changes.length ? `Changed ${changes.length}:\n  ` + changes.join('\n  ') : 'No changes.');
+    if (fallbacks.length) console.log(`\nEnglish in the page markup updated in: ${fallbacks.join(', ')}`);
     if (warnings.length) console.log(`\nNotes:\n  ` + warnings.join('\n  '));
     if (changes.some(c => c.startsWith('#work:'))) console.log('\nProject fields changed: run node scripts/build-showcase.js');
+}
+
+// ---------- English in the page markup ----------
+// Elements carry their English as fallback text: `<p data-i18n="key">English</p>`. When a key's English
+// changes, the fallback follows, but only where it still reads like the old English.
+
+const MARKUP_FILES = () => fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).concat(['components.js']);
+
+function plainText(html) {
+    return String(html).replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, e => ENTITIES[e] || e).replace(/\s+/g, ' ').trim();
+}
+
+function escapeMarkup(text) {
+    return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function syncMarkupFallbacks(edits, warnings) {
+    const touched = [];
+    if (!edits.length) return touched;
+    for (const file of MARKUP_FILES()) {
+        const full = path.join(ROOT, file);
+        if (!fs.existsSync(full)) continue;
+        const raw = fs.readFileSync(full, 'utf8');
+        let out = raw;
+        for (const edit of edits) {
+            const key = edit.key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const pattern = new RegExp('(<([a-z0-9]+)\\b[^>]*\\bdata-i18n(-html)?="' + key + '"[^>]*>)([\\s\\S]*?)(</\\2>)', 'g');
+            out = out.replace(pattern, (match, open, tag, isHtml, inner, close) => {
+                if (plainText(inner) !== plainText(edit.before)) {
+                    warnings.push(`${file}: fallback for ${edit.key} differs from the old English, left as is`);
+                    return match;
+                }
+                let text = isHtml ? edit.after : escapeMarkup(edit.after);
+                if (file.endsWith('.js')) text = text.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                const lead = inner.match(/^\s*/)[0], trail = inner.match(/\s*$/)[0];
+                return open + lead + text + trail + close;
+            });
+        }
+        if (out !== raw) {
+            fs.writeFileSync(full, out);
+            touched.push(file);
+        }
+    }
+    return touched;
 }
 
 // ---------- CLI ----------

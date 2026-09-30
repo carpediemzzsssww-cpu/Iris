@@ -2,9 +2,9 @@
 type: project
 slug: 1001-moons
 title: 1001 States of the Moon
-title_zh: 月亮的一千零一种状态
-oneLiner: A Mid-Autumn short where a full stop tries fifteen ways to become the moon
-oneLiner_zh: 中秋短片：一个句号试了十五种办法，想成为今晚的月亮
+title_zh: 月亮的 1001 种状态
+oneLiner: A Mid-Autumn short made by Claude Opus 5.5, in which a full stop tries fifteen ways to become the moon
+oneLiner_zh: Claude Opus 5.5 制作的中秋短片。一个句号试了十五种办法，想成为今晚的月亮
 featured: false
 exhibit: true
 coverImage: assets/project-covers/projects/1001-moons-cover.webp

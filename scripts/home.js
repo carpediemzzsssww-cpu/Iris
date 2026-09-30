@@ -101,8 +101,8 @@
     // "Lot 665 ·" / "歌剧魅影音乐盒", "Sound Vending Machine｜" / "音乐自动贩卖机".
     function titleText(item) {
         return field(item, 'title')
-            .replace(/ · /g, ' · ')
-            .replace(/\s*｜\s*/g, '⁠｜​');
+            .replace(/ \u00b7 /g, '\u00a0\u00b7 ')
+            .replace(/\s*\uff5c\s*/g, '\u2060\uff5c\u200b');
     }
 
     function lotNumber(i) {
