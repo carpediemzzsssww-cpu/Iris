@@ -11,6 +11,7 @@
     "footer.tagline": { "en": "Made by hand, still in progress", "zh": "亲手制作中" },
     "footer.walked": { "en": "You have walked {m} m through this museum today.", "zh": "今天你在这座陈列馆里走了 {m} 米。" },
     "footer.colophon": { "en": "About this site", "zh": "本站说明" },
+    "social.xhs": { "en": "Xiaohongshu", "zh": "小红书" },
     "footer.setIn": { "en": "Set in Cormorant Garamond, DM Sans and Compagnon", "zh": "字体：Cormorant Garamond、DM Sans、Compagnon 与香萃刻宋" },
 
   "theme.switchDark": { "en": "Switch to dark mode", "zh": "\u5207\u6362\u6df1\u8272\u6a21\u5f0f" },

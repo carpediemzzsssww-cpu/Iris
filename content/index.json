@@ -112,6 +112,7 @@
     "home.spec.open": { "en": "Open the notes →", "zh": "看项目介绍 →" },
     "home.spec.try": { "en": "Try it →", "zh": "去体验 →" },
     "home.spec.read": { "en": "Read the case study →", "zh": "看案例 →" },
+    "home.spec.more": { "en": "Read more", "zh": "展开说明" },
     "home.room3": { "en": "The path so far", "zh": "The path so far" },
     "home.room3.sub": { "en": "Wuhan · Paris · back in Shanghai", "zh": "武汉 · 巴黎 · 又回来上海" },
     "home.curator": { "en": "Curator", "zh": "策展人" },

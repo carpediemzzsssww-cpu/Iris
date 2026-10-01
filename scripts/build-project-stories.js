@@ -72,7 +72,7 @@ function renderStory(fm, story) {
 <script src="../../scripts/project-story.js" defer></script>
 </head><body class="project-story">
 <a class="story-skip" href="#project-content" data-en="Skip to project" data-zh="跳转到项目内容">Skip to project</a>
-<nav class="story-nav" aria-label="Project navigation"><a class="story-brand" href="../../index.html" aria-label="Iris Zhou — Home">IZ</a><a class="story-back" href="../../projects.html" data-en="← All projects" data-zh="← 全部项目">← All projects</a><div class="story-language" role="group" aria-label="Language"><button type="button" data-story-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-story-lang="zh" aria-pressed="false" lang="zh-CN">中文</button></div></nav>
+<nav class="story-nav" aria-label="Project navigation"><a class="story-brand" href="../../index.html" aria-label="Iris Zhou — Home">Iris Zhou</a><a class="story-back" href="../../projects.html" data-en="← All projects" data-zh="← 全部项目">← All projects</a><div class="story-language" role="group" aria-label="Language"><button type="button" data-story-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-story-lang="zh" aria-pressed="false" lang="zh-CN">中文</button></div></nav>
 <main id="project-content" tabindex="-1">${localizedStory(fm, story, 'en')}${localizedStory(fm, story, 'zh')}</main>
 <noscript><p class="story-noscript">English is shown by default. Enable JavaScript to switch to 中文.</p></noscript>
 </body></html>\n`;

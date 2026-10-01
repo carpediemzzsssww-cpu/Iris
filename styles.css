@@ -294,34 +294,6 @@ select:focus-visible {
     justify-content: space-between;
 }
 
-.nav-brand {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.brand-mark {
-    display: inline-block;
-    padding: 0;
-    background: transparent;
-    color: var(--text);
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    line-height: 1;
-    transition: color var(--duration-fast) var(--ease-out);
-}
-.brand-mark::after {
-    content: '';
-    display: block;
-    width: 22px;
-    height: 1px;
-    margin-top: 6px;
-    background: var(--accent);
-    opacity: 0.55;
-}
-
 .nav-links {
     display: flex;
     gap: clamp(var(--space-4), 3vw, var(--space-6));
@@ -381,6 +353,28 @@ select:focus-visible {
 .nav-action:hover {
     color: var(--accent);
     background: var(--surface);
+}
+
+.nav-xhs,
+.mobile-xhs {
+    display: none;
+}
+
+html[data-lang="zh"] .nav-xhs {
+    display: inline-flex;
+    align-self: center;
+    width: auto;
+    height: 26px;
+    padding: 0 11px;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+html[data-lang="zh"] .mobile-xhs {
+    display: block;
 }
 
 .nav-action.theme-toggle {
@@ -827,13 +821,6 @@ body.nav-over-hero .top-nav .nav-link.active {
 }
 body.nav-over-hero .mobile-menu-toggle span {
     background: #EFE6F5;
-}
-body.nav-over-hero .top-nav .nav-brand,
-body.nav-over-hero .top-nav .brand-mark {
-    color: #EFE6F5;
-}
-body.nav-over-hero .top-nav .brand-mark::after {
-    background: #B8A4C9;
 }
 body.nav-over-hero .top-nav .lang-label {
     color: rgba(239, 230, 245, 0.85);

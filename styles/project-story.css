@@ -22,7 +22,7 @@ body { margin: 0; background: var(--story-bg); color: var(--story-ink); font: 16
 a { color: inherit; text-underline-offset: 4px; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--story-accent); outline-offset: 5px; }
 .story-nav { max-width: 1200px; margin: auto; padding: 20px 40px; display: flex; align-items: center; gap: 32px; border-bottom: 1px solid var(--story-line); }
-.story-brand { font: 26px 'Cormorant Garamond', Georgia, serif; letter-spacing: .08em; text-decoration: none; }
+.story-brand { font: 22px 'Cormorant Garamond', Georgia, serif; letter-spacing: .02em; text-decoration: none; white-space: nowrap; }
 .story-back { font-size: 14px; color: var(--story-muted); text-decoration: none; }
 .story-back:hover, .story-end a:hover { color: var(--story-accent); }
 .story-language { margin-left: auto; display: flex; gap: 4px; }

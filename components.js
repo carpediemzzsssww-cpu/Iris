@@ -32,6 +32,7 @@
     var icons = {
         email: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
         github: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>',
+        notes: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>',
         linkedin: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
         moon: '<svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
         sun: '<svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/></svg>'
@@ -54,7 +55,6 @@
     function renderNav(config) {
         var c = config.site;
         return '<div class="container">' +
-            '<div class="nav-brand"><span class="brand-mark">IZ</span></div>' +
             '<div class="nav-links" lang="en">' +
                 '<a href="index.html" class="nav-link' + isActive('index.html') + '" data-i18n="nav.home">Home</a>' +
                 '<a href="projects.html" class="nav-link' + isActive('projects.html') + '" data-i18n="nav.projects">Projects</a>' +
@@ -65,6 +65,8 @@
             '</div>' +
             '<div class="nav-actions">' +
                 '<a href="mailto:' + c.email + '" class="nav-action" title="Email" aria-label="Send email">' + icons.email + '</a>' +
+                // A Chinese platform: shown in the nav in Chinese mode, and in the footer and contact list in both
+                (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="nav-action nav-xhs" lang="zh-CN" aria-label="小红书主页" target="_blank" rel="noopener noreferrer">小红书</a>' : '') +
                 '<a href="' + c.github + '" class="nav-action" title="GitHub" aria-label="Open GitHub profile" target="_blank" rel="noopener noreferrer">' + icons.github + '</a>' +
                 '<a href="' + c.linkedin + '" class="nav-action" title="LinkedIn" aria-label="Open LinkedIn profile" target="_blank" rel="noopener noreferrer">' + icons.linkedin + '</a>' +
                 '<button class="nav-action lang-toggle" type="button" data-lang-toggle aria-label="Switch to Chinese"><span class="lang-label">EN</span></button>' +
@@ -74,7 +76,8 @@
         '</div>';
     }
 
-    function renderMobileDrawer() {
+    function renderMobileDrawer(config) {
+        var c = (config && config.site) || {};
         return '<div class="mobile-drawer-links" lang="en">' +
             '<a href="index.html" class="mobile-link' + isActive('index.html') + '" data-i18n="nav.home">Home</a>' +
             '<a href="projects.html" class="mobile-link' + isActive('projects.html') + '" data-i18n="nav.projects">Projects</a>' +
@@ -82,6 +85,7 @@
             '<a href="ai-lab.html" class="mobile-link' + isActive('ai-lab.html') + '" data-i18n="nav.ailab">AI Lab</a>' +
             '<a href="travel.html" class="mobile-link' + isActive('travel.html') + '" data-i18n="nav.footprints">Footprints</a>' +
             '<a href="about.html" class="mobile-link' + isActive('about.html') + '" data-i18n="nav.about">About</a>' +
+            (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="mobile-link mobile-xhs" lang="zh-CN" target="_blank" rel="noopener noreferrer">小红书 &#8599;</a>' : '') +
             '<button class="mobile-lang-toggle" type="button" data-lang-toggle><span data-lang-toggle-text>Switch to Chinese</span></button>' +
             '<button class="mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode"><span data-theme-toggle-text>Switch to dark mode</span></button>' +
         '</div>';
@@ -103,6 +107,7 @@
                     '<a href="mailto:' + c.email + '" class="footer-link" data-i18n="footer.contact">Contact</a>' +
                     '<a href="' + c.github + '" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>' +
                     '<a href="' + c.linkedin + '" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
+                    (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="footer-link" target="_blank" rel="noopener noreferrer" data-i18n="social.xhs">Xiaohongshu</a>' : '') +
                     '<a href="colophon.html" class="footer-link" data-i18n="footer.colophon">About this site</a>' +
                 '</nav>' +
             '</div>' +
@@ -150,7 +155,8 @@
         el.innerHTML =
             '<a href="mailto:' + c.email + '" class="contact-link">' + icons.email + ' ' + c.email + '</a>' +
             '<a href="' + c.linkedin + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.linkedin + ' LinkedIn</a>' +
-            '<a href="' + c.github + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.github + ' GitHub</a>';
+            '<a href="' + c.github + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.github + ' GitHub</a>' +
+            (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.notes + ' <span data-i18n="social.xhs">Xiaohongshu</span></a>' : '');
     }
 
     // ---- Running Header (magazine masthead) ----
@@ -224,7 +230,7 @@
         if (drawerEl) {
             drawerEl.className = 'mobile-drawer';
             drawerEl.setAttribute('aria-hidden', 'true');
-            drawerEl.innerHTML = renderMobileDrawer();
+            drawerEl.innerHTML = renderMobileDrawer(config);
         }
 
         var footerEl = document.getElementById('site-footer');

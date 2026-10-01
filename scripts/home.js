@@ -1,14 +1,16 @@
 // ================================================
 // Home: A museum of small worlds
-// - № 01 gallery: works marked `exhibit: true` in content/projects/*.md stand on an arc;
-//   scrolling turns the arc, one lot at a time. The last lot opens the archive.
+// - № 01 gallery: it opens like an iris (an aperture, an eye, and a name), under a beam of
+//   light with dust drifting in it. Works marked `exhibit: true` in content/projects/*.md
+//   stand on an arc; scrolling turns the arc, one lot at a time. The last lot opens the archive.
 //   Small details: colour fades away from the light, shadows fall away from the
 //   pointer's lantern, the lit lot leans toward the pointer, the spot settles on a
 //   lot when the walk stops there, and the lot counter rolls like a mechanical one.
 //   Opening a lot carries its cover into the work's page (cross-document view
 //   transition, where the browser supports it).
-// - Threshold: the lights come up and the quote shifts from night to paper.
-// - № 02 specimens count up once, then get a pencil underline, like marginalia.
+// - Threshold: the quote shifts from night to paper while scripts/sky.js paints the sky behind it.
+// - № 02 the path so far; № 03 specimens count up once, get a pencil underline, and open their
+//   notes behind a plus.
 // Motion follows the scroll with frame-rate independent easing; with
 // prefers-reduced-motion the gallery becomes a still grid.
 // ================================================
@@ -33,6 +35,8 @@
     var loader = document.getElementById('galleryLoader');
     var hint = stage.querySelector('.gallery-hint');
     var threshold = document.getElementById('threshold');
+    var irisEl = document.getElementById('galleryIris');
+    var dust = document.getElementById('galleryDust');
 
     var reducedQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
     var reduced = !!(reducedQuery && reducedQuery.matches);
@@ -73,6 +77,16 @@
     function smooth(x) { x = clamp(x, 0, 1); return x * x * (3 - 2 * x); }
     // Frame-rate independent easing: the same feel at 60 Hz and 120 Hz.
     function ease(rate, dt) { return 1 - Math.pow(1 - rate, dt / 16.7); }
+    function easeInOutCubic(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+    // True the first time a key is asked for in this browser session.
+    function firstTime(key) {
+        try {
+            if (sessionStorage.getItem(key)) return false;
+            sessionStorage.setItem(key, '1');
+        } catch (e) { /* storage blocked: treat every visit as the first */ }
+        return true;
+    }
 
     // ---------- Data ----------
 
@@ -274,10 +288,10 @@
 
     // ---------- Layout ----------
 
-    var geo = { vw: 0, vh: 0, cw: 220, R: 1000, step: 16, top: 0, introLen: 1, perLot: 1, activeY: 0, mobile: false };
+    var geo = { vw: 0, vh: 0, cw: 220, R: 1000, step: 16, top: 0, introLen: 1, perLot: 1, activeY: 0, drop: 0, mobile: false };
     var state = {
         target: 0, walk: 0, introT: 0, intro: 0, active: -1, boot: -1, running: false, last: 0,
-        leaving: false, zooming: -1, galleryVisible: true, spotOn: false,
+        leaving: false, zooming: -1, galleryVisible: true, spotOn: false, irisOpen: 0,
         // The light that casts the shadows: the ceiling lamp, leaning toward the pointer's lantern.
         lightX: 0, lightY: 0, pointerIn: false, px: 0, py: 0,
         // The lit lot leans toward the pointer; its box is kept from the last frame.
@@ -317,8 +331,18 @@
             entry.h = entry.el.offsetHeight || geo.cw * 1.3;
             if (entry.cast) entry.cast.style.height = entry.h + 'px';
         });
+        // Before the walk starts, the lit lot waits low enough to clear the title and its line
+        // (layout boxes, so the intro's own drift does not count).
+        var introBottom = intro.offsetTop + intro.offsetHeight;
+        var firstH = lots.length ? lots[0].h : geo.cw * 1.3;
+        geo.drop = Math.max(geo.vh * 0.36, introBottom + 28 - geo.activeY + firstH / 2);
         geo.top = gallery.getBoundingClientRect().top + window.scrollY;
         readScroll();
+        if (irisEl && !irisEl.classList.contains('is-done')) {
+            irisEl.setAttribute('viewBox', '0 0 ' + geo.vw + ' ' + geo.vh);
+            drawIris(state.irisOpen || 0);
+        }
+        sizeDust();
     }
 
     function readScroll() {
@@ -411,7 +435,7 @@
         if (index) index.style.opacity = roomIn;
         if (hint) hint.style.opacity = String(1 - smooth(state.walk * 1.5));
 
-        var drop = (1 - introP) * h * 0.36;
+        var drop = (1 - introP) * geo.drop;
 
         for (var i = 0; state.galleryVisible && i < lots.length; i++) {
             if (i === state.zooming) continue;
@@ -507,12 +531,20 @@
     function updateThreshold() {
         if (!threshold || !quote) return;
         var r = threshold.getBoundingClientRect();
-        var q = quote.getBoundingClientRect();
-        // Where the quote sits in the gradient behind it (0 = night, 1 = paper): ink follows the light.
-        var behind = (q.top + q.height / 2 - r.top) / r.height;
-        threshold.style.setProperty('--lift', smooth((behind - 0.46) / 0.16).toFixed(3));
+        // How far through the threshold the visitor is (0 = it fills the screen, 1 = it is leaving).
+        // The sky (scripts/sky.js) turns light behind the quote around the middle of the walk,
+        // so the ink of the quote turns dark there; the top of the sky turns last.
+        var walk = clamp(-r.top / Math.max(1, r.height - (geo.vh || window.innerHeight)), 0, 1);
+        // The ink turns once dawn has passed behind the quote: a short timed fade between two
+        // readable states, with a little slack so it does not flicker back and forth.
+        // While the sky is drawn, scripts/sky.js reads the light behind the quote instead.
+        if (threshold.getAttribute('data-sky') !== 'live') {
+            var day = threshold.classList.contains('is-day');
+            if (!day && walk > 0.6) threshold.classList.add('is-day');
+            else if (day && walk < 0.56) threshold.classList.remove('is-day');
+        }
         // Keep the nav on dark glass until the light reaches the top of the screen.
-        document.body.classList.toggle('nav-over-hero', -r.top / r.height < 0.52);
+        if (!reduced) document.body.classList.toggle('nav-over-hero', walk < 0.86);
     }
 
     // ---------- Input ----------
@@ -521,6 +553,7 @@
     function onScroll() {
         readScroll();
         kick();
+        if (reduced) updateThreshold();
         if (!reduced && finePointer) {
             window.clearTimeout(scrollEndTimer);
             scrollEndTimer = window.setTimeout(magnet, 170);
@@ -679,6 +712,14 @@
                 num.textContent = (num.getAttribute('data-prefix') || '') + '0' + (num.getAttribute('data-suffix') || '');
             }
         });
+        Array.prototype.forEach.call(document.querySelectorAll('.specimen-toggle'), function (button) {
+            button.addEventListener('click', function () {
+                var li = button.closest('.specimen');
+                var open = !li.classList.contains('is-open');
+                li.classList.toggle('is-open', open);
+                button.setAttribute('aria-expanded', String(open));
+            });
+        });
         var annotate = function (li) { li.classList.add('is-annotated'); };
         if (!('IntersectionObserver' in window)) {
             Array.prototype.forEach.call(specimens, annotate);
@@ -697,13 +738,153 @@
         Array.prototype.forEach.call(specimens, function (li) { io.observe(li); });
     }
 
+    // ---------- The aperture: the gallery opens like an iris ----------
+
+    var IRIS_BLADES = 9;
+    var irisShutter = irisEl ? irisEl.querySelector('.iris-shutter') : null;
+    var irisBlades = irisEl ? irisEl.querySelector('.iris-blades') : null;
+
+    // open: 0 shut, 1 clear of the screen. The hole is a turning nine-sided polygon, and each
+    // blade's edge runs on past its corner, as the leaves of a lens diaphragm do.
+    function drawIris(open) {
+        if (!irisShutter || !geo.vw) return;
+        var w = geo.vw, h = geo.vh, cx = w / 2, cy = h / 2;
+        var reach = Math.sqrt(w * w + h * h) * 0.62;
+        var r = Math.max(0.5, open * reach);
+        var turn = 0.35 + (1 - open) * 1.15;
+        var step = Math.PI * 2 / IRIS_BLADES;
+        var hole = '', blades = '';
+        for (var i = 0; i < IRIS_BLADES; i++) {
+            var a = turn + i * step;
+            var x = cx + r * Math.cos(a), y = cy + r * Math.sin(a);
+            var dx = x - (cx + r * Math.cos(a + step)), dy = y - (cy + r * Math.sin(a + step));
+            var len = Math.sqrt(dx * dx + dy * dy) || 1;
+            hole += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+            blades += 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'L' + (x + dx / len * reach * 2).toFixed(1) + ' ' + (y + dy / len * reach * 2).toFixed(1);
+        }
+        irisShutter.setAttribute('d', 'M0 0H' + w + 'V' + h + 'H0Z' + hole + 'Z');
+        irisBlades.setAttribute('d', blades);
+        irisBlades.style.opacity = String(1 - open);
+    }
+
+    function openIris(duration, onHalfway) {
+        if (!irisEl || !irisEl.classList.contains('is-armed') || irisEl.classList.contains('is-done')) {
+            onHalfway();
+            return;
+        }
+        var start = performance.now(), half = false;
+        drawIris(0);
+        irisEl.classList.add('is-drawn');
+        (function step(now) {
+            var p = clamp((now - start) / duration, 0, 1);
+            state.irisOpen = easeInOutCubic(p);
+            drawIris(state.irisOpen);
+            if (!half && p > 0.4) {
+                half = true;
+                onHalfway();
+            }
+            if (p < 1) window.requestAnimationFrame(step);
+            else irisEl.classList.add('is-done');
+        })(start);
+    }
+
+    function dropIris() {
+        if (irisEl) irisEl.classList.add('is-done');
+    }
+
+    // ---------- Dust drifting in the beam ----------
+
+    var dustCtx = dust && dust.getContext ? dust.getContext('2d') : null;
+    var motes = [], dustRunning = false, dustLast = 0;
+
+    function beamWidth() { return Math.min(1100, geo.vw * 0.92); }
+
+    function newMote(anywhere) {
+        return {
+            x: anywhere ? Math.random() * geo.vw : geo.vw / 2 + (Math.random() - 0.5) * beamWidth() * 0.5,
+            y: anywhere ? Math.random() * geo.vh : -6,
+            vx: (Math.random() - 0.5) * 7,
+            vy: 2 + Math.random() * 7,
+            r: 0.5 + Math.random() * 1.3,
+            phase: Math.random() * 6.283,
+            rate: 0.4 + Math.random() * 1.2
+        };
+    }
+
+    function sizeDust() {
+        if (!dustCtx || reduced) return;
+        var ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+        dust.width = Math.round(geo.vw * ratio);
+        dust.height = Math.round(geo.vh * ratio);
+        dustCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        dustCtx.fillStyle = '#fff0d8';
+        var n = geo.mobile ? 36 : 72;
+        while (motes.length < n) motes.push(newMote(true));
+        motes.length = n;
+    }
+
+    // How much of the ceiling beam reaches a point (the same trapezoid as .gallery-beam's clip-path)
+    function beamAt(x, y) {
+        var bottom = geo.activeY + geo.cw * 0.9;
+        if (y < 0 || y > bottom) return 0;
+        var t = y / bottom;
+        var half = beamWidth() * (0.05 + 0.23 * t);
+        var off = Math.abs(x - geo.vw / 2);
+        return (1 - smooth((off - half * 0.7) / (half * 0.6))) * (1 - 0.5 * t);
+    }
+
+    function dustFrame(now) {
+        if (!dustRunning) return;
+        var dt = dustLast ? Math.min(50, now - dustLast) / 1000 : 0.016;
+        dustLast = now;
+        var w = geo.vw, h = geo.vh;
+        var lanternReach = Math.min(w, h) * 0.2;
+        dustCtx.clearRect(0, 0, w, h);
+        for (var i = 0; i < motes.length; i++) {
+            var m = motes[i];
+            m.x += m.vx * dt + Math.sin(now * 0.0004 + m.phase) * 0.06;
+            m.y += m.vy * dt;
+            if (m.y > h + 6 || m.x < -6 || m.x > w + 6) {
+                motes[i] = newMote(false);
+                continue;
+            }
+            var light = beamAt(m.x, m.y);
+            if (state.pointerIn) {
+                var dx = m.x - state.px, dy = m.y - state.py;
+                light = Math.max(light, 1 - Math.sqrt(dx * dx + dy * dy) / lanternReach);
+            }
+            if (light <= 0.02) continue;
+            dustCtx.globalAlpha = Math.min(1, light * (0.55 + 0.45 * Math.sin(now * 0.001 * m.rate + m.phase)) * 0.9);
+            dustCtx.beginPath();
+            dustCtx.arc(m.x, m.y, m.r, 0, 6.283);
+            dustCtx.fill();
+        }
+        window.requestAnimationFrame(dustFrame);
+    }
+
+    function startDust() {
+        if (!dustCtx || reduced || dustRunning || !stage.classList.contains('lights-on')) return;
+        dustRunning = true;
+        dustLast = 0;
+        window.requestAnimationFrame(dustFrame);
+    }
+
+    function stopDust() {
+        dustRunning = false;
+    }
+
     // ---------- Boot ----------
 
     function lightsOn() {
         if (stage.classList.contains('lights-on')) return;
         stage.classList.add('lights-on');
-        state.boot = performance.now();
-        kick();
+        // The first visit in a session gets the slow aperture, later ones a quick one;
+        // the lots rise once it is partly open.
+        openIris(firstTime('izIrisOpened') ? 1700 : 750, function () {
+            state.boot = performance.now();
+            kick();
+        });
+        startDust();
     }
 
     function waitForCovers(timeout) {
@@ -711,14 +892,20 @@
         var done = false;
         var finish = function () { if (!done) { done = true; lightsOn(); } };
         window.setTimeout(finish, timeout);
+        // The title's face too, so the aperture never opens on a fallback font.
+        var face = document.fonts && document.fonts.load ? Promise.all([
+            document.fonts.load('italic 300 100px "Cormorant Garamond"'),
+            document.fonts.load('italic 400 24px "Cormorant Garamond"')
+        ]).catch(function () {}) : Promise.resolve();
         Promise.all(imgs.map(function (img) {
             return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
-        })).then(finish);
+        }).concat([face])).then(finish);
     }
 
     function showClosed() {
         loader.innerHTML = '<span class="iz-loader-text">' + escapeHTML(t('home.closed')) + ' <a href="projects.html" style="color:inherit">' + escapeHTML(t('home.closed.link')) + ' &rarr;</a></span>';
         loader.style.pointerEvents = 'auto';
+        dropIris();
         stage.classList.add('lights-on');
         loader.style.opacity = '1';
     }
@@ -726,6 +913,7 @@
     function init(items) {
         buildLots(items);
         if (reduced) {
+            dropIris();
             gallery.classList.add('is-reduced');
             stage.classList.add('lights-on');
             document.body.classList.remove('nav-over-hero');
@@ -741,6 +929,8 @@
         entries.forEach(function (entry) {
             if (entry.target === gallery) state.galleryVisible = entry.isIntersecting;
         });
+        if (state.galleryVisible) startDust();
+        else stopDust();
         kick();
     }, { rootMargin: '0px 0px 30% 0px' }) : null;
 
