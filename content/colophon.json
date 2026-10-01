@@ -7,7 +7,8 @@
     "colophon.idea.body": { "en": "Everything I build is a small world: a music box with an opera house inside, a tin for little things, a garden that keeps its own calendar, a scroll you walk through with a lantern. So I laid this site out as a museum. The works stand on an arc under one light, numbered like lots in an auction catalogue, and each gets a wall label that says what it is made of. One room holds things that are fun to play with; the other holds things that might make you think.", "zh": "我 build 的东西，都是一个小世界。一只装着歌剧院的音乐盒，一个收小东西的铁盒，一座有自己花历的花园，一幅要提着灯走进去的画卷。所以我把这个网站布置成了一座陈列馆，作品在一束光下沿着弧线排开，像拍卖图录一样编号，每件配一张展签，写着它是由什么做成的。一间展厅放一些好玩的东西，另一间放或许会让你思考的东西。" },
 
     "colophon.type.title": { "en": "Typefaces", "zh": "字体" },
-    "colophon.type.intro": { "en": "Six typefaces, all under open licenses.", "zh": "六款开源授权字体。" },
+    "colophon.type.intro": { "en": "Seven typefaces, all under open licenses.", "zh": "七款开源授权字体。" },
+    "colophon.type.moniqa": { "en": "The name on the homepage, where the iris opens.", "zh": "首页上的名字，光圈打开的地方。" },
     "colophon.type.cormorant": { "en": "Display. Headlines and the gallery title.", "zh": "标题。首页大标题和各个展厅的标题。" },
     "colophon.type.dmsans": { "en": "Text. Everything you read at length.", "zh": "正文。所有需要慢慢读的文字。" },
     "colophon.type.compagnon": { "en": "Museum labels. Lot numbers, dates and small captions.", "zh": "展签。编号、日期和小字说明。" },
@@ -38,12 +39,14 @@
     "colophon.details.moon": { "en": "The loader is a small moon walking through its phases in steps, a nod to the hand-made jitter in 1001 States of the Moon.", "zh": "加载提示是一枚一格一格走过月相的小月亮，致敬《月亮的一千零一种状态》里的手作抖动。" },
     "colophon.details.walk": { "en": "The footer keeps count of how far you have scrolled today, at 1,000 pixels to the meter.", "zh": "页脚会记下你今天滚动了多远，1,000 像素算 1 米。" },
     "colophon.details.irisy": { "en": "If you would rather ask than read, Irisy, my digital twin, waits in the corner.", "zh": "不想读那么多文字的话，右下角的 Irisy 是我的数字分身，可以直接问她。" },
+    "colophon.details.globe": { "en": "On Footprints, the globe is engraved brass: a pin in every city I have been to, red thread between them, and a cartouche in the Pacific worded like the ones on old globes.", "zh": "足迹页的地球仪是刻花黄铜做的：去过的城市都插着图钉，图钉之间系着红线，太平洋上还有一块题签，写法照着老地球仪。" },
+    "colophon.details.spin": { "en": "Flick the globe and it keeps turning for a moment, then slows, like one on a good bearing.", "zh": "轻轻拨一下地球仪，它会自己再转一会儿，然后慢慢停下，像装了一副好轴承。" },
 
     "colophon.built.title": { "en": "How it is built", "zh": "怎么做的" },
     "colophon.built.body": { "en": "Hand-written HTML, CSS and JavaScript, with no framework. Words live in Markdown and JSON, and a few small Node scripts turn them into pages. The site is hosted on GitHub Pages. I build it with Claude Code and Codex as collaborators.", "zh": "手写的 HTML、CSS 和 JavaScript，没有用框架。文字放在 Markdown 和 JSON 里，几个小小的 Node 脚本把它们变成页面。网站托管在 GitHub Pages 上。我和 Claude Code、Codex 一起搭建出来。" },
 
     "colophon.credits.title": { "en": "Credits", "zh": "致谢" },
-    "colophon.credits.body": { "en": "The covers are screenshots of my own works. All fonts are used under the SIL Open Font License; the license ships with the site.", "zh": "封面都是我自己作品的截图。所有字体都按 SIL 开源字体许可使用，许可文件随网站一起发布。" },
+    "colophon.credits.body": { "en": "The covers are screenshots of my own works. All fonts are used under the SIL Open Font License; the license ships with the site. The globe's coastlines come from Natural Earth, a public-domain map.", "zh": "封面都是我自己作品的截图。所有字体都按 SIL 开源字体许可使用，许可文件随网站一起发布。地球仪上的海岸线来自公有领域的 Natural Earth 地图。" },
     "colophon.credits.license": { "en": "Read the font license", "zh": "查看字体许可" },
 
     "colophon.back": { "en": "Back to the museum", "zh": "回到陈列馆" }

@@ -7,8 +7,18 @@
     "travel.continents": { "en": "Continents", "zh": "\u5927\u6d32" },
     "travel.savedPlaces": { "en": "Saved Places", "zh": "\u6536\u85cf" },
     "travel.allDest": { "en": "All Destinations", "zh": "\u6240\u6709\u76ee\u7684\u5730" },
-    "travel.legend.asia": { "en": "Asia", "zh": "\u4e9a\u6d32" },
-    "travel.legend.europe": { "en": "Europe", "zh": "\u6b27\u6d32" },
-    "travel.legend.other": { "en": "Unvisited", "zh": "\u672a\u53bb\u8fc7" }
+    "travel.globe.kicker": { "en": "Terrestrial globe", "zh": "地球仪" },
+    "travel.globe.medium": { "en": "Engraved brass, garnet pins, red thread", "zh": "刻花黄铜、石榴红图钉、红线" },
+    "travel.legend.lingered": { "en": "Where I lingered", "zh": "流连最久" },
+    "travel.legend.city": { "en": "Cities I've visited", "zh": "到过的城市" },
+    "travel.legend.country": { "en": "Countries I've been to", "zh": "去过的国家" },
+    "travel.hint": { "en": "Drag to turn the globe", "zh": "拖动来转动地球仪" },
+    "travel.hintTouch": { "en": "Swipe sideways to turn it", "zh": "左右滑动来转动它" },
+    "travel.loading": { "en": "Polishing the brass...", "zh": "正在擦亮黄铜……" },
+    "travel.tip.saved": { "en": "{n} saved places", "zh": "收藏了 {n} 个地方" },
+    "travel.tip.visited": { "en": "Visited", "zh": "到过" },
+    "travel.btn.turn": { "en": "Turn slowly", "zh": "慢慢转动" },
+    "travel.btn.zoom": { "en": "Look closer", "zh": "凑近看看" },
+    "travel.btn.reset": { "en": "Back to Paris", "zh": "回到巴黎" }
   }
 }

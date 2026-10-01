@@ -37,6 +37,10 @@
     var threshold = document.getElementById('threshold');
     var irisEl = document.getElementById('galleryIris');
     var dust = document.getElementById('galleryDust');
+    var atmosphere = document.getElementById('galleryAtmosphere');
+    var museumEl = document.getElementById('museum');
+    var kicker = document.getElementById('galleryKicker');
+    var nameEl = document.getElementById('galleryTitle');
 
     var reducedQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
     var reduced = !!(reducedQuery && reducedQuery.matches);
@@ -45,6 +49,7 @@
     var crossDocTransitions = 'onpagereveal' in window && !!(window.CSS && CSS.supports && CSS.supports('view-transition-name', 'none'));
 
     var FALLBACK = {
+        'home.kicker': 'A solo exhibition \u00b7 {n} works',
         'home.lot': 'Lot',
         'home.enter': 'Enter the work',
         'home.archive.title': 'The full archive',
@@ -143,11 +148,12 @@
                 '<span class="lot-sheen" aria-hidden="true"></span>';
         } else {
             var item = entry.item;
+            // A framed work: the picture on a mat, a small plate under it; the words are on the wall label
             el.innerHTML =
-                '<img src="' + escapeHTML(item.coverImage) + '" alt="' + escapeHTML(field(item, 'coverAlt') || field(item, 'title')) + '" decoding="async"' + (i < 4 ? ' fetchpriority="high"' : ' loading="lazy"') + ' width="400" height="300">' +
-                '<div class="lot-no"><span>' + escapeHTML(t('home.lot')) + ' ' + lotNumber(i) + '</span><span>' + escapeHTML(item.time) + '</span></div>' +
-                '<div class="lot-title">' + escapeHTML(titleText(item)) + '</div>' +
-                '<div class="lot-medium">' + escapeHTML(field(item, 'medium')) + '</div>' +
+                '<span class="lot-mat">' +
+                    '<img src="' + escapeHTML(item.coverImage) + '" alt="' + escapeHTML(field(item, 'coverAlt') || field(item, 'title')) + '" decoding="async"' + (i < 4 ? ' fetchpriority="high"' : ' loading="lazy"') + ' width="400" height="300">' +
+                    '<span class="lot-plate"><span>' + escapeHTML(t('home.lot')) + ' ' + lotNumber(i) + '</span><span>' + escapeHTML(item.time) + '</span></span>' +
+                '</span>' +
                 '<span class="lot-shade" aria-hidden="true"></span>' +
                 '<span class="lot-sheen" aria-hidden="true"></span>';
         }
@@ -201,6 +207,7 @@
         var item = entry.item;
         return '<div class="label-no">' + escapeHTML(t('home.lot')) + ' ' + lotNumber(i) + ' &middot; ' + escapeHTML(item.time) + '</div>' +
             '<h2>' + escapeHTML(titleText(item)) + '</h2>' +
+            '<p class="label-medium">' + escapeHTML(field(item, 'medium')) + '</p>' +
             '<p>' + escapeHTML(field(item, 'oneLiner')) + '</p>' +
             '<a href="' + escapeHTML(linkFor(item)) + '">' + escapeHTML(t('home.enter')) + '</a>';
     }
@@ -275,7 +282,18 @@
         });
     }
 
+    // "A solo exhibition · 32 works": the count comes from the archive itself
+    function setKicker() {
+        if (!kicker || !totalWorks) return;
+        kicker.textContent = (t('home.kicker') || FALLBACK['home.kicker']).replace('{n}', totalWorks);
+    }
+
+    function skyLive() {
+        return !!(museumEl && museumEl.getAttribute('data-sky') === 'live');
+    }
+
     function relocalize() {
+        setKicker();
         if (!lots.length) return;
         lots.forEach(renderLot);
         measure();
@@ -288,7 +306,7 @@
 
     // ---------- Layout ----------
 
-    var geo = { vw: 0, vh: 0, cw: 220, R: 1000, step: 16, top: 0, introLen: 1, perLot: 1, activeY: 0, drop: 0, mobile: false };
+    var geo = { vw: 0, vh: 0, cw: 220, R: 1000, step: 16, top: 0, introLen: 1, perLot: 1, tailLen: 1, activeY: 0, drop: 0, irisX: 0, irisY: 0, mobile: false };
     var state = {
         target: 0, walk: 0, introT: 0, intro: 0, active: -1, boot: -1, running: false, last: 0,
         leaving: false, zooming: -1, galleryVisible: true, spotOn: false, irisOpen: 0,
@@ -324,8 +342,11 @@
             state.lightY = lamp.y;
         }
 
+        // After the last lot, a last stretch: with the night sky behind it, the room fades into it
+        geo.tailLen = geo.vh * (skyLive() ? 0.9 : 0.25);
         if (!reduced && lots.length) {
-            gallery.style.height = (geo.vh + geo.introLen + (lots.length - 1) * geo.perLot + geo.vh * 0.25) + 'px';
+            gallery.style.height = (geo.vh + geo.introLen + (lots.length - 1) * geo.perLot + geo.tailLen) + 'px';
+            gallery.setAttribute('data-tail-px', String(Math.round(geo.tailLen)));
         }
         lots.forEach(function (entry) {
             entry.h = entry.el.offsetHeight || geo.cw * 1.3;
@@ -334,6 +355,8 @@
         // Before the walk starts, the lit lot waits low enough to clear the title and its line
         // (layout boxes, so the intro's own drift does not count).
         var introBottom = intro.offsetTop + intro.offsetHeight;
+        geo.irisX = geo.vw / 2;
+        geo.irisY = nameEl ? intro.offsetTop + nameEl.offsetTop + nameEl.offsetHeight / 2 : geo.vh / 2;
         var firstH = lots.length ? lots[0].h : geo.cw * 1.3;
         geo.drop = Math.max(geo.vh * 0.36, introBottom + 28 - geo.activeY + firstH / 2);
         geo.top = gallery.getBoundingClientRect().top + window.scrollY;
@@ -430,9 +453,19 @@
 
         intro.style.opacity = String(1 - smooth(state.intro * 1.5));
         intro.style.transform = 'translate3d(0,' + (-state.intro * 42) + 'px,0)';
-        var roomIn = String(smooth((state.intro - 0.5) * 2));
-        roomTag.style.opacity = roomIn;
-        if (index) index.style.opacity = roomIn;
+        // The last stretch: past the final lot, the room fades into the night sky behind it,
+        // and the lots drift up into the dark (only when that sky is drawn)
+        var tail = 0;
+        if (skyLive() && lots.length) {
+            tail = smooth((window.scrollY - geo.top - geo.introLen - (lots.length - 1) * geo.perLot) / geo.tailLen);
+        }
+        if (atmosphere) atmosphere.style.opacity = tail ? String(1 - tail) : '';
+        ring.style.opacity = tail ? String(1 - tail) : '';
+        ring.style.transform = tail ? 'translate3d(0,' + (-tail * h * 0.14).toFixed(1) + 'px,0)' : '';
+        label.style.opacity = tail ? String(Math.max(0, 1 - tail * 1.6)) : '';
+        var roomIn = smooth((state.intro - 0.5) * 2) * (1 - tail);
+        roomTag.style.opacity = String(roomIn);
+        if (index) index.style.opacity = String(roomIn);
         if (hint) hint.style.opacity = String(1 - smooth(state.walk * 1.5));
 
         var drop = (1 - introP) * geo.drop;
@@ -538,7 +571,7 @@
         // The ink turns once dawn has passed behind the quote: a short timed fade between two
         // readable states, with a little slack so it does not flicker back and forth.
         // While the sky is drawn, scripts/sky.js reads the light behind the quote instead.
-        if (threshold.getAttribute('data-sky') !== 'live') {
+        if (!skyLive()) {
             var day = threshold.classList.contains('is-day');
             if (!day && walk > 0.6) threshold.classList.add('is-day');
             else if (day && walk < 0.56) threshold.classList.remove('is-day');
@@ -741,30 +774,62 @@
     // ---------- The aperture: the gallery opens like an iris ----------
 
     var IRIS_BLADES = 9;
-    var irisShutter = irisEl ? irisEl.querySelector('.iris-shutter') : null;
-    var irisBlades = irisEl ? irisEl.querySelector('.iris-blades') : null;
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var irisLeaves = [];
+    var irisShade = irisEl ? irisEl.querySelector('.iris-shade') : null;
+    var irisRim = irisEl ? irisEl.querySelector('.iris-rim') : null;
+    var irisGradient = irisEl ? irisEl.querySelector('#irisShade') : null;
+    if (irisEl) {
+        var leafGroup = irisEl.querySelector('.iris-leaves');
+        for (var leafIndex = 0; leafIndex < IRIS_BLADES; leafIndex++) {
+            var leaf = document.createElementNS(SVG_NS, 'path');
+            // Three close darks, so the leaves read as overlapping metal
+            leaf.setAttribute('class', 'iris-leaf iris-leaf--' + (leafIndex % 3));
+            leafGroup.appendChild(leaf);
+            irisLeaves.push(leaf);
+        }
+    }
 
-    // open: 0 shut, 1 clear of the screen. The hole is a turning nine-sided polygon, and each
-    // blade's edge runs on past its corner, as the leaves of a lens diaphragm do.
+    function px(n) { return n.toFixed(1); }
+
+    // open: 0 shut, 1 clear of the screen. The hole is a turning nine-sided polygon centred on
+    // the name; each leaf runs from one corner out along its edge, as in a lens diaphragm, so
+    // the leaves tile everything outside the hole.
     function drawIris(open) {
-        if (!irisShutter || !geo.vw) return;
-        var w = geo.vw, h = geo.vh, cx = w / 2, cy = h / 2;
-        var reach = Math.sqrt(w * w + h * h) * 0.62;
+        if (!irisLeaves.length || !geo.vw) return;
+        var w = geo.vw, h = geo.vh, cx = geo.irisX || w / 2, cy = geo.irisY || h / 2;
+        var reach = Math.sqrt(w * w + h * h) * 0.8;
         var r = Math.max(0.5, open * reach);
         var turn = 0.35 + (1 - open) * 1.15;
         var step = Math.PI * 2 / IRIS_BLADES;
-        var hole = '', blades = '';
-        for (var i = 0; i < IRIS_BLADES; i++) {
-            var a = turn + i * step;
-            var x = cx + r * Math.cos(a), y = cy + r * Math.sin(a);
-            var dx = x - (cx + r * Math.cos(a + step)), dy = y - (cy + r * Math.sin(a + step));
-            var len = Math.sqrt(dx * dx + dy * dy) || 1;
-            hole += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
-            blades += 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'L' + (x + dx / len * reach * 2).toFixed(1) + ' ' + (y + dy / len * reach * 2).toFixed(1);
+        var vx = [], vy = [], ux = [], uy = [], i;
+        for (i = 0; i < IRIS_BLADES; i++) {
+            vx[i] = cx + r * Math.cos(turn + i * step);
+            vy[i] = cy + r * Math.sin(turn + i * step);
         }
-        irisShutter.setAttribute('d', 'M0 0H' + w + 'V' + h + 'H0Z' + hole + 'Z');
-        irisBlades.setAttribute('d', blades);
-        irisBlades.style.opacity = String(1 - open);
+        for (i = 0; i < IRIS_BLADES; i++) {
+            var next = (i + 1) % IRIS_BLADES;
+            var ex = vx[i] - vx[next], ey = vy[i] - vy[next];
+            var len = Math.sqrt(ex * ex + ey * ey) || 1;
+            ux[i] = ex / len;
+            uy[i] = ey / len;
+        }
+        var far = reach * 3, hole = '';
+        for (i = 0; i < IRIS_BLADES; i++) {
+            var j = (i + 1) % IRIS_BLADES;
+            irisLeaves[i].setAttribute('d', 'M' + px(vx[i]) + ' ' + px(vy[i]) +
+                'L' + px(vx[i] + ux[i] * far) + ' ' + px(vy[i] + uy[i] * far) +
+                'L' + px(vx[j] + ux[j] * far) + ' ' + px(vy[j] + uy[j] * far) +
+                'L' + px(vx[j]) + ' ' + px(vy[j]) + 'Z');
+            hole += (i ? 'L' : 'M') + px(vx[i]) + ' ' + px(vy[i]);
+        }
+        // Deeper towards the edges of the screen, and a warm rim where the light comes through
+        irisShade.setAttribute('d', 'M0 0H' + w + 'V' + h + 'H0Z' + hole + 'Z');
+        irisGradient.setAttribute('cx', px(cx));
+        irisGradient.setAttribute('cy', px(cy));
+        irisGradient.setAttribute('r', px(Math.max(r * 2.4, 90)));
+        irisRim.setAttribute('d', hole + 'Z');
+        irisRim.style.opacity = String(1 - open * open);
     }
 
     function openIris(duration, onHalfway) {
@@ -939,6 +1004,7 @@
         .then(function (data) {
             var projects = Array.isArray(data.projects) ? data.projects : [];
             totalWorks = projects.length;
+            setKicker();
             var byDate = function (a, b) { return dateKey(b) - dateKey(a); };
             var exhibits = projects.filter(function (p) { return p.exhibit && p.coverImage; }).sort(byDate);
             archivePeek = projects.filter(function (p) { return !p.exhibit && p.coverImage; }).sort(byDate).slice(0, 3);
@@ -964,13 +1030,15 @@
     document.body.classList.add('nav-over-hero');
     setupSpecimens();
 
-    var askIrisy = document.getElementById('askIrisy');
-    if (askIrisy) {
-        askIrisy.addEventListener('click', function () {
+    // "Ask Irisy": the exit and the opening both open the digital twin's chat
+    ['askIrisy', 'askIrisyTop'].forEach(function (id) {
+        var button = document.getElementById(id);
+        if (!button) return;
+        button.addEventListener('click', function () {
             var bubble = document.getElementById('alterBubble');
             if (bubble) bubble.click();
         });
-    }
+    });
 
     if (reducedQuery && typeof reducedQuery.addEventListener === 'function') {
         reducedQuery.addEventListener('change', function () { window.location.reload(); });

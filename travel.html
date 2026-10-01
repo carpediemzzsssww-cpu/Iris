@@ -46,146 +46,315 @@
         line-height: 1.65;
     }
 
-    /* Stats */
+    /* Stats, set like the specimens on the home page: hairlines and light numerals */
     .travel-stats {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: clamp(10px, 2vw, 20px);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        max-width: 760px;
         margin: var(--space-5) auto var(--space-6);
-        max-width: 620px;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
     }
     .travel-stat {
+        padding: 22px 12px 18px;
         text-align: center;
-        padding: var(--space-4) var(--space-3);
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--border-radius);
-        transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
     }
-    .travel-stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .travel-stat + .travel-stat { border-left: 1px solid var(--border); }
     .travel-stat-number {
-        font-family: 'Space Mono', monospace;
-        font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight: 700;
-        color: var(--accent); line-height: 1;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(40px, 5vw, 58px);
+        font-weight: 300;
+        line-height: 1;
+        font-variant-numeric: lining-nums tabular-nums;
+        color: var(--text);
     }
     .travel-stat-label {
-        font-size: clamp(0.62rem, 1.5vw, 0.78rem); color: var(--muted);
-        text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px;
+        margin-top: 10px;
+        font-family: var(--font-label);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
     }
 
-    /* Globe — forced dark regardless of page theme */
+    /* The vitrine: a brass globe under a warm light, dark in both themes like the gallery at home */
     .globe-section {
         position: relative;
         width: 100%;
-        height: clamp(440px, 60vh, 600px);
-        border-radius: var(--border-radius);
+        height: clamp(540px, 80vh, 800px);
+        margin-bottom: var(--space-8);
         overflow: hidden;
-        background: radial-gradient(ellipse at 35% 40%, #241E2B 0%, #1A1620 58%, #120F18 100%);
-        border: 1px solid rgba(232, 223, 240, 0.08);
+        border-radius: 3px;
+        background:
+            radial-gradient(ellipse 34% 42% at 50% 36%, rgba(255, 220, 168, 0.16), transparent 72%),
+            radial-gradient(ellipse 60% 22% at 50% 94%, rgba(0, 0, 0, 0.42), transparent 75%),
+            linear-gradient(180deg, #241b14 0%, #19130e 62%, #120d09 100%);
+        box-shadow: inset 0 0 0 1px rgba(214, 186, 140, 0.12), 0 40px 70px -40px rgba(20, 12, 6, 0.55);
+        color: #e9dcc8;
         cursor: grab;
-        margin-bottom: var(--space-6);
-        box-shadow: 0 4px 40px rgba(0,0,0,0.35);
+        -webkit-user-select: none;
+        user-select: none;
     }
-    .globe-section:active { cursor: grabbing; }
-    .globe-starfield {
-        position: absolute; inset: 0;
-        pointer-events: none; z-index: 0;
+    .globe-section::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        opacity: 0.12;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     }
+    .globe-section.is-dragging { cursor: grabbing; }
     #globe-canvas {
-        position: relative; width: 100%; height: 100%;
-        display: block; z-index: 1;
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        touch-action: pan-y;
+        opacity: 0;
+        transition: opacity 1.2s ease;
     }
+    .globe-section.is-ready #globe-canvas { opacity: 1; }
 
-    /* Tooltip — forced dark */
-    .globe-tooltip {
-        position: absolute; pointer-events: none;
-        background: rgba(8, 14, 26, 0.92);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 10px;
-        padding: 12px 16px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-        z-index: 100; opacity: 0;
-        transition: opacity 0.15s;
+    /* A wall label for the object */
+    .globe-label {
+        position: absolute;
+        top: 22px;
+        left: 24px;
+        z-index: 3;
         max-width: 260px;
-        backdrop-filter: blur(12px);
-        color: #e6edf3;
+        pointer-events: none;
     }
-    .globe-tooltip.visible { opacity: 1; }
-    .tooltip-city { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
-    .tooltip-country { font-size: 0.8rem; color: rgba(230,237,243,0.55); }
-    .tooltip-places { font-size: 0.75rem; color: #B8A4C9; margin-top: 6px; font-family: 'DM Mono', 'Space Mono', monospace; letter-spacing: 0.08em; }
-    .tooltip-places.asia { color: #D4B5E0; }
-    .tooltip-places.gold { color: #D4956A; }
+    .globe-label-kicker {
+        margin: 0;
+        font-family: var(--font-label);
+        font-size: 11px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #b59f7d;
+    }
+    .globe-label-medium {
+        margin: 6px 0 0;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 18px;
+        font-style: italic;
+        line-height: 1.35;
+        color: #e6d6bf;
+    }
+    html[data-lang='zh'] .globe-label-medium {
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-style: normal;
+        letter-spacing: 0.06em;
+    }
 
-    /* Controls — forced dark */
+    .globe-legend {
+        position: absolute;
+        left: 24px;
+        bottom: 22px;
+        z-index: 3;
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-family: var(--font-label);
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #cdb995;
+        pointer-events: none;
+    }
+    html[data-lang='zh'] .globe-legend {
+        font-family: var(--font-body);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+    }
+    .globe-legend li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .legend-mark {
+        flex: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .legend-mark.is-garnet { background: radial-gradient(circle at 35% 30%, #e46a76, #86111f 55%, #3e0710); }
+    .legend-mark.is-pearl { background: radial-gradient(circle at 35% 30%, #ffffff, #efe4d2 50%, #a99a82); }
+    .legend-mark.is-rose {
+        border-radius: 2px;
+        background: linear-gradient(135deg, #f3c2a9, #c98668);
+    }
+
     .globe-controls {
-        position: absolute; bottom: 16px; right: 16px;
-        display: flex; gap: 8px; z-index: 10;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        z-index: 3;
+        display: flex;
+        gap: 8px;
     }
     .globe-btn {
-        width: 36px; height: 36px; border-radius: 10px;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: rgba(255,255,255,0.06);
-        backdrop-filter: blur(10px);
-        color: rgba(255,255,255,0.7);
-        font-size: 16px; cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        transition: all 0.2s;
-    }
-    .globe-btn:hover, .globe-btn.active {
-        background: var(--accent); color: #fff; border-color: var(--accent);
-    }
-    .globe-hint {
-        position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-        font-size: 0.72rem; color: rgba(255,255,255,0.35);
-        letter-spacing: 0.04em; z-index: 10; pointer-events: none;
-        transition: opacity 0.6s;
-    }
-    .globe-hint.hidden { opacity: 0; }
-
-    /* Legend */
-    .globe-legend {
-        position: absolute; top: 16px; left: 16px;
-        display: flex; flex-direction: column; gap: 6px;
-        z-index: 10; font-size: 0.7rem;
-        color: rgba(255,255,255,0.5);
-        letter-spacing: 0.03em;
-    }
-    .globe-legend-item {
-        display: flex; align-items: center; gap: 7px;
-    }
-    .globe-legend-dot {
-        width: 8px; height: 8px; border-radius: 50%;
-    }
-    .globe-legend-dot.asia { background: #B8A4C9; box-shadow: 0 0 6px rgba(184,164,201,0.4); }
-    .globe-legend-dot.europe { background: #95A89C; box-shadow: 0 0 6px rgba(149,168,156,0.4); }
-    .globe-legend-dot.capital { background: #D4956A; box-shadow: 0 0 6px rgba(212,149,106,0.45); }
-    .globe-legend-dot.other { background: rgba(160,150,170,0.35); }
-
-    /* Loading */
-    .globe-loading {
-        position: absolute; inset: 0;
-        display: flex; align-items: center; justify-content: center;
-        flex-direction: column; gap: 12px; z-index: 5;
-        transition: opacity 0.8s;
-    }
-    .globe-loading.hidden { opacity: 0; pointer-events: none; }
-    .globe-loading-spinner {
-        width: 28px; height: 28px;
-        border: 2px solid rgba(255,255,255,0.1);
-        border-top-color: #B8A4C9;
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        border: 1px solid rgba(214, 186, 140, 0.42);
         border-radius: 50%;
-        animation: globeSpin 0.8s linear infinite;
+        background: rgba(20, 14, 10, 0.35);
+        color: #e3cfa9;
+        cursor: pointer;
+        transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
     }
-    @keyframes globeSpin { to { transform: rotate(360deg); } }
-    .globe-loading-text { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+    .globe-btn svg {
+        width: 17px;
+        height: 17px;
+    }
+    .globe-btn:hover,
+    .globe-btn:focus-visible {
+        border-color: #d6ba8c;
+        background: rgba(214, 186, 140, 0.14);
+        color: #fff4e2;
+    }
+    .globe-btn[aria-pressed='true'] {
+        border-color: #d6ba8c;
+        background: #d6ba8c;
+        color: #1a130d;
+    }
 
-    /* Destinations Section */
+    .globe-hint {
+        position: absolute;
+        left: 50%;
+        bottom: 31px;
+        z-index: 3;
+        margin: 0;
+        transform: translateX(-50%);
+        font-family: var(--font-label);
+        font-size: 10.5px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: rgba(233, 220, 200, 0.55);
+        pointer-events: none;
+        transition: opacity 0.6s ease;
+    }
+    html[data-lang='zh'] .globe-hint {
+        font-family: var(--font-body);
+        font-size: 12px;
+        letter-spacing: 0.1em;
+    }
+    .globe-hint,
+    .globe-section.is-ready .globe-hint.hidden { opacity: 0; }
+    .globe-section.is-ready .globe-hint { opacity: 1; }
+
+    /* The label that follows a pin */
+    .globe-tooltip {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 4;
+        min-width: 140px;
+        max-width: 240px;
+        padding: 10px 14px 11px;
+        border: 1px solid rgba(214, 186, 140, 0.35);
+        border-radius: 3px;
+        background: rgba(24, 17, 12, 0.9);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+        color: #efe3cf;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        will-change: transform;
+    }
+    .globe-tooltip.visible { opacity: 1; }
+    .tooltip-city {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    html[data-lang='zh'] .tooltip-city {
+        font-family: var(--font-museum);
+        font-size: 17px;
+    }
+    .tooltip-country {
+        margin-top: 2px;
+        font-family: var(--font-label);
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #b59f7d;
+    }
+    html[data-lang='zh'] .tooltip-country {
+        font-family: var(--font-body);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+    }
+    .tooltip-places {
+        margin-top: 8px;
+        padding-top: 7px;
+        border-top: 1px solid rgba(214, 186, 140, 0.2);
+        font-size: 12px;
+        color: #d8c6a6;
+    }
+    .tooltip-places.is-lingered { color: #f19aa3; }
+
+    /* While the maps are drawn: the words get polished too */
+    .globe-loading {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+        transition: opacity 0.8s ease;
+    }
+    .globe-loading.hidden { opacity: 0; }
+    .globe-loading-text {
+        margin: 0;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 22px;
+        font-style: italic;
+        background: linear-gradient(100deg, #8a6a3e 20%, #fff1d2 45%, #8a6a3e 70%) 0 0 / 300% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: polish 2.2s linear infinite;
+    }
+    html[data-lang='zh'] .globe-loading-text {
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-style: normal;
+        letter-spacing: 0.12em;
+    }
+    @keyframes polish {
+        from { background-position: 100% 0; }
+        to { background-position: 0 0; }
+    }
+    .globe-fail {
+        margin: 0;
+        padding: 0 24px;
+        font-size: 14px;
+        line-height: 1.7;
+        text-align: center;
+        color: rgba(233, 220, 200, 0.7);
+        pointer-events: auto;
+    }
+    .globe-fail a { color: #e3cfa9; }
+
+    /* Destinations, set like catalogue entries */
     .destinations-divider {
         display: flex;
         align-items: center;
         gap: 16px;
-        margin-bottom: var(--space-6);
+        margin-bottom: var(--space-5);
         padding-top: var(--space-5);
     }
     .destinations-divider::before,
@@ -196,51 +365,132 @@
         background: var(--border);
     }
     .travel-grid-title {
+        margin: 0;
         font-family: var(--font-display);
         font-size: clamp(1.6rem, 3.5vw, 2.2rem);
         font-weight: 400;
         white-space: nowrap;
-        margin: 0;
     }
     .country-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 16px; margin-bottom: var(--space-8);
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 0 32px;
+        margin-bottom: var(--space-8);
     }
     .country-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--border-radius);
-        padding: 20px;
-        transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+        padding: 18px 0 22px;
+        border-top: 1px solid var(--border);
     }
-    .country-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-    .country-flag { font-size: 1.5rem; margin-bottom: 6px; }
-    .country-name { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
-    .city-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .country-head {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+    .country-flag {
+        font-size: 17px;
+        line-height: 1;
+    }
+    .country-name {
+        margin: 0;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+    html[data-lang='zh'] .country-name {
+        font-family: var(--font-museum);
+        font-size: 20px;
+    }
+    .country-count {
+        margin-left: auto;
+        font-family: var(--font-label);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+    }
+    .city-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
     .city-tag {
-        font-size: 0.78rem; padding: 4px 10px;
-        background: var(--accent-soft); color: var(--accent);
-        border-radius: 20px; font-weight: 500; cursor: pointer;
-        transition: all var(--duration-fast) var(--ease-out);
-        white-space: nowrap; border: none; font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 11px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 13px;
+        cursor: pointer;
+        transition: border-color 0.2s ease, color 0.2s ease;
     }
-    .city-tag:hover { background: var(--accent); color: #fff; }
-    .city-tag.asia-tag { background: rgba(251,191,36,0.12); color: #d97706; }
-    .city-tag.asia-tag:hover { background: #f59e0b; color: #fff; }
-    html[data-theme='dark'] .city-tag.asia-tag { background: rgba(251,191,36,0.15); color: #fbbf24; }
-    html[data-theme='dark'] .city-tag.asia-tag:hover { background: #f59e0b; color: #fff; }
-    .city-tag .pin-count {
-        font-family: 'Space Mono', monospace;
-        font-size: 0.65rem; opacity: 0.7; margin-left: 4px;
+    .city-tag:hover,
+    .city-tag:focus-visible {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+    .city-tag.is-lingered::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #8f1726;
+    }
+    .pin-count {
+        font-family: var(--font-label);
+        font-size: 10.5px;
+        letter-spacing: 0.06em;
+        color: var(--muted);
     }
 
     @media (max-width: 640px) {
-        .globe-section { height: 380px; }
-        .travel-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .travel-stat { padding: 14px 12px; }
+        .travel-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .travel-stat:nth-child(3) { border-left: 0; }
+        .travel-stat:nth-child(n + 3) { border-top: 1px solid var(--border); }
+        .globe-section {
+            width: auto;
+            height: min(76vh, 620px);
+            min-height: 500px;
+            margin-left: calc(-1 * var(--container-padding));
+            margin-right: calc(-1 * var(--container-padding));
+            border-radius: 0;
+        }
+        .globe-label {
+            top: 16px;
+            left: 16px;
+            max-width: 52%;
+        }
+        .globe-label-medium { font-size: 15px; }
+        .globe-controls {
+            top: 14px;
+            right: 14px;
+            bottom: auto;
+        }
+        .globe-btn {
+            width: 34px;
+            height: 34px;
+        }
+        .globe-legend {
+            left: 16px;
+            bottom: 16px;
+            gap: 7px;
+        }
+        .globe-hint {
+            left: auto;
+            right: 16px;
+            bottom: 17px;
+            transform: none;
+        }
         .country-grid { grid-template-columns: 1fr; }
-        .globe-legend { font-size: 0.62rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .globe-loading-text { animation: none; color: #cdb995; background: none; }
+        #globe-canvas { transition: none; }
     }
     </style>
 </head>
@@ -305,28 +555,30 @@
                 })();
                 </script>
 
-                <div class="globe-section" id="globe-wrapper">
-                    <canvas class="globe-starfield" id="starfield-canvas"></canvas>
-                    <canvas id="globe-canvas"></canvas>
-                    <div class="globe-tooltip" id="tooltip">
+                <div class="globe-section" id="globe-wrapper" role="group" aria-labelledby="globeKicker">
+                    <canvas id="globe-canvas" aria-hidden="true"></canvas>
+                    <div class="globe-label">
+                        <p class="globe-label-kicker" id="globeKicker" data-i18n="travel.globe.kicker">Terrestrial globe</p>
+                        <p class="globe-label-medium" data-i18n="travel.globe.medium">Engraved brass, garnet pins, red thread</p>
+                    </div>
+                    <ul class="globe-legend">
+                        <li><span class="legend-mark is-garnet" aria-hidden="true"></span><span data-i18n="travel.legend.lingered">Where I lingered</span></li>
+                        <li><span class="legend-mark is-pearl" aria-hidden="true"></span><span data-i18n="travel.legend.city">Cities I've visited</span></li>
+                        <li><span class="legend-mark is-rose" aria-hidden="true"></span><span data-i18n="travel.legend.country">Countries I've been to</span></li>
+                    </ul>
+                    <div class="globe-controls">
+                        <button class="globe-btn" id="btn-spin" type="button" aria-pressed="true" data-i18n-aria="travel.btn.turn" data-i18n-title="travel.btn.turn" aria-label="Turn slowly" title="Turn slowly"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4h-4"/></svg></button>
+                        <button class="globe-btn" id="btn-zoom" type="button" aria-pressed="false" data-i18n-aria="travel.btn.zoom" data-i18n-title="travel.btn.zoom" aria-label="Look closer" title="Look closer"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/><path d="M11 8.5v5M8.5 11h5"/></svg></button>
+                        <button class="globe-btn" id="btn-reset" type="button" data-i18n-aria="travel.btn.reset" data-i18n-title="travel.btn.reset" aria-label="Back to Paris" title="Back to Paris"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.2"/></svg></button>
+                    </div>
+                    <div class="globe-tooltip" id="tooltip" aria-hidden="true">
                         <div class="tooltip-city"></div>
                         <div class="tooltip-country"></div>
                         <div class="tooltip-places"></div>
                     </div>
-                    <div class="globe-legend">
-                        <div class="globe-legend-item"><span class="globe-legend-dot capital"></span><span>Lingered</span></div>
-                        <div class="globe-legend-item"><span class="globe-legend-dot europe"></span><span data-i18n="travel.legend.europe">Europe</span></div>
-                        <div class="globe-legend-item"><span class="globe-legend-dot asia"></span><span data-i18n="travel.legend.asia">Asia</span></div>
-                        <div class="globe-legend-item"><span class="globe-legend-dot other"></span><span data-i18n="travel.legend.other">Unvisited</span></div>
-                    </div>
-                    <div class="globe-controls">
-                        <button class="globe-btn active" id="btn-spin" title="Auto-rotate">&#x21bb;</button>
-                        <button class="globe-btn" id="btn-reset" title="Reset view">&#x2302;</button>
-                    </div>
-                    <div class="globe-hint" id="globe-hint">Drag to explore &middot; Scroll to zoom</div>
+                    <p class="globe-hint" id="globe-hint">Drag to turn the globe</p>
                     <div class="globe-loading" id="globe-loading">
-                        <div class="globe-loading-spinner"></div>
-                        <div class="globe-loading-text">Loading world data...</div>
+                        <p class="globe-loading-text" data-i18n="travel.loading">Polishing the brass...</p>
                     </div>
                 </div>
 
@@ -349,9 +601,14 @@
 
     <script>
     window.__globeDepsOk = 0;
-    window.__globeDepsFail = function() {
+    window.__globeDepsFail = function () {
         var el = document.getElementById('globe-loading');
-        if (el) el.innerHTML = '<div style="color:rgba(255,255,255,0.5);font-size:0.85rem;text-align:center;line-height:1.6;">Globe could not load.<br><span style="font-size:0.75rem;">Check your connection and <a href="javascript:location.reload()" style="color:#2dd4bf;">refresh</a>.</span></div>';
+        if (!el) return;
+        var zh = document.documentElement.getAttribute('data-lang') === 'zh';
+        el.classList.remove('hidden');
+        el.innerHTML = '<p class="globe-fail">' + (zh
+            ? '\u5730\u7403\u4eea\u6ca1\u80fd\u52a0\u8f7d\u51fa\u6765\u3002<br>\u68c0\u67e5\u4e00\u4e0b\u7f51\u7edc\uff0c\u518d<a href="">\u5237\u65b0</a>\u8bd5\u8bd5\u3002'
+            : 'The globe could not load.<br>Check your connection and <a href="">refresh</a>.') + '</p>';
     };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onload="window.__globeDepsOk++" onerror="window.__globeDepsFail()"></script>
@@ -359,736 +616,7 @@
     <script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js" onload="window.__globeDepsOk++" onerror="window.__globeDepsFail()"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js" onload="window.__globeDepsOk++" onerror="window.__globeDepsFail()"></script>
     <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js" onload="window.__globeDepsOk++" onerror="window.__globeDepsFail()"></script>
-    <script>
-    (async function () {
-
-    // Guard: if CDN scripts failed, abort globe init
-    if (typeof THREE === 'undefined' || typeof d3 === 'undefined' || typeof topojson === 'undefined') {
-      window.__globeDepsFail();
-      return;
-    }
-
-    // Timeout: if globe still loading after 8s, show fallback
-    setTimeout(function() {
-      var el = document.getElementById('globe-loading');
-      if (el && !el.classList.contains('hidden')) window.__globeDepsFail();
-    }, 8000);
-
-    // ══════════════════════════════════════
-    // DATA
-    // ══════════════════════════════════════
-    const CITIES = [
-      { city:"Shanghai",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:31.23,lng:121.47,pins:0 },
-      { city:"Beijing",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:39.90,lng:116.41,pins:0 },
-      { city:"Guangzhou",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:23.13,lng:113.26,pins:0 },
-      { city:"Wuhan",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:30.59,lng:114.31,pins:0 },
-      { city:"Qingdao",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:36.07,lng:120.38,pins:0 },
-      { city:"Zhejiang",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:29.14,lng:119.79,pins:0 },
-      { city:"Yunnan",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:25.04,lng:102.72,pins:0 },
-      { city:"Hunan",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:28.23,lng:112.94,pins:0 },
-      { city:"Jiangsu",country:"China",flag:"\u{1F1E8}\u{1F1F3}",lat:32.06,lng:118.80,pins:0 },
-      { city:"Hong Kong",country:"China",flag:"\u{1F1ED}\u{1F1F0}",lat:22.32,lng:114.17,pins:0 },
-      { city:"Macau",country:"China",flag:"\u{1F1F2}\u{1F1F4}",lat:22.20,lng:113.54,pins:0 },
-      { city:"Tokyo",country:"Japan",flag:"\u{1F1EF}\u{1F1F5}",lat:35.68,lng:139.65,pins:0 },
-      { city:"Kyoto",country:"Japan",flag:"\u{1F1EF}\u{1F1F5}",lat:35.01,lng:135.77,pins:0 },
-      { city:"Osaka",country:"Japan",flag:"\u{1F1EF}\u{1F1F5}",lat:34.69,lng:135.50,pins:0 },
-      { city:"Paris",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:48.86,lng:2.35,pins:22 },
-      { city:"Nice",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.71,lng:7.26,pins:0 },
-      { city:"Menton",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.77,lng:7.50,pins:0 },
-      { city:"\u00C8ze",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.73,lng:7.36,pins:0 },
-      { city:"Cannes",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.55,lng:7.02,pins:0 },
-      { city:"Antibes",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:43.58,lng:7.12,pins:0 },
-      { city:"Strasbourg",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:48.57,lng:7.75,pins:8 },
-      { city:"Colmar",country:"France",flag:"\u{1F1EB}\u{1F1F7}",lat:48.08,lng:7.36,pins:3 },
-      { city:"Monaco",country:"Monaco",flag:"\u{1F1F2}\u{1F1E8}",lat:43.74,lng:7.42,pins:0 },
-      { city:"Geneva",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.20,lng:6.14,pins:1 },
-      { city:"Interlaken",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.69,lng:7.86,pins:0 },
-      { city:"Thun",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.76,lng:7.63,pins:0 },
-      { city:"M\u00FCrren",country:"Switzerland",flag:"\u{1F1E8}\u{1F1ED}",lat:46.56,lng:7.89,pins:0 },
-      { city:"London",country:"United Kingdom",flag:"\u{1F1EC}\u{1F1E7}",lat:51.51,lng:-0.13,pins:0 },
-      { city:"Milan",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:45.46,lng:9.19,pins:0 },
-      { city:"Crema",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:45.36,lng:9.69,pins:0 },
-      { city:"Dolomites",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:46.41,lng:11.84,pins:0 },
-      { city:"Venice",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:45.44,lng:12.32,pins:0 },
-      { city:"Florence",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:43.77,lng:11.26,pins:4 },
-      { city:"Rome",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:41.90,lng:12.50,pins:2 },
-      { city:"Naples",country:"Italy",flag:"\u{1F1EE}\u{1F1F9}",lat:40.85,lng:14.27,pins:0 },
-      { city:"Barcelona",country:"Spain",flag:"\u{1F1EA}\u{1F1F8}",lat:41.39,lng:2.17,pins:0 },
-      { city:"Seville",country:"Spain",flag:"\u{1F1EA}\u{1F1F8}",lat:37.39,lng:-5.98,pins:0 },
-      { city:"Madrid",country:"Spain",flag:"\u{1F1EA}\u{1F1F8}",lat:40.42,lng:-3.70,pins:6 },
-      { city:"Budapest",country:"Hungary",flag:"\u{1F1ED}\u{1F1FA}",lat:47.50,lng:19.04,pins:10 },
-      { city:"Vienna",country:"Austria",flag:"\u{1F1E6}\u{1F1F9}",lat:48.21,lng:16.37,pins:11 },
-      { city:"Prague",country:"Czech Republic",flag:"\u{1F1E8}\u{1F1FF}",lat:50.08,lng:14.44,pins:11 },
-      { city:"Copenhagen",country:"Denmark",flag:"\u{1F1E9}\u{1F1F0}",lat:55.68,lng:12.57,pins:9 },
-      { city:"Stockholm",country:"Sweden",flag:"\u{1F1F8}\u{1F1EA}",lat:59.33,lng:18.07,pins:22 },
-      { city:"Oslo",country:"Norway",flag:"\u{1F1F3}\u{1F1F4}",lat:59.91,lng:10.75,pins:3 },
-      { city:"Lofoten",country:"Norway",flag:"\u{1F1F3}\u{1F1F4}",lat:68.21,lng:14.56,pins:2 },
-      { city:"Troms\u00F8",country:"Norway",flag:"\u{1F1F3}\u{1F1F4}",lat:69.65,lng:18.96,pins:5 },
-      { city:"Lisbon",country:"Portugal",flag:"\u{1F1F5}\u{1F1F9}",lat:38.72,lng:-9.14,pins:23 },
-      { city:"Athens",country:"Greece",flag:"\u{1F1EC}\u{1F1F7}",lat:37.98,lng:23.73,pins:0 },
-      { city:"Zakynthos",country:"Greece",flag:"\u{1F1EC}\u{1F1F7}",lat:37.79,lng:20.90,pins:0 },
-    ];
-
-    const ASIA_COUNTRIES = new Set(['China','Japan']);
-    const ASIA_IDS = new Set([156, 392]);
-    const EUROPE_IDS = new Set([250,492,756,826,380,724,348,40,203,208,752,578,620,300]);
-
-    const ROUTES = [
-      ['Paris','London'],['Paris','Strasbourg'],['Paris','Nice'],
-      ['Paris','Lisbon'],['Paris','Barcelona'],['Paris','Rome'],
-      ['Paris','Prague'],['Paris','Stockholm'],['Paris','Copenhagen'],
-      ['Stockholm','Troms\u00F8'],['Stockholm','Oslo'],['Copenhagen','Stockholm'],
-      ['Vienna','Budapest'],['Vienna','Prague'],['Rome','Florence'],
-      ['Florence','Venice'],['Venice','Milan'],['Milan','Geneva'],
-      ['Athens','Zakynthos'],['Nice','Monaco'],
-      ['Shanghai','Tokyo'],['Tokyo','Osaka'],['Osaka','Kyoto'],
-      ['Beijing','Shanghai'],['Shanghai','Hong Kong'],
-      ['Wuhan','Shanghai'],['Wuhan','Beijing'],
-      ['Oslo','Lofoten'],['Lofoten','Troms\u00F8'],
-      ['Madrid','Seville'],['Madrid','Barcelona'],
-    ];
-
-    const COUNTRY_ORDER = [
-      'China','Japan','France','Monaco','Switzerland','United Kingdom',
-      'Italy','Spain','Portugal','Greece','Hungary','Austria',
-      'Czech Republic','Denmark','Sweden','Norway'
-    ];
-
-    // ══════════════════════════════════════
-    // COLORS — plum × sage, aligned with site palette
-    // ══════════════════════════════════════
-    const C = {
-      sphere: 0x1A1620,                                // 深紫黑，匹配 hero-photon
-      graticule: 0x3D3346,                             // 深紫经纬线
-      graticuleAlpha: 0.14,
-      landDot: new THREE.Color(0.42, 0.36, 0.48),      // 雾紫灰 (未访问)
-      landAlpha: 0.30,
-      europeDot: new THREE.Color(0.585, 0.658, 0.612), // sage #95A89C
-      europeAlpha: 0.72,
-      asiaDot: new THREE.Color(0.722, 0.643, 0.788),   // plum-light #B8A4C9
-      asiaAlpha: 0.68,
-      europeCityHex: 0x95A89C,
-      asiaCityHex: 0xB8A4C9,
-      goldCityHex: 0xD4956A,                           // 暖金 — Tier A only
-      europeArc: 0x95A89C,
-      asiaArc: 0xB8A4C9,
-      goldArc: 0xD4956A,
-      europeBorder: 0x95A89C,
-      asiaBorder: 0xB8A4C9,
-      atmosPlum: [0.420, 0.345, 0.463],                // #6B5876
-      atmosSage: [0.585, 0.658, 0.612],                // #95A89C
-      ambient: 0x3A3240,                               // 暖中性
-      keyLight: 0xE8DFF0,                              // 冷白光（hero 里的 text 色）
-      rimLightHex: 0x95A89C,                           // sage rim
-      warmLightHex: 0xB8A4C9,                          // plum warm
-    };
-
-    // ══════════════════════════════════════
-    // STARFIELD
-    // ══════════════════════════════════════
-    const starCanvas = document.getElementById('starfield-canvas');
-    const starCtx = starCanvas.getContext('2d');
-    let stars = [];
-
-    function initStarfield() {
-      const w = starCanvas.parentElement.clientWidth;
-      const h = starCanvas.parentElement.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio, 2);
-      starCanvas.width = w * dpr;
-      starCanvas.height = h * dpr;
-      starCanvas.style.width = w + 'px';
-      starCanvas.style.height = h + 'px';
-      stars = [];
-      for (let i = 0, n = Math.floor((w * h) / 500); i < n; i++) {
-        stars.push({
-          x: Math.random() * starCanvas.width,
-          y: Math.random() * starCanvas.height,
-          r: Math.random() * 1.0 + 0.2,
-          phase: Math.random() * Math.PI * 2,
-          speed: Math.random() * 0.004 + 0.001,
-        });
-      }
-    }
-    function drawStarfield(time) {
-      starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
-      stars.forEach(s => {
-        const a = 0.25 + 0.55 * Math.sin(time * s.speed + s.phase);
-        starCtx.beginPath();
-        starCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        starCtx.fillStyle = `rgba(180,200,220,${a})`;
-        starCtx.fill();
-      });
-      requestAnimationFrame(drawStarfield);
-    }
-    initStarfield();
-    requestAnimationFrame(drawStarfield);
-
-    // ══════════════════════════════════════
-    // CITY GRID (DOM)
-    // ══════════════════════════════════════
-    const countryGroups = {};
-    CITIES.forEach(c => {
-      if (!countryGroups[c.country]) countryGroups[c.country] = { flag: c.flag, cities: [] };
-      countryGroups[c.country].cities.push(c);
-    });
-    const gridEl = document.getElementById('city-grid');
-    COUNTRY_ORDER.forEach(name => {
-      const g = countryGroups[name];
-      if (!g) return;
-      const isAsia = ASIA_COUNTRIES.has(name);
-      const card = document.createElement('div');
-      card.className = 'country-card';
-      card.innerHTML = `
-        <div class="country-flag">${g.flag}</div>
-        <div class="country-name">${name}</div>
-        <div class="city-tags">${g.cities.map(c => {
-          const pin = c.pins > 0 ? `<span class="pin-count">\u00b7 ${c.pins}</span>` : '';
-          const cls = isAsia ? 'city-tag asia-tag' : 'city-tag';
-          return `<button class="${cls}" data-lat="${c.lat}" data-lng="${c.lng}">${c.city}${pin}</button>`;
-        }).join('')}</div>`;
-      gridEl.appendChild(card);
-    });
-
-    // ══════════════════════════════════════
-    // THREE.JS
-    // ══════════════════════════════════════
-    const wrapper = document.getElementById('globe-wrapper');
-    const canvas = document.getElementById('globe-canvas');
-    const tooltipEl = document.getElementById('tooltip');
-    const hintEl = document.getElementById('globe-hint');
-    const loadingEl = document.getElementById('globe-loading');
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, wrapper.clientWidth / wrapper.clientHeight, 0.1, 1000);
-    camera.position.z = 2.8;
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Default view centered on Paris (lat 48.86, lng 2.35) — where the visual density is
-    const globeGroup = new THREE.Group();
-    globeGroup.rotation.x = 0.426;
-    globeGroup.rotation.y = -1.612;
-    scene.add(globeGroup);
-
-    // Occluder — invisible depth writer to hide back-side dots
-    globeGroup.add(new THREE.Mesh(
-      new THREE.SphereGeometry(0.99, 64, 64),
-      new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true })
-    ));
-
-    // Dark sphere body
-    const sphereMat = new THREE.MeshPhongMaterial({
-      color: C.sphere, transparent: true, opacity: 0.85, shininess: 8, depthWrite: false,
-    });
-    globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.993, 64, 64), sphereMat));
-
-    // Graticule (lat/lng grid)
-    globeGroup.add(new THREE.Mesh(
-      new THREE.SphereGeometry(0.996, 36, 18),
-      new THREE.MeshBasicMaterial({
-        color: C.graticule, wireframe: true, transparent: true, opacity: C.graticuleAlpha,
-      })
-    ));
-
-    // Atmosphere glow — plum (Asia side) × sage (Europe side) rim
-    const atmosMat = new THREE.ShaderMaterial({
-      vertexShader: `
-        varying vec3 vNormal;
-        varying vec3 vWorldPos;
-        void main() {
-          vNormal = normalize(normalMatrix * normal);
-          vWorldPos = (modelMatrix * vec4(position,1.0)).xyz;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-        }`,
-      fragmentShader: `
-        uniform vec3 uSage;
-        uniform vec3 uPlum;
-        varying vec3 vNormal;
-        varying vec3 vWorldPos;
-        void main() {
-          float rim = pow(0.64 - dot(vNormal, vec3(0,0,1)), 2.6);
-          // Blend plum ↔ sage by world x (left=Asia plum, right=Europe sage)
-          float blend = smoothstep(-0.6, 0.8, vWorldPos.x);
-          vec3 col = mix(uPlum, uSage, blend);
-          gl_FragColor = vec4(col, rim * 0.55);
-        }`,
-      uniforms: {
-        uSage: { value: new THREE.Vector3(...C.atmosSage) },
-        uPlum: { value: new THREE.Vector3(...C.atmosPlum) },
-      },
-      blending: THREE.AdditiveBlending,
-      side: THREE.BackSide,
-      transparent: true,
-    });
-    scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.12, 64, 64), atmosMat));
-
-    // Lights — warmer ambient, plum/sage fills
-    scene.add(new THREE.AmbientLight(C.ambient, 0.55));
-    const keyLight = new THREE.DirectionalLight(C.keyLight, 0.72);
-    keyLight.position.set(4, 3, 5);
-    scene.add(keyLight);
-    const rimLight = new THREE.DirectionalLight(C.rimLightHex, 0.22);
-    rimLight.position.set(-4, -1, -3);
-    scene.add(rimLight);
-    const warmLight = new THREE.DirectionalLight(C.warmLightHex, 0.12);
-    warmLight.position.set(3, -2, -4);
-    scene.add(warmLight);
-
-    // ══════════════════════════════════════
-    // HELPERS
-    // ══════════════════════════════════════
-    function latLngToVec3(lat, lng, r) {
-      const phi = (90 - lat) * Math.PI / 180;
-      const theta = (lng + 180) * Math.PI / 180;
-      return new THREE.Vector3(
-        -r * Math.sin(phi) * Math.cos(theta),
-        r * Math.cos(phi),
-        r * Math.sin(phi) * Math.sin(theta)
-      );
-    }
-    function fibSphere(n) {
-      const pts = [], golden = Math.PI * (Math.sqrt(5) - 1);
-      for (let i = 0; i < n; i++) {
-        const y = 1 - (i / (n - 1)) * 2;
-        const r = Math.sqrt(1 - y * y);
-        const th = golden * i;
-        pts.push([Math.atan2(Math.sin(th)*r, Math.cos(th)*r)*180/Math.PI, Math.asin(y)*180/Math.PI]);
-      }
-      return pts;
-    }
-
-    // Dot shader
-    function dotMat(color, alpha, size) {
-      return new THREE.ShaderMaterial({
-        uniforms: { uColor:{value:color}, uAlpha:{value:alpha}, uSize:{value:size}, uFade:{value:0} },
-        vertexShader: `
-          uniform float uSize, uFade;
-          void main(){
-            vec4 mv = modelViewMatrix * vec4(position,1.0);
-            gl_PointSize = uSize * (280.0 / -mv.z) * uFade;
-            gl_Position = projectionMatrix * mv;
-          }`,
-        fragmentShader: `
-          uniform vec3 uColor; uniform float uAlpha;
-          void main(){
-            float d = length(gl_PointCoord - vec2(0.5));
-            if(d>0.5) discard;
-            gl_FragColor = vec4(uColor, smoothstep(0.5,0.12,d)*uAlpha);
-          }`,
-        transparent: true, depthWrite: false, depthTest: true,
-      });
-    }
-
-    function makePoints(coords, color, alpha, size) {
-      const geo = new THREE.BufferGeometry();
-      const pos = new Float32Array(coords.length * 3);
-      coords.forEach((v,i) => { pos[i*3]=v.x; pos[i*3+1]=v.y; pos[i*3+2]=v.z; });
-      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-      const mat = dotMat(color, alpha, size);
-      const pts = new THREE.Points(geo, mat);
-      globeGroup.add(pts);
-      return mat;
-    }
-
-    // ══════════════════════════════════════
-    // LOAD WORLD DATA → DOT-MATRIX
-    // ══════════════════════════════════════
-    const dotMats = [];
-
-    try {
-      const resp = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
-      const topo = await resp.json();
-      const allLand = topojson.merge(topo, topo.objects.countries.geometries);
-      const asiaLand = topojson.merge(topo,
-        topo.objects.countries.geometries.filter(g => ASIA_IDS.has(+g.id)));
-      const europeLand = topojson.merge(topo,
-        topo.objects.countries.geometries.filter(g => EUROPE_IDS.has(+g.id)));
-
-      const test = fibSphere(24000);
-      const landC = [], europeC = [], asiaC = [];
-
-      test.forEach(([lng, lat]) => {
-        if (!d3.geoContains(allLand, [lng, lat])) return;
-        const v = latLngToVec3(lat, lng, 1.005);
-        if (d3.geoContains(asiaLand, [lng, lat])) asiaC.push(v);
-        else if (d3.geoContains(europeLand, [lng, lat])) europeC.push(v);
-        else landC.push(v);
-      });
-
-      if (landC.length) dotMats.push(makePoints(landC, C.landDot, C.landAlpha, 2.0));
-      if (europeC.length) dotMats.push(makePoints(europeC, C.europeDot, C.europeAlpha, 2.8));
-      if (asiaC.length) dotMats.push(makePoints(asiaC, C.asiaDot, C.asiaAlpha, 2.8));
-
-      // Country borders — extract outlines of visited countries only
-      function addBorders(geometries, colorHex) {
-        if (!geometries.length) return;
-        const subTopo = { type: 'Topology', arcs: topo.arcs, transform: topo.transform,
-                          objects: { sub: { type: 'GeometryCollection', geometries } } };
-        const mesh = topojson.mesh(subTopo, subTopo.objects.sub, (a, b) => a !== b || true);
-        const positions = [];
-        mesh.coordinates.forEach(line => {
-          for (let i = 0; i < line.length - 1; i++) {
-            const a = latLngToVec3(line[i][1], line[i][0], 1.008);
-            const b = latLngToVec3(line[i+1][1], line[i+1][0], 1.008);
-            positions.push(a.x, a.y, a.z, b.x, b.y, b.z);
-          }
-        });
-        if (!positions.length) return;
-        const geo = new THREE.BufferGeometry();
-        geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
-        const mat = new THREE.LineBasicMaterial({
-          color: colorHex, transparent: true, opacity: 0.32, depthWrite: false,
-        });
-        globeGroup.add(new THREE.LineSegments(geo, mat));
-      }
-      addBorders(topo.objects.countries.geometries.filter(g => EUROPE_IDS.has(+g.id)), C.europeBorder);
-      addBorders(topo.objects.countries.geometries.filter(g => ASIA_IDS.has(+g.id)), C.asiaBorder);
-
-      // Fade in
-      const t0 = Date.now();
-      (function fadeIn() {
-        const t = Math.min(1, (Date.now() - t0) / 1400);
-        const e = 1 - Math.pow(1 - t, 3);
-        dotMats.forEach(m => m.uniforms.uFade.value = e);
-        if (t < 1) requestAnimationFrame(fadeIn);
-      })();
-    } catch (e) {
-      console.warn('World data load failed:', e);
-    }
-    loadingEl.classList.add('hidden');
-
-    // ══════════════════════════════════════
-    // CITY MARKERS — three-tier hierarchy
-    //   Tier A (≥20 pins): gold capital, 3 rings + pulse halo
-    //   Tier B (5-19):     plum-light / sage, 2 rings
-    //   Tier C (0-4):      plum-light / sage, 1 ring
-    // ══════════════════════════════════════
-    const cityMeshes = [];
-    const pulseHalos = []; // Tier A only
-    const cityIntroTargets = []; // for stagger-in during intro
-
-    function makeRing(pos, innerR, outerR, colorHex, opacity) {
-      const ring = new THREE.Mesh(
-        new THREE.RingGeometry(innerR, outerR, 36),
-        new THREE.MeshBasicMaterial({
-          color: colorHex, transparent: true, opacity: opacity,
-          side: THREE.DoubleSide, depthWrite: false,
-        })
-      );
-      ring.position.copy(pos);
-      ring.lookAt(pos.clone().multiplyScalar(2));
-      globeGroup.add(ring);
-      return ring;
-    }
-
-    CITIES.forEach(city => {
-      const isAsia = ASIA_COUNTRIES.has(city.country);
-      const tier = city.pins >= 20 ? 'A' : (city.pins >= 5 ? 'B' : 'C');
-      const regionHex = isAsia ? C.asiaCityHex : C.europeCityHex;
-      const hex = tier === 'A' ? C.goldCityHex : regionHex;
-      const pos = latLngToVec3(city.lat, city.lng, 1.014);
-
-      // Core marker — discrete sizes per tier
-      const sz = tier === 'A' ? 0.026 : (tier === 'B' ? 0.018 : 0.010);
-      const dot = new THREE.Mesh(
-        new THREE.SphereGeometry(sz, 14, 14),
-        new THREE.MeshBasicMaterial({ color: hex })
-      );
-      dot.position.copy(pos);
-      dot.userData = { ...city, isAsia, tier };
-      globeGroup.add(dot);
-      cityMeshes.push(dot);
-
-      // Ring stack — layers depend on tier
-      const rings = [];
-      if (tier === 'A') {
-        rings.push(makeRing(pos, sz*1.7, sz*2.4, hex, 0.55));
-        rings.push(makeRing(pos, sz*2.8, sz*3.8, hex, 0.28));
-        rings.push(makeRing(pos, sz*4.4, sz*5.6, hex, 0.12));
-
-        // Pulse halo — radiating water-ripple
-        const halo = new THREE.Mesh(
-          new THREE.RingGeometry(sz*2.0, sz*2.25, 48),
-          new THREE.MeshBasicMaterial({
-            color: hex, transparent: true, opacity: 0.0,
-            side: THREE.DoubleSide, depthWrite: false,
-          })
-        );
-        halo.position.copy(pos);
-        halo.lookAt(pos.clone().multiplyScalar(2));
-        halo.userData = { baseR: sz*2.0, maxR: sz*6.0, phase: Math.random() * Math.PI * 2 };
-        globeGroup.add(halo);
-        pulseHalos.push(halo);
-      } else if (tier === 'B') {
-        rings.push(makeRing(pos, sz*1.7, sz*2.5, hex, 0.42));
-        rings.push(makeRing(pos, sz*3.0, sz*3.8, hex, 0.18));
-      } else {
-        rings.push(makeRing(pos, sz*1.8, sz*2.6, hex, 0.28));
-      }
-
-      cityIntroTargets.push({ dot, rings, tier });
-    });
-
-    // ══════════════════════════════════════
-    // ARCS — distance-based height + traveler dots
-    // ══════════════════════════════════════
-    const arcLines = [];
-    const travelerDots = []; // each: { mesh, curve, duration, offset, color }
-    const cityMap = {};
-    CITIES.forEach(c => cityMap[c.city] = c);
-
-    ROUTES.forEach(([a, b], idx) => {
-      if (!cityMap[a] || !cityMap[b]) return;
-      const ca = cityMap[a], cb = cityMap[b];
-      const aAsia = ASIA_COUNTRIES.has(ca.country);
-      const bAsia = ASIA_COUNTRIES.has(cb.country);
-      const isAsiaRoute = aAsia && bAsia;
-      const isTierAPair = ca.pins >= 20 && cb.pins >= 20; // both capitals → gold arc
-      const arcHex = isTierAPair ? C.goldArc : (isAsiaRoute ? C.asiaArc : C.europeArc);
-
-      const p1 = latLngToVec3(ca.lat, ca.lng, 1.0);
-      const p2 = latLngToVec3(cb.lat, cb.lng, 1.0);
-      const dist = p1.distanceTo(p2); // 0..2 in unit sphere
-      const distRatio = Math.min(1, dist / 2.0);
-      const curveHeight = 0.10 + distRatio * 0.55; // short stays flat, long arcs higher
-      const mid = p1.clone().add(p2).multiplyScalar(0.5);
-      mid.normalize().multiplyScalar(1.0 + curveHeight);
-
-      const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
-      const geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(56));
-      const mat = new THREE.LineBasicMaterial({
-        color: arcHex, transparent: true, opacity: 0.20, depthWrite: false,
-      });
-      const line = new THREE.Line(geo, mat);
-      arcLines.push(line);
-      globeGroup.add(line);
-
-      // Traveler dot — walks the curve
-      const dotSize = isTierAPair ? 0.012 : 0.008;
-      const dotMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(dotSize, 10, 10),
-        new THREE.MeshBasicMaterial({
-          color: arcHex, transparent: true, opacity: 0.0, depthWrite: false,
-        })
-      );
-      globeGroup.add(dotMesh);
-      travelerDots.push({
-        mesh: dotMesh,
-        curve,
-        duration: 3200 + (distRatio * 2400), // 3.2s–5.6s by distance
-        offset: Math.random() * 6000,         // stagger start
-        maxOpacity: isTierAPair ? 0.95 : 0.75,
-      });
-    });
-
-    // ══════════════════════════════════════
-    // INTERACTION
-    // ══════════════════════════════════════
-    let autoRotate = true, isDragging = false, prevMouse = {x:0,y:0}, hintHidden = false;
-    function hideHint() { if(!hintHidden){hintEl.classList.add('hidden');hintHidden=true;} }
-
-    wrapper.addEventListener('mousedown', e => { isDragging=true; prevMouse={x:e.clientX,y:e.clientY}; hideHint(); });
-    wrapper.addEventListener('mousemove', e => {
-      if (isDragging) {
-        globeGroup.rotation.y += (e.clientX - prevMouse.x) * 0.003;
-        globeGroup.rotation.x += (e.clientY - prevMouse.y) * 0.003;
-        prevMouse = { x:e.clientX, y:e.clientY };
-      }
-      const rect = canvas.getBoundingClientRect();
-      const mouse = new THREE.Vector2(
-        ((e.clientX-rect.left)/rect.width)*2-1,
-        -((e.clientY-rect.top)/rect.height)*2+1
-      );
-      const rc = new THREE.Raycaster();
-      rc.setFromCamera(mouse, camera);
-      const hits = rc.intersectObjects(cityMeshes);
-      if (hits.length) {
-        const c = hits[0].object.userData;
-        tooltipEl.querySelector('.tooltip-city').textContent = c.flag+' '+c.city;
-        tooltipEl.querySelector('.tooltip-country').textContent = c.country;
-        const pl = tooltipEl.querySelector('.tooltip-places');
-        pl.textContent = c.pins > 0 ? `${c.pins} saved places` : 'Visited';
-        pl.className = 'tooltip-places' + (c.tier === 'A' ? ' gold' : (c.isAsia ? ' asia' : ''));
-        tooltipEl.style.left = (e.clientX-rect.left+16)+'px';
-        tooltipEl.style.top = (e.clientY-rect.top-20)+'px';
-        tooltipEl.classList.add('visible');
-        canvas.style.cursor = 'pointer';
-      } else {
-        tooltipEl.classList.remove('visible');
-        canvas.style.cursor = isDragging ? 'grabbing' : 'grab';
-      }
-    });
-    wrapper.addEventListener('mouseup', () => { isDragging=false; });
-    wrapper.addEventListener('mouseleave', () => { isDragging=false; tooltipEl.classList.remove('visible'); });
-
-    wrapper.addEventListener('touchstart', e => {
-      isDragging=true; prevMouse={x:e.touches[0].clientX,y:e.touches[0].clientY}; hideHint();
-    }, {passive:true});
-    wrapper.addEventListener('touchmove', e => {
-      if(!isDragging) return;
-      globeGroup.rotation.y += (e.touches[0].clientX-prevMouse.x)*0.004;
-      globeGroup.rotation.x += (e.touches[0].clientY-prevMouse.y)*0.004;
-      prevMouse = {x:e.touches[0].clientX, y:e.touches[0].clientY};
-    }, {passive:true});
-    wrapper.addEventListener('touchend', () => { isDragging=false; });
-
-    wrapper.addEventListener('wheel', e => {
-      e.preventDefault();
-      camera.position.z = Math.max(1.8, Math.min(5, camera.position.z + e.deltaY*0.002));
-      hideHint();
-    }, {passive:false});
-
-    document.getElementById('btn-spin').addEventListener('click', function() {
-      autoRotate = !autoRotate; this.classList.toggle('active');
-    });
-    document.getElementById('btn-reset').addEventListener('click', () => {
-      globeGroup.rotation.x = 0.426; globeGroup.rotation.y = -1.612; camera.position.z = 2.8;
-      if (introState) { introState.done = true; }
-      cityIntroTargets.forEach(t => {
-        t.dot.visible = true; t.rings.forEach(r => r.visible = true);
-      });
-    });
-
-    document.querySelectorAll('.city-tag').forEach(tag => {
-      tag.addEventListener('click', () => {
-        const lat = +tag.dataset.lat, lng = +tag.dataset.lng;
-        const ty = -lng*Math.PI/180 - Math.PI/2;
-        const tx = lat*Math.PI/180*0.5;
-        const sy = globeGroup.rotation.y, sx = globeGroup.rotation.x;
-        const t0 = Date.now();
-        (function anim() {
-          const t = Math.min(1,(Date.now()-t0)/800);
-          const e = 1 - Math.pow(1-t,3);
-          globeGroup.rotation.y = sy + (ty-sy)*e;
-          globeGroup.rotation.x = sx + (tx-sx)*e;
-          if(t<1) requestAnimationFrame(anim);
-        })();
-        autoRotate = false;
-        document.getElementById('btn-spin').classList.remove('active');
-        wrapper.scrollIntoView({behavior:'smooth',block:'center'});
-      });
-    });
-
-    // ══════════════════════════════════════
-    // INTRO CEREMONY — first visit sweeps Shanghai → Europe
-    // ══════════════════════════════════════
-    let introState = null;
-    try {
-      if (!sessionStorage.getItem('globeIntroSeen')) {
-        const INTRO_START = { x: 0.273, y: -3.691 }; // facing Shanghai (lat 31.23, lng 121.47)
-        const INTRO_END   = { x: 0.426, y: -1.612 }; // facing Paris, same as default
-        globeGroup.rotation.x = INTRO_START.x;
-        globeGroup.rotation.y = INTRO_START.y;
-        // Hide markers at first so they can stagger-in
-        cityIntroTargets.forEach(t => {
-          t.dot.visible = false;
-          t.rings.forEach(r => r.visible = false);
-        });
-        // Sort by pins descending so capitals light up first
-        const order = cityIntroTargets
-          .map((t, i) => ({ t, pins: CITIES[i].pins }))
-          .sort((a, b) => b.pins - a.pins)
-          .map(o => o.t);
-        introState = {
-          start: Date.now() + 400,          // tiny pause before sweep
-          camDur: 2200,
-          from: INTRO_START, to: INTRO_END,
-          order, staggerMs: 120,
-          done: false,
-        };
-        sessionStorage.setItem('globeIntroSeen', '1');
-        autoRotate = false; // suppress auto-rotate during intro
-      }
-    } catch (e) { /* sessionStorage unavailable; skip intro */ }
-
-    // ══════════════════════════════════════
-    // ANIMATION
-    // ══════════════════════════════════════
-    const animStart = Date.now();
-    function animate() {
-      requestAnimationFrame(animate);
-      const now = Date.now();
-      const t = now * 0.003;
-
-      // Intro tween
-      if (introState && !introState.done) {
-        const localT = now - introState.start;
-        if (localT > 0) {
-          const p = Math.min(1, localT / introState.camDur);
-          const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
-          globeGroup.rotation.x = introState.from.x + (introState.to.x - introState.from.x) * eased;
-          globeGroup.rotation.y = introState.from.y + (introState.to.y - introState.from.y) * eased;
-          // Stagger-in city markers
-          introState.order.forEach((target, i) => {
-            const activateAt = i * introState.staggerMs;
-            if (localT > activateAt) {
-              target.dot.visible = true;
-              target.rings.forEach(r => r.visible = true);
-            }
-          });
-          if (p >= 1 && localT > introState.order.length * introState.staggerMs + 300) {
-            introState.done = true;
-            autoRotate = true;
-          }
-        }
-        // If user starts dragging, abort intro gracefully
-        if (isDragging) {
-          introState.order.forEach(target => {
-            target.dot.visible = true;
-            target.rings.forEach(r => r.visible = true);
-          });
-          introState.done = true;
-          autoRotate = false;
-        }
-      }
-
-      if (autoRotate && !isDragging) globeGroup.rotation.y += 0.0012;
-
-      // City markers — gentle breathing (all tiers)
-      cityMeshes.forEach((d, i) => d.scale.setScalar(1 + Math.sin(t + i*0.5) * 0.10));
-
-      // Arc line opacity modulation
-      arcLines.forEach((l, i) => {
-        l.material.opacity = 0.16 + Math.sin(t*0.35 + i*0.7) * 0.06;
-      });
-
-      // Tier A pulse halos — water-ripple radiating outward every ~3.8s
-      pulseHalos.forEach(h => {
-        const cycle = 3800;
-        const phaseT = ((now + h.userData.phase * cycle / (Math.PI*2)) % cycle) / cycle;
-        const easeOut = 1 - Math.pow(1 - phaseT, 2);
-        const r = h.userData.baseR + (h.userData.maxR - h.userData.baseR) * easeOut;
-        const scale = r / h.userData.baseR;
-        h.scale.set(scale, scale, 1);
-        h.material.opacity = 0.40 * (1 - phaseT);
-      });
-
-      // Traveler dots — walk each arc
-      travelerDots.forEach(td => {
-        const phaseT = ((now + td.offset) % td.duration) / td.duration;
-        const pt = td.curve.getPoint(phaseT);
-        td.mesh.position.copy(pt);
-        // Fade in/out at endpoints (first 12% and last 12%)
-        let a = td.maxOpacity;
-        if (phaseT < 0.12) a *= phaseT / 0.12;
-        else if (phaseT > 0.88) a *= (1 - phaseT) / 0.12;
-        td.mesh.material.opacity = a;
-      });
-
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = wrapper.clientWidth / wrapper.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
-      initStarfield();
-    });
-
-    })();
-    </script>
+    <script src="scripts/brass-globe.js"></script>
     <script src="scripts.js" defer></script>
     <script src="alter-widget.js" defer></script>
 </body>

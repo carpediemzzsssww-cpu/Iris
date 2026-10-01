@@ -5,6 +5,8 @@ Build the site's self-hosted web fonts from the originals in ~/Library/Fonts.
 - Xiangcui Kesong (香萃刻宋, SIL OFL 1.1): Chinese display face, subset to the
   Han characters that appear in content/*.json, so it stays small.
 - Compagnon Roman / Light (SIL OFL 1.1): typewriter-ish Latin for museum labels.
+- Moniqa Light Display (SIL OFL 1.1, Rajesh Rajput / The Emberly Project): the name on
+  the homepage, subset to printable Latin.
 
 Re-run after adding Chinese titles or copy, so every heading has its glyphs:
     pip install fonttools brotli
@@ -20,6 +22,9 @@ from fontTools.ttLib import TTFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE = os.path.expanduser("~/Library/Fonts")
 OUT = os.path.join(ROOT, "assets", "fonts")
+
+# Printable Latin, for faces that only ever set names and short English lines.
+LATIN = "".join(chr(c) for c in range(0x20, 0x7F)) + "\u00b7\u2013\u2014\u2019\u00e9"
 
 # Chinese punctuation that headings use, kept even if the content scan misses it.
 PUNCTUATION = "，。、；：？！「」『』（）《》〈〉—…·～" + "\u201c\u201d\u2018\u2019"  # curly quotes, escaped
@@ -58,4 +63,5 @@ if __name__ == "__main__":
     print(f"{len(han)} Han characters found in content/*.json")
     build("xiangcuikesong.ttf", "xiangcui-kesong-subset.woff2", "".join(han) + PUNCTUATION)
     build("Compagnon-Roman.otf", "compagnon-roman.woff2")
+    build("Moniqa-LightDisplay.otf", "moniqa-light-display.woff2", LATIN)
     build("Compagnon-Light.otf", "compagnon-light.woff2")

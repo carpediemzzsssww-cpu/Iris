@@ -36,6 +36,15 @@
     font-display: swap;
 }
 
+/* The name on the homepage: a narrow, high-contrast display serif (SIL OFL) */
+@font-face {
+    font-family: 'Moniqa Display';
+    src: url('assets/fonts/moniqa-light-display.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     /* Palette — plum × sage (original), on warm cream */
     --cream: #F5F0E8;
@@ -82,6 +91,7 @@
     /* Museum surfaces: Cormorant for Latin, Xiangcui Kesong for Han, typewriter labels */
     --font-museum: 'Cormorant Garamond', 'Xiangcui Kesong', 'Noto Serif SC', Georgia, serif;
     --font-label: 'Compagnon', 'DM Mono', ui-monospace, monospace;
+    --font-name: 'Moniqa Display', 'Cormorant Garamond', Georgia, serif;
     
     /* Spacing Scale (8pt + selected intermediates) */
     --space-1: 4px;

@@ -1,10 +1,12 @@
 // ================================================
-// Threshold sky: between the dark gallery and the paper rooms.
-// Ink drifts across a night sky, small lights rise through it, and dawn
-// climbs from below as the visitor walks on, until the sky is paper.
-// One fragment shader at half resolution; it runs only while the threshold
-// is on screen. Without WebGL, or with reduced motion, the CSS gradient on
-// .museum-threshold stays as it is.
+// The night sky behind the homepage, between the dark gallery and the paper rooms.
+// One canvas is fixed behind everything: at the end of the walk the gallery's room
+// fades into it (scripts/home.js), the threshold slides over it with the quote, and
+// as the visitor walks on, ink drifts, small lights rise, and dawn climbs from below
+// until the sky is paper, the colour of the rooms that slide over it next.
+// One fragment shader at half resolution; it draws only while it can be seen.
+// Without WebGL, or with reduced motion, `data-sky` never appears on <main>, and the
+// gallery's wall and the CSS gradient on .museum-threshold stay as they are.
 // While it runs, the sky also decides the quote's ink: the same noise, worked
 // out in JS at a few points behind the quote, says whether the sky there is
 // light yet (`is-day` on the section; scripts/home.js does it by scroll otherwise).
@@ -13,9 +15,11 @@
 (function () {
     'use strict';
 
+    var museum = document.getElementById('museum');
+    var gallery = document.getElementById('gallery');
     var section = document.getElementById('threshold');
-    var canvas = document.getElementById('thresholdSky');
-    if (!section || !canvas) return;
+    var canvas = document.getElementById('museumSky');
+    if (!museum || !section || !canvas) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var gl = canvas.getContext('webgl', {
@@ -235,6 +239,7 @@
     function decideInk(time, lift) {
         if (!quote || (inkFrame++ % 6)) return;
         var r = quote.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
         var vw = window.innerWidth, vh = window.innerHeight;
         var v = 1 - (r.top + r.height / 2) / vh;   // the shader's y runs up
         var light = 0;
@@ -246,11 +251,28 @@
         else if (day && light < 0.48) section.classList.remove('is-day');
     }
 
+    // The gallery's last stretch, after its final lot: 0 before it, 1 once the room has gone
+    function galleryTail(vh) {
+        if (!gallery) return 0;
+        var g = gallery.getBoundingClientRect();
+        var span = parseFloat(gallery.getAttribute('data-tail-px')) || vh;
+        if (g.bottom <= 0) return 1;
+        return clamp(1 - (g.bottom - vh) / span, 0, 1);
+    }
+
+    // Seen while the gallery's room fades, and while the threshold is on screen
+    function needed() {
+        var vh = window.innerHeight;
+        var r = section.getBoundingClientRect();
+        if (r.top < vh && r.bottom > 0) return true;
+        return galleryTail(vh) > 0 && r.bottom > 0;
+    }
+
     var started = performance.now();
     function draw(now) {
         var r = section.getBoundingClientRect();
         var vh = window.innerHeight;
-        var enter = clamp(1 - r.top / vh, 0, 1);
+        var enter = Math.max(galleryTail(vh), clamp(1 - r.top / vh, 0, 1));
         var lift = clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
         resize();
         gl.uniform2f(u.uRes, canvas.width, canvas.height);
@@ -266,46 +288,39 @@
         decideInk(time, lift);
     }
 
-    var visible = false, running = false, live = false;
+    var running = false, lost = false;
     function loop(now) {
-        if (!visible) {
+        if (lost || !needed()) {
             running = false;
+            canvas.classList.remove('is-on');
             return;
         }
         draw(now);
-        if (!live) {
-            live = true;
-            canvas.classList.add('is-live');
-            section.setAttribute('data-sky', 'live');
-        }
+        canvas.classList.add('is-on');
         window.requestAnimationFrame(loop);
     }
 
     function wake() {
-        if (visible && !running) {
+        if (!running && !lost && needed()) {
             running = true;
             window.requestAnimationFrame(loop);
         }
     }
 
     readColors();
-    if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-            visible = entries[0].isIntersecting;
-            wake();
-        }, { rootMargin: '10% 0px' }).observe(section);
-    } else {
-        visible = true;
-        wake();
-    }
+    // From here on the gallery fades into this sky and the threshold lets it through (styles/home.css)
+    museum.setAttribute('data-sky', 'live');
+    window.addEventListener('scroll', wake, { passive: true });
+    window.addEventListener('resize', wake);
+    wake();
 
     // The theme toggle repaints the paper the sky turns into
     new MutationObserver(readColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     canvas.addEventListener('webglcontextlost', function (e) {
         e.preventDefault();
-        visible = false;
-        canvas.classList.remove('is-live');
-        section.removeAttribute('data-sky');
+        lost = true;
+        canvas.classList.remove('is-on');
+        museum.removeAttribute('data-sky');
     });
 })();

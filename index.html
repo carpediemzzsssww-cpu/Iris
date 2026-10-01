@@ -20,6 +20,7 @@
     <meta name="twitter:description" content="A museum of small worlds: interactive works you can play, AI products that think, and the path so far.">
     <meta name="twitter:image" content="https://carpediemzzsssww-cpu.github.io/Iris/assets/ai-lab/surreal-butterflies.png">
     <link rel="preload" href="content/projects-data.json" as="fetch" crossorigin>
+    <link rel="preload" href="assets/fonts/moniqa-light-display.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,21 +32,37 @@
     <nav id="site-nav"></nav>
     <div id="site-mobile-drawer"></div>
 
-    <main class="main-content museum">
+    <main class="main-content museum" id="museum">
+        <!-- One night sky, fixed behind the end of the gallery and the threshold (scripts/sky.js);
+             the gallery's wall fades into it, and the paper rooms slide over it at dawn -->
+        <canvas class="museum-sky" id="museumSky" aria-hidden="true"></canvas>
+
         <!-- № 01 — The gallery: a sticky stage; scrolling turns an arc of works (scripts/home.js) -->
         <section class="museum-gallery" id="gallery" aria-labelledby="galleryTitle">
             <div class="gallery-stage" id="galleryStage">
-                <div class="gallery-light" aria-hidden="true"></div>
-                <div class="gallery-grain" aria-hidden="true"></div>
-                <div class="gallery-beam" aria-hidden="true"></div>
-                <canvas class="gallery-dust" id="galleryDust" aria-hidden="true"></canvas>
-                <div class="gallery-spot" id="gallerySpot" aria-hidden="true"></div>
-                <div class="gallery-shadows" id="galleryShadows" aria-hidden="true"></div>
+                <!-- The room itself: wall, light, beam, dust, spot and cast shadows. At the end of the walk
+                     it fades into the night sky behind it (scripts/home.js) -->
+                <div class="gallery-atmosphere" id="galleryAtmosphere" aria-hidden="true">
+                    <div class="gallery-wall"></div>
+                    <div class="gallery-light"></div>
+                    <div class="gallery-grain"></div>
+                    <div class="gallery-beam"></div>
+                    <canvas class="gallery-dust" id="galleryDust"></canvas>
+                    <div class="gallery-spot" id="gallerySpot"></div>
+                    <div class="gallery-shadows" id="galleryShadows"></div>
+                </div>
 
+                <!-- A solo exhibition: her name first, then what the museum holds. The kicker's count comes from scripts/home.js. -->
                 <header class="gallery-intro" id="galleryIntro">
-                    <p class="gallery-kicker" data-i18n="home.kicker">Iris Zhou &middot; AI product builder</p>
-                    <h1 class="gallery-title" id="galleryTitle" lang="en" data-i18n="home.title">A museum of small worlds</h1>
-                    <p class="gallery-sub" data-i18n="home.sub">Welcome to my museum</p>
+                    <p class="gallery-kicker" id="galleryKicker">A solo exhibition &middot; 32 works</p>
+                    <h1 class="gallery-name" id="galleryTitle" lang="en">Iris Zhou</h1>
+                    <p class="gallery-title" lang="en" data-i18n="home.title">A museum of small worlds</p>
+                    <p class="gallery-sub" data-i18n="home.sub">I study literature and build AI products: tools that think, and small worlds you can play in.</p>
+                    <p class="gallery-facts">
+                        <span data-i18n="home.fact.school">Wuhan University &middot; Class of 2027</span>
+                        <span data-i18n="home.fact.now">Now at Xiaohongshu</span>
+                        <button class="gallery-ask" type="button" id="askIrisyTop"><span class="gallery-ask-dot" aria-hidden="true"></span><span data-i18n="home.fact.ask">Ask my digital twin</span></button>
+                    </p>
                 </header>
 
                 <p class="gallery-room" id="galleryRoom"><span class="room-no">№ 01</span> <span data-i18n="home.room1">Go ahead, play with them</span></p>
@@ -67,7 +84,7 @@
                 </div>
 
                 <!-- The aperture: the gallery opens like an iris (scripts/home.js draws and opens it) -->
-                <svg class="gallery-iris" id="galleryIris" aria-hidden="true" focusable="false"><path class="iris-shutter"></path><path class="iris-blades"></path></svg>
+                <svg class="gallery-iris" id="galleryIris" aria-hidden="true" focusable="false"><defs><radialGradient id="irisShade" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#000" stop-opacity="0"></stop><stop offset="1" stop-color="#000" stop-opacity="0.6"></stop></radialGradient></defs><g class="iris-leaves"></g><path class="iris-shade"></path><path class="iris-rim"></path></svg>
                 <script>
                 // Closed from the first frame, so the gallery never flashes before the aperture opens.
                 (function () {
@@ -80,7 +97,6 @@
 
         <!-- Threshold: between the dark gallery and the reading rooms, small lights rise and dawn comes up (scripts/sky.js) -->
         <section class="museum-threshold" id="threshold">
-            <canvas class="threshold-sky" id="thresholdSky" aria-hidden="true"></canvas>
             <blockquote class="threshold-quote" data-i18n-html="home.quote">
                 Wherever you go, never hold&nbsp;back your love or your intuition.
             </blockquote>
@@ -92,6 +108,7 @@
                 <header class="room-head reveal">
                     <p class="room-no">№ 02</p>
                     <h2 class="room-title" id="pathTitle" lang="en" data-i18n="home.room3">The path so far</h2>
+                    <p class="room-statement" data-i18n="home.path.lead">From literature to AI products: not a detour, but a road I made by walking it.</p>
                     <p class="room-sub" data-i18n="home.room3.sub">Wuhan · Paris · back in Shanghai</p>
                 </header>
 
@@ -116,7 +133,10 @@
                                 <div class="timeline-content">
                                     <div class="timeline-header">
                                         <div class="timeline-meta">
-                                            <h3 class="timeline-role" data-i18n="exp.xiaohongshu.name">Xiaohongshu</h3>
+                                            <div class="timeline-title">
+                                                <h3 class="timeline-role" data-i18n="exp.xiaohongshu.name">Xiaohongshu</h3>
+                                                <span class="timeline-now"><span class="timeline-now-dot" aria-hidden="true"></span><span data-i18n="home.now">Now</span></span>
+                                            </div>
                                             <span class="timeline-org" data-i18n="exp.xiaohongshu.role">Technical Branding Intern</span>
                                             <span class="timeline-date" data-i18n="exp.xiaohongshu.date">2026.06 - Present</span>
                                         </div>
@@ -295,16 +315,13 @@
                 </header>
 
                 <ol class="specimens">
-                    <li class="specimen reveal">
+                    <li class="specimen specimen--lead reveal">
                         <p class="specimen-figure"><span class="specimen-number" data-count="400">400</span> <span class="specimen-unit">/ 40</span> <span class="margin-note" aria-hidden="true">&times;10</span></p>
-                        <h3 class="specimen-title" data-i18n="home.spec.xhs.title">An open-source contributor pathway</h3>
-                        <p class="specimen-meta" data-i18n="home.spec.xhs.meta">Xiaohongshu &middot; 2026</p>
-                        <button class="specimen-toggle" type="button" aria-expanded="false" aria-controls="specXhs" data-i18n-aria="home.spec.more" aria-label="Read more">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg>
-                        </button>
-                        <div class="specimen-more" id="specXhs"><div>
+                        <div class="specimen-body">
+                            <h3 class="specimen-title" data-i18n="home.spec.xhs.title">An open-source contributor pathway</h3>
+                            <p class="specimen-meta" data-i18n="home.spec.xhs.meta">Xiaohongshu &middot; 2026</p>
                             <p class="specimen-desc" data-i18n="home.spec.xhs.desc">400 sign-ups against a target of 40, and the team's technical account from 0 to 1,000+ followers in three weeks.</p>
-                        </div></div>
+                        </div>
                     </li>
                     <li class="specimen reveal">
                         <p class="specimen-figure"><span class="specimen-number" data-count="19">19</span> <span class="specimen-unit" data-i18n="home.spec.yili.unit">nodes</span></p>

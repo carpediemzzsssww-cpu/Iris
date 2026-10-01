@@ -29,6 +29,37 @@
     margin-top: 0;
 }
 
+/* One night sky, fixed behind the homepage (scripts/sky.js). The sections slide over it:
+   the gallery's room fades into it, the threshold lets it through, and the paper rooms
+   cover it once it has turned to paper too. It is drawn only while it can be seen. */
+.museum-sky {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    height: 100lvh;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.museum-sky.is-on {
+    opacity: 1;
+}
+
+.museum > section,
+.page-home .footer {
+    position: relative;
+    z-index: 1;
+}
+
+.museum[data-sky='live'] .museum-gallery,
+.museum[data-sky='live'] .museum-threshold {
+    background: transparent;
+}
+
 /* ---------- № 01 The gallery ---------- */
 
 .museum-gallery {
@@ -46,6 +77,20 @@
     overflow: hidden;
     isolation: isolate;
     color: var(--gallery-text);
+}
+
+/* The room: wall, light, grain, beam, dust, spot and cast shadows, under the lots.
+   At the end of the walk scripts/home.js fades it into the night sky behind. */
+.gallery-atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.gallery-wall {
+    position: absolute;
+    inset: 0;
     background: linear-gradient(180deg, var(--night) 0%, var(--night-2) 100%);
 }
 
@@ -191,7 +236,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(var(--nav-h, 69px) + 8vh);
+    top: calc(var(--nav-h, 69px) + 5vh);
     z-index: 4;
     padding: 0 var(--space-5);
     text-align: center;
@@ -211,46 +256,123 @@
     filter: none;
 }
 
-.lights-on .gallery-intro > :nth-child(2) { transition-delay: 0.18s; }
-.lights-on .gallery-intro > :nth-child(3) { transition-delay: 0.4s; }
+.lights-on .gallery-intro > :nth-child(2) { transition-delay: 0.12s; }
+.lights-on .gallery-intro > :nth-child(3) { transition-delay: 0.45s; }
+.lights-on .gallery-intro > :nth-child(4) { transition-delay: 0.65s; }
+.lights-on .gallery-intro > :nth-child(5) { transition-delay: 0.85s; }
 
 .gallery-kicker {
     font-family: var(--font-label);
     font-size: 12px;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.36em;
     text-transform: uppercase;
     color: #b59f7d;
 }
 
+/* The exhibition is hers: the name leads, and the aperture (an iris) opens onto it */
+.gallery-name {
+    margin: 12px auto 0;
+    font-family: var(--font-name);
+    font-size: clamp(88px, min(16.5vw, 26vh), 280px);
+    font-weight: 300;
+    line-height: 0.86;
+    letter-spacing: 0.01em;
+    color: var(--gallery-ink);
+    text-shadow: 0 0 70px rgba(255, 226, 186, 0.1);
+}
+
+/* What the museum holds, set like an exhibition's title under the artist's name */
 .gallery-title {
-    max-width: 12.5ch;
-    margin: 18px auto 20px;
-    font-family: var(--font-museum);
-    font-size: clamp(56px, min(9.4vw, 17vh), 152px);
+    margin: 14px auto 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(22px, 2.3vw, 34px);
     font-style: italic;
     font-weight: 300;
-    line-height: 0.94;
-    letter-spacing: -0.015em;
-    text-wrap: balance;
-    color: var(--gallery-ink);
+    line-height: 1.2;
+    color: #e6d6bf;
 }
 
 .gallery-sub {
-    max-width: 520px;
-    margin: 0 auto;
+    max-width: 560px;
+    margin: 18px auto 0;
+    font-size: clamp(14px, 1.1vw, 16px);
+    line-height: 1.65;
     text-wrap: balance;
-    font-family: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
-    font-size: clamp(19px, 1.7vw, 25px);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.5;
     color: var(--gallery-text);
 }
 
 html[data-lang='zh'] .gallery-sub {
-    font-size: clamp(16px, 1.3vw, 19px);
-    font-style: normal;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.06em;
+}
+
+/* Three facts in one line: where she studies, where she works, and someone to ask */
+.gallery-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 0;
+    margin: 20px auto 0;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gallery-muted);
+}
+
+.gallery-facts > * + *::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin: 0 18px;
+    border-radius: 50%;
+    background: rgba(214, 186, 140, 0.55);
+    vertical-align: middle;
+}
+
+.gallery-facts > .gallery-ask::before {
+    display: none;
+}
+
+.gallery-ask {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 30px;
+    margin-left: 18px;
+    padding: 0 14px;
+    border: 1px solid rgba(214, 186, 140, 0.45);
+    border-radius: 999px;
+    background: rgba(20, 14, 10, 0.35);
+    color: #e9dcc8;
+    font: inherit;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.gallery-ask:hover,
+.gallery-ask:focus-visible {
+    border-color: #d6ba8c;
+    background: rgba(214, 186, 140, 0.12);
+    color: #fff4e2;
+}
+
+/* A small light that says someone is there */
+.gallery-ask-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a8d5b0;
+    animation: ask-pulse 2.6s ease-out infinite;
+}
+
+@keyframes ask-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(168, 213, 176, 0.55); }
+    70% { box-shadow: 0 0 0 7px rgba(168, 213, 176, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(168, 213, 176, 0); }
 }
 
 .gallery-room {
@@ -283,22 +405,34 @@ html[data-lang='zh'] .gallery-sub {
     z-index: 3;
 }
 
-/* A lot: a paper card with a cover, lot number, title and "medium" line */
+/* A lot: a framed work. A dark walnut frame with a gilt edge, a cream mat with a bevelled
+   window, and a small plate under the picture; the words live on the wall label. */
 .lot {
     position: absolute;
     left: 0;
     top: 0;
     width: var(--cw, 220px);
-    padding: calc(var(--cw, 220px) * 0.045);
-    border-radius: 3px;
-    background: var(--lot-paper);
+    padding: calc(var(--cw, 220px) * 0.034);
+    border-radius: 1px;
+    background: linear-gradient(145deg, #2c1f17 0%, #1a120d 55%, #24180f 100%);
     color: var(--lot-ink);
     text-decoration: none;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    box-shadow:
+        inset 0 0 0 1px rgba(222, 192, 140, 0.5),
+        inset 0 0 0 2px rgba(0, 0, 0, 0.35),
+        0 1px 2px rgba(0, 0, 0, 0.45);
     transform-origin: 50% 50%;
     will-change: transform;
     cursor: pointer;
     outline: none;
+}
+
+.lot-mat {
+    display: block;
+    padding: calc(var(--cw, 220px) * 0.075) calc(var(--cw, 220px) * 0.075) calc(var(--cw, 220px) * 0.05);
+    background: var(--lot-paper);
+    /* a gilt fillet just inside the frame, and the mat's faint shade */
+    box-shadow: inset 0 0 0 1px rgba(196, 160, 104, 0.6), inset 0 0 22px rgba(90, 66, 42, 0.14);
 }
 
 .lot img {
@@ -307,9 +441,21 @@ html[data-lang='zh'] .gallery-sub {
     height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: 2px;
     background: #d9d0c3;
+    /* the bevel of the mat's window: a bright cut edge with a fine shadow line */
+    box-shadow: 0 0 0 2px #fbf8f1, 0 0 0 3px rgba(120, 94, 60, 0.28), 0 3px 8px rgba(40, 28, 18, 0.18);
     will-change: filter;
+}
+
+.lot-plate {
+    display: flex;
+    justify-content: space-between;
+    margin-top: calc(var(--cw, 220px) * 0.055);
+    font-family: var(--font-label);
+    font-size: max(9px, calc(var(--cw, 220px) * 0.04));
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lot-muted);
 }
 
 .lot-no {
@@ -323,15 +469,6 @@ html[data-lang='zh'] .gallery-sub {
     color: var(--lot-muted);
 }
 
-.lot-title {
-    margin-top: calc(var(--cw, 220px) * 0.025);
-    font-family: var(--font-museum);
-    font-size: calc(var(--cw, 220px) * 0.088);
-    font-weight: 500;
-    line-height: 1.12;
-    text-wrap: balance;
-}
-
 .lot-medium {
     margin-top: calc(var(--cw, 220px) * 0.03);
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -340,12 +477,6 @@ html[data-lang='zh'] .gallery-sub {
     line-height: 1.3;
     text-wrap: pretty;
     color: #6d6056;
-}
-
-/* Chinese titles break at spaces and punctuation, not inside a name like 歌剧魅影 */
-html[data-lang='zh'] .lot-title {
-    word-break: keep-all;
-    overflow-wrap: anywhere;
 }
 
 html[data-lang='zh'] .lot-medium {
@@ -358,14 +489,14 @@ html[data-lang='zh'] .lot-medium {
 .lot-shade {
     position: absolute;
     inset: 0;
-    border-radius: 3px;
+    border-radius: 1px;
     background: #0d0a08;
     opacity: 0.6;
     pointer-events: none;
 }
 
 .lot:focus-visible {
-    box-shadow: 0 0 0 3px var(--gallery-accent), 0 1px 2px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0 0 0 1px rgba(222, 192, 140, 0.5), 0 0 0 3px var(--gallery-accent);
 }
 
 /* A glint of the lantern on the lit lot, as on a glossy print */
@@ -389,7 +520,8 @@ html[data-lang='zh'] .lot-medium {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: calc(var(--cw, 220px) * 1.28);
+    min-height: calc(var(--cw, 220px) * 1.05);
+    padding: calc(var(--cw, 220px) * 0.08);
     background: #1d1713;
     color: var(--gallery-ink);
     border: 1px solid rgba(239, 230, 216, 0.22);
@@ -503,6 +635,22 @@ html[data-lang='zh'] .gallery-label h2 {
     font-size: 14px;
     line-height: 1.6;
     color: var(--gallery-text);
+}
+
+/* What the work is made of, as on a museum label */
+.gallery-label .label-medium {
+    margin: -2px 0 6px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #d7c6ad;
+}
+
+html[data-lang='zh'] .gallery-label .label-medium {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-style: normal;
+    letter-spacing: 0.06em;
 }
 
 .gallery-label a {
@@ -722,15 +870,28 @@ html[data-lang='zh'] .gallery-label h2 {
     display: none;
 }
 
-.iris-shutter {
-    fill: #070504;
+/* Nine leaves of darkened metal, each a shade apart, with a faint edge where they overlap */
+.iris-leaf {
+    stroke: rgba(214, 186, 140, 0.22);
+    stroke-width: 0.8;
+    stroke-linejoin: round;
+}
+
+.iris-leaf--0 { fill: #0c0907; }
+.iris-leaf--1 { fill: #110d0a; }
+.iris-leaf--2 { fill: #0e0a08; }
+
+.iris-shade {
+    fill: url(#irisShade);
     fill-rule: evenodd;
 }
 
-.iris-blades {
+/* Warm light catching the rim of the hole */
+.iris-rim {
     fill: none;
-    stroke: rgba(214, 186, 140, 0.34);
-    stroke-width: 1;
+    stroke: rgba(236, 206, 156, 0.6);
+    stroke-width: 1.2;
+    stroke-linejoin: round;
 }
 
 /* Opening the lit lot: the gallery dims; the lot either grows (is-zooming) or its cover flies into the work's page */
@@ -762,21 +923,6 @@ html[data-lang='zh'] .gallery-label h2 {
     background: linear-gradient(180deg, #1b1511 0%, #2e2219 18%, #6a5444 42%, #c4ae95 68%, var(--bg) 100%);
 }
 
-.threshold-sky {
-    position: sticky;
-    top: 0;
-    display: block;
-    width: 100%;
-    height: 100vh;
-    margin-bottom: -100vh;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-.threshold-sky.is-live {
-    opacity: 1;
-}
-
 /* In dark mode the rooms stay dark, so the threshold just deepens and the quote stays light */
 html[data-theme='dark'] .museum-threshold {
     background: linear-gradient(180deg, #1b1511 0%, var(--bg) 100%);
@@ -793,7 +939,7 @@ html[data-theme='dark'] .museum-threshold.is-day .threshold-quote {
     top: calc(50vh - 1.4em);
     z-index: 1;
     max-width: 900px;
-    margin: 46vh auto 0;
+    margin: 32vh auto 0;
     padding: 0 var(--space-5);
     border: 0;
     /* A halo the opposite of the ink keeps the line readable while clouds pass behind it */
@@ -874,6 +1020,28 @@ html[data-lang='zh'] .threshold-quote em {
     color: var(--muted);
 }
 
+/* The one line a room is about, set larger than anything else under its title */
+.room-statement {
+    max-width: 680px;
+    margin: 0 auto 22px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(22px, 2.4vw, 31px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.38;
+    text-wrap: balance;
+    color: var(--text);
+}
+
+html[data-lang='zh'] .room-statement {
+    font-family: var(--font-museum);
+    font-size: clamp(18px, 1.75vw, 22px);
+    font-style: normal;
+    word-break: keep-all;
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+}
+
 .room-sub {
     font-family: var(--font-label);
     font-size: 12px;
@@ -882,10 +1050,10 @@ html[data-lang='zh'] .threshold-quote em {
     color: var(--muted);
 }
 
-/* Specimens: four numbers on a shelf, each with its note behind a plus (like the path's entries) */
+/* Specimens: one number under the light, three on the shelf below, each with its note behind a plus */
 .specimens {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: 1120px;
     margin: 0 auto;
     padding: 0;
@@ -903,6 +1071,51 @@ html[data-lang='zh'] .threshold-quote em {
 
 .specimen + .specimen {
     border-left: 1px solid var(--border);
+}
+
+.specimen--lead {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: end;
+    column-gap: clamp(32px, 6vw, 88px);
+    padding: clamp(40px, 6vh, 64px) clamp(8px, 2vw, 26px) clamp(36px, 5vh, 52px);
+    border-bottom: 1px solid var(--border);
+}
+
+.specimen--lead + .specimen {
+    border-left: 0;
+}
+
+.specimen--lead .specimen-figure {
+    display: flex;
+    align-items: baseline;
+    gap: 0.08em;
+    margin: 0;
+    font-size: clamp(96px, 12vw, 176px);
+    line-height: 0.82;
+}
+
+/* Read as one figure: four hundred over forty, in the same serif */
+.specimen--lead .specimen-unit {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.26em;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+.specimen--lead .specimen-body {
+    max-width: 440px;
+    padding-bottom: 0.4em;
+}
+
+.specimen--lead .specimen-title {
+    font-size: clamp(24px, 2.4vw, 32px);
+}
+
+.specimen--lead .specimen-desc {
+    margin-top: 16px;
+    font-size: 15.5px;
 }
 
 .specimen-figure {
@@ -1181,6 +1394,44 @@ html[data-lang='zh'] .threshold-quote em {
     align-items: baseline;
 }
 
+.room-path .timeline-title {
+    grid-column: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+}
+
+.timeline-now {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 24px;
+    padding: 0 11px 0 9px;
+    border: 1px solid var(--border);
+    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    border-radius: 999px;
+    font-family: var(--font-label);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.timeline-now-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #5f9f6e;
+    animation: now-pulse 2.6s ease-out infinite;
+}
+
+@keyframes now-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(95, 159, 110, 0.45); }
+    70% { box-shadow: 0 0 0 6px rgba(95, 159, 110, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(95, 159, 110, 0); }
+}
+
 .room-path .timeline-role {
     grid-column: 1;
     margin: 0;
@@ -1391,35 +1642,42 @@ html[data-lang='zh'] .museum-exit .room-no {
     }
 }
 
-@media (max-width: 980px) {
-    .specimens {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 860px) {
+    .specimen--lead {
+        grid-template-columns: 1fr;
+        row-gap: 22px;
     }
 
-    .specimen + .specimen {
-        border-left: 0;
-    }
-
-    .specimen:nth-child(even) {
-        border-left: 1px solid var(--border);
-    }
-
-    .specimen:nth-child(n + 3) {
-        border-top: 1px solid var(--border);
+    .specimen--lead .specimen-body {
+        padding-bottom: 0;
     }
 }
 
 @media (max-width: 560px) {
+    .room-path .timeline-date {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        margin-top: 6px;
+    }
+}
+
+@media (max-width: 760px) {
     .specimens {
         grid-template-columns: 1fr;
     }
 
-    .specimen:nth-child(even) {
+    .specimen + .specimen {
         border-left: 0;
+        border-top: 1px solid var(--border);
     }
 
-    .specimen + .specimen {
-        border-top: 1px solid var(--border);
+    .specimen--lead + .specimen {
+        border-top: 0;
+    }
+
+    .specimen--lead {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -1464,6 +1722,46 @@ html[data-lang='zh'] .museum-exit .room-no {
 
     .gallery-label {
         bottom: 9vh;
+    }
+
+    .gallery-name {
+        margin-top: 14px;
+        font-size: clamp(72px, 24vw, 132px);
+    }
+
+    .gallery-title {
+        margin-top: 12px;
+    }
+
+    .gallery-sub {
+        max-width: 340px;
+        margin-top: 14px;
+    }
+
+    .gallery-facts {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 18px;
+        font-size: 10.5px;
+    }
+
+    .gallery-facts > * + *::before {
+        display: none;
+    }
+
+    .gallery-ask {
+        margin: 6px 0 0;
+    }
+
+    .gallery-room {
+        max-width: calc(100% - 150px);
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        line-height: 1.7;
+    }
+
+    .gallery-room .room-no {
+        font-size: 15px;
     }
 }
 

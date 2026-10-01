@@ -30,10 +30,13 @@ const DECK = [
     {
         page: '首页',
         sections: [
-            { title: '开场（第一屏）', items: ex([
-                ['home.kicker', '大标题上方的小字'],
-                ['home.title', '大标题', { enOnly: true }],
-                ['home.sub', '大标题下的一句话'],
+            { title: '开场（第一屏）', note: '最大的名字 Iris Zhou 写在页面代码里，不在清单中。', items: ex([
+                ['home.kicker', '名字上方的小字（{n} 会换成作品总数）', { enOnly: true }],
+                ['home.title', '名字下面的展名', { enOnly: true }],
+                ['home.sub', '一句话介绍自己'],
+                ['home.fact.school', '事实 1：学校'],
+                ['home.fact.now', '事实 2：现在在哪'],
+                ['home.fact.ask', '找数字分身聊天的按钮'],
                 ['home.hint', '左下角的滚动提示'],
             ]) },
             { title: '展线 № 01', items: ex([
@@ -54,7 +57,9 @@ const DECK = [
             ]) },
             { title: '№ 02 The path so far', items: ex([
                 ['home.room3', '展室标题', { enOnly: true }],
-                ['home.room3.sub', '标题下的小字'],
+                ['home.path.lead', '标题下的一句话（取自 About 页你写的副标题）'],
+                ['home.room3.sub', '那句话下面的小字'],
+                ['home.now', '经历里标在「现在」那一段的小标签'],
                 ['home.curator', '照片下的小标签'],
                 ['home.curator.note', '照片下的一句话'],
                 ['section.experience', '小标题：经历'],
@@ -164,6 +169,7 @@ const DECK = [
             { title: '字体', items: ex([
                 ['colophon.type.title', '小标题'],
                 ['colophon.type.intro', '开头一句'],
+                ['colophon.type.moniqa', 'Moniqa（首页名字）的用途'],
                 ['colophon.type.cormorant', 'Cormorant Garamond 的用途'],
                 ['colophon.type.dmsans', 'DM Sans 的用途'],
                 ['colophon.type.compagnon', 'Compagnon 的用途'],
@@ -196,6 +202,8 @@ const DECK = [
                 ['colophon.details.moon', ''],
                 ['colophon.details.walk', ''],
                 ['colophon.details.irisy', ''],
+                ['colophon.details.globe', ''],
+                ['colophon.details.spin', ''],
             ]) },
             { title: '怎么做的、致谢', items: ex([
                 ['colophon.built.title', '小标题'],
@@ -217,6 +225,26 @@ const DECK = [
                 ['nf.body', '说明'],
                 ['nf.home', '链接：回首页'],
                 ['nf.archive', '链接：看全部作品'],
+            ]) },
+        ],
+    },
+    {
+        page: '足迹（travel.html）',
+        sections: [
+            { title: '黄铜地球仪', note: '地球仪上刻的字（大洲、海洋、题签上的 IRIS ZHOU）是英文，刻在黄铜上，不在清单里。城市和国家的中文名在 content/footprints-data.json。', items: ex([
+                ['travel.globe.kicker', '左上角展签：小字'],
+                ['travel.globe.medium', '左上角展签：材质'],
+                ['travel.legend.lingered', '图例 1：石榴红图钉（收藏 20 个以上的城市）'],
+                ['travel.legend.city', '图例 2：珍珠图钉'],
+                ['travel.legend.country', '图例 3：玫瑰金的国家'],
+                ['travel.hint', '底部提示（电脑）'],
+                ['travel.hintTouch', '底部提示（手机）'],
+                ['travel.loading', '加载时的字'],
+                ['travel.tip.saved', '图钉标签：收藏数（{n} 会换成数字）'],
+                ['travel.tip.visited', '图钉标签：没有收藏的城市'],
+                ['travel.btn.turn', '按钮 1：慢慢转（读屏文字和悬停提示）'],
+                ['travel.btn.zoom', '按钮 2：凑近看'],
+                ['travel.btn.reset', '按钮 3：回到巴黎'],
             ]) },
         ],
     },
