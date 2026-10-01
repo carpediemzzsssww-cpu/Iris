@@ -464,10 +464,11 @@
             bottom: 16px;
             gap: 7px;
         }
+        /* on a phone the legend fills the bottom, so the hint sits under the wall label */
         .globe-hint {
-            left: auto;
-            right: 16px;
-            bottom: 17px;
+            top: 54px;
+            left: 16px;
+            bottom: auto;
             transform: none;
         }
         .country-grid { grid-template-columns: 1fr; }
