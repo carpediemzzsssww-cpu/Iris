@@ -135,20 +135,6 @@
         text-transform: uppercase;
         color: #b59f7d;
     }
-    .globe-label-medium {
-        margin: 6px 0 0;
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: 18px;
-        font-style: italic;
-        line-height: 1.35;
-        color: #e6d6bf;
-    }
-    html[data-lang='zh'] .globe-label-medium {
-        font-family: var(--font-body);
-        font-size: 13px;
-        font-style: normal;
-        letter-spacing: 0.06em;
-    }
 
     .globe-legend {
         position: absolute;
@@ -464,7 +450,6 @@
             left: 16px;
             max-width: 52%;
         }
-        .globe-label-medium { font-size: 15px; }
         .globe-controls {
             top: 14px;
             right: 14px;
@@ -527,7 +512,7 @@
                         <div class="travel-stat-label" data-i18n="travel.continents">Continents</div>
                     </div>
                     <div class="travel-stat">
-                        <div class="travel-stat-number" data-target="182">0</div>
+                        <div class="travel-stat-number" data-target="142">0</div>
                         <div class="travel-stat-label" data-i18n="travel.savedPlaces">Saved Places</div>
                     </div>
                 </div>
@@ -538,13 +523,12 @@
                         if (entries[0].isIntersecting && !counted) {
                             counted = true;
                             document.querySelectorAll('.travel-stat-number[data-target]').forEach(function(el) {
-                                var target = +el.dataset.target;
                                 var duration = 1200;
                                 var start = performance.now();
                                 function tick(now) {
                                     var t = Math.min((now - start) / duration, 1);
                                     var ease = 1 - Math.pow(1 - t, 3);
-                                    el.textContent = Math.round(ease * target);
+                                    el.textContent = Math.round(ease * +el.dataset.target);
                                     if (t < 1) requestAnimationFrame(tick);
                                 }
                                 requestAnimationFrame(tick);
@@ -559,7 +543,6 @@
                     <canvas id="globe-canvas" aria-hidden="true"></canvas>
                     <div class="globe-label">
                         <p class="globe-label-kicker" id="globeKicker" data-i18n="travel.globe.kicker">Terrestrial globe</p>
-                        <p class="globe-label-medium" data-i18n="travel.globe.medium">Engraved brass, garnet pins, red thread</p>
                     </div>
                     <ul class="globe-legend">
                         <li><span class="legend-mark is-garnet" aria-hidden="true"></span><span data-i18n="travel.legend.lingered">Where I lingered</span></li>

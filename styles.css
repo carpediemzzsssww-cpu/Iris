@@ -365,27 +365,6 @@ select:focus-visible {
     background: var(--surface);
 }
 
-.nav-xhs,
-.mobile-xhs {
-    display: none;
-}
-
-html[data-lang="zh"] .nav-xhs {
-    display: inline-flex;
-    align-self: center;
-    width: auto;
-    height: 26px;
-    padding: 0 11px;
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    line-height: 1;
-}
-
-html[data-lang="zh"] .mobile-xhs {
-    display: block;
-}
 
 .nav-action.theme-toggle {
     border: none;
@@ -1541,6 +1520,11 @@ html[data-theme='dark'] .project-transition-overlay {
     gap: var(--space-5);
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Chinese readers find Xiaohongshu first */
+html[data-lang="zh"] .contact-xhs {
+    order: -1;
 }
 
 .contact-link {

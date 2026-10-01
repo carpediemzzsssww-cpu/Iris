@@ -66,7 +66,6 @@
             '<div class="nav-actions">' +
                 '<a href="mailto:' + c.email + '" class="nav-action" title="Email" aria-label="Send email">' + icons.email + '</a>' +
                 // A Chinese platform: shown in the nav in Chinese mode, and in the footer and contact list in both
-                (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="nav-action nav-xhs" lang="zh-CN" aria-label="小红书主页" target="_blank" rel="noopener noreferrer">小红书</a>' : '') +
                 '<a href="' + c.github + '" class="nav-action" title="GitHub" aria-label="Open GitHub profile" target="_blank" rel="noopener noreferrer">' + icons.github + '</a>' +
                 '<a href="' + c.linkedin + '" class="nav-action" title="LinkedIn" aria-label="Open LinkedIn profile" target="_blank" rel="noopener noreferrer">' + icons.linkedin + '</a>' +
                 '<button class="nav-action lang-toggle" type="button" data-lang-toggle aria-label="Switch to Chinese"><span class="lang-label">EN</span></button>' +
@@ -85,7 +84,6 @@
             '<a href="ai-lab.html" class="mobile-link' + isActive('ai-lab.html') + '" data-i18n="nav.ailab">AI Lab</a>' +
             '<a href="travel.html" class="mobile-link' + isActive('travel.html') + '" data-i18n="nav.footprints">Footprints</a>' +
             '<a href="about.html" class="mobile-link' + isActive('about.html') + '" data-i18n="nav.about">About</a>' +
-            (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="mobile-link mobile-xhs" lang="zh-CN" target="_blank" rel="noopener noreferrer">小红书 &#8599;</a>' : '') +
             '<button class="mobile-lang-toggle" type="button" data-lang-toggle><span data-lang-toggle-text>Switch to Chinese</span></button>' +
             '<button class="mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode"><span data-theme-toggle-text>Switch to dark mode</span></button>' +
         '</div>';
@@ -156,7 +154,7 @@
             '<a href="mailto:' + c.email + '" class="contact-link">' + icons.email + ' ' + c.email + '</a>' +
             '<a href="' + c.linkedin + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.linkedin + ' LinkedIn</a>' +
             '<a href="' + c.github + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.github + ' GitHub</a>' +
-            (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="contact-link" target="_blank" rel="noopener noreferrer">' + icons.notes + ' <span data-i18n="social.xhs">Xiaohongshu</span></a>' : '');
+            (c.xiaohongshu ? '<a href="' + c.xiaohongshu + '" class="contact-link contact-xhs" target="_blank" rel="noopener noreferrer">' + icons.notes + ' <span data-i18n="social.xhs">Xiaohongshu</span></a>' : '');
     }
 
     // ---- Running Header (magazine masthead) ----

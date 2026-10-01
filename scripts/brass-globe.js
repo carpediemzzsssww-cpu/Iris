@@ -106,6 +106,18 @@
         gridEl.innerHTML = html;
     }
 
+    // The figures above the globe: countries, cities and saved places, counted from the data
+    function syncStats(data) {
+        var nums = document.querySelectorAll('#travel-stats .travel-stat-number');
+        var saved = data.cities.reduce(function (s, c) { return s + (c.pins || 0); }, 0);
+        var values = [data.countries.length, data.cities.length, null, saved];
+        Array.prototype.forEach.call(nums, function (el, i) {
+            if (values[i] === null || values[i] === undefined) return;
+            el.setAttribute('data-target', String(values[i]));
+            if (el.textContent !== '0') el.textContent = String(values[i]);
+        });
+    }
+
     if (gridEl) {
         gridEl.addEventListener('click', function (e) {
             var tag = e.target.closest ? e.target.closest('.city-tag') : null;
@@ -135,6 +147,7 @@
             data.countries.forEach(function (c) { countryByName[c.name] = c; });
             data.cities.forEach(function (c) { cityByName[c.city] = c; });
             renderGrid();
+            syncStats(data);
             return data;
         });
 

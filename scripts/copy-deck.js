@@ -151,7 +151,7 @@ const DECK = [
                 ['footer.walked', '页脚的步数（{m} 会换成米数）'],
                 ['footer.contact', '页脚链接：联系'],
                 ['footer.colophon', '页脚链接：本站说明'],
-                ['social.xhs', '小红书的名字（页脚、联系方式；中文模式下导航里也有）'],
+                ['social.xhs', '小红书的名字（首页最后的联系方式和每页页脚；中文模式下排在联系方式第一个）'],
                 ['footer.setIn', '页脚最底下的字体说明'],
                 ['footer.copyright', '版权'],
             ]) },
@@ -233,7 +233,6 @@ const DECK = [
         sections: [
             { title: '黄铜地球仪', note: '地球仪上刻的字（大洲、海洋、题签上的 IRIS ZHOU）是英文，刻在黄铜上，不在清单里。城市和国家的中文名在 content/footprints-data.json。', items: ex([
                 ['travel.globe.kicker', '左上角展签：小字'],
-                ['travel.globe.medium', '左上角展签：材质'],
                 ['travel.legend.lingered', '图例 1：石榴红图钉（收藏 20 个以上的城市）'],
                 ['travel.legend.city', '图例 2：珍珠图钉'],
                 ['travel.legend.country', '图例 3：玫瑰金的国家'],
