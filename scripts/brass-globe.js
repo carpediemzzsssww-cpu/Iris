@@ -106,10 +106,11 @@
         gridEl.innerHTML = html;
     }
 
-    // The figures above the globe: countries, cities and saved places, counted from the data
+    // The figures above the globe: countries, cities and saved places, counted from the data. Saved places
+    // are Google's own total when the data has it, since some are in no city on the globe
     function syncStats(data) {
         var nums = document.querySelectorAll('#travel-stats .travel-stat-number');
-        var saved = data.cities.reduce(function (s, c) { return s + (c.pins || 0); }, 0);
+        var saved = typeof data.saved === 'number' ? data.saved : data.cities.reduce(function (s, c) { return s + (c.pins || 0); }, 0);
         var values = [data.countries.length, data.cities.length, null, saved];
         Array.prototype.forEach.call(nums, function (el, i) {
             if (values[i] === null || values[i] === undefined) return;
